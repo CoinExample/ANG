@@ -1,24 +1,24 @@
-bin_PROGRAMS += qt/owncoin-qt
+bin_PROGRAMS += qt/dragoncoin-qt
 EXTRA_LIBRARIES += qt/libbitcoinqt.a
 
-# owncoin qt core #
+# dragoncoin qt core #
 QT_TS = \
-  qt/locale/owncoin_bg.ts \
-  qt/locale/owncoin_de.ts \
-  qt/locale/owncoin_en.ts \
-  qt/locale/owncoin_es.ts \
-  qt/locale/owncoin_fi.ts \
-  qt/locale/owncoin_fr.ts \
-  qt/locale/owncoin_it.ts \
-  qt/locale/owncoin_ja.ts \
-  qt/locale/owncoin_pl.ts \
-  qt/locale/owncoin_pt.ts \
-  qt/locale/owncoin_ru.ts \
-  qt/locale/owncoin_sk.ts \
-  qt/locale/owncoin_sv.ts \
-  qt/locale/owncoin_vi.ts \
-  qt/locale/owncoin_zh_CN.ts \
-  qt/locale/owncoin_zh_TW.ts
+  qt/locale/dragoncoin_bg.ts \
+  qt/locale/dragoncoin_de.ts \
+  qt/locale/dragoncoin_en.ts \
+  qt/locale/dragoncoin_es.ts \
+  qt/locale/dragoncoin_fi.ts \
+  qt/locale/dragoncoin_fr.ts \
+  qt/locale/dragoncoin_it.ts \
+  qt/locale/dragoncoin_ja.ts \
+  qt/locale/dragoncoin_pl.ts \
+  qt/locale/dragoncoin_pt.ts \
+  qt/locale/dragoncoin_ru.ts \
+  qt/locale/dragoncoin_sk.ts \
+  qt/locale/dragoncoin_sv.ts \
+  qt/locale/dragoncoin_vi.ts \
+  qt/locale/dragoncoin_zh_CN.ts \
+  qt/locale/dragoncoin_zh_TW.ts
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
@@ -90,16 +90,16 @@ BITCOIN_MM = \
   qt/macnotificationhandler.mm
 
 QT_MOC = \
-  qt/owncoin.moc \
+  qt/dragoncoin.moc \
   qt/bitcoinamountfield.moc \
   qt/intro.moc \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
 
-QT_QRC_CPP = qt/qrc_owncoin.cpp
-QT_QRC = qt/owncoin.qrc
-QT_QRC_LOCALE_CPP = qt/qrc_owncoin_locale.cpp
-QT_QRC_LOCALE = qt/owncoin_locale.qrc
+QT_QRC_CPP = qt/qrc_dragoncoin.cpp
+QT_QRC = qt/dragoncoin.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_dragoncoin_locale.cpp
+QT_QRC_LOCALE = qt/dragoncoin_locale.qrc
 
 PROTOBUF_CC = qt/paymentrequest.pb.cc
 PROTOBUF_H = qt/paymentrequest.pb.h
@@ -207,13 +207,13 @@ RES_ICONS = \
   qt/res/icons/tx_input.png \
   qt/res/icons/tx_output.png \
   qt/res/icons/tx_mined.png \
-  qt/res/icons/unit_owncoin.png \
-  qt/res/icons/unit_mowncoin.png \
-  qt/res/icons/unit_uowncoin.png \
+  qt/res/icons/unit_dragoncoin.png \
+  qt/res/icons/unit_mdragoncoin.png \
+  qt/res/icons/unit_udragoncoin.png \
   qt/res/icons/unit_duffs.png \
-  qt/res/icons/unit_towncoin.png \
-  qt/res/icons/unit_tmowncoin.png \
-  qt/res/icons/unit_tuowncoin.png \
+  qt/res/icons/unit_tdragoncoin.png \
+  qt/res/icons/unit_tmdragoncoin.png \
+  qt/res/icons/unit_tudragoncoin.png \
   qt/res/icons/unit_tduffs.png
 
 BITCOIN_QT_CPP = \
@@ -273,7 +273,7 @@ RES_IMAGES = \
   qt/res/images/about.png \
   qt/res/images/splash.png \
   qt/res/images/splash_testnet.png \
-  qt/res/images/owncoin_logo_horizontal.png \
+  qt/res/images/dragoncoin_logo_horizontal.png \
   qt/res/images/drkblue_downArrow.png \
   qt/res/images/drkblue_downArrow_small.png \
   qt/res/images/drkblue_upArrow_small.png \
@@ -288,7 +288,7 @@ RES_CSS = \
 
 RES_MOVIES = $(wildcard qt/res/movies/spinner-*.png)
 
-BITCOIN_RC = qt/res/owncoin-qt-res.rc
+BITCOIN_RC = qt/res/dragoncoin-qt-res.rc
 
 BITCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
   -I$(builddir)/qt/forms
@@ -308,65 +308,65 @@ QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:
 # Most files will depend on the forms and moc files as includes. Generate them
 # before anything else.
 $(QT_MOC): $(QT_FORMS_H)
-$(qt_libbitcoinqt_a_OBJECTS) $(qt_owncoin_qt_OBJECTS) : | $(QT_MOC)
+$(qt_libbitcoinqt_a_OBJECTS) $(qt_dragoncoin_qt_OBJECTS) : | $(QT_MOC)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
 $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
-# owncoin-qt binary #
-qt_owncoin_qt_CPPFLAGS = $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+# dragoncoin-qt binary #
+qt_dragoncoin_qt_CPPFLAGS = $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
 
-qt_owncoin_qt_SOURCES = qt/owncoin.cpp
+qt_dragoncoin_qt_SOURCES = qt/dragoncoin.cpp
 if TARGET_DARWIN
-  qt_owncoin_qt_SOURCES += $(BITCOIN_MM)
+  qt_dragoncoin_qt_SOURCES += $(BITCOIN_MM)
 endif
 if TARGET_WINDOWS
-  qt_owncoin_qt_SOURCES += $(BITCOIN_RC)
+  qt_dragoncoin_qt_SOURCES += $(BITCOIN_RC)
 endif
-qt_owncoin_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
+qt_dragoncoin_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
 if ENABLE_WALLET
-qt_owncoin_qt_LDADD += $(LIBBITCOIN_WALLET)
+qt_dragoncoin_qt_LDADD += $(LIBBITCOIN_WALLET)
 endif
-qt_owncoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBBITCOIN_UNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+qt_dragoncoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBBITCOIN_UNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1)
-qt_owncoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
-qt_owncoin_qt_LIBTOOLFLAGS = --tag CXX
+qt_dragoncoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_dragoncoin_qt_LIBTOOLFLAGS = --tag CXX
 
 #locale/foo.ts -> locale/foo.qm
 QT_QM=$(QT_TS:.ts=.qm)
 
 .SECONDARY: $(QT_QM)
 
-qt/owncoinstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES)
+qt/dragoncoinstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) ../share/qt/extract_strings_qt.py $^
 
-translate: qt/owncoinstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: qt/dragoncoinstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts qt/locale/owncoin_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts qt/locale/dragoncoin_en.ts
 
 $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	@test -f $(RCC)
 	@test -f $(@D)/$(<F) || cp -f $< $(@D)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name owncoin_locale $(@D)/$(<F) | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name dragoncoin_locale $(@D)/$(<F) | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(RES_MOVIES) $(PROTOBUF_H)
 	@test -f $(RCC)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name owncoin $< | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name dragoncoin $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
 CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno
 
 CLEANFILES += $(CLEAN_QT)
 
-owncoin_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_owncoin_qt_OBJECTS) qt/owncoin-qt$(EXEEXT) $(LIBBITCOINQT)
+dragoncoin_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_dragoncoin_qt_OBJECTS) qt/dragoncoin-qt$(EXEEXT) $(LIBBITCOINQT)
 
-owncoin_qt : qt/owncoin-qt$(EXEEXT)
+dragoncoin_qt : qt/dragoncoin-qt$(EXEEXT)
 
 ui_%.h: %.ui
 	@test -f $(UIC)

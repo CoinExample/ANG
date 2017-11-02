@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between owncoin-cli and owncoind)
- * of a given instance of the Owncoin system.
+ * CBaseChainParams defines the base parameters (shared between dragoncoin-cli and dragoncoind)
+ * of a given instance of the Dragoncoin system.
  */
 class CBaseChainParams
 {

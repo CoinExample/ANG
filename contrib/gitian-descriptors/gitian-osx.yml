@@ -1,5 +1,5 @@
 ---
-name: "owncoin-osx-0.12"
+name: "dragoncoin-osx-0.12"
 enable_cache: true
 suites:
 - "precise"
@@ -21,7 +21,7 @@ packages:
 reference_datetime: "2013-06-01 00:00:00"
 remotes:
 - "url": "https://github.com/AndrijKolomiets/dragoncoin.git"
-  "dir": "owncoin"
+  "dir": "dragoncoin"
 files:
 - "MacOSX10.7.sdk.tar.gz"
 script: |
@@ -68,7 +68,7 @@ script: |
   done
   export PATH=${WRAP_DIR}:${PATH}
 
-  cd owncoin
+  cd dragoncoin
   BASEPREFIX=`pwd`/depends
 
   mkdir -p ${BASEPREFIX}/SDKs
@@ -83,14 +83,14 @@ script: |
   ./autogen.sh
   ./configure --prefix=${BASEPREFIX}/`echo "${HOSTS}" | awk '{print $1;}'`
   make dist
-  SOURCEDIST=`echo owncoin-*.tar.gz`
+  SOURCEDIST=`echo dragoncoin-*.tar.gz`
   DISTNAME=`echo ${SOURCEDIST} | sed 's/.tar.*//'`
 
   # Correct tar file order
   mkdir -p temp
   pushd temp
   tar xf ../$SOURCEDIST
-  find owncoin-* | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ../$SOURCEDIST
+  find dragoncoin-* | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ../$SOURCEDIST
   popd
 
   ORIGPATH="$PATH"
@@ -120,7 +120,7 @@ script: |
     popd
 
     make deploy
-    ${WRAP_DIR}/dmg dmg Owncoin-Qt.dmg ${OUTDIR}/${DISTNAME}-osx-unsigned.dmg
+    ${WRAP_DIR}/dmg dmg Dragoncoin-Qt.dmg ${OUTDIR}/${DISTNAME}-osx-unsigned.dmg
 
     cd installed
     find . -name "lib*.la" -delete

@@ -1,6 +1,6 @@
 all:
-	$(MAKE) -C .. owncoin_test
+	$(MAKE) -C .. dragoncoin_test
 clean:
-	$(MAKE) -C .. owncoin_test_clean
+	$(MAKE) -C .. dragoncoin_test_clean
 check:
-	$(MAKE) -C .. owncoin_test_check
+	$(MAKE) -C .. dragoncoin_test_check

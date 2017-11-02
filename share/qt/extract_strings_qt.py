@@ -9,7 +9,7 @@ import operator
 import os
 import sys
 
-OUT_CPP="qt/owncoinstrings.cpp"
+OUT_CPP="qt/dragoncoinstrings.cpp"
 EMPTY=['""']
 
 def parse_po(text):
@@ -69,10 +69,10 @@ f.write("""
 #define UNUSED
 #endif
 """)
-f.write('static const char UNUSED *owncoin_strings[] = {\n')
+f.write('static const char UNUSED *dragoncoin_strings[] = {\n')
 messages.sort(key=operator.itemgetter(0))
 for (msgid, msgstr) in messages:
     if msgid != EMPTY:
-        f.write('QT_TRANSLATE_NOOP("owncoin-core", %s),\n' % ('\n'.join(msgid)))
+        f.write('QT_TRANSLATE_NOOP("dragoncoin-core", %s),\n' % ('\n'.join(msgid)))
 f.write('};\n')
 f.close()

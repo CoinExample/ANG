@@ -26,7 +26,7 @@ import xml.etree.ElementTree as ET
 # Name of transifex tool
 TX = 'tx'
 # Name of source language file
-SOURCE_LANG = 'owncoin_en.ts'
+SOURCE_LANG = 'dragoncoin_en.ts'
 # Directory with locale files
 LOCALE_DIR = 'src/qt/locale'
 

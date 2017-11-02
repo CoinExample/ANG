@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Dragoncoin
+Comment=Dragoncoin P2P Cryptocurrency
+Comment[fr]=Dragoncoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Dragoncoin, eşten eşe kriptografik sanal para birimi
+Exec=dragoncoin-qt %u
+Terminal=false
+Type=Application
+Icon=dragoncoin128
+MimeType=x-scheme-handler/dragoncoin;
+Categories=Office;Finance;

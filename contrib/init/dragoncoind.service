@@ -1,0 +1,22 @@
+[Unit]
+Description=Dragoncoin's distributed currency daemon
+After=network.target
+
+[Service]
+User=dragoncoin
+Group=dragoncoin
+
+Type=forking
+PIDFile=/var/lib/dragoncoind/dragoncoind.pid
+ExecStart=/usr/bin/dragoncoind -daemon -pid=/var/lib/dragoncoind/dragoncoind.pid \
+-conf=/etc/dragoncoin/dragoncoin.conf -datadir=/var/lib/dragoncoind -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

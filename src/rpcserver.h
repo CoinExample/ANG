@@ -93,7 +93,7 @@ public:
 };
 
 /**
- * Owncoin RPC command dispatcher.
+ * Dragoncoin RPC command dispatcher.
  */
 class CRPCTable
 {

@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifdef HAVE_CONFIG_H
-#include "config/owncoin-config.h"
+#include "config/dragoncoin-config.h"
 #endif
 
 #include "netbase.h"

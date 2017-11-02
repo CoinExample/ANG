@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Owncoin developers
+// Copyright (c) 2014-2015 The Dragoncoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -19,9 +19,9 @@ BitcoinUnits::BitcoinUnits(QObject *parent):
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(OWNCOIN);
-    unitlist.append(mOWNCOIN);
-    unitlist.append(uOWNCOIN);
+    unitlist.append(DRAGONCOIN);
+    unitlist.append(mDRAGONCOIN);
+    unitlist.append(uDRAGONCOIN);
     unitlist.append(duffs);
     return unitlist;
 }
@@ -30,9 +30,9 @@ bool BitcoinUnits::valid(int unit)
 {
     switch(unit)
     {
-    case OWNCOIN:
-    case mOWNCOIN:
-    case uOWNCOIN:
+    case DRAGONCOIN:
+    case mDRAGONCOIN:
+    case uDRAGONCOIN:
     case duffs:
         return true;
     default:
@@ -44,9 +44,9 @@ QString BitcoinUnits::id(int unit)
 {
     switch(unit)
     {
-        case OWNCOIN: return QString("owncoin");
-        case mOWNCOIN: return QString("mowncoin");
-        case uOWNCOIN: return QString::fromUtf8("uowncoin");
+        case DRAGONCOIN: return QString("dragoncoin");
+        case mDRAGONCOIN: return QString("mdragoncoin");
+        case uDRAGONCOIN: return QString::fromUtf8("udragoncoin");
         case duffs: return QString("duffs");
         default: return QString("???");
     }
@@ -58,9 +58,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case OWNCOIN: return QString("OWNCOIN");
-            case mOWNCOIN: return QString("mOWNCOIN");
-            case uOWNCOIN: return QString::fromUtf8("μOWNCOIN");
+            case DRAGONCOIN: return QString("DRAGONCOIN");
+            case mDRAGONCOIN: return QString("mDRAGONCOIN");
+            case uDRAGONCOIN: return QString::fromUtf8("μDRAGONCOIN");
             case duffs: return QString("duffs");
             default: return QString("???");
         }
@@ -69,9 +69,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case OWNCOIN: return QString("tOWNCOIN");
-            case mOWNCOIN: return QString("mtOWNCOIN");
-            case uOWNCOIN: return QString::fromUtf8("μtOWNCOIN");
+            case DRAGONCOIN: return QString("tDRAGONCOIN");
+            case mDRAGONCOIN: return QString("mtDRAGONCOIN");
+            case uDRAGONCOIN: return QString::fromUtf8("μtDRAGONCOIN");
             case duffs: return QString("tduffs");
             default: return QString("???");
         }
@@ -84,10 +84,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case OWNCOIN: return QString("Owncoin");
-            case mOWNCOIN: return QString("Milli-Owncoin (1 / 1" THIN_SP_UTF8 "000)");
-            case uOWNCOIN: return QString("Micro-Owncoin (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-Owncoin (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case DRAGONCOIN: return QString("Dragoncoin");
+            case mDRAGONCOIN: return QString("Milli-Dragoncoin (1 / 1" THIN_SP_UTF8 "000)");
+            case uDRAGONCOIN: return QString("Micro-Dragoncoin (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case duffs: return QString("Ten Nano-Dragoncoin (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -95,10 +95,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case OWNCOIN: return QString("TestOwncoins");
-            case mOWNCOIN: return QString("Milli-TestOwncoin (1 / 1" THIN_SP_UTF8 "000)");
-            case uOWNCOIN: return QString("Micro-TestOwncoin (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-TestOwncoin (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case DRAGONCOIN: return QString("TestDragoncoins");
+            case mDRAGONCOIN: return QString("Milli-TestDragoncoin (1 / 1" THIN_SP_UTF8 "000)");
+            case uDRAGONCOIN: return QString("Micro-TestDragoncoin (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case duffs: return QString("Ten Nano-TestDragoncoin (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -108,9 +108,9 @@ qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
-    case OWNCOIN:  return 100000000;
-    case mOWNCOIN: return 100000;
-    case uOWNCOIN: return 100;
+    case DRAGONCOIN:  return 100000000;
+    case mDRAGONCOIN: return 100000;
+    case uDRAGONCOIN: return 100;
     case duffs: return 1;
     default:   return 100000000;
     }
@@ -120,9 +120,9 @@ int BitcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case OWNCOIN: return 8;
-    case mOWNCOIN: return 5;
-    case uOWNCOIN: return 2;
+    case DRAGONCOIN: return 8;
+    case mDRAGONCOIN: return 5;
+    case uDRAGONCOIN: return 2;
     case duffs: return 0;
     default: return 0;
     }
