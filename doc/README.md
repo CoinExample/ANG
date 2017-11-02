@@ -46,7 +46,7 @@ The following are developer notes on how to build Owncoin on your native platfor
 
 Development
 ---------------------
-The Owncoin repo's [root README](https://github.com/mycointest/owncoin/blob/master/README.md) contains relevant information on the development process and automated testing.
+The Owncoin repo's [root README](https://github.com/AndrijKolomiets/dragoncoin/blob/master/README.md) contains relevant information on the development process and automated testing.
 
 - [Coding Guidelines](coding.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)
