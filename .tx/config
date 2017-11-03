@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[dragoncoin.qt-translation-010x]
-file_filter = src/qt/locale/dragoncoin_<lang>.ts
-source_file = src/qt/locale/dragoncoin_en.ts
+[pcoin.qt-translation-010x]
+file_filter = src/qt/locale/pcoin_<lang>.ts
+source_file = src/qt/locale/pcoin_en.ts
 source_lang = en

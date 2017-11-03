@@ -1,6 +1,6 @@
 all:
-	$(MAKE) -C .. dragoncoin_test
+	$(MAKE) -C .. pcoin_test
 clean:
-	$(MAKE) -C .. dragoncoin_test_clean
+	$(MAKE) -C .. pcoin_test_clean
 check:
-	$(MAKE) -C .. dragoncoin_test_check
+	$(MAKE) -C .. pcoin_test_check

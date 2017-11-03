@@ -1,21 +1,21 @@
 
 Debian
 ====================
-This directory contains files used to package dragoncoind/dragoncoin-qt
-for Debian-based Linux systems. If you compile dragoncoind/dragoncoin-qt yourself, there are some useful files here.
+This directory contains files used to package pcoind/pcoin-qt
+for Debian-based Linux systems. If you compile pcoind/pcoin-qt yourself, there are some useful files here.
 
-## dragoncoin: URI support ##
+## pcoin: URI support ##
 
 
-dragoncoin-qt.desktop  (Gnome / Open Desktop)
+pcoin-qt.desktop  (Gnome / Open Desktop)
 To install:
 
-	sudo desktop-file-install dragoncoin-qt.desktop
+	sudo desktop-file-install pcoin-qt.desktop
 	sudo update-desktop-database
 
 If you build yourself, you will either need to modify the paths in
-the .desktop file or copy or symlink your dragoncoin-qt binary to `/usr/bin`
-and the `../../share/pixmaps/dragoncoin128.png` to `/usr/share/pixmaps`
+the .desktop file or copy or symlink your pcoin-qt binary to `/usr/bin`
+and the `../../share/pixmaps/pcoin128.png` to `/usr/share/pixmaps`
 
-dragoncoin-qt.protocol (KDE)
+pcoin-qt.protocol (KDE)
 

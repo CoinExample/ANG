@@ -7,7 +7,7 @@
 #define BITCOIN_COMPAT_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dragoncoin-config.h"
+#include "config/pcoin-config.h"
 #endif
 
 #ifdef WIN32

@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Dragoncoin developers
+// Copyright (c) 2014-2015 The Pcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -31,7 +31,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::DRAGONCOIN)
+    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::PCOIN)
     {
 
     }
@@ -279,7 +279,7 @@ void OverviewPage::setWalletModel(WalletModel *model)
         connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
     }
 
-    // update the display unit, to not use the default ("DRAGONCOIN")
+    // update the display unit, to not use the default ("PCOIN")
     updateDisplayUnit();
 }
 

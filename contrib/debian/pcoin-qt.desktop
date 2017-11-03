@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Pcoin
+Comment=Pcoin P2P Cryptocurrency
+Comment[fr]=Pcoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Pcoin, eşten eşe kriptografik sanal para birimi
+Exec=pcoin-qt %u
+Terminal=false
+Type=Application
+Icon=pcoin128
+MimeType=x-scheme-handler/pcoin;
+Categories=Office;Finance;

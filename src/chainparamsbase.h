@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between dragoncoin-cli and dragoncoind)
- * of a given instance of the Dragoncoin system.
+ * CBaseChainParams defines the base parameters (shared between pcoin-cli and pcoind)
+ * of a given instance of the Pcoin system.
  */
 class CBaseChainParams
 {

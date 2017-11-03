@@ -17,7 +17,7 @@
   <string>APPL</string>
 
   <key>CFBundleGetInfoString</key>
-  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Dragoncoin Core developers</string>
+  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Pcoin Core developers</string>
 
   <key>CFBundleShortVersionString</key>
   <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
@@ -29,10 +29,10 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Dragoncoin-Qt</string>
+  <string>Pcoin-Qt</string>
 
   <key>CFBundleIdentifier</key>
-  <string>io.andrijKolomiets.Dragoncoin-Qt</string>
+  <string>io.andrijKolomiets.Pcoin-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -40,10 +40,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>io.dragoncoin.DragoncoinPayment</string>
+      <string>io.pcoin.PcoinPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>dragoncoin</string>
+        <string>pcoin</string>
       </array>
     </dict>
   </array>
@@ -52,9 +52,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>io.dragoncoin.paymentrequest</string>
+      <string>io.pcoin.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>Dragoncoin payment request</string>
+      <string>Pcoin payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -62,7 +62,7 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-dragoncoin-payment-request</string>
+        <string>application/x-pcoin-payment-request</string>
         <key>public.filename-extension</key>
         <array>
           <string>andrijKolomietsmentrequest</string>
@@ -78,7 +78,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>io.dragoncoin.paymentrequest</string>
+        <string>io.pcoin.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

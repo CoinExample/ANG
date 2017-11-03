@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015 The Dragoncoin developers
+// Copyright (c) 2014-2015 The Pcoin developers
 
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -261,7 +261,7 @@ public:
 
     //check to see if we should vote on this
     void AutoCheck();
-    //total dragoncoin paid out by this budget
+    //total pcoin paid out by this budget
     CAmount GetTotalPayout();
     //vote on this finalized budget as a masternode
     void SubmitVote();

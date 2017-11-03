@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Dragoncoin developers
+// Copyright (c) 2014-2015 The Pcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -39,7 +39,7 @@ using namespace boost;
 using namespace std;
 
 #if defined(NDEBUG)
-# error "Dragoncoin cannot be compiled without assertions."
+# error "Pcoin cannot be compiled without assertions."
 #endif
 
 /**
@@ -2013,7 +2013,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("dragoncoin-scriptch");
+    RenameThread("pcoin-scriptch");
     scriptcheckqueue.Thread();
 }
 

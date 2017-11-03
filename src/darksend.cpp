@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015 The Dragoncoin developers
+// Copyright (c) 2014-2015 The Pcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -35,8 +35,8 @@ map<uint256, CDarksendBroadcastTx> mapDarksendBroadcastTxes;
 // Keep track of the active Masternode
 CActiveMasternode activeMasternode;
 
-/* *** BEGIN DARKSEND MAGIC - DRAGONCOIN **********
-    Copyright (c) 2014-2015, Dragoncoin Developers
+/* *** BEGIN DARKSEND MAGIC - PCOIN **********
+    Copyright (c) 2014-2015, Pcoin Developers
         eduffield - evan@andrijKolomiets.io
         udjinm6   - udjinm6@andrijKolomiets.io
 */
@@ -766,7 +766,7 @@ void CDarksendPool::ChargeRandomFees(){
 
                 Being that Darksend has "no fees" we need to have some kind of cost associated
                 with using it to stop abuse. Otherwise it could serve as an attack vector and
-                allow endless transaction that would bloat Dragoncoin and make it unusable. To
+                allow endless transaction that would bloat Pcoin and make it unusable. To
                 stop these kinds of attacks 1 in 10 successful transactions are charged. This
                 adds up to a cost of 0.001DRK per transaction on average.
             */
@@ -2223,7 +2223,7 @@ void ThreadCheckDarkSendPool()
     if(fLiteMode) return; //disable all Darksend/Masternode related functionality
 
     // Make this thread recognisable as the wallet flushing thread
-    RenameThread("dragoncoin-darksend");
+    RenameThread("pcoin-darksend");
 
     unsigned int c = 0;
 

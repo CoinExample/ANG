@@ -2,7 +2,7 @@ Release Process
 ====================
 
 * update translations (ping wumpus, Diapolo or tcatm on IRC)
-* see https://github.com/AndrijKolomiets/dragoncoin/blob/master/doc/translation_process.md#syncing-with-transifex
+* see https://github.com/AndrijKolomiets/pcoin/blob/master/doc/translation_process.md#syncing-with-transifex
 
 * * *
 
@@ -33,7 +33,7 @@ Release Process
 
 	export SIGNER=(your gitian key, ie bluematt, sipa, etc)
 	export VERSION=(new version, e.g. 0.8.0)
-	pushd ./dragoncoin
+	pushd ./pcoin
 	git checkout v${VERSION}
 	popd
 	pushd ./gitian-builder
@@ -54,29 +54,29 @@ Release Process
 
   By default, gitian will fetch source files as needed. For offline builds, they can be fetched ahead of time:
 
-	make -C ../dragoncoin/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../pcoin/depends download SOURCES_PATH=`pwd`/cache/common
 
   Only missing files will be fetched, so this is safe to re-run for each build.
 
-###Build Dragoncoin Core for Linux, Windows, and OS X:
+###Build Pcoin Core for Linux, Windows, and OS X:
 
-	./bin/gbuild --commit dragoncoin=v${VERSION} ../dragoncoin/contrib/gitian-descriptors/gitian-linux.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../dragoncoin/contrib/gitian-descriptors/gitian-linux.yml
-	mv build/out/dragoncoin-*.tar.gz build/out/src/dragoncoin-*.tar.gz ../
-	./bin/gbuild --commit dragoncoin=v${VERSION} ../dragoncoin/contrib/gitian-descriptors/gitian-win.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-win --destination ../gitian.sigs/ ../dragoncoin/contrib/gitian-descriptors/gitian-win.yml
-	mv build/out/dragoncoin-*.zip build/out/dragoncoin-*.exe ../
-	./bin/gbuild --commit bitcoin=v${VERSION} ../dragoncoin/contrib/gitian-descriptors/gitian-osx.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../dragoncoin/contrib/gitian-descriptors/gitian-osx.yml
-	mv build/out/dragoncoin-*-unsigned.tar.gz inputs/dragoncoin-osx-unsigned.tar.gz
-	mv build/out/dragoncoin-*.tar.gz build/out/dragoncoin-*.dmg ../
+	./bin/gbuild --commit pcoin=v${VERSION} ../pcoin/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../pcoin/contrib/gitian-descriptors/gitian-linux.yml
+	mv build/out/pcoin-*.tar.gz build/out/src/pcoin-*.tar.gz ../
+	./bin/gbuild --commit pcoin=v${VERSION} ../pcoin/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-win --destination ../gitian.sigs/ ../pcoin/contrib/gitian-descriptors/gitian-win.yml
+	mv build/out/pcoin-*.zip build/out/pcoin-*.exe ../
+	./bin/gbuild --commit bitcoin=v${VERSION} ../pcoin/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../pcoin/contrib/gitian-descriptors/gitian-osx.yml
+	mv build/out/pcoin-*-unsigned.tar.gz inputs/pcoin-osx-unsigned.tar.gz
+	mv build/out/pcoin-*.tar.gz build/out/pcoin-*.dmg ../
 	popd
   Build output expected:
 
-  1. source tarball (dragoncoin-${VERSION}.tar.gz)
-  2. linux 32-bit and 64-bit binaries dist tarballs (dragoncoin-${VERSION}-linux[32|64].tar.gz)
-  3. windows 32-bit and 64-bit installers and dist zips (dragoncoin-${VERSION}-win[32|64]-setup.exe, dragoncoin-${VERSION}-win[32|64].zip)
-  4. OSX unsigned installer (dragoncoin-${VERSION}-osx-unsigned.dmg)
+  1. source tarball (pcoin-${VERSION}.tar.gz)
+  2. linux 32-bit and 64-bit binaries dist tarballs (pcoin-${VERSION}-linux[32|64].tar.gz)
+  3. windows 32-bit and 64-bit installers and dist zips (pcoin-${VERSION}-win[32|64]-setup.exe, pcoin-${VERSION}-win[32|64].zip)
+  4. OSX unsigned installer (pcoin-${VERSION}-osx-unsigned.dmg)
   5. Gitian signatures (in gitian.sigs/${VERSION}-<linux|win|osx-unsigned>/(your gitian key)/
 
 ###Next steps:
@@ -100,9 +100,9 @@ Commit your signature to gitian.sigs:
 	pushd ./gitian-builder
 	# Fetch the signature as instructed by Evan
 	cp signature.tar.gz inputs/
-	./bin/gbuild -i ../dragoncoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../dragoncoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-	mv build/out/dragoncoin-osx-signed.dmg ../dragoncoin-${VERSION}-osx.dmg
+	./bin/gbuild -i ../pcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../pcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	mv build/out/pcoin-osx-signed.dmg ../pcoin-${VERSION}-osx.dmg
 	popd
 
 Commit your signature for the signed OSX binary:
@@ -151,15 +151,15 @@ rm SHA256SUMS
 
 - Announce the release:
 
-  - Release sticky on dragoncointalk: https://dragoncointalk.org/index.php?board=1.0 ***TODO***
+  - Release sticky on pcointalk: https://pcointalk.org/index.php?board=1.0 ***TODO***
 
-  - Dragoncoin-development mailing list
+  - Pcoin-development mailing list
 
   - Update title of #andrijKolomiets on Freenode IRC
 
   - Optionally reddit /r/AndrijKolomiets, ... but this will usually sort out itself
 
-- Notify Flare (?) ***TODO*** so that he can start building [https://launchpad.net/~andrijKolomiets/+archive/ubuntu/dragoncoin](the PPAs) ***TODO***
+- Notify Flare (?) ***TODO*** so that he can start building [https://launchpad.net/~andrijKolomiets/+archive/ubuntu/pcoin](the PPAs) ***TODO***
 
 - Add release notes for the new version to the directory `doc/release-notes` in git master
 

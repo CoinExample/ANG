@@ -1,6 +1,6 @@
 all:
-	$(MAKE) -C ../../ test_dragoncoin_qt
+	$(MAKE) -C ../../ test_pcoin_qt
 clean:
-	$(MAKE) -C ../../ test_dragoncoin_qt_clean
+	$(MAKE) -C ../../ test_pcoin_qt_clean
 check:
-	$(MAKE) -C ../../ test_dragoncoin_qt_check
+	$(MAKE) -C ../../ test_pcoin_qt_check

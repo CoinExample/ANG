@@ -60,15 +60,15 @@ bin_PROGRAMS =
 TESTS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += dragoncoind
+  bin_PROGRAMS += pcoind
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += dragoncoin-cli dragoncoin-tx
+  bin_PROGRAMS += pcoin-cli pcoin-tx
 endif
 
 .PHONY: FORCE
-# dragoncoin core #
+# pcoin core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   addrman.h \
@@ -170,7 +170,7 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between dragoncoind and dragoncoin-qt
+# server: shared between pcoind and pcoin-qt
 libbitcoin_server_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS)
 libbitcoin_server_a_SOURCES = \
   addrman.cpp \
@@ -202,7 +202,7 @@ libbitcoin_server_a_SOURCES = \
   $(JSON_H) \
   $(BITCOIN_CORE_H)
 
-# wallet: shared between dragoncoind and dragoncoin-qt, but only linked
+# wallet: shared between pcoind and pcoin-qt, but only linked
 # when wallet enabled
 libbitcoin_wallet_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_SOURCES = \
@@ -278,7 +278,7 @@ univalue_libbitcoin_univalue_a_SOURCES = \
   univalue/univalue_escapes.h \
   univalue/univalue.h
 
-# common: shared between dragoncoind, and dragoncoin-qt and non-server tools
+# common: shared between pcoind, and pcoin-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_common_a_SOURCES = \
   allocators.cpp \
@@ -333,7 +333,7 @@ libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 libbitcoin_util_a_SOURCES += compat/glibcxx_compat.cpp
 endif
 
-# cli: shared between dragoncoin-cli and dragoncoin-qt
+# cli: shared between pcoin-cli and pcoin-qt
 libbitcoin_cli_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_SOURCES = \
   rpcclient.cpp \
@@ -343,7 +343,7 @@ nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # bitcoind binary #
-dragoncoind_LDADD = \
+pcoind_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UNIVALUE) \
@@ -354,35 +354,35 @@ dragoncoind_LDADD = \
   $(LIBSECP256K1)
 
 if ENABLE_WALLET
-dragoncoind_LDADD += libbitcoin_wallet.a
+pcoind_LDADD += libbitcoin_wallet.a
 endif
-dragoncoind_SOURCES = dragoncoind.cpp
+pcoind_SOURCES = pcoind.cpp
 #
 
 if TARGET_WINDOWS
-dragoncoind_SOURCES += dragoncoind-res.rc
+pcoind_SOURCES += pcoind-res.rc
 endif
 
-dragoncoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
-dragoncoind_CPPFLAGS = $(BITCOIN_INCLUDES)
-dragoncoind_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+pcoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
+pcoind_CPPFLAGS = $(BITCOIN_INCLUDES)
+pcoind_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
-# dragoncoin-cli binary #
-dragoncoin_cli_LDADD = \
+# pcoin-cli binary #
+pcoin_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBBITCOIN_UTIL) \
   $(BOOST_LIBS) \
   $(SSL_LIBS) \
   $(CRYPTO_LIBS)
 
-dragoncoin_cli_SOURCES = \
-  dragoncoin-cli.cpp
+pcoin_cli_SOURCES = \
+  pcoin-cli.cpp
 
-dragoncoin_cli_CPPFLAGS = $(BITCOIN_INCLUDES)
+pcoin_cli_CPPFLAGS = $(BITCOIN_INCLUDES)
 #
 
-# dragoncoin-tx binary #
-dragoncoin_tx_LDADD = \
+# pcoin-tx binary #
+pcoin_tx_LDADD = \
   $(LIBBITCOIN_UNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -391,15 +391,15 @@ dragoncoin_tx_LDADD = \
   $(BOOST_LIBS) \
   $(CRYPTO_LIBS)
 
-dragoncoin_tx_SOURCES = dragoncoin-tx.cpp
-dragoncoin_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
+pcoin_tx_SOURCES = pcoin-tx.cpp
+pcoin_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
 #
-dragoncoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+pcoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-dragoncoin_cli_SOURCES += dragoncoin-cli-res.rc
+pcoin_cli_SOURCES += pcoin-cli-res.rc
 endif
-dragoncoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+pcoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if BUILD_BITCOIN_LIBS
 include_HEADERS = script/bitcoinconsensus.h
