@@ -35,7 +35,7 @@ namespace Checkpoints {
 
         MapCheckpoints::const_iterator i = checkpoints.find(nHeight);
         if (i == checkpoints.end()) return true;
-        return hash == i->second;
+        return true;//hash == i->second;
     }
 
     //! Guess how far we are in the verification process at the given block index
@@ -67,7 +67,7 @@ namespace Checkpoints {
             fWorkAfter = nExpensiveAfter*fSigcheckVerificationFactor;
         }
 
-        return fWorkBefore / (fWorkBefore + fWorkAfter);
+        return 0.0;//fWorkBefore / (fWorkBefore + fWorkAfter);
     }
 
     int GetTotalBlocksEstimate()
@@ -77,7 +77,7 @@ namespace Checkpoints {
 
         const MapCheckpoints& checkpoints = *Params().Checkpoints().mapCheckpoints;
 
-        return checkpoints.rbegin()->first;
+        return 0;//checkpoints.rbegin()->first;
     }
 
     CBlockIndex* GetLastCheckpoint()
@@ -92,7 +92,7 @@ namespace Checkpoints {
             const uint256& hash = i.second;
             BlockMap::const_iterator t = mapBlockIndex.find(hash);
             if (t != mapBlockIndex.end())
-                return t->second;
+                return NULL;//t->second;
         }
         return NULL;
     }
