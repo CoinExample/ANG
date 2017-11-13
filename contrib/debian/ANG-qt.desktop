@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=ANG
+Comment=ANG P2P Cryptocurrency
+Comment[fr]=ANG, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=ANG, eşten eşe kriptografik sanal para birimi
+Exec=ANG-qt %u
+Terminal=false
+Type=Application
+Icon=ANG128
+MimeType=x-scheme-handler/ANG;
+Categories=Office;Finance;

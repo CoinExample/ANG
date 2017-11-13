@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[pcoin.qt-translation-010x]
-file_filter = src/qt/locale/pcoin_<lang>.ts
-source_file = src/qt/locale/pcoin_en.ts
+[ANG.qt-translation-010x]
+file_filter = src/qt/locale/ANG_<lang>.ts
+source_file = src/qt/locale/ANG_en.ts
 source_lang = en

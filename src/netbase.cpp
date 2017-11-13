@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifdef HAVE_CONFIG_H
-#include "config/pcoin-config.h"
+#include "config/ANG-config.h"
 #endif
 
 #include "netbase.h"

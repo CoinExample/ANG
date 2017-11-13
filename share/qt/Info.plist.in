@@ -17,7 +17,7 @@
   <string>APPL</string>
 
   <key>CFBundleGetInfoString</key>
-  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Pcoin Core developers</string>
+  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The ANG Core developers</string>
 
   <key>CFBundleShortVersionString</key>
   <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
@@ -29,10 +29,10 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Pcoin-Qt</string>
+  <string>ANG-Qt</string>
 
   <key>CFBundleIdentifier</key>
-  <string>io.andrijKolomiets.Pcoin-Qt</string>
+  <string>io.andrijKolomiets.ANG-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -40,10 +40,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>io.pcoin.PcoinPayment</string>
+      <string>io.ANG.ANGPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>pcoin</string>
+        <string>ANG</string>
       </array>
     </dict>
   </array>
@@ -52,9 +52,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>io.pcoin.paymentrequest</string>
+      <string>io.ANG.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>Pcoin payment request</string>
+      <string>ANG payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -62,7 +62,7 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-pcoin-payment-request</string>
+        <string>application/x-ANG-payment-request</string>
         <key>public.filename-extension</key>
         <array>
           <string>andrijKolomietsmentrequest</string>
@@ -78,7 +78,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>io.pcoin.paymentrequest</string>
+        <string>io.ANG.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

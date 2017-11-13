@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between pcoin-cli and pcoind)
- * of a given instance of the Pcoin system.
+ * CBaseChainParams defines the base parameters (shared between ANG-cli and ANGd)
+ * of a given instance of the ANG system.
  */
 class CBaseChainParams
 {

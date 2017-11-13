@@ -1,30 +1,30 @@
-Pcoin Core staging tree 0.12
+ANG Core staging tree 0.12
 ===============================
 
 https://www.andrijKolomiets.io
 
 Copyright (c) 2009-2015 Bitcoin Core Developers
 
-Copyright (c) 2014-2015 Pcoin Core Developers
+Copyright (c) 2014-2015 ANG Core Developers
 
 
-What is Pcoin?
+What is ANG?
 ----------------
 
-Pcoin is an experimental new digital currency that enables anonymous, instant
-payments to anyone, anywhere in the world. Pcoin uses peer-to-peer technology
+ANG is an experimental new digital currency that enables anonymous, instant
+payments to anyone, anywhere in the world. ANG uses peer-to-peer technology
 to operate with no central authority: managing transactions and issuing money
-are carried out collectively by the network. Pcoin Core is the name of open
+are carried out collectively by the network. ANG Core is the name of open
 source software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Pcoin Core software, see https://www.andrijKolomiets.io/downloads.
+the ANG Core software, see https://www.andrijKolomiets.io/downloads.
 
 
 License
 -------
 
-Pcoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+ANG Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see http://opensource.org/licenses/MIT.
 
 Development process
@@ -33,7 +33,7 @@ Development process
 Developers work in their own trees, then submit pull requests when they think
 their feature or bug fix is ready.
 
-If it is a simple/trivial/non-controversial change, then one of the Pcoin
+If it is a simple/trivial/non-controversial change, then one of the ANG
 development team members simply pulls it.
 
 If it is a *more complicated or potentially controversial* change, then the patch
@@ -47,7 +47,7 @@ controversial.
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
 completely stable. [Tags](https://github.com/AndrijKolomiets/ANG/tags) are created
-regularly to indicate new official, stable release versions of Pcoin. ***TODO***
+regularly to indicate new official, stable release versions of ANG. ***TODO***
 
 Testing
 -------
@@ -65,7 +65,7 @@ submit new unit tests for old code. Unit tests can be compiled and run (assuming
 Every pull request is built for both Windows and Linux on a dedicated server,
 and unit and sanity tests are automatically run. The binaries produced may be
 used for manual QA testing — a link to them will appear in a comment on the
-pull request posted by [PcoinPullTester](https://github.com/andrijKolomiets/PullTester). See https://github.com/TheBlueMatt/test-scripts
+pull request posted by [ANGPullTester](https://github.com/andrijKolomiets/PullTester). See https://github.com/TheBlueMatt/test-scripts
 for the build/test scripts. ***TODO***
 
 ### Manual Quality Assurance (QA) Testing
@@ -78,7 +78,7 @@ Translations
 ------------
 
 Changes to translations as well as new translations can be submitted to
-[Bitcoin Core's Transifex page](https://www.transifex.com/projects/p/pcoin/).
+[Bitcoin Core's Transifex page](https://www.transifex.com/projects/p/ANG/).
 
 Translations are periodically pulled from Transifex and merged into the git repository. See the
 [translation process](doc/translation_process.md) for details on how this works.
@@ -86,7 +86,7 @@ Translations are periodically pulled from Transifex and merged into the git repo
 **Important**: We do not accept translation changes as GitHub pull requests because the next
 pull from Transifex would automatically overwrite them again.
 
-Translators should also subscribe to the [mailing list](https://groups.google.com/forum/#!forum/pcoin-translators). ***TODO***
+Translators should also subscribe to the [mailing list](https://groups.google.com/forum/#!forum/ANG-translators). ***TODO***
 
 Development tips and tricks
 ---------------------------
@@ -109,7 +109,7 @@ to see it.
 
 **testnet and regtest modes**
 
-Run with the -testnet option to run with "play pcoin" on the test network, if you
+Run with the -testnet option to run with "play ANG" on the test network, if you
 are testing multi-machine code that needs to operate across the internet.
 
 If you are testing something that can run on one machine, run with the -regtest option.
@@ -118,7 +118,7 @@ that run in -regtest mode.
 
 **DEBUG_LOCKORDER**
 
-Pcoin Core is a multithreaded application, and deadlocks or other multithreading bugs
+ANG Core is a multithreaded application, and deadlocks or other multithreading bugs
 can be very difficult to track down. Compiling with -DDEBUG_LOCKORDER (configure
 CXXFLAGS="-DDEBUG_LOCKORDER -g") inserts run-time checks to keep track of which locks
 are held, and adds warnings to the debug.log file if inconsistencies are detected.

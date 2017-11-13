@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"io.andrijKolomiets.Pcoin-Qt";
+        return @"io.andrijKolomiets.ANG-Qt";
     } else {
         return [self __bundleIdentifier];
     }

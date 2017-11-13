@@ -1,0 +1,22 @@
+[Unit]
+Description=ANG's distributed currency daemon
+After=network.target
+
+[Service]
+User=ANG
+Group=ANG
+
+Type=forking
+PIDFile=/var/lib/ANGd/ANGd.pid
+ExecStart=/usr/bin/ANGd -daemon -pid=/var/lib/ANGd/ANGd.pid \
+-conf=/etc/ANG/ANG.conf -datadir=/var/lib/ANGd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

@@ -93,7 +93,7 @@ public:
 };
 
 /**
- * Pcoin RPC command dispatcher.
+ * ANG RPC command dispatcher.
  */
 class CRPCTable
 {

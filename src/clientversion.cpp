@@ -10,10 +10,10 @@
 
 /**
  * Name of client reported in the 'version' message. Report the same name
- * for both pcoind and pcoin-qt, to make it harder for attackers to
+ * for both ANGd and ANG-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("Pcoin Core");
+const std::string CLIENT_NAME("ANG Core");
 
 /**
  * Client version number

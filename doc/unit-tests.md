@@ -6,13 +6,13 @@ and tests weren't explicitly disabled.
 
 After configuring, they can be run with 'make check'.
 
-To run the pcoind tests manually, launch src/test/test_pcoin .
+To run the ANGd tests manually, launch src/test/test_ANG .
 
-To add more pcoind tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
+To add more ANGd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
 .cpp files in the test/ directory or add new .cpp files that
 implement new BOOST_AUTO_TEST_SUITE sections.
 
-To run the pcoin-qt tests manually, launch src/qt/test/pcoin-qt_test
+To run the ANG-qt tests manually, launch src/qt/test/ANG-qt_test
 
-To add more pcoin-qt tests, add them to the `src/qt/test/` directory and
+To add more ANG-qt tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.

@@ -1,9 +1,9 @@
 Sample configuration files for:
 
-SystemD: pcoind.service
-Upstart: pcoind.conf
-OpenRC:  pcoind.openrc
-         pcoind.openrcconf
+SystemD: ANGd.service
+Upstart: ANGd.conf
+OpenRC:  ANGd.openrc
+         ANGd.openrcconf
 
 have been made available to assist packagers in creating node packages here.
 

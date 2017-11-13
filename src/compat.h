@@ -7,7 +7,7 @@
 #define BITCOIN_COMPAT_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pcoin-config.h"
+#include "config/ANG-config.h"
 #endif
 
 #ifdef WIN32
