@@ -46,7 +46,7 @@ The following are developer notes on how to build Pcoin on your native platform.
 
 Development
 ---------------------
-The Pcoin repo's [root README](https://github.com/AndrijKolomiets/pcoin/blob/master/README.md) contains relevant information on the development process and automated testing.
+The Pcoin repo's [root README](https://github.com/AndrijKolomiets/ANG/blob/master/README.md) contains relevant information on the development process and automated testing.
 
 - [Coding Guidelines](coding.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)

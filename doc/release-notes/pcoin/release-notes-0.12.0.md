@@ -8,7 +8,7 @@ Pcoin Core version 0.12.0 is now available from:
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/AndrijKolomiets/pcoin/issues
+  https://github.com/AndrijKolomiets/ANG/issues
 
 
 How to Upgrade

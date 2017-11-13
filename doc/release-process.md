@@ -2,7 +2,7 @@ Release Process
 ====================
 
 * update translations (ping wumpus, Diapolo or tcatm on IRC)
-* see https://github.com/AndrijKolomiets/pcoin/blob/master/doc/translation_process.md#syncing-with-transifex
+* see https://github.com/AndrijKolomiets/ANG/blob/master/doc/translation_process.md#syncing-with-transifex
 
 * * *
 
