@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015 The ANG developers
+// Copyright (c) 2014-2015 The Ang developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -36,7 +36,7 @@ map<uint256, CDarksendBroadcastTx> mapDarksendBroadcastTxes;
 CActiveMasternode activeMasternode;
 
 /* *** BEGIN DARKSEND MAGIC - ANG **********
-    Copyright (c) 2014-2015, ANG Developers
+    Copyright (c) 2014-2015, Ang Developers
         eduffield - evan@andrijKolomiets.io
         udjinm6   - udjinm6@andrijKolomiets.io
 */
@@ -766,7 +766,7 @@ void CDarksendPool::ChargeRandomFees(){
 
                 Being that Darksend has "no fees" we need to have some kind of cost associated
                 with using it to stop abuse. Otherwise it could serve as an attack vector and
-                allow endless transaction that would bloat ANG and make it unusable. To
+                allow endless transaction that would bloat Ang and make it unusable. To
                 stop these kinds of attacks 1 in 10 successful transactions are charged. This
                 adds up to a cost of 0.001DRK per transaction on average.
             */
@@ -2223,7 +2223,7 @@ void ThreadCheckDarkSendPool()
     if(fLiteMode) return; //disable all Darksend/Masternode related functionality
 
     // Make this thread recognisable as the wallet flushing thread
-    RenameThread("ANG-darksend");
+    RenameThread("ang-darksend");
 
     unsigned int c = 0;
 

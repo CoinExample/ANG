@@ -93,7 +93,7 @@ public:
 };
 
 /**
- * ANG RPC command dispatcher.
+ * Ang RPC command dispatcher.
  */
 class CRPCTable
 {

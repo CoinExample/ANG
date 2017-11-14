@@ -6,13 +6,13 @@ and tests weren't explicitly disabled.
 
 After configuring, they can be run with 'make check'.
 
-To run the ANGd tests manually, launch src/test/test_ANG .
+To run the angd tests manually, launch src/test/test_ang .
 
-To add more ANGd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
+To add more angd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
 .cpp files in the test/ directory or add new .cpp files that
 implement new BOOST_AUTO_TEST_SUITE sections.
 
-To run the ANG-qt tests manually, launch src/qt/test/ANG-qt_test
+To run the ang-qt tests manually, launch src/qt/test/ang-qt_test
 
-To add more ANG-qt tests, add them to the `src/qt/test/` directory and
+To add more ang-qt tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.

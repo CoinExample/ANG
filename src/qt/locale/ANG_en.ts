@@ -78,13 +78,13 @@
     </message>
     <message>
         <location line="+7"/>
-        <source>These are your ANG addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>These are your ANG addresses for sending payments. Always check the amount and the receiving address before sending coins.</translation>
+        <source>These are your Ang addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>These are your Ang addresses for sending payments. Always check the amount and the receiving address before sending coins.</translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>These are your ANG addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>These are your ANG addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</translation>
+        <source>These are your Ang addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>These are your Ang addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -235,8 +235,8 @@
     </message>
     <message>
         <location line="-57"/>
-        <source>ANG will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ANGs from being stolen by malware infecting your computer.</source>
-        <translation>ANG will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ANGs from being stolen by malware infecting your computer.</translation>
+        <source>Ang will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your angs from being stolen by malware infecting your computer.</source>
+        <translation>Ang will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your angs from being stolen by malware infecting your computer.</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -296,8 +296,8 @@
     <message>
         <location filename="../bitcoingui.cpp" line="+108"/>
         <location line="+752"/>
-        <source>ANG Core</source>
-        <translation>ANG Core</translation>
+        <source>Ang Core</source>
+        <translation>Ang Core</translation>
     </message>
     <message>
         <location line="-743"/>
@@ -326,8 +326,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Send coins to a ANG address</source>
-        <translation>Send coins to a ANG address</translation>
+        <source>Send coins to a Ang address</source>
+        <translation>Send coins to a Ang address</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -336,8 +336,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Request payments (generates QR codes and ANG: URIs)</source>
-        <translation>Request payments (generates QR codes and ANG: URIs)</translation>
+        <source>Request payments (generates QR codes and ang: URIs)</source>
+        <translation>Request payments (generates QR codes and ang: URIs)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -361,13 +361,13 @@
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;About ANG Core</source>
-        <translation>&amp;About ANG Core</translation>
+        <source>&amp;About Ang Core</source>
+        <translation>&amp;About Ang Core</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Show information about ANG Core</source>
-        <translation>Show information about ANG Core</translation>
+        <source>Show information about Ang Core</source>
+        <translation>Show information about Ang Core</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -387,8 +387,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Modify configuration options for ANG</source>
-        <translation>Modify configuration options for ANG</translation>
+        <source>Modify configuration options for Ang</source>
+        <translation>Modify configuration options for Ang</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -452,8 +452,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Sign messages with your ANG addresses to prove you own them</source>
-        <translation>Sign messages with your ANG addresses to prove you own them</translation>
+        <source>Sign messages with your Ang addresses to prove you own them</source>
+        <translation>Sign messages with your Ang addresses to prove you own them</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -462,8 +462,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Verify messages to ensure they were signed with specified ANG addresses</source>
-        <translation>Verify messages to ensure they were signed with specified ANG addresses</translation>
+        <source>Verify messages to ensure they were signed with specified Ang addresses</source>
+        <translation>Verify messages to ensure they were signed with specified Ang addresses</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -562,8 +562,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Open a ANG: URI or payment request</source>
-        <translation>Open a ANG: URI or payment request</translation>
+        <source>Open a ang: URI or payment request</source>
+        <translation>Open a ang: URI or payment request</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -572,8 +572,8 @@
     </message>
     <message>
         <location line="+196"/>
-        <source>ANG Core client</source>
-        <translation>ANG Core client</translation>
+        <source>Ang Core client</source>
+        <translation>Ang Core client</translation>
     </message>
     <message numerus="yes">
         <location line="+182"/>
@@ -587,8 +587,8 @@
     </message>
     <message>
         <location line="-407"/>
-        <source>Show the ANG Core help message to get a list with possible ANG command-line options</source>
-        <translation>Show the ANG Core help message to get a list with possible ANG command-line options</translation>
+        <source>Show the Ang Core help message to get a list with possible Ang command-line options</source>
+        <translation>Show the Ang Core help message to get a list with possible Ang command-line options</translation>
     </message>
     <message>
         <location line="+36"/>
@@ -617,8 +617,8 @@
     </message>
     <message numerus="yes">
         <location line="+256"/>
-        <source>%n active connection(s) to ANG network</source>
-        <translation><numerusform>%n active connection to ANG network</numerusform><numerusform>%n active connections to ANG network</numerusform></translation>
+        <source>%n active connection(s) to Ang network</source>
+        <translation><numerusform>%n active connection to Ang network</numerusform><numerusform>%n active connections to Ang network</numerusform></translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1132,18 +1132,18 @@ Address: %4
     </message>
     <message>
         <location line="-29"/>
-        <source>Darksend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening ANG&apos;s configuration screen.</source>
-        <translation>Darksend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening ANG&apos;s configuration screen.</translation>
+        <source>Darksend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening Ang&apos;s configuration screen.</source>
+        <translation>Darksend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening Ang&apos;s configuration screen.</translation>
     </message>
     <message>
         <location line="+15"/>
-        <source>Darksend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening ANG&apos;s configuration screen.</source>
-        <translation>Darksend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening ANG&apos;s configuration screen.</translation>
+        <source>Darksend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Ang&apos;s configuration screen.</source>
+        <translation>Darksend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Ang&apos;s configuration screen.</translation>
     </message>
     <message>
         <location line="+15"/>
-        <source>Darksend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening ANG&apos;s configuration screen.</source>
-        <translation>Darksend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening ANG&apos;s configuration screen.</translation>
+        <source>Darksend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Ang&apos;s configuration screen.</source>
+        <translation>Darksend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Ang&apos;s configuration screen.</translation>
     </message>
 </context>
 <context>
@@ -1195,8 +1195,8 @@ Address: %4
     </message>
     <message>
         <location line="+71"/>
-        <source>The entered address &quot;%1&quot; is not a valid ANG address.</source>
-        <translation>The entered address &quot;%1&quot; is not a valid ANG address.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Ang address.</source>
+        <translation>The entered address &quot;%1&quot; is not a valid Ang address.</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -1246,8 +1246,8 @@ Address: %4
     <name>HelpMessageDialog</name>
     <message>
         <location filename="../utilitydialog.cpp" line="+32"/>
-        <source>ANG Core</source>
-        <translation>ANG Core</translation>
+        <source>Ang Core</source>
+        <translation>Ang Core</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -1262,8 +1262,8 @@ Address: %4
     </message>
     <message>
         <location line="+5"/>
-        <source>About ANG Core</source>
-        <translation>About ANG Core</translation>
+        <source>About Ang Core</source>
+        <translation>About Ang Core</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -1320,18 +1320,18 @@ Address: %4
     </message>
     <message>
         <location line="+9"/>
-        <source>Welcome to ANG Core.</source>
-        <translation>Welcome to ANG Core.</translation>
+        <source>Welcome to Ang Core.</source>
+        <translation>Welcome to Ang Core.</translation>
     </message>
     <message>
         <location line="+26"/>
-        <source>As this is the first time the program is launched, you can choose where ANG Core will store its data.</source>
-        <translation>As this is the first time the program is launched, you can choose where ANG Core will store its data.</translation>
+        <source>As this is the first time the program is launched, you can choose where Ang Core will store its data.</source>
+        <translation>As this is the first time the program is launched, you can choose where Ang Core will store its data.</translation>
     </message>
     <message>
         <location line="+10"/>
-        <source>ANG Core will download and store a copy of the ANG block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>ANG Core will download and store a copy of the ANG block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</translation>
+        <source>Ang Core will download and store a copy of the Ang block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Ang Core will download and store a copy of the Ang block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1345,8 +1345,8 @@ Address: %4
     </message>
     <message>
         <location filename="../intro.cpp" line="+82"/>
-        <source>ANG Core</source>
-        <translation>ANG Core</translation>
+        <source>Ang Core</source>
+        <translation>Ang Core</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1411,13 +1411,13 @@ Address: %4
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically start ANG after logging in to the system.</source>
-        <translation>Automatically start ANG after logging in to the system.</translation>
+        <source>Automatically start Ang after logging in to the system.</source>
+        <translation>Automatically start Ang after logging in to the system.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start ANG on system login</source>
-        <translation>&amp;Start ANG on system login</translation>
+        <source>&amp;Start Ang on system login</source>
+        <translation>&amp;Start Ang on system login</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -1451,8 +1451,8 @@ Address: %4
     </message>
     <message>
         <location line="+15"/>
-        <source>Amount of ANG to keep anonymized</source>
-        <translation>Amount of ANG to keep anonymized</translation>
+        <source>Amount of Ang to keep anonymized</source>
+        <translation>Amount of Ang to keep anonymized</translation>
     </message>
     <message>
         <location line="+26"/>
@@ -1476,8 +1476,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the ANG network through a SOCKS5 proxy.</source>
-        <translation>Connect to the ANG network through a SOCKS5 proxy.</translation>
+        <source>Connect to the Ang network through a SOCKS5 proxy.</source>
+        <translation>Connect to the Ang network through a SOCKS5 proxy.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1516,8 +1516,8 @@ Address: %4
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the ANG client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatically open the ANG client port on the router. This only works when your router supports UPnP and it is enabled.</translation>
+        <source>Automatically open the Ang client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatically open the Ang client port on the router. This only works when your router supports UPnP and it is enabled.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1581,15 +1581,15 @@ Address: %4
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting ANG.</source>
-        <translation>The user interface language can be set here. This setting will take effect after restarting ANG.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Ang.</source>
+        <translation>The user interface language can be set here. This setting will take effect after restarting Ang.</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/projects/p/ANG/</source>
+https://www.transifex.com/projects/p/ang/</source>
         <translation>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/projects/p/ANG/</translation>
+https://www.transifex.com/projects/p/ang/</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -1695,8 +1695,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
         <location line="+53"/>
         <location line="+1015"/>
         <location line="+77"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the ANG network after a connection is established, but this process has not completed yet.</source>
-        <translation>The displayed information may be out of date. Your wallet automatically synchronizes with the ANG network after a connection is established, but this process has not completed yet.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Ang network after a connection is established, but this process has not completed yet.</source>
+        <translation>The displayed information may be out of date. Your wallet automatically synchronizes with the Ang network after a connection is established, but this process has not completed yet.</translation>
     </message>
     <message>
         <location line="-843"/>
@@ -1990,8 +1990,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="-400"/>
-        <source>Cannot start ANG: click-to-pay handler</source>
-        <translation>Cannot start ANG: click-to-pay handler</translation>
+        <source>Cannot start ang: click-to-pay handler</source>
+        <translation>Cannot start ang: click-to-pay handler</translation>
     </message>
     <message>
         <location line="+104"/>
@@ -2017,8 +2017,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="+8"/>
-        <source>URI cannot be parsed! This can be caused by an invalid ANG address or malformed URI parameters.</source>
-        <translation>URI cannot be parsed! This can be caused by an invalid ANG address or malformed URI parameters.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Ang address or malformed URI parameters.</source>
+        <translation>URI cannot be parsed! This can be caused by an invalid Ang address or malformed URI parameters.</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -2125,8 +2125,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location filename="../guiutil.cpp" line="+110"/>
-        <source>Enter a ANG address (e.g. %1)</source>
-        <translation>Enter a ANG address (e.g. %1)</translation>
+        <source>Enter a Ang address (e.g. %1)</source>
+        <translation>Enter a Ang address (e.g. %1)</translation>
     </message>
     <message>
         <location line="+760"/>
@@ -2259,8 +2259,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="+76"/>
-        <source>Open the ANG debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Open the ANG debug log file from the current data directory. This can take a few seconds for large log files.</translation>
+        <source>Open the Ang debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Open the Ang debug log file from the current data directory. This can take a few seconds for large log files.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2521,8 +2521,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="-35"/>
-        <source>Welcome to the ANG RPC console.</source>
-        <translation>Welcome to the ANG RPC console.</translation>
+        <source>Welcome to the Ang RPC console.</source>
+        <translation>Welcome to the Ang RPC console.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2601,8 +2601,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="+14"/>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the ANG network.</source>
-        <translation>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the ANG network.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Ang network.</source>
+        <translation>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Ang network.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2617,8 +2617,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="-14"/>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the ANG network.</source>
-        <translation>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the ANG network.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Ang network.</source>
+        <translation>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Ang network.</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2925,8 +2925,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     <message>
         <location line="+33"/>
         <location line="+13"/>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for ANG transactions than the network can process.</source>
-        <translation>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for ANG transactions than the network can process.</translation>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for ang transactions than the network can process.</source>
+        <translation>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for ang transactions than the network can process.</translation>
     </message>
     <message>
         <location line="-59"/>
@@ -3186,8 +3186,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="+129"/>
-        <source>Warning: Invalid ANG address</source>
-        <translation>Warning: Invalid ANG address</translation>
+        <source>Warning: Invalid Ang address</source>
+        <translation>Warning: Invalid Ang address</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -3214,8 +3214,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The ANG address to send the payment to</source>
-        <translation>The ANG address to send the payment to</translation>
+        <source>The Ang address to send the payment to</source>
+        <translation>The Ang address to send the payment to</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -3268,8 +3268,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="+10"/>
-        <source>A message that was attached to the ANG: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the ANG network.</source>
-        <translation>A message that was attached to the ANG: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the ANG network.</translation>
+        <source>A message that was attached to the ang: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Ang network.</source>
+        <translation>A message that was attached to the ang: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Ang network.</translation>
     </message>
     <message>
         <location line="+426"/>
@@ -3303,8 +3303,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     <name>ShutdownWindow</name>
     <message>
         <location filename="../utilitydialog.cpp" line="+43"/>
-        <source>ANG Core is shutting down...</source>
-        <translation>ANG Core is shutting down...</translation>
+        <source>Ang Core is shutting down...</source>
+        <translation>Ang Core is shutting down...</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3331,8 +3331,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The ANG address to sign the message with</source>
-        <translation>The ANG address to sign the message with</translation>
+        <source>The Ang address to sign the message with</source>
+        <translation>The Ang address to sign the message with</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -3373,8 +3373,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this ANG address</source>
-        <translation>Sign the message to prove you own this ANG address</translation>
+        <source>Sign the message to prove you own this Ang address</source>
+        <translation>Sign the message to prove you own this Ang address</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -3404,13 +3404,13 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>The ANG address the message was signed with</source>
-        <translation>The ANG address the message was signed with</translation>
+        <source>The Ang address the message was signed with</source>
+        <translation>The Ang address the message was signed with</translation>
     </message>
     <message>
         <location line="+37"/>
-        <source>Verify the message to ensure it was signed with the specified ANG address</source>
-        <translation>Verify the message to ensure it was signed with the specified ANG address</translation>
+        <source>Verify the message to ensure it was signed with the specified Ang address</source>
+        <translation>Verify the message to ensure it was signed with the specified Ang address</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -3498,8 +3498,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     <name>SplashScreen</name>
     <message>
         <location filename="../splashscreen.cpp" line="+36"/>
-        <source>ANG Core</source>
-        <translation>ANG Core</translation>
+        <source>Ang Core</source>
+        <translation>Ang Core</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3513,8 +3513,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>The ANG Core developers</source>
-        <translation>The ANG Core developers</translation>
+        <source>The Ang Core developers</source>
+        <translation>The Ang Core developers</translation>
     </message>
     <message>
         <location filename="../networkstyle.cpp" line="+19"/>
@@ -4242,16 +4242,16 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
 </context>
 <context>
-    <name>ANG-core</name>
+    <name>ang-core</name>
     <message>
-        <location filename="../ANGstrings.cpp" line="+22"/>
+        <location filename="../angstrings.cpp" line="+22"/>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation>Bind to given address and always listen on it. Use [host]:port notation for IPv6</translation>
     </message>
     <message>
         <location line="+10"/>
-        <source>Cannot obtain a lock on data directory %s. ANG Core is probably already running.</source>
-        <translation>Cannot obtain a lock on data directory %s. ANG Core is probably already running.</translation>
+        <source>Cannot obtain a lock on data directory %s. Ang Core is probably already running.</source>
+        <translation>Cannot obtain a lock on data directory %s. Ang Core is probably already running.</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -4320,8 +4320,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="+20"/>
-        <source>Unable to bind to %s on this computer. ANG Core is probably already running.</source>
-        <translation>Unable to bind to %s on this computer. ANG Core is probably already running.</translation>
+        <source>Unable to bind to %s on this computer. Ang Core is probably already running.</source>
+        <translation>Unable to bind to %s on this computer. Ang Core is probably already running.</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -4610,8 +4610,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Disable all ANG specific functionality (Masternodes, Darksend, InstantX, Budgeting) (0-1, default: %u)</source>
-        <translation>Disable all ANG specific functionality (Masternodes, Darksend, InstantX, Budgeting) (0-1, default: %u)</translation>
+        <source>Disable all Ang specific functionality (Masternodes, Darksend, InstantX, Budgeting) (0-1, default: %u)</source>
+        <translation>Disable all Ang specific functionality (Masternodes, Darksend, InstantX, Budgeting) (0-1, default: %u)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -4730,27 +4730,27 @@ https://www.transifex.com/projects/p/ANG/</translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>To use ANGd, or the -server option to ANG-qt, you must set an rpcpassword in the configuration file:
+        <source>To use angd, or the -server option to ang-qt, you must set an rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=ANGrpc
+rpcuser=angrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;ANG Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Ang Alert&quot; admin@foo.com
 </source>
-        <translation>To use ANGd, or the -server option to ANG-qt, you must set an rpcpassword in the configuration file:
+        <translation>To use angd, or the -server option to ang-qt, you must set an rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=ANGrpc
+rpcuser=angrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;ANG Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Ang Alert&quot; admin@foo.com
 </translation>
     </message>
     <message>
@@ -4770,8 +4770,8 @@ for example: alertnotify=echo %%s | mail -s &quot;ANG Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+6"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong ANG Core will not work properly.</source>
-        <translation>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong ANG Core will not work properly.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Ang Core will not work properly.</source>
+        <translation>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Ang Core will not work properly.</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -4837,8 +4837,8 @@ for example: alertnotify=echo %%s | mail -s &quot;ANG Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Copyright (C) 2014-%i The ANG Core Developers</source>
-        <translation>Copyright (C) 2014-%i The ANG Core Developers</translation>
+        <source>Copyright (C) 2014-%i The Ang Core Developers</source>
+        <translation>Copyright (C) 2014-%i The Ang Core Developers</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -4877,8 +4877,8 @@ for example: alertnotify=echo %%s | mail -s &quot;ANG Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+6"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of ANG Core</source>
-        <translation>Error loading wallet.dat: Wallet requires newer version of ANG Core</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Ang Core</source>
+        <translation>Error loading wallet.dat: Wallet requires newer version of Ang Core</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -4967,8 +4967,8 @@ for example: alertnotify=echo %%s | mail -s &quot;ANG Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Initialization sanity check failed. ANG Core is shutting down.</source>
-        <translation>Initialization sanity check failed. ANG Core is shutting down.</translation>
+        <source>Initialization sanity check failed. Ang Core is shutting down.</source>
+        <translation>Initialization sanity check failed. Ang Core is shutting down.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5282,8 +5282,8 @@ for example: alertnotify=echo %%s | mail -s &quot;ANG Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+9"/>
-        <source>Wallet needed to be rewritten: restart ANG Core to complete</source>
-        <translation>Wallet needed to be rewritten: restart ANG Core to complete</translation>
+        <source>Wallet needed to be rewritten: restart Ang Core to complete</source>
+        <translation>Wallet needed to be rewritten: restart Ang Core to complete</translation>
     </message>
     <message>
         <location line="+5"/>

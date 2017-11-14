@@ -1,6 +1,6 @@
 all:
-	$(MAKE) -C .. ANG_test
+	$(MAKE) -C .. ang_test
 clean:
-	$(MAKE) -C .. ANG_test_clean
+	$(MAKE) -C .. ang_test_clean
 check:
-	$(MAKE) -C .. ANG_test_check
+	$(MAKE) -C .. ang_test_check

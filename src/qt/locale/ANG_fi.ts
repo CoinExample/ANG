@@ -62,12 +62,12 @@
         <translation>Vastaanottava osoite</translation>
     </message>
     <message>
-        <source>These are your ANG addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Nämä ovat ANG osoitteesi maksujen lähetykseen. Tarkista aina lähetettävä määrä ja vastaanottajan osoite ennen kuin lähetät varoja.</translation>
+        <source>These are your Ang addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Nämä ovat Ang osoitteesi maksujen lähetykseen. Tarkista aina lähetettävä määrä ja vastaanottajan osoite ennen kuin lähetät varoja.</translation>
     </message>
     <message>
-        <source>These are your ANG addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Nämä ovat ANG osoitteesi suoritusten vastaanottamiseen. Suositellaan että annat uuden osoitteen kullekin siirtotapahtumalle.</translation>
+        <source>These are your Ang addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Nämä ovat Ang osoitteesi suoritusten vastaanottamiseen. Suositellaan että annat uuden osoitteen kullekin siirtotapahtumalle.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -188,8 +188,8 @@
         <translation>Lompakko salattu</translation>
     </message>
     <message>
-        <source>ANG will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ANGs from being stolen by malware infecting your computer.</source>
-        <translation>ANG sulkeutuu nyt salauksen viimeistelyä varten. Muista että salaus pelkästään ei voi estää ANGiesi varastamista jos koneesi saastuu haittaohjelmilla tai viruksilla.</translation>
+        <source>Ang will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your angs from being stolen by malware infecting your computer.</source>
+        <translation>Ang sulkeutuu nyt salauksen viimeistelyä varten. Muista että salaus pelkästään ei voi estää Angiesi varastamista jos koneesi saastuu haittaohjelmilla tai viruksilla.</translation>
     </message>
     <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
@@ -231,8 +231,8 @@
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <source>ANG Core</source>
-        <translation>ANG Core</translation>
+        <source>Ang Core</source>
+        <translation>Ang Core</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -255,16 +255,16 @@
         <translation>L&amp;ähetä</translation>
     </message>
     <message>
-        <source>Send coins to a ANG address</source>
-        <translation>Lähetä varoja ANG osoitteeseen</translation>
+        <source>Send coins to a Ang address</source>
+        <translation>Lähetä varoja Ang osoitteeseen</translation>
     </message>
     <message>
         <source>&amp;Receive</source>
         <translation>&amp;Vastaanota</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and ANG: URIs)</source>
-        <translation>Pyydä maksuja (Luo QR koodit ja ANG: URIt)</translation>
+        <source>Request payments (generates QR codes and ang: URIs)</source>
+        <translation>Pyydä maksuja (Luo QR koodit ja Ang: URIt)</translation>
     </message>
     <message>
         <source>&amp;Transactions</source>
@@ -283,12 +283,12 @@
         <translation>Sulje ohjelma</translation>
     </message>
     <message>
-        <source>&amp;About ANG Core</source>
-        <translation>Tietoja &amp;ANG Core:sta</translation>
+        <source>&amp;About Ang Core</source>
+        <translation>Tietoja &amp;Ang Core:sta</translation>
     </message>
     <message>
-        <source>Show information about ANG Core</source>
-        <translation>Näytä tietoja ANG Core:sta</translation>
+        <source>Show information about Ang Core</source>
+        <translation>Näytä tietoja Ang Core:sta</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
@@ -303,8 +303,8 @@
         <translation>&amp;Asetukset...</translation>
     </message>
     <message>
-        <source>Modify configuration options for ANG</source>
-        <translation>Muuta ANG asetuksia</translation>
+        <source>Modify configuration options for Ang</source>
+        <translation>Muuta Ang asetuksia</translation>
     </message>
     <message>
         <source>&amp;Show / Hide</source>
@@ -312,7 +312,7 @@
     </message>
     <message>
         <source>Show or hide the main Window</source>
-        <translation>Näytä tai piilota ANG pääikkuna</translation>
+        <translation>Näytä tai piilota Ang pääikkuna</translation>
     </message>
     <message>
         <source>&amp;Encrypt Wallet...</source>
@@ -355,16 +355,16 @@
         <translation>&amp;Allekirjoita Viesti...</translation>
     </message>
     <message>
-        <source>Sign messages with your ANG addresses to prove you own them</source>
-        <translation>Allekirjoita viestit ANG osoitteillasi todistaaksesi että omistat ne</translation>
+        <source>Sign messages with your Ang addresses to prove you own them</source>
+        <translation>Allekirjoita viestit Ang osoitteillasi todistaaksesi että omistat ne</translation>
     </message>
     <message>
         <source>&amp;Verify message...</source>
         <translation>&amp;Tarkista Viesti...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified ANG addresses</source>
-        <translation>Tarkista viestit ollaksesi varma että ne on allekirjoitettu määritetyillä ANG osoitteilla</translation>
+        <source>Verify messages to ensure they were signed with specified Ang addresses</source>
+        <translation>Tarkista viestit ollaksesi varma että ne on allekirjoitettu määritetyillä Ang osoitteilla</translation>
     </message>
     <message>
         <source>&amp;Information</source>
@@ -443,16 +443,16 @@
         <translation>Avaa &amp;URI...</translation>
     </message>
     <message>
-        <source>Open a ANG: URI or payment request</source>
-        <translation>Avaa ANG: URI tai maksupyyntö</translation>
+        <source>Open a ang: URI or payment request</source>
+        <translation>Avaa Ang: URI tai maksupyyntö</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>&amp;Komentorivin valinnat</translation>
     </message>
     <message>
-        <source>ANG Core client</source>
-        <translation>ANG Core asiakasohjelma</translation>
+        <source>Ang Core client</source>
+        <translation>Ang Core asiakasohjelma</translation>
     </message>
     <message numerus="yes">
         <source>Processed %n blocks of transaction history.</source>
@@ -463,8 +463,8 @@
         <translation>Synkronoidaan lisätietoja: %p%</translation>
     </message>
     <message>
-        <source>Show the ANG Core help message to get a list with possible ANG command-line options</source>
-        <translation>Näytä ANG Core ohjelista komentorivin valinnoista</translation>
+        <source>Show the Ang Core help message to get a list with possible Ang command-line options</source>
+        <translation>Näytä Ang Core ohjelista komentorivin valinnoista</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -487,8 +487,8 @@
         <translation>Välilehtipalkki</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to ANG network</source>
-        <translation><numerusform>%n aktiivinen yhteys ANG verkkoon</numerusform><numerusform>%n aktiivista yhteyttä ANG verkkoon</numerusform></translation>
+        <source>%n active connection(s) to Ang network</source>
+        <translation><numerusform>%n aktiivinen yhteys Ang verkkoon</numerusform><numerusform>%n aktiivista yhteyttä Ang verkkoon</numerusform></translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -896,16 +896,16 @@ Osoite: %4
         <translation>Darksend Asetukset</translation>
     </message>
     <message>
-        <source>Darksend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening ANG's configuration screen.</source>
-        <translation>Darksend on asetettu perusasetuksiin (%1 and 2 kierrosta). Voit muuttaa asetuksia milloin vain ANG asetuksista.</translation>
+        <source>Darksend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening Ang's configuration screen.</source>
+        <translation>Darksend on asetettu perusasetuksiin (%1 and 2 kierrosta). Voit muuttaa asetuksia milloin vain Ang asetuksista.</translation>
     </message>
     <message>
-        <source>Darksend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening ANG's configuration screen.</source>
-        <translation>Darksend on asetettu keskitason asetuksiin (%1 and 8 kierrosta). Voit muuttaa asetuksia milloin vain ANG asetuksista.</translation>
+        <source>Darksend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Ang's configuration screen.</source>
+        <translation>Darksend on asetettu keskitason asetuksiin (%1 and 8 kierrosta). Voit muuttaa asetuksia milloin vain Ang asetuksista.</translation>
     </message>
     <message>
-        <source>Darksend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening ANG's configuration screen.</source>
-        <translation>Darksend on asetettu maksimitason asetuksiin (%1 and 16 kierrosta). Voit muuttaa asetuksia milloin vain ANG asetuksista.</translation>
+        <source>Darksend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Ang's configuration screen.</source>
+        <translation>Darksend on asetettu maksimitason asetuksiin (%1 and 16 kierrosta). Voit muuttaa asetuksia milloin vain Ang asetuksista.</translation>
     </message>
 </context>
 <context>
@@ -947,8 +947,8 @@ Osoite: %4
         <translation>Muokkaa lähettävää osoitetta</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid ANG address.</source>
-        <translation>Annettu osoite "%1" ei ole pätevä ANG osoite.</translation>
+        <source>The entered address "%1" is not a valid Ang address.</source>
+        <translation>Annettu osoite "%1" ei ole pätevä Ang osoite.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -989,8 +989,8 @@ Osoite: %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>ANG Core</source>
-        <translation>ANG Core</translation>
+        <source>Ang Core</source>
+        <translation>Ang Core</translation>
     </message>
     <message>
         <source>version</source>
@@ -1001,8 +1001,8 @@ Osoite: %4
         <translation>(%1-bittinen)</translation>
     </message>
     <message>
-        <source>About ANG Core</source>
-        <translation>Tietoja ANG Core:sta</translation>
+        <source>About Ang Core</source>
+        <translation>Tietoja Ang Core:sta</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1048,17 +1048,17 @@ Osoite: %4
         <translation>Tervetuloa</translation>
     </message>
     <message>
-        <source>Welcome to ANG Core.</source>
-        <translation>ANG Core - Tervetuloa.</translation>
+        <source>Welcome to Ang Core.</source>
+        <translation>Ang Core - Tervetuloa.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where ANG Core will store its data.</source>
-        <translation>Koska tämä on ensimmäinen kerta kun ohjelma käynnistetään, voit valita minne ANG Core tallettaa datansa.
+        <source>As this is the first time the program is launched, you can choose where Ang Core will store its data.</source>
+        <translation>Koska tämä on ensimmäinen kerta kun ohjelma käynnistetään, voit valita minne Ang Core tallettaa datansa.
 Varoitus: Jos käytät käyttöjärjestelmää (Live os) suoraan usb, dvd tai cd levyltä, ohjaa talletettava data eri levyasemalle turvalliseen paikkaan.</translation>
     </message>
     <message>
-        <source>ANG Core will download and store a copy of the ANG block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>ANG Core lataa ja tallettaa kopion lohkoketjusta. Vähintään %1GB dataa talletetaan tähän hakemistoon, ja se myös kasvaa ajan myötä. Myös lompakko talletetaan tähän hakemistoon.</translation>
+        <source>Ang Core will download and store a copy of the Ang block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Ang Core lataa ja tallettaa kopion lohkoketjusta. Vähintään %1GB dataa talletetaan tähän hakemistoon, ja se myös kasvaa ajan myötä. Myös lompakko talletetaan tähän hakemistoon.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1069,8 +1069,8 @@ Varoitus: Jos käytät käyttöjärjestelmää (Live os) suoraan usb, dvd tai cd
         <translation>Määritä oma hakemisto:</translation>
     </message>
     <message>
-        <source>ANG Core</source>
-        <translation>ANG Core</translation>
+        <source>Ang Core</source>
+        <translation>Ang Core</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1123,12 +1123,12 @@ Varoitus: Jos käytät käyttöjärjestelmää (Live os) suoraan usb, dvd tai cd
         <translation>&amp;Yleiset</translation>
     </message>
     <message>
-        <source>Automatically start ANG after logging in to the system.</source>
-        <translation>Käynnistä ANG automaattisesti kun järjestelmään kirjaudutaan.</translation>
+        <source>Automatically start Ang after logging in to the system.</source>
+        <translation>Käynnistä Ang automaattisesti kun järjestelmään kirjaudutaan.</translation>
     </message>
     <message>
-        <source>&amp;Start ANG on system login</source>
-        <translation>&amp;Käynnistä ANG järjestelmään kirjauduttaessa</translation>
+        <source>&amp;Start Ang on system login</source>
+        <translation>&amp;Käynnistä Ang järjestelmään kirjauduttaessa</translation>
     </message>
     <message>
         <source>Size of &amp;database cache</source>
@@ -1155,8 +1155,8 @@ Varoitus: Jos käytät käyttöjärjestelmää (Live os) suoraan usb, dvd tai cd
         <translation>Tämä määrä toimii rajana keskeytykselle kun Darksend anonymisointi sen saavuttaa.</translation>
     </message>
     <message>
-        <source>Amount of ANG to keep anonymized</source>
-        <translation>ANG määrä joka pidetään anonymisoituna</translation>
+        <source>Amount of Ang to keep anonymized</source>
+        <translation>Ang määrä joka pidetään anonymisoituna</translation>
     </message>
     <message>
         <source>W&amp;allet</source>
@@ -1175,8 +1175,8 @@ Varoitus: Jos käytät käyttöjärjestelmää (Live os) suoraan usb, dvd tai cd
         <translation>Salli sisään tulevat yhteydet</translation>
     </message>
     <message>
-        <source>Connect to the ANG network through a SOCKS5 proxy.</source>
-        <translation>Kytkeydy ANG verkkoon käyttäen SOCKS5 proxy:a.</translation>
+        <source>Connect to the Ang network through a SOCKS5 proxy.</source>
+        <translation>Kytkeydy Ang verkkoon käyttäen SOCKS5 proxy:a.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1207,8 +1207,8 @@ Varoitus: Jos käytät käyttöjärjestelmää (Live os) suoraan usb, dvd tai cd
         <translation>&amp;Verkko</translation>
     </message>
     <message>
-        <source>Automatically open the ANG client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Avaa automaattisesti ANG asiakasohjelmalle portti reitittimeen. Tämä toimii vain jos reitittimesi tukee UPnP:tä ja se on käytössä.</translation>
+        <source>Automatically open the Ang client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Avaa automaattisesti Ang asiakasohjelmalle portti reitittimeen. Tämä toimii vain jos reitittimesi tukee UPnP:tä ja se on käytössä.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -1244,7 +1244,7 @@ Varoitus: Jos käytät käyttöjärjestelmää (Live os) suoraan usb, dvd tai cd
     </message>
     <message>
         <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
-        <translation>Ikkunaa suljettaessa pienennä ANG asiakasohjelman ikkuna lopettamatta itse ohjelmaa. Kun tämä asetus on valittuna, ohjelman voi sulkea vain valitsemalla Lopeta ohjelman valikosta.</translation>
+        <translation>Ikkunaa suljettaessa pienennä Ang asiakasohjelman ikkuna lopettamatta itse ohjelmaa. Kun tämä asetus on valittuna, ohjelman voi sulkea vain valitsemalla Lopeta ohjelman valikosta.</translation>
     </message>
     <message>
         <source>M&amp;inimize on close</source>
@@ -1259,14 +1259,14 @@ Varoitus: Jos käytät käyttöjärjestelmää (Live os) suoraan usb, dvd tai cd
         <translation>&amp;Käyttöliittymän kieli</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting ANG.</source>
-        <translation>Käyttöliittymän kieli asetetaan tässä, Asetus tulee voimaan kun ANG asiakasohjelma käynnistetään uudelleen.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Ang.</source>
+        <translation>Käyttöliittymän kieli asetetaan tässä, Asetus tulee voimaan kun Ang asiakasohjelma käynnistetään uudelleen.</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/projects/p/ANG/</source>
+https://www.transifex.com/projects/p/ang/</source>
         <translation>Puuttuuko sopiva kieli tai käännös on kesken? Auta käännöstyössä täällä:
-https://www.transifex.com/projects/p/ANG/</translation>
+https://www.transifex.com/projects/p/ang/</translation>
     </message>
     <message>
         <source>User Interface Theme:</source>
@@ -1348,8 +1348,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
         <translation>Lomake</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the ANG network after a connection is established, but this process has not completed yet.</source>
-        <translation>Näytetyt tiedot eivät välttämättä ole ajan tasalla.&lt;br&gt;Lompakkosi synkronoituu automaattisesti ANG verkkoon kun&lt;br&gt;yhteys on muodostettu, mutta tämä prosessi ei vielä ole valmis.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Ang network after a connection is established, but this process has not completed yet.</source>
+        <translation>Näytetyt tiedot eivät välttämättä ole ajan tasalla.&lt;br&gt;Lompakkosi synkronoituu automaattisesti Ang verkkoon kun&lt;br&gt;yhteys on muodostettu, mutta tämä prosessi ei vielä ole valmis.</translation>
     </message>
     <message>
         <source>Available:</source>
@@ -1569,8 +1569,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
         <translation>Maksupyyntövirhe</translation>
     </message>
     <message>
-        <source>Cannot start ANG: click-to-pay handler</source>
-        <translation>Ei voi käynnistää ANGia: click-to-pay handler</translation>
+        <source>Cannot start ang: click-to-pay handler</source>
+        <translation>Ei voi käynnistää Angia: click-to-pay handler</translation>
     </message>
     <message>
         <source>URI handling</source>
@@ -1589,8 +1589,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
         <translation>Virheellinen maksuosoite %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid ANG address or malformed URI parameters.</source>
-        <translation>URI:a ei voida jäsentää! Tämä voi johtua virheellisestä ANG osoitteesta tai virheellisestä URI:n muuttujasta. </translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Ang address or malformed URI parameters.</source>
+        <translation>URI:a ei voida jäsentää! Tämä voi johtua virheellisestä Ang osoitteesta tai virheellisestä URI:n muuttujasta. </translation>
     </message>
     <message>
         <source>Payment request file cannot be read! This can be caused by an invalid payment request file.</source>
@@ -1675,8 +1675,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
         <translation>Määrä</translation>
     </message>
     <message>
-        <source>Enter a ANG address (e.g. %1)</source>
-        <translation>Syötä ANG osoite (esim. %1)</translation>
+        <source>Enter a Ang address (e.g. %1)</source>
+        <translation>Syötä Ang osoite (esim. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1765,8 +1765,8 @@ https://www.transifex.com/projects/p/ANG/</translation>
         <translation>Yhteyksien määrä</translation>
     </message>
     <message>
-        <source>Open the ANG debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Avaa ANG debug lokitiedosto nykyisestä datahakemistosta. Tämä saattaa kestää muutaman sekunnin isoilla tiedostoilla.</translation>
+        <source>Open the Ang debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Avaa Ang debug lokitiedosto nykyisestä datahakemistosta. Tämä saattaa kestää muutaman sekunnin isoilla tiedostoilla.</translation>
     </message>
     <message>
         <source>&amp;Open</source>
@@ -1977,8 +1977,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Ulos:</translation>
     </message>
     <message>
-        <source>Welcome to the ANG RPC console.</source>
-        <translation>Tervetuloa ANG RPC konsoliin.</translation>
+        <source>Welcome to the Ang RPC console.</source>
+        <translation>Tervetuloa Ang RPC konsoliin.</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
@@ -2040,8 +2040,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>&amp;Uudelleenkäytä vastaanottavaa osoitetta (ei suositella)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the ANG network.</source>
-        <translation>Valinnainen viesti liitettäväksi maksupyyntöön, joka näytetään kun pyyntö on avattu.&lt;br&gt;Huomio: Viestiä ei lähetetä maksun mukana ANG verkkoon.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Ang network.</source>
+        <translation>Valinnainen viesti liitettäväksi maksupyyntöön, joka näytetään kun pyyntö on avattu.&lt;br&gt;Huomio: Viestiä ei lähetetä maksun mukana Ang verkkoon.</translation>
     </message>
     <message>
         <source>&amp;Message:</source>
@@ -2052,8 +2052,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Valinnainen nimi liitetään uuteen vastaanottavaan osoitteeseen.</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the ANG network.</source>
-        <translation>Valinnainen viesti liitettäväksi maksupyyntöön, joka näytetään kun pyyntö on avattu.&lt;br&gt;Huomio: Viestiä ei lähetetä maksun mukana ANG verkkoon.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Ang network.</source>
+        <translation>Valinnainen viesti liitettäväksi maksupyyntöön, joka näytetään kun pyyntö on avattu.&lt;br&gt;Huomio: Viestiä ei lähetetä maksun mukana Ang verkkoon.</translation>
     </message>
     <message>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
@@ -2297,7 +2297,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Jos mukautettu siirtomaksu on asetettu 1000 duff ja siirtotapahtuma on vain 250 tavua,&lt;br /&gt;tällöin "per kilotavu" maksaa vain 250 duffs siirtomaksun, kun taas "yhteensä vähintään" maksaa 1000 duffs.&lt;br /&gt;Siirtotapahtumat jotka ovat isompia kuin kilotavu, molemmat maksaa "per kilotavu".</translation>
     </message>
     <message>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for ANG transactions than the network can process.</source>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for ang transactions than the network can process.</source>
         <translation>Minimi siirtomaksun maksaminen on ok niin kauan kun siirtotapahtumien määrä on pienempi kuin tila lohkoissa.&lt;br /&gt;Mutta ota huomioon että tämä voi johtaa siirtotapahtumaan jota ei vahvisteta koskaan, jos siirtotapahtumia on enemmän kuin verkko voi käsitellä.</translation>
     </message>
     <message>
@@ -2501,8 +2501,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Maksa vain minimi siirtomaksu %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid ANG address</source>
-        <translation>Varoitus: Virheellinen ANG osoite</translation>
+        <source>Warning: Invalid Ang address</source>
+        <translation>Varoitus: Virheellinen Ang osoite</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
@@ -2524,8 +2524,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Maksun &amp;saaja:</translation>
     </message>
     <message>
-        <source>The ANG address to send the payment to</source>
-        <translation>ANG osoite johon maksu lähetetään</translation>
+        <source>The Ang address to send the payment to</source>
+        <translation>Ang osoite johon maksu lähetetään</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2564,8 +2564,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Viesti:</translation>
     </message>
     <message>
-        <source>A message that was attached to the ANG: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the ANG network.</source>
-        <translation>Viesti joka liitettiin ANG: URI joka talletetaan siirtotapahtuman kanssa viitteeksi sinulle. Huomio: Tätä viestiä ei lähetetä ANG verkkoon.</translation>
+        <source>A message that was attached to the ang: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Ang network.</source>
+        <translation>Viesti joka liitettiin Ang: URI joka talletetaan siirtotapahtuman kanssa viitteeksi sinulle. Huomio: Tätä viestiä ei lähetetä Ang verkkoon.</translation>
     </message>
     <message>
         <source>This is an unverified payment request.</source>
@@ -2591,8 +2591,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>ANG Core is shutting down...</source>
-        <translation>ANG Core sulkeutuu...</translation>
+        <source>Ang Core is shutting down...</source>
+        <translation>Ang Core sulkeutuu...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -2614,8 +2614,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Voit allekirjoittaa viestit omilla osoitteillasi todistaaksesi että omistat ne. Ole huolellinen että et allekirjoita mitään epämääräistä, phishing-hyökkäjä voi huijata sinua allekirjoittamaan henkilöllisyytesi omasta puolestaan. Allekirjoita vain yksityiskohtaisesti täytetty selvitys johon sitoudut.</translation>
     </message>
     <message>
-        <source>The ANG address to sign the message with</source>
-        <translation>ANG osoite jolla viesti allekirjoitetaan</translation>
+        <source>The Ang address to sign the message with</source>
+        <translation>Ang osoite jolla viesti allekirjoitetaan</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2646,8 +2646,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Kopioi tämän hetkinen allekirjoitus leikepöydälle</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this ANG address</source>
-        <translation>Allekirjoita viesti todistaaksesi että omistat tämän ANG osoitteen</translation>
+        <source>Sign the message to prove you own this Ang address</source>
+        <translation>Allekirjoita viesti todistaaksesi että omistat tämän Ang osoitteen</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2670,12 +2670,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Syötä allekirjoittava osoite, viesti ja allekirjoitus alla oleviin kenttiin varmistaaksesi allekirjoituksen aitouden. Varmista että kopioit kaikki kentät täsmälleen oikein, myös rivinvaihdot, välilyönnit, tabulaattorit, jne.</translation>
     </message>
     <message>
-        <source>The ANG address the message was signed with</source>
-        <translation>ANG osoite jolla viesti on allekirjoitettu</translation>
+        <source>The Ang address the message was signed with</source>
+        <translation>Ang osoite jolla viesti on allekirjoitettu</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified ANG address</source>
-        <translation>Tarkista että viesti on allekirjoitettu määritetyllä ANG osoitteella</translation>
+        <source>Verify the message to ensure it was signed with the specified Ang address</source>
+        <translation>Tarkista että viesti on allekirjoitettu määritetyllä Ang osoitteella</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -2741,8 +2741,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>ANG Core</source>
-        <translation>ANG Core</translation>
+        <source>Ang Core</source>
+        <translation>Ang Core</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -2753,8 +2753,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Bitcoin Core kehittäjät</translation>
     </message>
     <message>
-        <source>The ANG Core developers</source>
-        <translation>ANG Core kehittäjät</translation>
+        <source>The Ang Core developers</source>
+        <translation>Ang Core kehittäjät</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -3086,7 +3086,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     </message>
     <message>
         <source>Destination address of transaction.</source>
-        <translation>Siirtotapahtuman ANG kohdeosoite</translation>
+        <translation>Siirtotapahtuman Ang kohdeosoite</translation>
     </message>
     <message>
         <source>Amount removed from or added to balance.</source>
@@ -3278,7 +3278,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     <name>WalletModel</name>
     <message>
         <source>Send Coins</source>
-        <translation>Lähetä ANGeja</translation>
+        <translation>Lähetä Angeja</translation>
     </message>
     <message>
         <source>InstantX doesn't support sending values that high yet. Transactions are currently limited to %1 ANG.</source>
@@ -3325,14 +3325,14 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     </message>
 </context>
 <context>
-    <name>ANG-core</name>
+    <name>ang-core</name>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation>Kytkeydy annettuun osoitteeseen ja pidä linja aina auki. Käytä [host]:port merkintätapaa IPv6:lle.</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s. ANG Core is probably already running.</source>
-        <translation>Ei voida lukita data hakemistoa %s. ANG Core on luultavasti jo käynnissä.</translation>
+        <source>Cannot obtain a lock on data directory %s. Ang Core is probably already running.</source>
+        <translation>Ei voida lukita data hakemistoa %s. Ang Core on luultavasti jo käynnissä.</translation>
     </message>
     <message>
         <source>Darksend uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
@@ -3387,8 +3387,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Tämä on esi-julkaistu testiversio - Käytä omalla vastuulla - Älä käytä louhimiseen tai kauppasovelluksiin.</translation>
     </message>
     <message>
-        <source>Unable to bind to %s on this computer. ANG Core is probably already running.</source>
-        <translation>Ei voida yhdistää %s tässä tietokoneessa. ANG Core on luultavasti jo käynnissä.</translation>
+        <source>Unable to bind to %s on this computer. Ang Core is probably already running.</source>
+        <translation>Ei voida yhdistää %s tässä tietokoneessa. Ang Core on luultavasti jo käynnissä.</translation>
     </message>
     <message>
         <source>Unable to locate enough Darksend denominated funds for this transaction.</source>
@@ -3404,7 +3404,7 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
-        <translation>Varoitus: ANG verkossa on ristiriitoja! Louhijat näyttävät kokevan virhetilanteita.</translation>
+        <translation>Varoitus: Ang verkossa on ristiriitoja! Louhijat näyttävät kokevan virhetilanteita.</translation>
     </message>
     <message>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
@@ -3619,8 +3619,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Poista kaikki lompakon siirtotapahtumat ja palauta vain nuo osat lohkoketjusta -rescan valinnan avulla käynnistyksessä</translation>
     </message>
     <message>
-        <source>Disable all ANG specific functionality (Masternodes, Darksend, InstantX, Budgeting) (0-1, default: %u)</source>
-        <translation>Kytke pois käytöstä kaikki ANG:in erityistoiminnot (Masternodet, Darksend, InstantX, Budjetointi) (0-1, oletus: %u)</translation>
+        <source>Disable all Ang specific functionality (Masternodes, Darksend, InstantX, Budgeting) (0-1, default: %u)</source>
+        <translation>Kytke pois käytöstä kaikki Ang:in erityistoiminnot (Masternodet, Darksend, InstantX, Budjetointi) (0-1, oletus: %u)</translation>
     </message>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
@@ -3717,27 +3717,27 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
 Käännös päivitetty: 1.9.2015 by AjM.</translation>
     </message>
     <message>
-        <source>To use ANGd, or the -server option to ANG-qt, you must set an rpcpassword in the configuration file:
+        <source>To use angd, or the -server option to ang-qt, you must set an rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=ANGrpc
+rpcuser=angrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s "ANG Alert" admin@foo.com
+for example: alertnotify=echo %%s | mail -s "Ang Alert" admin@foo.com
 </source>
-        <translation>Käyttääksesi ANGd:ia tai -server valintaa ANG-qt:lle, sinun tulee asettaa rpc salasana asetustiedostossa:
+        <translation>Käyttääksesi angd:ia tai -server valintaa ang-qt:lle, sinun tulee asettaa rpc salasana asetustiedostossa:
 %s
 Suositellaan että käytät allaolevaa satunnaista salasanaa:
-rpcuser=ANGrpc
+rpcuser=angrpc
 rpcpassword=%s
 (sinun ei tarvitse muistaa tätä salasanaa)
 Käyttäjätunnus ja salasana on oltava ERILAISET.
 Jos tiedostoa ei ole, luo se vain omistajan-luku-oikeudella.
 Suositellaan asetettavaksi alertnotify jotta saat tietoa ongelmista,
-esimerkiksi: alertnotify=echo %%s | mail -s "ANG Hälytys" admin@foo.com
+esimerkiksi: alertnotify=echo %%s | mail -s "Ang Hälytys" admin@foo.com
 </translation>
     </message>
     <message>
@@ -3753,8 +3753,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "ANG Hälytys" admin@foo.com
         <translation>Varoitus: -maxtxfee on asetettu erittäin korkeaksi! Näin isot siirtomaksut voitaisiin maksaa yhdessä siirtotapahtumassa.</translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong ANG Core will not work properly.</source>
-        <translation>Varoitus: Tarkista että tietokoneesi kellonaika ja päivämäärä ovat oikein! ANG ei toimi oikein väärällä päivämäärällä ja/tai kellonajalla.</translation>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong Ang Core will not work properly.</source>
+        <translation>Varoitus: Tarkista että tietokoneesi kellonaika ja päivämäärä ovat oikein! Ang ei toimi oikein väärällä päivämäärällä ja/tai kellonajalla.</translation>
     </message>
     <message>
         <source>Whitelist peers connecting from the given netmask or IP address. Can be specified multiple times.</source>
@@ -3807,8 +3807,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "ANG Hälytys" admin@foo.com
         <translation>Copyright (C) 2009-%i Bitcoin Core Kehittäjät</translation>
     </message>
     <message>
-        <source>Copyright (C) 2014-%i The ANG Core Developers</source>
-        <translation>Copyright (C) 2014-%i ANG Core Kehittäjät</translation>
+        <source>Copyright (C) 2014-%i The Ang Core Developers</source>
+        <translation>Copyright (C) 2014-%i Ang Core Kehittäjät</translation>
     </message>
     <message>
         <source>Could not parse -rpcbind value %s as network address</source>
@@ -3839,8 +3839,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "ANG Hälytys" admin@foo.com
         <translation>Virhe masternode:en kytkeytymisessä.</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer version of ANG Core</source>
-        <translation>Virhe ladattaessa wallet.dat: Lompakko vaatii uudemman version ANG Core:sta</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Ang Core</source>
+        <translation>Virhe ladattaessa wallet.dat: Lompakko vaatii uudemman version Ang Core:sta</translation>
     </message>
     <message>
         <source>Error: A fatal internal error occured, see debug.log for details</source>
@@ -3911,8 +3911,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "ANG Hälytys" admin@foo.com
         <translation>Tietoa</translation>
     </message>
     <message>
-        <source>Initialization sanity check failed. ANG Core is shutting down.</source>
-        <translation>Alkuperäisyyden tarkistus epäonnistui. ANG Core sulkeutuu.</translation>
+        <source>Initialization sanity check failed. Ang Core is shutting down.</source>
+        <translation>Alkuperäisyyden tarkistus epäonnistui. Ang Core sulkeutuu.</translation>
     </message>
     <message>
         <source>Input is not valid.</source>
@@ -4163,8 +4163,8 @@ esimerkiksi: alertnotify=echo %%s | mail -s "ANG Hälytys" admin@foo.com
         <translation>Käytä UPnP:tä kuunneltavan portin kartoitukseen (oletus: %u)</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart ANG Core to complete</source>
-        <translation>Lompakko on kirjoitettava uudelleen: käynnistä ANG Core uudestaan viimeistelyä varten</translation>
+        <source>Wallet needed to be rewritten: restart Ang Core to complete</source>
+        <translation>Lompakko on kirjoitettava uudelleen: käynnistä Ang Core uudestaan viimeistelyä varten</translation>
     </message>
     <message>
         <source>Warning: Unsupported argument -benchmark ignored, use -debug=bench.</source>

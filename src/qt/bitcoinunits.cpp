@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The ANG developers
+// Copyright (c) 2014-2015 The Ang developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -44,9 +44,9 @@ QString BitcoinUnits::id(int unit)
 {
     switch(unit)
     {
-        case ANG: return QString("ANG");
-        case mANG: return QString("mANG");
-        case uANG: return QString::fromUtf8("uANG");
+        case ANG: return QString("ang");
+        case mANG: return QString("mang");
+        case uANG: return QString::fromUtf8("uang");
         case duffs: return QString("duffs");
         default: return QString("???");
     }
@@ -84,10 +84,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case ANG: return QString("ANG");
-            case mANG: return QString("Milli-ANG (1 / 1" THIN_SP_UTF8 "000)");
-            case uANG: return QString("Micro-ANG (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-ANG (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case ANG: return QString("Ang");
+            case mANG: return QString("Milli-Ang (1 / 1" THIN_SP_UTF8 "000)");
+            case uANG: return QString("Micro-Ang (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case duffs: return QString("Ten Nano-Ang (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -95,10 +95,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case ANG: return QString("TestANGs");
-            case mANG: return QString("Milli-TestANG (1 / 1" THIN_SP_UTF8 "000)");
-            case uANG: return QString("Micro-TestANG (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-TestANG (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case ANG: return QString("TestAngs");
+            case mANG: return QString("Milli-TestAng (1 / 1" THIN_SP_UTF8 "000)");
+            case uANG: return QString("Micro-TestAng (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case duffs: return QString("Ten Nano-TestAng (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }

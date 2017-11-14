@@ -17,7 +17,7 @@
   <string>APPL</string>
 
   <key>CFBundleGetInfoString</key>
-  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The ANG Core developers</string>
+  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Ang Core developers</string>
 
   <key>CFBundleShortVersionString</key>
   <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
@@ -29,10 +29,10 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>ANG-Qt</string>
+  <string>Ang-Qt</string>
 
   <key>CFBundleIdentifier</key>
-  <string>io.andrijKolomiets.ANG-Qt</string>
+  <string>io.andrijKolomiets.Ang-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -40,10 +40,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>io.ANG.ANGPayment</string>
+      <string>io.ang.AngPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>ANG</string>
+        <string>ang</string>
       </array>
     </dict>
   </array>
@@ -52,9 +52,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>io.ANG.paymentrequest</string>
+      <string>io.ang.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>ANG payment request</string>
+      <string>Ang payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -62,7 +62,7 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-ANG-payment-request</string>
+        <string>application/x-ang-payment-request</string>
         <key>public.filename-extension</key>
         <array>
           <string>andrijKolomietsmentrequest</string>
@@ -78,7 +78,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>io.ANG.paymentrequest</string>
+        <string>io.ang.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

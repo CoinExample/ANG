@@ -16,14 +16,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "ANG"
-            VALUE "FileDescription",    "ANG-cli (OSS RPC client for ANG)"
+            VALUE "CompanyName",        "Ang"
+            VALUE "FileDescription",    "Ang-cli (OSS RPC client for Ang)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "ANG-cli"
+            VALUE "InternalName",       "ang-cli"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "ANG-cli.exe"
-            VALUE "ProductName",        "ANG-cli"
+            VALUE "OriginalFilename",   "ang-cli.exe"
+            VALUE "ProductName",        "Ang-cli"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

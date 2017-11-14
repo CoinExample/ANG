@@ -47,10 +47,10 @@ static bool AppInitRawTx(int argc, char* argv[])
     if (argc<2 || mapArgs.count("-?") || mapArgs.count("-help"))
     {
         // First part of help message is specific to this utility
-        std::string strUsage = _("ANG Core ANG-tx utility version") + " " + FormatFullVersion() + "\n\n" +
+        std::string strUsage = _("Ang Core ang-tx utility version") + " " + FormatFullVersion() + "\n\n" +
             _("Usage:") + "\n" +
-              "  ANG-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded ANG transaction") + "\n" +
-              "  ANG-tx [options] -create [commands]   " + _("Create hex-encoded ANG transaction") + "\n" +
+              "  ang-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded ang transaction") + "\n" +
+              "  ang-tx [options] -create [commands]   " + _("Create hex-encoded ang transaction") + "\n" +
               "\n";
 
         fprintf(stdout, "%s", strUsage.c_str());
@@ -555,7 +555,7 @@ static int CommandLineRawTx(int argc, char* argv[])
             if (argc < 2)
                 throw runtime_error("too few parameters");
 
-            // param: hex-encoded ANG transaction
+            // param: hex-encoded ang transaction
             string strHexTx(argv[1]);
             if (strHexTx == "-")                 // "-" implies standard input
                 strHexTx = readStdin();

@@ -1,20 +1,20 @@
 <!DOCTYPE RCC><RCC version="1.0">
     <qresource prefix="/translations">
-        <file alias="bg">locale/ANG_bg.qm</file>
-        <file alias="de">locale/ANG_de.qm</file>
-        <file alias="en">locale/ANG_en.qm</file>
-        <file alias="es">locale/ANG_es.qm</file>
-        <file alias="fi">locale/ANG_fi.qm</file>
-        <file alias="fr">locale/ANG_fr.qm</file>
-        <file alias="it">locale/ANG_it.qm</file>
-        <file alias="it">locale/ANG_ja.qm</file>
-        <file alias="pl">locale/ANG_pl.qm</file>
-        <file alias="pt">locale/ANG_pt.qm</file>
-        <file alias="ru">locale/ANG_ru.qm</file>
-        <file alias="sk">locale/ANG_sk.qm</file>
-        <file alias="sv">locale/ANG_sv.qm</file>
-        <file alias="vi">locale/ANG_vi.qm</file>
-        <file alias="zh_CN">locale/ANG_zh_CN.qm</file>
-        <file alias="zh_TW">locale/ANG_zh_TW.qm</file>
+        <file alias="bg">locale/ang_bg.qm</file>
+        <file alias="de">locale/ang_de.qm</file>
+        <file alias="en">locale/ang_en.qm</file>
+        <file alias="es">locale/ang_es.qm</file>
+        <file alias="fi">locale/ang_fi.qm</file>
+        <file alias="fr">locale/ang_fr.qm</file>
+        <file alias="it">locale/ang_it.qm</file>
+        <file alias="it">locale/ang_ja.qm</file>
+        <file alias="pl">locale/ang_pl.qm</file>
+        <file alias="pt">locale/ang_pt.qm</file>
+        <file alias="ru">locale/ang_ru.qm</file>
+        <file alias="sk">locale/ang_sk.qm</file>
+        <file alias="sv">locale/ang_sv.qm</file>
+        <file alias="vi">locale/ang_vi.qm</file>
+        <file alias="zh_CN">locale/ang_zh_CN.qm</file>
+        <file alias="zh_TW">locale/ang_zh_TW.qm</file>
     </qresource>
 </RCC>

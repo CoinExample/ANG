@@ -19,14 +19,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "ANG"
-            VALUE "FileDescription",    "ANG Core (OSS GUI client for ANG)"
+            VALUE "CompanyName",        "Ang"
+            VALUE "FileDescription",    "Ang Core (OSS GUI client for Ang)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "ANG-qt"
+            VALUE "InternalName",       "ang-qt"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "ANG-qt.exe"
-            VALUE "ProductName",        "ANG Core"
+            VALUE "OriginalFilename",   "ang-qt.exe"
+            VALUE "ProductName",        "Ang Core"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

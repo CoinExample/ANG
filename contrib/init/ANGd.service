@@ -1,15 +1,15 @@
 [Unit]
-Description=ANG's distributed currency daemon
+Description=Ang's distributed currency daemon
 After=network.target
 
 [Service]
-User=ANG
-Group=ANG
+User=ang
+Group=ang
 
 Type=forking
-PIDFile=/var/lib/ANGd/ANGd.pid
-ExecStart=/usr/bin/ANGd -daemon -pid=/var/lib/ANGd/ANGd.pid \
--conf=/etc/ANG/ANG.conf -datadir=/var/lib/ANGd -disablewallet
+PIDFile=/var/lib/angd/angd.pid
+ExecStart=/usr/bin/angd -daemon -pid=/var/lib/angd/angd.pid \
+-conf=/etc/ang/ang.conf -datadir=/var/lib/angd -disablewallet
 
 Restart=always
 PrivateTmp=true

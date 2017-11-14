@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The ANG developers
+// Copyright (c) 2014-2015 The Ang developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -56,11 +56,11 @@ static void convertSeed6(std::vector<CAddress> &vSeedsOut, const SeedSpec6 *data
 
 static Checkpoints::MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
-        (  0, uint256("0x00000109aa5551a3af99f9f2a902e74b76ce04febfe7dd56b2d0c9bd763e0180"))
+        (  0, uint256("0x00000cfb9ec49a14fa399e94e6438d65c6d318f3ccf26fbd19dd657c79a9572b"))
         ;
 static const Checkpoints::CCheckpointData data = {
         &mapCheckpoints,
-        1510315200, // * UNIX timestamp of last checkpoint block
+        1510358400, // * UNIX timestamp of last checkpoint block
         0,     // * total number of transactions between genesis and last checkpoint
                     //   (the tx=... number in the SetBestChain debug.log lines)
         2800        // * estimated number of transactions per day after checkpoint
@@ -68,18 +68,18 @@ static const Checkpoints::CCheckpointData data = {
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
         boost::assign::map_list_of
-        ( 0, uint256("0x0000006bf9ca7bba149f59ff9889c60125d0c6c7f3068f5e21dfd19bfd6dbb32"))
+        ( 0, uint256("0x00000b551b4076a148c4356cd0ff14eba87347de0a37ef49c03d8e849ddc229b"))
         ;
 static const Checkpoints::CCheckpointData dataTestnet = {
         &mapCheckpointsTestnet,
-        1510315201,
+        1510358401,
         0,
         500
     };
 
 static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
         boost::assign::map_list_of
-        ( 0, uint256("0x216bfc3cf44385f84b03a3ad633dba5bda046bb1bef943a3abfb5ba02f3f44fd"))
+        ( 0, uint256("0x6054cbde2a30e433d54195464e0ecdf5458f9e145f907446025ba0206d28d592"))
         ;
 static const Checkpoints::CCheckpointData dataRegtest = {
         &mapCheckpointsRegtest,
@@ -104,14 +104,14 @@ public:
         pchMessageStart[3] = 0x4f;
         vAlertPubKey = ParseHex("0478e2b22bce9d86ef1c1fb101bb9f11d833ebe1ab8ae070292c69c15793079c16a3172cd4f0ee2164d4767c30c8a7e258ed90b94e257530ffff0b112b05f1495e");
         nDefaultPort = 9887;
-        bnProofOfWorkLimit = ~uint256(0) >> 20;  // ANG starting difficulty is 1 / 2^12
+        bnProofOfWorkLimit = ~uint256(0) >> 20;  // Ang starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;
         nEnforceBlockUpgradeMajority = 750;
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
-        nTargetTimespan = 24 * 60 * 60; // ANG: 1 day
-        nTargetSpacing = 2.5 * 60; // ANG: 2.5 minutes
+        nTargetTimespan = 24 * 60 * 60; // Ang: 1 day
+        nTargetSpacing = 2.5 * 60; // Ang: 2.5 minutes
 
         /**
          * Build the genesis block. Note that the output of the genesis coinbase cannot
@@ -128,28 +128,28 @@ public:
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 50 * COIN;
+        txNew.vout[0].nValue = 777 * COIN;
         txNew.vout[0].scriptPubKey = CScript() << ParseHex("0405616e78976288f3c8f2070a935fcb774958eb9ea233376dafde10118247cde78b321c25eec6d78376e53b85ad2b0bcf2d99799f07b981c0524d9989c36bf5ba") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = 1510315200;
+        genesis.nTime    = 1510754400;
         genesis.nBits    = 0x1e0ffff0;
-        genesis.nNonce   = 79709;
+        genesis.nNonce   = 158507;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x00000109aa5551a3af99f9f2a902e74b76ce04febfe7dd56b2d0c9bd763e0180"));
-        assert(genesis.hashMerkleRoot == uint256("0xf3f7be3742afffd2d4b64b2956f2a81e479abd9ae754410d8bf0b6c905b332f6"));
+        assert(hashGenesisBlock == uint256("0x00000cfb9ec49a14fa399e94e6438d65c6d318f3ccf26fbd19dd657c79a9572b"));
+        assert(genesis.hashMerkleRoot == uint256("0xe982b569e9fb6e516079a43b0800ce76a179d2e07714aa714b45c9f27bdd8557"));
 
         vSeeds.clear();
 
-        base58Prefixes[PUBKEY_ADDRESS] = list_of( 76);                    // ANG addresses start with 'X'
-        base58Prefixes[SCRIPT_ADDRESS] = list_of( 16);                    // ANG script addresses start with '7'
-        base58Prefixes[SECRET_KEY] =     list_of(204);                    // ANG private keys start with '7' or 'X'
-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x02)(0xFE)(0x52)(0xF8); // ANG BIP32 pubkeys start with 'drkv'
-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x02)(0xFE)(0x52)(0xCC); // ANG BIP32 prvkeys start with 'drkp'
-        base58Prefixes[EXT_COIN_TYPE]  = list_of(0x80000005);             // ANG BIP44 coin type is '5'
+        base58Prefixes[PUBKEY_ADDRESS] = list_of( 76);                    // Ang addresses start with 'X'
+        base58Prefixes[SCRIPT_ADDRESS] = list_of( 16);                    // Ang script addresses start with '7'
+        base58Prefixes[SECRET_KEY] =     list_of(204);                    // Ang private keys start with '7' or 'X'
+        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x02)(0xFE)(0x52)(0xF8); // Ang BIP32 pubkeys start with 'drkv'
+        base58Prefixes[EXT_SECRET_KEY] = list_of(0x02)(0xFE)(0x52)(0xCC); // Ang BIP32 prvkeys start with 'drkp'
+        base58Prefixes[EXT_COIN_TYPE]  = list_of(0x80000005);             // Ang BIP44 coin type is '5'
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
@@ -166,7 +166,7 @@ public:
         strSporkKey = "04aa32070830a480825eb0c3b931c5dbf11887974f4f7688b97cf5f65543f68c9fe6282404704b2e35039fb71e68fde4143b8033264a5b972f69886ded92d916cc";
         strMasternodePaymentsPubKey = "04aa32070830a480825eb0c3b931c5dbf11887974f4f7688b97cf5f65543f68c9fe6282404704b2e35039fb71e68fde4143b8033264a5b972f69886ded92d916cc";
         strDarksendPoolDummyAddress = "Xq19GqFvajRrEdDHYRKGYjTsQfpV5jyipF";
-        nStartMasternodePayments = 1510135200; //wed, 8 oct 2017 10:00:00 GMT
+        nStartMasternodePayments = 1510754400; //wed, 8 oct 2017 10:00:00 GMT
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const 
@@ -194,29 +194,29 @@ public:
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
         nMinerThreads = 0;
-        nTargetTimespan = 24 * 60 * 60; // ANG: 1 day
-        nTargetSpacing = 2.5 * 60; // ANG: 2.5 minutes
+        nTargetTimespan = 24 * 60 * 60; // Ang: 1 day
+        nTargetSpacing = 2.5 * 60; // Ang: 2.5 minutes
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1510315201;
-        genesis.nNonce = 345526;
+        genesis.nTime = 1510754401;
+        genesis.nNonce = 1266127;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0000006bf9ca7bba149f59ff9889c60125d0c6c7f3068f5e21dfd19bfd6dbb32"));
+        assert(hashGenesisBlock == uint256("0x00000b551b4076a148c4356cd0ff14eba87347de0a37ef49c03d8e849ddc229b"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
         /*vSeeds.push_back(CDNSSeedData("andrijKolomiets.io", "testnet-seed.andrijKolomiets.io"));
-        vSeeds.push_back(CDNSSeedData("ANG.qa", "testnet-seed.ANG.qa"));
+        vSeeds.push_back(CDNSSeedData("ang.qa", "testnet-seed.ang.qa"));
         *///legacy seeders
         vSeeds.clear();
 
-        base58Prefixes[PUBKEY_ADDRESS] = list_of(139);                    // Testnet ANG addresses start with 'x' or 'y'
-        base58Prefixes[SCRIPT_ADDRESS] = list_of( 19);                    // Testnet ANG script addresses start with '8' or '9'
+        base58Prefixes[PUBKEY_ADDRESS] = list_of(139);                    // Testnet ang addresses start with 'x' or 'y'
+        base58Prefixes[SCRIPT_ADDRESS] = list_of( 19);                    // Testnet ang script addresses start with '8' or '9'
         base58Prefixes[SECRET_KEY]     = list_of(239);                    // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x3a)(0x80)(0x61)(0xa0); // Testnet ANG BIP32 pubkeys start with 'DRKV'
-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x3a)(0x80)(0x58)(0x37); // Testnet ANG BIP32 prvkeys start with 'DRKP'
-        base58Prefixes[EXT_COIN_TYPE]  = list_of(0x80000001);             // Testnet ANG BIP44 coin type is '5' (All coin's testnet default)
+        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x3a)(0x80)(0x61)(0xa0); // Testnet ang BIP32 pubkeys start with 'DRKV'
+        base58Prefixes[EXT_SECRET_KEY] = list_of(0x3a)(0x80)(0x58)(0x37); // Testnet ang BIP32 prvkeys start with 'DRKP'
+        base58Prefixes[EXT_COIN_TYPE]  = list_of(0x80000001);             // Testnet ang BIP44 coin type is '5' (All coin's testnet default)
 
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
 
@@ -232,7 +232,7 @@ public:
         strSporkKey = "042dbe896792b43dbaae08344d074e687ad46b69f944fbbe0ad7a4019237e21f67ad735cebef87a414d314027e243746dc9c3450ed02aa6d9ca4ac5304be067119";
         strMasternodePaymentsPubKey = "042dbe896792b43dbaae08344d074e687ad46b69f944fbbe0ad7a4019237e21f67ad735cebef87a414d314027e243746dc9c3450ed02aa6d9ca4ac5304be067119";
         strDarksendPoolDummyAddress = "y1EZuxhhNMAUofTBEeLqGE1bJrpC2TWRNp";
-        nStartMasternodePayments = 1510315201; //wed, 08 oct 2017 10:00:00 GMT
+        nStartMasternodePayments = 1510754401; //wed, 08 oct 2017 10:00:00 GMT
     }
     const Checkpoints::CCheckpointData& Checkpoints() const 
     {
@@ -258,15 +258,15 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 1;
-        nTargetTimespan = 24 * 60 * 60; // ANG: 1 day
-        nTargetSpacing = 2.5 * 60; // ANG: 2.5 minutes
+        nTargetTimespan = 24 * 60 * 60; // Ang: 1 day
+        nTargetSpacing = 2.5 * 60; // Ang: 2.5 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-        genesis.nTime = 1510315202;
+        genesis.nTime = 1510754402;
         genesis.nBits = 0x207fffff;
-        genesis.nNonce = 2;
+        genesis.nNonce = 0;
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 19883;
-        assert(hashGenesisBlock == uint256("0x216bfc3cf44385f84b03a3ad633dba5bda046bb1bef943a3abfb5ba02f3f44fd"));
+        assert(hashGenesisBlock == uint256("0x6054cbde2a30e433d54195464e0ecdf5458f9e145f907446025ba0206d28d592"));
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.

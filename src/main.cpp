@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The ANG developers
+// Copyright (c) 2014-2015 The Ang developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -39,7 +39,7 @@ using namespace boost;
 using namespace std;
 
 #if defined(NDEBUG)
-# error "ANG cannot be compiled without assertions."
+# error "Ang cannot be compiled without assertions."
 #endif
 
 /**
@@ -558,7 +558,7 @@ CBlockIndex* FindForkInGlobalIndex(const CChain& chain, const CBlockLocator& loc
     return chain.Genesis();
 }
 
-CCoinsViewCache *ANGsTip = NULL;
+CCoinsViewCache *angsTip = NULL;
 CBlockTreeDB *pblocktree = NULL;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -860,7 +860,7 @@ int GetInputAge(CTxIn& vin)
     CCoinsViewCache view(&viewDummy);
     {
         LOCK(mempool.cs);
-        CCoinsViewMemPool viewMempool(ANGsTip, mempool);
+        CCoinsViewMemPool viewMempool(angsTip, mempool);
         view.SetBackend(viewMempool); // temporarily switch cache backend to db+mempool view
 
         const CCoins* coins = view.AccessCoins(vin.prevout.hash);
@@ -1057,7 +1057,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransa
         CAmount nValueIn = 0;
         {
         LOCK(pool.cs);
-        CCoinsViewMemPool viewMemPool(ANGsTip, pool);
+        CCoinsViewMemPool viewMemPool(angsTip, pool);
         view.SetBackend(viewMemPool);
 
         // do we already have it?
@@ -1251,7 +1251,7 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, const CTransact
         CAmount nValueIn = 0;
         {
             LOCK(pool.cs);
-            CCoinsViewMemPool viewMemPool(ANGsTip, pool);
+            CCoinsViewMemPool viewMemPool(angsTip, pool);
             view.SetBackend(viewMemPool);
 
             // do we already have it?
@@ -1422,7 +1422,7 @@ bool GetTransaction(const uint256 &hash, CTransaction &txOut, uint256 &hashBlock
         if (fAllowSlow) { // use coin database to locate block that contains transaction, and scan it
             int nHeight = -1;
             {
-                CCoinsViewCache &view = *ANGsTip;
+                CCoinsViewCache &view = *angsTip;
                 const CCoins* coins = view.AccessCoins(hash);
                 if (coins)
                     nHeight = coins->nHeight;
@@ -2013,7 +2013,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("ANG-scriptch");
+    RenameThread("ang-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -2208,14 +2208,14 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
     static int64_t nLastWrite = 0;
     try {
     if ((mode == FLUSH_STATE_ALWAYS) ||
-        ((mode == FLUSH_STATE_PERIODIC || mode == FLUSH_STATE_IF_NEEDED) && ANGsTip->GetCacheSize() > nCoinCacheSize) ||
+        ((mode == FLUSH_STATE_PERIODIC || mode == FLUSH_STATE_IF_NEEDED) && angsTip->GetCacheSize() > nCoinCacheSize) ||
         (mode == FLUSH_STATE_PERIODIC && GetTimeMicros() > nLastWrite + DATABASE_WRITE_INTERVAL * 1000000)) {
         // Typical CCoins structures on disk are around 100 bytes in size.
         // Pushing a new one to the database can cause it to be written
         // twice (once in the log, and once in the tables). This is already
         // an overestimation, as most will delete an existing entry or
         // overwrite one. Still, use a conservative safety factor of 2.
-        if (!CheckDiskSpace(100 * 2 * 2 * ANGsTip->GetCacheSize()))
+        if (!CheckDiskSpace(100 * 2 * 2 * angsTip->GetCacheSize()))
             return state.Error("out of disk space");
         // First make sure all block and undo data is flushed to disk.
         FlushBlockFile();
@@ -2239,7 +2239,7 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
         }
         pblocktree->Sync();
         // Finally flush the chainstate (which may refer to block index entries).
-        if (!ANGsTip->Flush())
+        if (!angsTip->Flush())
             return state.Abort("Failed to write to coin database");
         // Update best block in wallet (so we can detect restored wallets).
         if (mode != FLUSH_STATE_IF_NEEDED) {
@@ -2269,7 +2269,7 @@ void static UpdateTip(CBlockIndex *pindexNew) {
     LogPrintf("UpdateTip: new best=%s  height=%d  log2_work=%.8g  tx=%lu  date=%s progress=%f  cache=%u\n",
       chainActive.Tip()->GetBlockHash().ToString(), chainActive.Height(), log(chainActive.Tip()->nChainWork.getdouble())/log(2.0), (unsigned long)chainActive.Tip()->nChainTx,
       DateTimeStrFormat("%Y-%m-%d %H:%M:%S", chainActive.Tip()->GetBlockTime()),
-      Checkpoints::GuessVerificationProgress(chainActive.Tip()), (unsigned int)ANGsTip->GetCacheSize());
+      Checkpoints::GuessVerificationProgress(chainActive.Tip()), (unsigned int)angsTip->GetCacheSize());
 
     cvBlockChange.notify_all();
 
@@ -2301,7 +2301,7 @@ void static UpdateTip(CBlockIndex *pindexNew) {
 bool static DisconnectTip(CValidationState &state) {
     CBlockIndex *pindexDelete = chainActive.Tip();
     assert(pindexDelete);
-    mempool.check(ANGsTip);
+    mempool.check(angsTip);
     // Read block from disk.
     CBlock block;
     if (!ReadBlockFromDisk(block, pindexDelete))
@@ -2309,7 +2309,7 @@ bool static DisconnectTip(CValidationState &state) {
     // Apply the block atomically to the chain state.
     int64_t nStart = GetTimeMicros();
     {
-        CCoinsViewCache view(ANGsTip);
+        CCoinsViewCache view(angsTip);
         if (!DisconnectBlock(block, state, pindexDelete, view))
             return error("DisconnectTip() : DisconnectBlock %s failed", pindexDelete->GetBlockHash().ToString());
         assert(view.Flush());
@@ -2326,8 +2326,8 @@ bool static DisconnectTip(CValidationState &state) {
         if (tx.IsCoinBase() || !AcceptToMemoryPool(mempool, stateDummy, tx, false, NULL))
             mempool.remove(tx, removed, true);
     }
-    mempool.removeCoinbaseSpends(ANGsTip, pindexDelete->nHeight);
-    mempool.check(ANGsTip);
+    mempool.removeCoinbaseSpends(angsTip, pindexDelete->nHeight);
+    mempool.check(angsTip);
     // Update chainActive and related variables.
     UpdateTip(pindexDelete->pprev);
     // Let wallets know transactions went from 1-confirmed to
@@ -2350,7 +2350,7 @@ static int64_t nTimePostConnect = 0;
  */
 bool static ConnectTip(CValidationState &state, CBlockIndex *pindexNew, CBlock *pblock) {
     assert(pindexNew->pprev == chainActive.Tip());
-    mempool.check(ANGsTip);
+    mempool.check(angsTip);
     // Read block from disk.
     int64_t nTime1 = GetTimeMicros();
     CBlock block;
@@ -2364,7 +2364,7 @@ bool static ConnectTip(CValidationState &state, CBlockIndex *pindexNew, CBlock *
     int64_t nTime3;
     LogPrint("bench", "  - Load block from disk: %.2fms [%.2fs]\n", (nTime2 - nTime1) * 0.001, nTimeReadFromDisk * 0.000001);
     {
-        CCoinsViewCache view(ANGsTip);
+        CCoinsViewCache view(angsTip);
         CInv inv(MSG_BLOCK, pindexNew->GetBlockHash());
         bool rv = ConnectBlock(*pblock, state, pindexNew, view);
         g_signals.BlockChecked(*pblock, state);
@@ -2388,7 +2388,7 @@ bool static ConnectTip(CValidationState &state, CBlockIndex *pindexNew, CBlock *
     // Remove conflicting transactions from the mempool.
     list<CTransaction> txConflicted;
     mempool.removeForBlock(pblock->vtx, pindexNew->nHeight, txConflicted);
-    mempool.check(ANGsTip);
+    mempool.check(angsTip);
     // Update chainActive & related variables.
     UpdateTip(pindexNew);
     // Tell wallet about transactions that went from mempool
@@ -2431,8 +2431,8 @@ bool DisconnectBlockAndInputs(CValidationState &state, CTransaction txLock)
 {
 
     // All modifications to the coin state will be done in this cache.
-    // Only when all have succeeded, we push it to ANGsTip.
-//    CCoinsViewCache view(*ANGsTip, true);
+    // Only when all have succeeded, we push it to angsTip.
+//    CCoinsViewCache view(*angsTip, true);
 
     CBlockIndex* BlockReading = chainActive.Tip();
     CBlockIndex* pindexNew = NULL;
@@ -3328,7 +3328,7 @@ bool TestBlockValidity(CValidationState &state, const CBlock& block, CBlockIndex
     AssertLockHeld(cs_main);
     assert(pindexPrev == chainActive.Tip());
 
-    CCoinsViewCache viewNew(ANGsTip);
+    CCoinsViewCache viewNew(angsTip);
     CBlockIndex indexDummy(block);
     indexDummy.pprev = pindexPrev;
     indexDummy.nHeight = pindexPrev->nHeight + 1;
@@ -3518,7 +3518,7 @@ bool static LoadBlockIndexDB()
     LogPrintf("LoadBlockIndexDB(): transaction index %s\n", fTxIndex ? "enabled" : "disabled");
 
     // Load pointer to end of best chain
-    BlockMap::iterator it = mapBlockIndex.find(ANGsTip->GetBestBlock());
+    BlockMap::iterator it = mapBlockIndex.find(angsTip->GetBestBlock());
     if (it == mapBlockIndex.end())
         return true;
     chainActive.SetTip(it->second);
@@ -3584,7 +3584,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
             }
         }
         // check level 3: check for inconsistencies during memory-only disconnect of tip blocks
-        if (nCheckLevel >= 3 && pindex == pindexState && (coins.GetCacheSize() + ANGsTip->GetCacheSize()) <= nCoinCacheSize) {
+        if (nCheckLevel >= 3 && pindex == pindexState && (coins.GetCacheSize() + angsTip->GetCacheSize()) <= nCoinCacheSize) {
             bool fClean = true;
             if (!DisconnectBlock(block, state, pindex, coins, &fClean))
                 return error("VerifyDB() : *** irrecoverable inconsistency in block data at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString());
@@ -4002,7 +4002,7 @@ bool static AlreadyHave(const CInv& inv)
             bool txInMap = false;
             txInMap = mempool.exists(inv.hash);
             return txInMap || mapOrphanTransactions.count(inv.hash) ||
-                ANGsTip->HaveCoins(inv.hash);
+                angsTip->HaveCoins(inv.hash);
         }
     case MSG_DSTX:
         return mapDarksendBroadcastTxes.count(inv.hash);
@@ -4748,7 +4748,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
         if (AcceptToMemoryPool(mempool, state, tx, true, &fMissingInputs, false, ignoreFees))
         {
-            mempool.check(ANGsTip);
+            mempool.check(angsTip);
             RelayTransaction(tx);
             vWorkQueue.push_back(inv.hash);
 
@@ -4802,7 +4802,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                         LogPrint("mempool", "   removed orphan tx %s\n", orphanHash.ToString());
                         vEraseQueue.push_back(orphanHash);
                     }
-                    mempool.check(ANGsTip);
+                    mempool.check(angsTip);
                 }
             }
 

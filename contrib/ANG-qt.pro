@@ -78,7 +78,7 @@ HEADERS += src/activemasternode.h \
            src/crypter.h \
            src/darksend-relay.h \
            src/darksend.h \
-           src/ANG-config.h \
+           src/ang-config.h \
            src/db.h \
            src/eccryptoverify.h \
            src/ecwrapper.h \
@@ -131,7 +131,7 @@ HEADERS += src/activemasternode.h \
            src/wallet_ismine.h \
            src/walletdb.h \
            src/compat/sanity.h \
-           src/config/ANG-config.h \
+           src/config/ang-config.h \
            src/crypto/common.h \
            src/crypto/hmac_sha256.h \
            src/crypto/hmac_sha512.h \
@@ -333,7 +333,7 @@ HEADERS += src/activemasternode.h \
            src/secp256k1/src/java/org_bitcoin_NativeSecp256k1.h \
            src/crypto/aes_helper.c \
            src/qt/bitcoinamountfield.moc \
-           src/qt/ANG.moc \
+           src/qt/ang.moc \
            src/qt/intro.moc \
            src/qt/overviewpage.moc \
            src/qt/rpcconsole.moc \
@@ -374,9 +374,9 @@ SOURCES += src/activemasternode.cpp \
            src/crypter.cpp \
            src/darksend-relay.cpp \
            src/darksend.cpp \
-           src/ANG-cli.cpp \
-           src/ANG-tx.cpp \
-           src/ANGd.cpp \
+           src/ang-cli.cpp \
+           src/ang-tx.cpp \
+           src/angd.cpp \
            src/db.cpp \
            src/eccryptoverify.cpp \
            src/ecwrapper.cpp \
@@ -471,8 +471,8 @@ SOURCES += src/activemasternode.cpp \
            src/qt/coincontroltreewidget.cpp \
            src/qt/csvmodelwriter.cpp \
            src/qt/darksendconfig.cpp \
-           src/qt/ANG.cpp \
-           src/qt/ANGstrings.cpp \
+           src/qt/ang.cpp \
+           src/qt/angstrings.cpp \
            src/qt/editaddressdialog.cpp \
            src/qt/guiutil.cpp \
            src/qt/intro.cpp \
@@ -550,7 +550,7 @@ SOURCES += src/activemasternode.cpp \
            src/test/sighash_tests.cpp \
            src/test/sigopcount_tests.cpp \
            src/test/skiplist_tests.cpp \
-           src/test/test_ANG.cpp \
+           src/test/test_ang.cpp \
            src/test/timedata_tests.cpp \
            src/test/transaction_tests.cpp \
            src/test/uint256_tests.cpp \
@@ -641,20 +641,20 @@ SOURCES += src/activemasternode.cpp \
            src/leveldb/helpers/memenv/memenv.cc \
            src/leveldb/helpers/memenv/memenv_test.cc \
            src/secp256k1/src/java/org_bitcoin_NativeSecp256k1.c
-RESOURCES += src/qt/ANG.qrc src/qt/ANG_locale.qrc
-TRANSLATIONS += src/qt/locale/ANG_bg.ts \
-                src/qt/locale/ANG_de.ts \
-                src/qt/locale/ANG_en.ts \
-                src/qt/locale/ANG_es.ts \
-                src/qt/locale/ANG_fi.ts \
-                src/qt/locale/ANG_fr.ts \
-                src/qt/locale/ANG_it.ts \
-                src/qt/locale/ANG_ja.ts \
-                src/qt/locale/ANG_pl.ts \
-                src/qt/locale/ANG_pt.ts \
-                src/qt/locale/ANG_ru.ts \
-                src/qt/locale/ANG_sk.ts \
-                src/qt/locale/ANG_sv.ts \
-                src/qt/locale/ANG_vi.ts \
-                src/qt/locale/ANG_zh_CN.ts \
-                src/qt/locale/ANG_zh_TW.ts
+RESOURCES += src/qt/ang.qrc src/qt/ang_locale.qrc
+TRANSLATIONS += src/qt/locale/ang_bg.ts \
+                src/qt/locale/ang_de.ts \
+                src/qt/locale/ang_en.ts \
+                src/qt/locale/ang_es.ts \
+                src/qt/locale/ang_fi.ts \
+                src/qt/locale/ang_fr.ts \
+                src/qt/locale/ang_it.ts \
+                src/qt/locale/ang_ja.ts \
+                src/qt/locale/ang_pl.ts \
+                src/qt/locale/ang_pt.ts \
+                src/qt/locale/ang_ru.ts \
+                src/qt/locale/ang_sk.ts \
+                src/qt/locale/ang_sv.ts \
+                src/qt/locale/ang_vi.ts \
+                src/qt/locale/ang_zh_CN.ts \
+                src/qt/locale/ang_zh_TW.ts

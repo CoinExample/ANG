@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[ANG.qt-translation-010x]
-file_filter = src/qt/locale/ANG_<lang>.ts
-source_file = src/qt/locale/ANG_en.ts
+[ang.qt-translation-010x]
+file_filter = src/qt/locale/ang_<lang>.ts
+source_file = src/qt/locale/ang_en.ts
 source_lang = en

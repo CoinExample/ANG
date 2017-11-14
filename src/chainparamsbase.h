@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between ANG-cli and ANGd)
- * of a given instance of the ANG system.
+ * CBaseChainParams defines the base parameters (shared between ang-cli and angd)
+ * of a given instance of the Ang system.
  */
 class CBaseChainParams
 {

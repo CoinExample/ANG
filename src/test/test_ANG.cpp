@@ -2,7 +2,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#define BOOST_TEST_MODULE ANG Test Suite
+#define BOOST_TEST_MODULE Ang Test Suite
 
 #include "main.h"
 #include "random.h"
@@ -25,7 +25,7 @@ extern bool fPrintToConsole;
 extern void noui_connect();
 
 struct TestingSetup {
-    CCoinsViewDB *ANGsdbview;
+    CCoinsViewDB *angsdbview;
     boost::filesystem::path pathTemp;
     boost::thread_group threadGroup;
 
@@ -38,12 +38,12 @@ struct TestingSetup {
 #ifdef ENABLE_WALLET
         bitdb.MakeMock();
 #endif
-        pathTemp = GetTempPath() / strprintf("test_ANG_%lu_%i", (unsigned long)GetTime(), (int)(GetRand(100000)));
+        pathTemp = GetTempPath() / strprintf("test_ang_%lu_%i", (unsigned long)GetTime(), (int)(GetRand(100000)));
         boost::filesystem::create_directories(pathTemp);
         mapArgs["-datadir"] = pathTemp.string();
         pblocktree = new CBlockTreeDB(1 << 20, true);
-        ANGsdbview = new CCoinsViewDB(1 << 23, true);
-        ANGsTip = new CCoinsViewCache(ANGsdbview);
+        angsdbview = new CCoinsViewDB(1 << 23, true);
+        angsTip = new CCoinsViewCache(angsdbview);
         InitBlockIndex();
 #ifdef ENABLE_WALLET
         bool fFirstRun;
@@ -65,8 +65,8 @@ struct TestingSetup {
         delete pwalletMain;
         pwalletMain = NULL;
 #endif
-        delete ANGsTip;
-        delete ANGsdbview;
+        delete angsTip;
+        delete angsdbview;
         delete pblocktree;
 #ifdef ENABLE_WALLET
         bitdb.Flush(true);

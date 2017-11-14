@@ -1,6 +1,6 @@
 [Protocol]
-exec=ANG-qt '%u'
-protocol=ANG
+exec=ang-qt '%u'
+protocol=ang
 input=none
 output=none
 helper=true

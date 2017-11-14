@@ -420,7 +420,7 @@ Block and transaction handling:
 - `4fad8e6` Reject transactions with excessive numbers of sigops
 - `b0875eb` Allow BatchWrite to destroy its input, reducing copying (optimization)
 - `92bb6f2` Bypass reloading blocks from disk (optimization)
-- `2e28031` Perform CVerifyDB on ANGsdbview instead of ANGsTip (reduce memory usage)
+- `2e28031` Perform CVerifyDB on angsdbview instead of angsTip (reduce memory usage)
 - `ab15b2e` Avoid copying undo data (optimization)
 - `341735e` Headers-first synchronization
 - `afc32c5` Fix rebuild-chainstate feature and improve its performance
@@ -714,7 +714,7 @@ Thanks to everyone who contributed to this release:
 - kiwigb
 - Kosta Zertsekel
 - LongShao007
-- Luke ANGjr
+- Luke Angjr
 - Mark Friedenbach
 - Mathy Vanvoorden
 - Matt Corallo

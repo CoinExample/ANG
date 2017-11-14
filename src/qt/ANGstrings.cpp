@@ -8,435 +8,435 @@
 #else
 #define UNUSED
 #endif
-static const char UNUSED *ANG_strings[] = {
-QT_TRANSLATE_NOOP("ANG-core", ""
+static const char UNUSED *ang_strings[] = {
+QT_TRANSLATE_NOOP("ang-core", ""
 "(1 = keep tx meta data e.g. account owner and payment request information, 2 "
 "= drop tx meta data)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Allow JSON-RPC connections from specified source. Valid for <ip> are a "
 "single IP (e.g. 1.2.3.4), a network/netmask (e.g. 1.2.3.4/255.255.255.0) or "
 "a network/CIDR (e.g. 1.2.3.4/24). This option can be specified multiple times"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "An error occurred while setting up the RPC address %s port %u for listening: "
 "%s"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Bind to given address and always listen on it. Use [host]:port notation for "
 "IPv6"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Bind to given address and whitelist peers connecting to it. Use [host]:port "
 "notation for IPv6"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Bind to given address to listen for JSON-RPC connections. Use [host]:port "
 "notation for IPv6. This option can be specified multiple times (default: "
 "bind to all interfaces)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
-"Cannot obtain a lock on data directory %s. ANG Core is probably already "
+QT_TRANSLATE_NOOP("ang-core", ""
+"Cannot obtain a lock on data directory %s. Ang Core is probably already "
 "running."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Change automatic finalized budget voting behavior. mode=auto: Vote for only "
 "exact finalized budget match to my generated budget. (string, default: auto)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Continuously rate-limit free transactions to <n>*1000 bytes per minute "
 "(default:%u)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Create new files with system default permissions, instead of umask 077 (only "
 "effective with disabled wallet functionality)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Darksend uses exact denominated amounts to send funds, you might simply need "
 "to anonymize some more coins."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Delete all wallet transactions and only recover those parts of the "
 "blockchain through -rescan on startup"),
-QT_TRANSLATE_NOOP("ANG-core", ""
-"Disable all ANG specific functionality (Masternodes, Darksend, InstantX, "
+QT_TRANSLATE_NOOP("ang-core", ""
+"Disable all Ang specific functionality (Masternodes, Darksend, InstantX, "
 "Budgeting) (0-1, default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Distributed under the MIT software license, see the accompanying file "
 "COPYING or <http://www.opensource.org/licenses/mit-license.php>."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Enable instantx, show confirmations for locked transactions (bool, default: "
 "%s)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Enable use of automated darksend for funds stored in this wallet (0-1, "
 "default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Enter regression test mode, which uses a special chain in which blocks can "
 "be solved instantly."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Error: Listening for incoming connections failed (listen returned error %s)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Error: Unsupported argument -socks found. Setting SOCKS version isn't "
 "possible anymore, only SOCKS5 proxies are supported."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Execute command when a relevant alert is received or we see a really long "
 "fork (%s in cmd is replaced by message)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Execute command when a wallet transaction changes (%s in cmd is replaced by "
 "TxID)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Execute command when the best block changes (%s in cmd is replaced by block "
 "hash)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Fees (in ANG/Kb) smaller than this are considered zero fee for relaying "
 "(default: %s)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Fees (in ANG/Kb) smaller than this are considered zero fee for transaction "
 "creation (default: %s)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Flush database activity from memory pool to disk log every <n> megabytes "
 "(default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Found unconfirmed denominated outputs, will wait till they confirm to "
 "continue."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "How thorough the block verification of -checkblocks is (0-4, default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "If paytxfee is not set, include enough fee so transactions begin "
 "confirmation on average within n blocks (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "In this mode -genproclimit controls how many blocks are generated "
 "immediately."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "InstantX requires inputs with at least 6 confirmations, you might need to "
 "wait a few minutes and try again."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Invalid amount for -maxtxfee=<amount>: '%s' (must be at least the minrelay "
 "fee of %s to prevent stuck transactions)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Log transaction priority and fee per kB when mining blocks (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Maintain a full transaction index, used by the getrawtransaction rpc call "
 "(default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Maximum size of data in data carrier transactions we relay and mine "
 "(default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Maximum total fees to use in a single wallet transaction, setting too low "
 "may abort large transactions (default: %s)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Name to construct url for KeePass entry that stores the wallet passphrase"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Number of seconds to keep misbehaving peers from reconnecting (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Output debugging information (default: %u, supplying <category> is optional)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Provide liquidity to Darksend by infrequently mixing coins on a continual "
 "basis (0-100, default: %u, 1=very frequent, high fees, 100=very infrequent, "
 "low fees)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Query for peer addresses via DNS lookup, if low on addresses (default: 1 "
 "unless -connect)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Require high priority for relaying free or low-fee transactions (default:%u)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Send trace/debug info to console instead of debug.log file (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Set maximum size of high-priority/low-fee transactions in bytes (default: %d)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Set the number of script verification threads (%u to %d, 0 = auto, <0 = "
 "leave that many cores free, default: %d)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Set the number of threads for coin generation if enabled (-1 = all cores, "
 "default: %d)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Show N confirmations for a successfully locked transaction (0-9999, default: "
 "%u)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "This is a pre-release test build - use at your own risk - do not use for "
 "mining or merchant applications"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "This product includes software developed by the OpenSSL Project for use in "
 "the OpenSSL Toolkit <https://www.openssl.org/> and cryptographic software "
 "written by Eric Young and UPnP software written by Thomas Bernard."),
-QT_TRANSLATE_NOOP("ANG-core", ""
-"To use ANGd, or the -server option to ANG-qt, you must set an rpcpassword "
+QT_TRANSLATE_NOOP("ang-core", ""
+"To use angd, or the -server option to ang-qt, you must set an rpcpassword "
 "in the configuration file:\n"
 "%s\n"
 "It is recommended you use the following random password:\n"
-"rpcuser=ANGrpc\n"
+"rpcuser=angrpc\n"
 "rpcpassword=%s\n"
 "(you do not need to remember this password)\n"
 "The username and password MUST NOT be the same.\n"
 "If the file does not exist, create it with owner-readable-only file "
 "permissions.\n"
 "It is also recommended to set alertnotify so you are notified of problems;\n"
-"for example: alertnotify=echo %%s | mail -s \"ANG Alert\" admin@foo.com\n"),
-QT_TRANSLATE_NOOP("ANG-core", ""
-"Unable to bind to %s on this computer. ANG Core is probably already running."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+"for example: alertnotify=echo %%s | mail -s \"Ang Alert\" admin@foo.com\n"),
+QT_TRANSLATE_NOOP("ang-core", ""
+"Unable to bind to %s on this computer. Ang Core is probably already running."),
+QT_TRANSLATE_NOOP("ang-core", ""
 "Unable to locate enough Darksend denominated funds for this transaction."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Unable to locate enough Darksend non-denominated funds for this transaction "
 "that are not equal 1000 ANG."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Unable to locate enough funds for this transaction that are not equal 1000 "
 "ANG."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: "
 "%s)"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Warning: -maxtxfee is set very high! Fees this large could be paid on a "
 "single transaction."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Warning: -paytxfee is set very high! This is the transaction fee you will "
 "pay if you send a transaction."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Warning: Please check that your computer's date and time are correct! If "
-"your clock is wrong ANG Core will not work properly."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+"your clock is wrong Ang Core will not work properly."),
+QT_TRANSLATE_NOOP("ang-core", ""
 "Warning: The network does not appear to fully agree! Some miners appear to "
 "be experiencing issues."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Warning: We do not appear to fully agree with our peers! You may need to "
 "upgrade, or other nodes may need to upgrade."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Warning: error reading wallet.dat! All keys read correctly, but transaction "
 "data or address book entries might be missing or incorrect."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as "
 "wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect "
 "you should restore from a backup."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Whitelist peers connecting from the given netmask or IP address. Can be "
 "specified multiple times."),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "Whitelisted peers cannot be DoS banned and their transactions are always "
 "relayed, even if they are already in the mempool, useful e.g. for a gateway"),
-QT_TRANSLATE_NOOP("ANG-core", ""
+QT_TRANSLATE_NOOP("ang-core", ""
 "You must specify a masternodeprivkey in the configuration. Please see "
 "documentation for help."),
-QT_TRANSLATE_NOOP("ANG-core", "(9999 could be used only on mainnet)"),
-QT_TRANSLATE_NOOP("ANG-core", "(default: %s)"),
-QT_TRANSLATE_NOOP("ANG-core", "(default: 1)"),
-QT_TRANSLATE_NOOP("ANG-core", "(must be 9999 for mainnet)"),
-QT_TRANSLATE_NOOP("ANG-core", "<category> can be:\n"),
-QT_TRANSLATE_NOOP("ANG-core", "Accept command line and JSON-RPC commands"),
-QT_TRANSLATE_NOOP("ANG-core", "Accept connections from outside (default: 1 if no -proxy or -connect)"),
-QT_TRANSLATE_NOOP("ANG-core", "Accept public REST requests (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Acceptable ciphers (default: %s)"),
-QT_TRANSLATE_NOOP("ANG-core", "Add a node to connect to and attempt to keep the connection open"),
-QT_TRANSLATE_NOOP("ANG-core", "Allow DNS lookups for -addnode, -seednode and -connect"),
-QT_TRANSLATE_NOOP("ANG-core", "Already have that input."),
-QT_TRANSLATE_NOOP("ANG-core", "Always query for peer addresses via DNS lookup (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Attempt to recover private keys from a corrupt wallet.dat"),
-QT_TRANSLATE_NOOP("ANG-core", "Block creation options:"),
-QT_TRANSLATE_NOOP("ANG-core", "Can't denominate: no compatible inputs left."),
-QT_TRANSLATE_NOOP("ANG-core", "Can't find random Masternode."),
-QT_TRANSLATE_NOOP("ANG-core", "Can't mix while sync in progress."),
-QT_TRANSLATE_NOOP("ANG-core", "Cannot downgrade wallet"),
-QT_TRANSLATE_NOOP("ANG-core", "Cannot resolve -bind address: '%s'"),
-QT_TRANSLATE_NOOP("ANG-core", "Cannot resolve -externalip address: '%s'"),
-QT_TRANSLATE_NOOP("ANG-core", "Cannot resolve -whitebind address: '%s'"),
-QT_TRANSLATE_NOOP("ANG-core", "Cannot write default address"),
-QT_TRANSLATE_NOOP("ANG-core", "Collateral not valid."),
-QT_TRANSLATE_NOOP("ANG-core", "Connect only to the specified node(s)"),
-QT_TRANSLATE_NOOP("ANG-core", "Connect through SOCKS5 proxy"),
-QT_TRANSLATE_NOOP("ANG-core", "Connect to KeePassHttp on port <port> (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Connect to a node to retrieve peer addresses, and disconnect"),
-QT_TRANSLATE_NOOP("ANG-core", "Connection options:"),
-QT_TRANSLATE_NOOP("ANG-core", "Copyright (C) 2009-%i The Bitcoin Core Developers"),
-QT_TRANSLATE_NOOP("ANG-core", "Copyright (C) 2014-%i The ANG Core Developers"),
-QT_TRANSLATE_NOOP("ANG-core", "Corrupted block database detected"),
-QT_TRANSLATE_NOOP("ANG-core", "Could not parse -rpcbind value %s as network address"),
-QT_TRANSLATE_NOOP("ANG-core", "Could not parse masternode.conf"),
-QT_TRANSLATE_NOOP("ANG-core", "Darksend is idle."),
-QT_TRANSLATE_NOOP("ANG-core", "Darksend options:"),
-QT_TRANSLATE_NOOP("ANG-core", "Darksend request complete:"),
-QT_TRANSLATE_NOOP("ANG-core", "Darksend request incomplete:"),
-QT_TRANSLATE_NOOP("ANG-core", "Debugging/Testing options:"),
-QT_TRANSLATE_NOOP("ANG-core", "Disable safemode, override a real safe mode event (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Discover own IP address (default: 1 when listening and no -externalip)"),
-QT_TRANSLATE_NOOP("ANG-core", "Do not load the wallet and disable wallet RPC calls"),
-QT_TRANSLATE_NOOP("ANG-core", "Do you want to rebuild the block database now?"),
-QT_TRANSLATE_NOOP("ANG-core", "Done loading"),
-QT_TRANSLATE_NOOP("ANG-core", "Enable the client to act as a masternode (0-1, default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Entries are full."),
-QT_TRANSLATE_NOOP("ANG-core", "Error connecting to Masternode."),
-QT_TRANSLATE_NOOP("ANG-core", "Error initializing block database"),
-QT_TRANSLATE_NOOP("ANG-core", "Error initializing wallet database environment %s!"),
-QT_TRANSLATE_NOOP("ANG-core", "Error loading block database"),
-QT_TRANSLATE_NOOP("ANG-core", "Error loading wallet.dat"),
-QT_TRANSLATE_NOOP("ANG-core", "Error loading wallet.dat: Wallet corrupted"),
-QT_TRANSLATE_NOOP("ANG-core", "Error loading wallet.dat: Wallet requires newer version of ANG Core"),
-QT_TRANSLATE_NOOP("ANG-core", "Error opening block database"),
-QT_TRANSLATE_NOOP("ANG-core", "Error reading from database, shutting down."),
-QT_TRANSLATE_NOOP("ANG-core", "Error recovering public key."),
-QT_TRANSLATE_NOOP("ANG-core", "Error"),
-QT_TRANSLATE_NOOP("ANG-core", "Error: A fatal internal error occured, see debug.log for details"),
-QT_TRANSLATE_NOOP("ANG-core", "Error: Can't select current denominated inputs"),
-QT_TRANSLATE_NOOP("ANG-core", "Error: Disk space is low!"),
-QT_TRANSLATE_NOOP("ANG-core", "Error: Unsupported argument -tor found, use -onion."),
-QT_TRANSLATE_NOOP("ANG-core", "Error: Wallet locked, unable to create transaction!"),
-QT_TRANSLATE_NOOP("ANG-core", "Error: You already have pending entries in the Darksend pool"),
-QT_TRANSLATE_NOOP("ANG-core", "Failed to listen on any port. Use -listen=0 if you want this."),
-QT_TRANSLATE_NOOP("ANG-core", "Failed to read block"),
-QT_TRANSLATE_NOOP("ANG-core", "Fee (in ANG/kB) to add to transactions you send (default: %s)"),
-QT_TRANSLATE_NOOP("ANG-core", "Finalizing transaction."),
-QT_TRANSLATE_NOOP("ANG-core", "Force safe mode (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Found enough users, signing ( waiting %s )"),
-QT_TRANSLATE_NOOP("ANG-core", "Found enough users, signing ..."),
-QT_TRANSLATE_NOOP("ANG-core", "Generate coins (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "How many blocks to check at startup (default: %u, 0 = all)"),
-QT_TRANSLATE_NOOP("ANG-core", "If <category> is not supplied, output all debugging information."),
-QT_TRANSLATE_NOOP("ANG-core", "Importing..."),
-QT_TRANSLATE_NOOP("ANG-core", "Imports blocks from external blk000??.dat file"),
-QT_TRANSLATE_NOOP("ANG-core", "Include IP addresses in debug output (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Incompatible mode."),
-QT_TRANSLATE_NOOP("ANG-core", "Incompatible version."),
-QT_TRANSLATE_NOOP("ANG-core", "Incorrect or no genesis block found. Wrong datadir for network?"),
-QT_TRANSLATE_NOOP("ANG-core", "Information"),
-QT_TRANSLATE_NOOP("ANG-core", "Initialization sanity check failed. ANG Core is shutting down."),
-QT_TRANSLATE_NOOP("ANG-core", "Input is not valid."),
-QT_TRANSLATE_NOOP("ANG-core", "InstantX options:"),
-QT_TRANSLATE_NOOP("ANG-core", "Insufficient funds."),
-QT_TRANSLATE_NOOP("ANG-core", "Invalid -onion address: '%s'"),
-QT_TRANSLATE_NOOP("ANG-core", "Invalid -proxy address: '%s'"),
-QT_TRANSLATE_NOOP("ANG-core", "Invalid amount for -maxtxfee=<amount>: '%s'"),
-QT_TRANSLATE_NOOP("ANG-core", "Invalid amount for -minrelaytxfee=<amount>: '%s'"),
-QT_TRANSLATE_NOOP("ANG-core", "Invalid amount for -mintxfee=<amount>: '%s'"),
-QT_TRANSLATE_NOOP("ANG-core", "Invalid amount for -paytxfee=<amount>: '%s' (must be at least %s)"),
-QT_TRANSLATE_NOOP("ANG-core", "Invalid amount for -paytxfee=<amount>: '%s'"),
-QT_TRANSLATE_NOOP("ANG-core", "Invalid masternodeprivkey. Please see documenation."),
-QT_TRANSLATE_NOOP("ANG-core", "Invalid netmask specified in -whitelist: '%s'"),
-QT_TRANSLATE_NOOP("ANG-core", "Invalid port detected in masternode.conf"),
-QT_TRANSLATE_NOOP("ANG-core", "Invalid private key."),
-QT_TRANSLATE_NOOP("ANG-core", "Invalid script detected."),
-QT_TRANSLATE_NOOP("ANG-core", "KeePassHttp id for the established association"),
-QT_TRANSLATE_NOOP("ANG-core", "KeePassHttp key for AES encrypted communication with KeePass"),
-QT_TRANSLATE_NOOP("ANG-core", "Keep N ANG anonymized (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Keep at most <n> unconnectable transactions in memory (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Last Darksend was too recent."),
-QT_TRANSLATE_NOOP("ANG-core", "Last successful Darksend action was too recent."),
-QT_TRANSLATE_NOOP("ANG-core", "Limit size of signature cache to <n> entries (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Line: %d"),
-QT_TRANSLATE_NOOP("ANG-core", "Listen for JSON-RPC connections on <port> (default: %u or testnet: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Listen for connections on <port> (default: %u or testnet: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Loading addresses..."),
-QT_TRANSLATE_NOOP("ANG-core", "Loading block index..."),
-QT_TRANSLATE_NOOP("ANG-core", "Loading budget cache..."),
-QT_TRANSLATE_NOOP("ANG-core", "Loading masternode cache..."),
-QT_TRANSLATE_NOOP("ANG-core", "Loading masternode payment cache..."),
-QT_TRANSLATE_NOOP("ANG-core", "Loading wallet... (%3.2f %%)"),
-QT_TRANSLATE_NOOP("ANG-core", "Loading wallet..."),
-QT_TRANSLATE_NOOP("ANG-core", "Lock is already in place."),
-QT_TRANSLATE_NOOP("ANG-core", "Lock masternodes from masternode configuration file (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Maintain at most <n> connections to peers (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Masternode options:"),
-QT_TRANSLATE_NOOP("ANG-core", "Masternode queue is full."),
-QT_TRANSLATE_NOOP("ANG-core", "Masternode:"),
-QT_TRANSLATE_NOOP("ANG-core", "Maximum per-connection receive buffer, <n>*1000 bytes (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Maximum per-connection send buffer, <n>*1000 bytes (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Missing input transaction information."),
-QT_TRANSLATE_NOOP("ANG-core", "Mixing in progress..."),
-QT_TRANSLATE_NOOP("ANG-core", "Need to specify a port with -whitebind: '%s'"),
-QT_TRANSLATE_NOOP("ANG-core", "No Masternodes detected."),
-QT_TRANSLATE_NOOP("ANG-core", "No compatible Masternode found."),
-QT_TRANSLATE_NOOP("ANG-core", "No funds detected in need of denominating."),
-QT_TRANSLATE_NOOP("ANG-core", "No matching denominations found for mixing."),
-QT_TRANSLATE_NOOP("ANG-core", "Node relay options:"),
-QT_TRANSLATE_NOOP("ANG-core", "Non-standard public key detected."),
-QT_TRANSLATE_NOOP("ANG-core", "Not compatible with existing transactions."),
-QT_TRANSLATE_NOOP("ANG-core", "Not enough file descriptors available."),
-QT_TRANSLATE_NOOP("ANG-core", "Not in the Masternode list."),
-QT_TRANSLATE_NOOP("ANG-core", "Number of automatic wallet backups (default: 10)"),
-QT_TRANSLATE_NOOP("ANG-core", "Only accept block chain matching built-in checkpoints (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Only connect to nodes in network <net> (ipv4, ipv6 or onion)"),
-QT_TRANSLATE_NOOP("ANG-core", "Options:"),
-QT_TRANSLATE_NOOP("ANG-core", "Password for JSON-RPC connections"),
-QT_TRANSLATE_NOOP("ANG-core", "Prepend debug output with timestamp (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)"),
-QT_TRANSLATE_NOOP("ANG-core", "RPC server options:"),
-QT_TRANSLATE_NOOP("ANG-core", "RPC support for HTTP persistent connections (default: %d)"),
-QT_TRANSLATE_NOOP("ANG-core", "Randomly drop 1 of every <n> network messages"),
-QT_TRANSLATE_NOOP("ANG-core", "Randomly fuzz 1 of every <n> network messages"),
-QT_TRANSLATE_NOOP("ANG-core", "Rebuild block chain index from current blk000??.dat files"),
-QT_TRANSLATE_NOOP("ANG-core", "Receive and display P2P network alerts (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Relay and mine data carrier transactions (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Relay non-P2SH multisig (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Rescan the block chain for missing wallet transactions"),
-QT_TRANSLATE_NOOP("ANG-core", "Rescanning..."),
-QT_TRANSLATE_NOOP("ANG-core", "Run a thread to flush wallet periodically (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Run in the background as a daemon and accept commands"),
-QT_TRANSLATE_NOOP("ANG-core", "Send trace/debug info to debug.log file (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Send transactions as zero-fee transactions if possible (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Server certificate file (default: %s)"),
-QT_TRANSLATE_NOOP("ANG-core", "Server private key (default: %s)"),
-QT_TRANSLATE_NOOP("ANG-core", "Session not complete!"),
-QT_TRANSLATE_NOOP("ANG-core", "Session timed out."),
-QT_TRANSLATE_NOOP("ANG-core", "Set database cache size in megabytes (%d to %d, default: %d)"),
-QT_TRANSLATE_NOOP("ANG-core", "Set external address:port to get to this masternode (example: %s)"),
-QT_TRANSLATE_NOOP("ANG-core", "Set key pool size to <n> (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Set maximum block size in bytes (default: %d)"),
-QT_TRANSLATE_NOOP("ANG-core", "Set minimum block size in bytes (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Set the masternode private key"),
-QT_TRANSLATE_NOOP("ANG-core", "Set the number of threads to service RPC calls (default: %d)"),
-QT_TRANSLATE_NOOP("ANG-core", "Sets the DB_PRIVATE flag in the wallet db environment (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Show all debugging options (usage: --help -help-debug)"),
-QT_TRANSLATE_NOOP("ANG-core", "Shrink debug.log file on client startup (default: 1 when no -debug)"),
-QT_TRANSLATE_NOOP("ANG-core", "Signing failed."),
-QT_TRANSLATE_NOOP("ANG-core", "Signing timed out."),
-QT_TRANSLATE_NOOP("ANG-core", "Signing transaction failed"),
-QT_TRANSLATE_NOOP("ANG-core", "Specify configuration file (default: %s)"),
-QT_TRANSLATE_NOOP("ANG-core", "Specify connection timeout in milliseconds (minimum: 1, default: %d)"),
-QT_TRANSLATE_NOOP("ANG-core", "Specify data directory"),
-QT_TRANSLATE_NOOP("ANG-core", "Specify masternode configuration file (default: %s)"),
-QT_TRANSLATE_NOOP("ANG-core", "Specify pid file (default: %s)"),
-QT_TRANSLATE_NOOP("ANG-core", "Specify wallet file (within data directory)"),
-QT_TRANSLATE_NOOP("ANG-core", "Specify your own public address"),
-QT_TRANSLATE_NOOP("ANG-core", "Spend unconfirmed change when sending transactions (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Stop running after importing blocks from disk (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Submitted following entries to masternode: %u / %d"),
-QT_TRANSLATE_NOOP("ANG-core", "Submitted to masternode, waiting for more entries ( %u / %d ) %s"),
-QT_TRANSLATE_NOOP("ANG-core", "Submitted to masternode, waiting in queue %s"),
-QT_TRANSLATE_NOOP("ANG-core", "Synchronization failed"),
-QT_TRANSLATE_NOOP("ANG-core", "Synchronization finished"),
-QT_TRANSLATE_NOOP("ANG-core", "Synchronization pending..."),
-QT_TRANSLATE_NOOP("ANG-core", "Synchronizing budgets..."),
-QT_TRANSLATE_NOOP("ANG-core", "Synchronizing masternode winners..."),
-QT_TRANSLATE_NOOP("ANG-core", "Synchronizing masternodes..."),
-QT_TRANSLATE_NOOP("ANG-core", "Synchronizing sporks..."),
-QT_TRANSLATE_NOOP("ANG-core", "This help message"),
-QT_TRANSLATE_NOOP("ANG-core", "This is experimental software."),
-QT_TRANSLATE_NOOP("ANG-core", "This is intended for regression testing tools and app development."),
-QT_TRANSLATE_NOOP("ANG-core", "This is not a Masternode."),
-QT_TRANSLATE_NOOP("ANG-core", "Threshold for disconnecting misbehaving peers (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Transaction amount too small"),
-QT_TRANSLATE_NOOP("ANG-core", "Transaction amounts must be positive"),
-QT_TRANSLATE_NOOP("ANG-core", "Transaction created successfully."),
-QT_TRANSLATE_NOOP("ANG-core", "Transaction fees are too high."),
-QT_TRANSLATE_NOOP("ANG-core", "Transaction not valid."),
-QT_TRANSLATE_NOOP("ANG-core", "Transaction too large for fee policy"),
-QT_TRANSLATE_NOOP("ANG-core", "Transaction too large"),
-QT_TRANSLATE_NOOP("ANG-core", "Transmitting final transaction."),
-QT_TRANSLATE_NOOP("ANG-core", "Unable to bind to %s on this computer (bind returned error %s)"),
-QT_TRANSLATE_NOOP("ANG-core", "Unable to sign spork message, wrong key?"),
-QT_TRANSLATE_NOOP("ANG-core", "Unknown network specified in -onlynet: '%s'"),
-QT_TRANSLATE_NOOP("ANG-core", "Unknown state: id = %u"),
-QT_TRANSLATE_NOOP("ANG-core", "Upgrade wallet to latest format"),
-QT_TRANSLATE_NOOP("ANG-core", "Use KeePass 2 integration using KeePassHttp plugin (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Use N separate masternodes to anonymize funds  (2-8, default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Use OpenSSL (https) for JSON-RPC connections"),
-QT_TRANSLATE_NOOP("ANG-core", "Use UPnP to map the listening port (default: %u)"),
-QT_TRANSLATE_NOOP("ANG-core", "Use UPnP to map the listening port (default: 1 when listening)"),
-QT_TRANSLATE_NOOP("ANG-core", "Use the test network"),
-QT_TRANSLATE_NOOP("ANG-core", "Username for JSON-RPC connections"),
-QT_TRANSLATE_NOOP("ANG-core", "Value more than Darksend pool maximum allows."),
-QT_TRANSLATE_NOOP("ANG-core", "Verifying blocks..."),
-QT_TRANSLATE_NOOP("ANG-core", "Verifying wallet..."),
-QT_TRANSLATE_NOOP("ANG-core", "Wallet %s resides outside data directory %s"),
-QT_TRANSLATE_NOOP("ANG-core", "Wallet is locked."),
-QT_TRANSLATE_NOOP("ANG-core", "Wallet needed to be rewritten: restart ANG Core to complete"),
-QT_TRANSLATE_NOOP("ANG-core", "Wallet options:"),
-QT_TRANSLATE_NOOP("ANG-core", "Wallet window title"),
-QT_TRANSLATE_NOOP("ANG-core", "Warning"),
-QT_TRANSLATE_NOOP("ANG-core", "Warning: This version is obsolete, upgrade required!"),
-QT_TRANSLATE_NOOP("ANG-core", "Warning: Unsupported argument -benchmark ignored, use -debug=bench."),
-QT_TRANSLATE_NOOP("ANG-core", "Warning: Unsupported argument -debugnet ignored, use -debug=net."),
-QT_TRANSLATE_NOOP("ANG-core", "Will retry..."),
-QT_TRANSLATE_NOOP("ANG-core", "You need to rebuild the database using -reindex to change -txindex"),
-QT_TRANSLATE_NOOP("ANG-core", "Your entries added successfully."),
-QT_TRANSLATE_NOOP("ANG-core", "Your transaction was accepted into the pool!"),
-QT_TRANSLATE_NOOP("ANG-core", "Zapping all transactions from wallet..."),
-QT_TRANSLATE_NOOP("ANG-core", "on startup"),
-QT_TRANSLATE_NOOP("ANG-core", "wallet.dat corrupt, salvage failed"),
+QT_TRANSLATE_NOOP("ang-core", "(9999 could be used only on mainnet)"),
+QT_TRANSLATE_NOOP("ang-core", "(default: %s)"),
+QT_TRANSLATE_NOOP("ang-core", "(default: 1)"),
+QT_TRANSLATE_NOOP("ang-core", "(must be 9999 for mainnet)"),
+QT_TRANSLATE_NOOP("ang-core", "<category> can be:\n"),
+QT_TRANSLATE_NOOP("ang-core", "Accept command line and JSON-RPC commands"),
+QT_TRANSLATE_NOOP("ang-core", "Accept connections from outside (default: 1 if no -proxy or -connect)"),
+QT_TRANSLATE_NOOP("ang-core", "Accept public REST requests (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Acceptable ciphers (default: %s)"),
+QT_TRANSLATE_NOOP("ang-core", "Add a node to connect to and attempt to keep the connection open"),
+QT_TRANSLATE_NOOP("ang-core", "Allow DNS lookups for -addnode, -seednode and -connect"),
+QT_TRANSLATE_NOOP("ang-core", "Already have that input."),
+QT_TRANSLATE_NOOP("ang-core", "Always query for peer addresses via DNS lookup (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Attempt to recover private keys from a corrupt wallet.dat"),
+QT_TRANSLATE_NOOP("ang-core", "Block creation options:"),
+QT_TRANSLATE_NOOP("ang-core", "Can't denominate: no compatible inputs left."),
+QT_TRANSLATE_NOOP("ang-core", "Can't find random Masternode."),
+QT_TRANSLATE_NOOP("ang-core", "Can't mix while sync in progress."),
+QT_TRANSLATE_NOOP("ang-core", "Cannot downgrade wallet"),
+QT_TRANSLATE_NOOP("ang-core", "Cannot resolve -bind address: '%s'"),
+QT_TRANSLATE_NOOP("ang-core", "Cannot resolve -externalip address: '%s'"),
+QT_TRANSLATE_NOOP("ang-core", "Cannot resolve -whitebind address: '%s'"),
+QT_TRANSLATE_NOOP("ang-core", "Cannot write default address"),
+QT_TRANSLATE_NOOP("ang-core", "Collateral not valid."),
+QT_TRANSLATE_NOOP("ang-core", "Connect only to the specified node(s)"),
+QT_TRANSLATE_NOOP("ang-core", "Connect through SOCKS5 proxy"),
+QT_TRANSLATE_NOOP("ang-core", "Connect to KeePassHttp on port <port> (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Connect to a node to retrieve peer addresses, and disconnect"),
+QT_TRANSLATE_NOOP("ang-core", "Connection options:"),
+QT_TRANSLATE_NOOP("ang-core", "Copyright (C) 2009-%i The Bitcoin Core Developers"),
+QT_TRANSLATE_NOOP("ang-core", "Copyright (C) 2014-%i The Ang Core Developers"),
+QT_TRANSLATE_NOOP("ang-core", "Corrupted block database detected"),
+QT_TRANSLATE_NOOP("ang-core", "Could not parse -rpcbind value %s as network address"),
+QT_TRANSLATE_NOOP("ang-core", "Could not parse masternode.conf"),
+QT_TRANSLATE_NOOP("ang-core", "Darksend is idle."),
+QT_TRANSLATE_NOOP("ang-core", "Darksend options:"),
+QT_TRANSLATE_NOOP("ang-core", "Darksend request complete:"),
+QT_TRANSLATE_NOOP("ang-core", "Darksend request incomplete:"),
+QT_TRANSLATE_NOOP("ang-core", "Debugging/Testing options:"),
+QT_TRANSLATE_NOOP("ang-core", "Disable safemode, override a real safe mode event (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Discover own IP address (default: 1 when listening and no -externalip)"),
+QT_TRANSLATE_NOOP("ang-core", "Do not load the wallet and disable wallet RPC calls"),
+QT_TRANSLATE_NOOP("ang-core", "Do you want to rebuild the block database now?"),
+QT_TRANSLATE_NOOP("ang-core", "Done loading"),
+QT_TRANSLATE_NOOP("ang-core", "Enable the client to act as a masternode (0-1, default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Entries are full."),
+QT_TRANSLATE_NOOP("ang-core", "Error connecting to Masternode."),
+QT_TRANSLATE_NOOP("ang-core", "Error initializing block database"),
+QT_TRANSLATE_NOOP("ang-core", "Error initializing wallet database environment %s!"),
+QT_TRANSLATE_NOOP("ang-core", "Error loading block database"),
+QT_TRANSLATE_NOOP("ang-core", "Error loading wallet.dat"),
+QT_TRANSLATE_NOOP("ang-core", "Error loading wallet.dat: Wallet corrupted"),
+QT_TRANSLATE_NOOP("ang-core", "Error loading wallet.dat: Wallet requires newer version of Ang Core"),
+QT_TRANSLATE_NOOP("ang-core", "Error opening block database"),
+QT_TRANSLATE_NOOP("ang-core", "Error reading from database, shutting down."),
+QT_TRANSLATE_NOOP("ang-core", "Error recovering public key."),
+QT_TRANSLATE_NOOP("ang-core", "Error"),
+QT_TRANSLATE_NOOP("ang-core", "Error: A fatal internal error occured, see debug.log for details"),
+QT_TRANSLATE_NOOP("ang-core", "Error: Can't select current denominated inputs"),
+QT_TRANSLATE_NOOP("ang-core", "Error: Disk space is low!"),
+QT_TRANSLATE_NOOP("ang-core", "Error: Unsupported argument -tor found, use -onion."),
+QT_TRANSLATE_NOOP("ang-core", "Error: Wallet locked, unable to create transaction!"),
+QT_TRANSLATE_NOOP("ang-core", "Error: You already have pending entries in the Darksend pool"),
+QT_TRANSLATE_NOOP("ang-core", "Failed to listen on any port. Use -listen=0 if you want this."),
+QT_TRANSLATE_NOOP("ang-core", "Failed to read block"),
+QT_TRANSLATE_NOOP("ang-core", "Fee (in ANG/kB) to add to transactions you send (default: %s)"),
+QT_TRANSLATE_NOOP("ang-core", "Finalizing transaction."),
+QT_TRANSLATE_NOOP("ang-core", "Force safe mode (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Found enough users, signing ( waiting %s )"),
+QT_TRANSLATE_NOOP("ang-core", "Found enough users, signing ..."),
+QT_TRANSLATE_NOOP("ang-core", "Generate coins (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "How many blocks to check at startup (default: %u, 0 = all)"),
+QT_TRANSLATE_NOOP("ang-core", "If <category> is not supplied, output all debugging information."),
+QT_TRANSLATE_NOOP("ang-core", "Importing..."),
+QT_TRANSLATE_NOOP("ang-core", "Imports blocks from external blk000??.dat file"),
+QT_TRANSLATE_NOOP("ang-core", "Include IP addresses in debug output (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Incompatible mode."),
+QT_TRANSLATE_NOOP("ang-core", "Incompatible version."),
+QT_TRANSLATE_NOOP("ang-core", "Incorrect or no genesis block found. Wrong datadir for network?"),
+QT_TRANSLATE_NOOP("ang-core", "Information"),
+QT_TRANSLATE_NOOP("ang-core", "Initialization sanity check failed. Ang Core is shutting down."),
+QT_TRANSLATE_NOOP("ang-core", "Input is not valid."),
+QT_TRANSLATE_NOOP("ang-core", "InstantX options:"),
+QT_TRANSLATE_NOOP("ang-core", "Insufficient funds."),
+QT_TRANSLATE_NOOP("ang-core", "Invalid -onion address: '%s'"),
+QT_TRANSLATE_NOOP("ang-core", "Invalid -proxy address: '%s'"),
+QT_TRANSLATE_NOOP("ang-core", "Invalid amount for -maxtxfee=<amount>: '%s'"),
+QT_TRANSLATE_NOOP("ang-core", "Invalid amount for -minrelaytxfee=<amount>: '%s'"),
+QT_TRANSLATE_NOOP("ang-core", "Invalid amount for -mintxfee=<amount>: '%s'"),
+QT_TRANSLATE_NOOP("ang-core", "Invalid amount for -paytxfee=<amount>: '%s' (must be at least %s)"),
+QT_TRANSLATE_NOOP("ang-core", "Invalid amount for -paytxfee=<amount>: '%s'"),
+QT_TRANSLATE_NOOP("ang-core", "Invalid masternodeprivkey. Please see documenation."),
+QT_TRANSLATE_NOOP("ang-core", "Invalid netmask specified in -whitelist: '%s'"),
+QT_TRANSLATE_NOOP("ang-core", "Invalid port detected in masternode.conf"),
+QT_TRANSLATE_NOOP("ang-core", "Invalid private key."),
+QT_TRANSLATE_NOOP("ang-core", "Invalid script detected."),
+QT_TRANSLATE_NOOP("ang-core", "KeePassHttp id for the established association"),
+QT_TRANSLATE_NOOP("ang-core", "KeePassHttp key for AES encrypted communication with KeePass"),
+QT_TRANSLATE_NOOP("ang-core", "Keep N ANG anonymized (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Keep at most <n> unconnectable transactions in memory (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Last Darksend was too recent."),
+QT_TRANSLATE_NOOP("ang-core", "Last successful Darksend action was too recent."),
+QT_TRANSLATE_NOOP("ang-core", "Limit size of signature cache to <n> entries (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Line: %d"),
+QT_TRANSLATE_NOOP("ang-core", "Listen for JSON-RPC connections on <port> (default: %u or testnet: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Listen for connections on <port> (default: %u or testnet: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Loading addresses..."),
+QT_TRANSLATE_NOOP("ang-core", "Loading block index..."),
+QT_TRANSLATE_NOOP("ang-core", "Loading budget cache..."),
+QT_TRANSLATE_NOOP("ang-core", "Loading masternode cache..."),
+QT_TRANSLATE_NOOP("ang-core", "Loading masternode payment cache..."),
+QT_TRANSLATE_NOOP("ang-core", "Loading wallet... (%3.2f %%)"),
+QT_TRANSLATE_NOOP("ang-core", "Loading wallet..."),
+QT_TRANSLATE_NOOP("ang-core", "Lock is already in place."),
+QT_TRANSLATE_NOOP("ang-core", "Lock masternodes from masternode configuration file (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Maintain at most <n> connections to peers (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Masternode options:"),
+QT_TRANSLATE_NOOP("ang-core", "Masternode queue is full."),
+QT_TRANSLATE_NOOP("ang-core", "Masternode:"),
+QT_TRANSLATE_NOOP("ang-core", "Maximum per-connection receive buffer, <n>*1000 bytes (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Maximum per-connection send buffer, <n>*1000 bytes (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Missing input transaction information."),
+QT_TRANSLATE_NOOP("ang-core", "Mixing in progress..."),
+QT_TRANSLATE_NOOP("ang-core", "Need to specify a port with -whitebind: '%s'"),
+QT_TRANSLATE_NOOP("ang-core", "No Masternodes detected."),
+QT_TRANSLATE_NOOP("ang-core", "No compatible Masternode found."),
+QT_TRANSLATE_NOOP("ang-core", "No funds detected in need of denominating."),
+QT_TRANSLATE_NOOP("ang-core", "No matching denominations found for mixing."),
+QT_TRANSLATE_NOOP("ang-core", "Node relay options:"),
+QT_TRANSLATE_NOOP("ang-core", "Non-standard public key detected."),
+QT_TRANSLATE_NOOP("ang-core", "Not compatible with existing transactions."),
+QT_TRANSLATE_NOOP("ang-core", "Not enough file descriptors available."),
+QT_TRANSLATE_NOOP("ang-core", "Not in the Masternode list."),
+QT_TRANSLATE_NOOP("ang-core", "Number of automatic wallet backups (default: 10)"),
+QT_TRANSLATE_NOOP("ang-core", "Only accept block chain matching built-in checkpoints (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Only connect to nodes in network <net> (ipv4, ipv6 or onion)"),
+QT_TRANSLATE_NOOP("ang-core", "Options:"),
+QT_TRANSLATE_NOOP("ang-core", "Password for JSON-RPC connections"),
+QT_TRANSLATE_NOOP("ang-core", "Prepend debug output with timestamp (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)"),
+QT_TRANSLATE_NOOP("ang-core", "RPC server options:"),
+QT_TRANSLATE_NOOP("ang-core", "RPC support for HTTP persistent connections (default: %d)"),
+QT_TRANSLATE_NOOP("ang-core", "Randomly drop 1 of every <n> network messages"),
+QT_TRANSLATE_NOOP("ang-core", "Randomly fuzz 1 of every <n> network messages"),
+QT_TRANSLATE_NOOP("ang-core", "Rebuild block chain index from current blk000??.dat files"),
+QT_TRANSLATE_NOOP("ang-core", "Receive and display P2P network alerts (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Relay and mine data carrier transactions (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Relay non-P2SH multisig (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Rescan the block chain for missing wallet transactions"),
+QT_TRANSLATE_NOOP("ang-core", "Rescanning..."),
+QT_TRANSLATE_NOOP("ang-core", "Run a thread to flush wallet periodically (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Run in the background as a daemon and accept commands"),
+QT_TRANSLATE_NOOP("ang-core", "Send trace/debug info to debug.log file (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Send transactions as zero-fee transactions if possible (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Server certificate file (default: %s)"),
+QT_TRANSLATE_NOOP("ang-core", "Server private key (default: %s)"),
+QT_TRANSLATE_NOOP("ang-core", "Session not complete!"),
+QT_TRANSLATE_NOOP("ang-core", "Session timed out."),
+QT_TRANSLATE_NOOP("ang-core", "Set database cache size in megabytes (%d to %d, default: %d)"),
+QT_TRANSLATE_NOOP("ang-core", "Set external address:port to get to this masternode (example: %s)"),
+QT_TRANSLATE_NOOP("ang-core", "Set key pool size to <n> (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Set maximum block size in bytes (default: %d)"),
+QT_TRANSLATE_NOOP("ang-core", "Set minimum block size in bytes (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Set the masternode private key"),
+QT_TRANSLATE_NOOP("ang-core", "Set the number of threads to service RPC calls (default: %d)"),
+QT_TRANSLATE_NOOP("ang-core", "Sets the DB_PRIVATE flag in the wallet db environment (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Show all debugging options (usage: --help -help-debug)"),
+QT_TRANSLATE_NOOP("ang-core", "Shrink debug.log file on client startup (default: 1 when no -debug)"),
+QT_TRANSLATE_NOOP("ang-core", "Signing failed."),
+QT_TRANSLATE_NOOP("ang-core", "Signing timed out."),
+QT_TRANSLATE_NOOP("ang-core", "Signing transaction failed"),
+QT_TRANSLATE_NOOP("ang-core", "Specify configuration file (default: %s)"),
+QT_TRANSLATE_NOOP("ang-core", "Specify connection timeout in milliseconds (minimum: 1, default: %d)"),
+QT_TRANSLATE_NOOP("ang-core", "Specify data directory"),
+QT_TRANSLATE_NOOP("ang-core", "Specify masternode configuration file (default: %s)"),
+QT_TRANSLATE_NOOP("ang-core", "Specify pid file (default: %s)"),
+QT_TRANSLATE_NOOP("ang-core", "Specify wallet file (within data directory)"),
+QT_TRANSLATE_NOOP("ang-core", "Specify your own public address"),
+QT_TRANSLATE_NOOP("ang-core", "Spend unconfirmed change when sending transactions (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Stop running after importing blocks from disk (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Submitted following entries to masternode: %u / %d"),
+QT_TRANSLATE_NOOP("ang-core", "Submitted to masternode, waiting for more entries ( %u / %d ) %s"),
+QT_TRANSLATE_NOOP("ang-core", "Submitted to masternode, waiting in queue %s"),
+QT_TRANSLATE_NOOP("ang-core", "Synchronization failed"),
+QT_TRANSLATE_NOOP("ang-core", "Synchronization finished"),
+QT_TRANSLATE_NOOP("ang-core", "Synchronization pending..."),
+QT_TRANSLATE_NOOP("ang-core", "Synchronizing budgets..."),
+QT_TRANSLATE_NOOP("ang-core", "Synchronizing masternode winners..."),
+QT_TRANSLATE_NOOP("ang-core", "Synchronizing masternodes..."),
+QT_TRANSLATE_NOOP("ang-core", "Synchronizing sporks..."),
+QT_TRANSLATE_NOOP("ang-core", "This help message"),
+QT_TRANSLATE_NOOP("ang-core", "This is experimental software."),
+QT_TRANSLATE_NOOP("ang-core", "This is intended for regression testing tools and app development."),
+QT_TRANSLATE_NOOP("ang-core", "This is not a Masternode."),
+QT_TRANSLATE_NOOP("ang-core", "Threshold for disconnecting misbehaving peers (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Transaction amount too small"),
+QT_TRANSLATE_NOOP("ang-core", "Transaction amounts must be positive"),
+QT_TRANSLATE_NOOP("ang-core", "Transaction created successfully."),
+QT_TRANSLATE_NOOP("ang-core", "Transaction fees are too high."),
+QT_TRANSLATE_NOOP("ang-core", "Transaction not valid."),
+QT_TRANSLATE_NOOP("ang-core", "Transaction too large for fee policy"),
+QT_TRANSLATE_NOOP("ang-core", "Transaction too large"),
+QT_TRANSLATE_NOOP("ang-core", "Transmitting final transaction."),
+QT_TRANSLATE_NOOP("ang-core", "Unable to bind to %s on this computer (bind returned error %s)"),
+QT_TRANSLATE_NOOP("ang-core", "Unable to sign spork message, wrong key?"),
+QT_TRANSLATE_NOOP("ang-core", "Unknown network specified in -onlynet: '%s'"),
+QT_TRANSLATE_NOOP("ang-core", "Unknown state: id = %u"),
+QT_TRANSLATE_NOOP("ang-core", "Upgrade wallet to latest format"),
+QT_TRANSLATE_NOOP("ang-core", "Use KeePass 2 integration using KeePassHttp plugin (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Use N separate masternodes to anonymize funds  (2-8, default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Use OpenSSL (https) for JSON-RPC connections"),
+QT_TRANSLATE_NOOP("ang-core", "Use UPnP to map the listening port (default: %u)"),
+QT_TRANSLATE_NOOP("ang-core", "Use UPnP to map the listening port (default: 1 when listening)"),
+QT_TRANSLATE_NOOP("ang-core", "Use the test network"),
+QT_TRANSLATE_NOOP("ang-core", "Username for JSON-RPC connections"),
+QT_TRANSLATE_NOOP("ang-core", "Value more than Darksend pool maximum allows."),
+QT_TRANSLATE_NOOP("ang-core", "Verifying blocks..."),
+QT_TRANSLATE_NOOP("ang-core", "Verifying wallet..."),
+QT_TRANSLATE_NOOP("ang-core", "Wallet %s resides outside data directory %s"),
+QT_TRANSLATE_NOOP("ang-core", "Wallet is locked."),
+QT_TRANSLATE_NOOP("ang-core", "Wallet needed to be rewritten: restart Ang Core to complete"),
+QT_TRANSLATE_NOOP("ang-core", "Wallet options:"),
+QT_TRANSLATE_NOOP("ang-core", "Wallet window title"),
+QT_TRANSLATE_NOOP("ang-core", "Warning"),
+QT_TRANSLATE_NOOP("ang-core", "Warning: This version is obsolete, upgrade required!"),
+QT_TRANSLATE_NOOP("ang-core", "Warning: Unsupported argument -benchmark ignored, use -debug=bench."),
+QT_TRANSLATE_NOOP("ang-core", "Warning: Unsupported argument -debugnet ignored, use -debug=net."),
+QT_TRANSLATE_NOOP("ang-core", "Will retry..."),
+QT_TRANSLATE_NOOP("ang-core", "You need to rebuild the database using -reindex to change -txindex"),
+QT_TRANSLATE_NOOP("ang-core", "Your entries added successfully."),
+QT_TRANSLATE_NOOP("ang-core", "Your transaction was accepted into the pool!"),
+QT_TRANSLATE_NOOP("ang-core", "Zapping all transactions from wallet..."),
+QT_TRANSLATE_NOOP("ang-core", "on startup"),
+QT_TRANSLATE_NOOP("ang-core", "wallet.dat corrupt, salvage failed"),
 };

@@ -2,24 +2,24 @@
 
 # backward compatibility for existing gentoo layout 
 #
-if [ -d "/var/lib/ANG/.ANG" ]; then
-	BITCOIND_DEFAULT_DATADIR="/var/lib/ANG/.ANG"
+if [ -d "/var/lib/ang/.ang" ]; then
+	BITCOIND_DEFAULT_DATADIR="/var/lib/ang/.ang"
 else
-	BITCOIND_DEFAULT_DATADIR="/var/lib/ANGd"
+	BITCOIND_DEFAULT_DATADIR="/var/lib/angd"
 fi
 
-BITCOIND_CONFIGFILE=${BITCOIND_CONFIGFILE:-/etc/ANG/ANG.conf}
-BITCOIND_PIDDIR=${BITCOIND_PIDDIR:-/var/run/ANGd}
-BITCOIND_PIDFILE=${BITCOIND_PIDFILE:-${BITCOIND_PIDDIR}/ANGd.pid}
+BITCOIND_CONFIGFILE=${BITCOIND_CONFIGFILE:-/etc/ang/ang.conf}
+BITCOIND_PIDDIR=${BITCOIND_PIDDIR:-/var/run/angd}
+BITCOIND_PIDFILE=${BITCOIND_PIDFILE:-${BITCOIND_PIDDIR}/angd.pid}
 BITCOIND_DATADIR=${BITCOIND_DATADIR:-${BITCOIND_DEFAULT_DATADIR}}
-BITCOIND_USER=${BITCOIND_USER:-ANG}
-BITCOIND_GROUP=${BITCOIND_GROUP:-ANG}
-BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/ANGd}
+BITCOIND_USER=${BITCOIND_USER:-ang}
+BITCOIND_GROUP=${BITCOIND_GROUP:-ang}
+BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/angd}
 
-name="ANG Core Daemon"
-description="ANG crypto-currency p2p network daemon"
+name="Ang Core Daemon"
+description="Ang crypto-currency p2p network daemon"
 
-command="/usr/bin/ANGd"
+command="/usr/bin/angd"
 command_args="-pid=\"${BITCOIND_PIDFILE}\" \
 		-conf=\"${BITCOIND_CONFIGFILE}\" \
 		-datadir=\"${BITCOIND_DATADIR}\" \
@@ -65,7 +65,7 @@ checkconfig()
 {
 	if ! grep -qs '^rpcpassword=' "${BITCOIND_CONFIGFILE}" ; then
 		eerror ""
-		eerror "ERROR: You must set a secure rpcpassword to run ANGd."
+		eerror "ERROR: You must set a secure rpcpassword to run angd."
 		eerror "The setting must appear in ${BITCOIND_CONFIGFILE}"
 		eerror ""
 		eerror "This password is security critical to securing wallets "
@@ -78,7 +78,7 @@ checkconfig()
 		eerror "It is also recommended that you also set alertnotify so you are "
 		eerror "notified of problems:"
 		eerror ""
-		eerror "ie: alertnotify=echo %%s | mail -s \"ANG Alert\"" \
+		eerror "ie: alertnotify=echo %%s | mail -s \"Ang Alert\"" \
 			"admin@foo.com"
 		eerror ""
 		return 1
