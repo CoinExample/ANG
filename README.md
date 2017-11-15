@@ -1,7 +1,7 @@
 Ang Core staging tree 0.12
 ===============================
 
-https://www.andrijKolomiets.io
+
 
 Copyright (c) 2009-2015 Bitcoin Core Developers
 
