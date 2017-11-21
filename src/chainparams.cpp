@@ -56,12 +56,12 @@ static void convertSeed6(std::vector<CAddress> &vSeedsOut, const SeedSpec6 *data
 
 static Checkpoints::MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
-        (  0, uint256("0x000004735c6188c1d5760c7531fe2d0ebaa0171849d2b7198f4bc8445b17a795"))
-        (  30595871, uint256("0x0000082d0467b908efbaeb92d5525d5ab2c754129d8e7b3250c6d73bf1a3c32d"))
+        (  0, uint256("0x0000089c3b8ff6fa9f70dada7325a681da1d6f04cb7f13255c9744a569aa0979"))
+        //(  30595871, uint256("0x0000082d0467b908efbaeb92d5525d5ab2c754129d8e7b3250c6d73bf1a3c32d"))
         ;
 static const Checkpoints::CCheckpointData data = {
         &mapCheckpoints,
-        1511253000, // * UNIX timestamp of last checkpoint block
+        1511338800, // * UNIX timestamp of last checkpoint block
         0,     // * total number of transactions between genesis and last checkpoint
                     //   (the tx=... number in the SetBestChain debug.log lines)
         2800        // * estimated number of transactions per day after checkpoint
@@ -69,18 +69,18 @@ static const Checkpoints::CCheckpointData data = {
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
         boost::assign::map_list_of
-        ( 0, uint256("0x000004735c6188c1d5760c7531fe2d0ebaa0171849d2b7198f4bc8445b17a795"))
+        ( 0, uint256("0x000005176908d1638ca5c9e927a490b35b1d331e76ffa0ba0e781d2aef4b18f2"))
         ;
 static const Checkpoints::CCheckpointData dataTestnet = {
         &mapCheckpointsTestnet,
-        1511253001,
+        1511338801,
         0,
         500
     };
 
 static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
         boost::assign::map_list_of
-        ( 0, uint256("0x17ae2ba12f9ed693bf91825db70501b1f5f9084ed035d0633ea579e82727a6d2"))
+        ( 0, uint256("0x56a312211f310346b662e182807031401815b44aaf305dddbb1e4e7cd544f0ce"))
         ;
 static const Checkpoints::CCheckpointData dataRegtest = {
         &mapCheckpointsRegtest,
@@ -129,7 +129,7 @@ public:
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 777 * COIN;
+        txNew.vout[0].nValue = 50 * COIN;
         txNew.vout[0].scriptPubKey = CScript() << ParseHex("0405616e78976288f3c8f2070a935fcb774958eb9ea233376dafde10118247cde78b321c25eec6d78376e53b85ad2b0bcf2d99799f07b981c0524d9989c36bf5ba") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
@@ -137,10 +137,10 @@ public:
         genesis.nVersion = 1;
         genesis.nTime    = 1511338800;
         genesis.nBits    = 0x1e0ffff0;
-        genesis.nNonce   = 289961;
+        genesis.nNonce   = 606211;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x00000106c7ff1e0bfa420894035d6a5fe3a6edc3ee2efec09bba7005b8572eaa"));
+        assert(hashGenesisBlock == uint256("0x0000089c3b8ff6fa9f70dada7325a681da1d6f04cb7f13255c9744a569aa0979"));
         assert(genesis.hashMerkleRoot == uint256("0xe982b569e9fb6e516079a43b0800ce76a179d2e07714aa714b45c9f27bdd8557"));
 
         vSeeds.clear();
@@ -200,10 +200,10 @@ public:
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1511338801;
-        genesis.nNonce =195052;
+        genesis.nNonce = 4484403;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x000004735c6188c1d5760c7531fe2d0ebaa0171849d2b7198f4bc8445b17a795"));
+        assert(hashGenesisBlock == uint256("0x000005176908d1638ca5c9e927a490b35b1d331e76ffa0ba0e781d2aef4b18f2"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -262,12 +262,12 @@ public:
         nTargetTimespan = 24 * 60 * 60; // Ang: 1 day
         nTargetSpacing = 2.5 * 60; // Ang: 2.5 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-        genesis.nTime = 1511338802;
+        genesis.nTime = 1511338803;
         genesis.nBits = 0x207fffff;
         genesis.nNonce = 2;
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 19883;
-        assert(hashGenesisBlock == uint256("0x17ae2ba12f9ed693bf91825db70501b1f5f9084ed035d0633ea579e82727a6d2"));
+        assert(hashGenesisBlock == uint256("0x56a312211f310346b662e182807031401815b44aaf305dddbb1e4e7cd544f0ce"));
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
