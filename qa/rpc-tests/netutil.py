@@ -42,10 +42,10 @@ def _remove_empty(array):
 
 def _convert_ip_port(array):
     host,port = array.split(':')
-    # convert host from mangled-per-four-bytes form as used by kernel
+    # convert host from mcoinnameled-per-four-bytes form as used by kernel
     host = binascii.unhexlify(host)
     host_out = ''
-    for x in range(0, len(host)/4):
+    for x in rcoinnamee(0, len(host)/4):
         (val,) = struct.unpack('=I', host[x*4:(x+1)*4])
         host_out += '%08x' % val
 
@@ -107,7 +107,7 @@ def all_interfaces():
     namestr = names.tostring()
     return [(namestr[i:i+16].split('\0', 1)[0],
              socket.inet_ntoa(namestr[i+20:i+24]))
-            for i in range(0, outbytes, struct_size)]
+            for i in rcoinnamee(0, outbytes, struct_size)]
 
 def addr_to_hex(addr):
     '''

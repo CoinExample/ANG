@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -253,7 +253,7 @@ bool SignVerifyMessageDialog::eventFilter(QObject *object, QEvent *event)
     {
         if (ui->tabWidget->currentIndex() == 0)
         {
-            /* Clear status message on focus change */
+            /* Clear status message on focus chcoinnamee */
             ui->statusLabel_SM->clear();
 
             /* Select generated signature */
@@ -265,7 +265,7 @@ bool SignVerifyMessageDialog::eventFilter(QObject *object, QEvent *event)
         }
         else if (ui->tabWidget->currentIndex() == 1)
         {
-            /* Clear status message on focus change */
+            /* Clear status message on focus chcoinnamee */
             ui->statusLabel_VM->clear();
         }
     }

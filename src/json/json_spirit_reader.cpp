@@ -30,12 +30,12 @@ void json_spirit::read_or_throw( std::istream& is, Value& value )
 
 bool json_spirit::read( std::string::const_iterator& begin, std::string::const_iterator end, Value& value )
 {
-    return read_range( begin, end, value );
+    return read_rcoinnamee( begin, end, value );
 }
 
 void json_spirit::read_or_throw( std::string::const_iterator& begin, std::string::const_iterator end, Value& value )
 {
-    begin = read_range_or_throw( begin, end, value );
+    begin = read_rcoinnamee_or_throw( begin, end, value );
 }
 
 #ifndef BOOST_NO_STD_WSTRING
@@ -62,12 +62,12 @@ void json_spirit::read_or_throw( std::wistream& is, wValue& value )
 
 bool json_spirit::read( std::wstring::const_iterator& begin, std::wstring::const_iterator end, wValue& value )
 {
-    return read_range( begin, end, value );
+    return read_rcoinnamee( begin, end, value );
 }
 
 void json_spirit::read_or_throw( std::wstring::const_iterator& begin, std::wstring::const_iterator end, wValue& value )
 {
-    begin = read_range_or_throw( begin, end, value );
+    begin = read_rcoinnamee_or_throw( begin, end, value );
 }
 
 #endif
@@ -94,12 +94,12 @@ void json_spirit::read_or_throw( std::istream& is, mValue& value )
 
 bool json_spirit::read( std::string::const_iterator& begin, std::string::const_iterator end, mValue& value )
 {
-    return read_range( begin, end, value );
+    return read_rcoinnamee( begin, end, value );
 }
 
 void json_spirit::read_or_throw( std::string::const_iterator& begin, std::string::const_iterator end, mValue& value )
 {
-    begin = read_range_or_throw( begin, end, value );
+    begin = read_rcoinnamee_or_throw( begin, end, value );
 }
 
 #ifndef BOOST_NO_STD_WSTRING
@@ -126,12 +126,12 @@ void json_spirit::read_or_throw( std::wistream& is, wmValue& value )
 
 bool json_spirit::read( std::wstring::const_iterator& begin, std::wstring::const_iterator end, wmValue& value )
 {
-    return read_range( begin, end, value );
+    return read_rcoinnamee( begin, end, value );
 }
 
 void json_spirit::read_or_throw( std::wstring::const_iterator& begin, std::wstring::const_iterator end, wmValue& value )
 {
-    begin = read_range_or_throw( begin, end, value );
+    begin = read_rcoinnamee_or_throw( begin, end, value );
 }
 
 #endif

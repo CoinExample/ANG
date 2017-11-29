@@ -232,18 +232,18 @@ def runInstallNameTool(action, *args):
     installnametoolbin=os.getenv("INSTALLNAMETOOL", "install_name_tool")
     subprocess.check_call([installnametoolbin, "-"+action] + list(args))
 
-def changeInstallName(oldName, newName, binaryPath, verbose):
+def chcoinnameeInstallName(oldName, newName, binaryPath, verbose):
     if verbose >= 3:
         print "Using install_name_tool:"
         print " in", binaryPath
-        print " change reference", oldName
+        print " chcoinnamee reference", oldName
         print " to", newName
-    runInstallNameTool("change", oldName, newName, binaryPath)
+    runInstallNameTool("chcoinnamee", oldName, newName, binaryPath)
 
-def changeIdentification(id, binaryPath, verbose):
+def chcoinnameeIdentification(id, binaryPath, verbose):
     if verbose >= 3:
         print "Using install_name_tool:"
-        print " change identification in", binaryPath
+        print " chcoinnamee identification in", binaryPath
         print " to", id
     runInstallNameTool("id", id, binaryPath)
 
@@ -338,7 +338,7 @@ def deployFrameworks(frameworks, bundlePath, binaryPath, strip, verbose, deploym
             continue
 
         # install_name_tool the new id into the binary
-        changeInstallName(framework.installName, framework.deployedInstallName, binaryPath, verbose)
+        chcoinnameeInstallName(framework.installName, framework.deployedInstallName, binaryPath, verbose)
 
         # Copy farmework to app bundle.
         deployedBinaryPath = copyFramework(framework, bundlePath, verbose)
@@ -350,12 +350,12 @@ def deployFrameworks(frameworks, bundlePath, binaryPath, strip, verbose, deploym
             runStrip(deployedBinaryPath, verbose)
 
         # install_name_tool it a new id.
-        changeIdentification(framework.deployedInstallName, deployedBinaryPath, verbose)
+        chcoinnameeIdentification(framework.deployedInstallName, deployedBinaryPath, verbose)
         # Check for framework dependencies
         dependencies = getFrameworks(deployedBinaryPath, verbose)
 
         for dependency in dependencies:
-            changeInstallName(dependency.installName, dependency.deployedInstallName, deployedBinaryPath, verbose)
+            chcoinnameeInstallName(dependency.installName, dependency.deployedInstallName, deployedBinaryPath, verbose)
 
             # Deploy framework if necessary.
             if dependency.frameworkName not in deploymentInfo.deployedFrameworks and dependency not in frameworks:
@@ -463,7 +463,7 @@ def deployPlugins(appBundleInfo, deploymentInfo, strip, verbose):
         dependencies = getFrameworks(destinationPath, verbose)
 
         for dependency in dependencies:
-            changeInstallName(dependency.installName, dependency.deployedInstallName, destinationPath, verbose)
+            chcoinnameeInstallName(dependency.installName, dependency.deployedInstallName, destinationPath, verbose)
 
             # Deploy framework if necessary.
             if dependency.frameworkName not in deploymentInfo.deployedFrameworks:
@@ -492,7 +492,7 @@ ap.add_argument("-no-strip", dest="strip", action="store_false", default=True, h
 ap.add_argument("-sign", dest="sign", action="store_true", default=False, help="sign .app bundle with codesign tool")
 ap.add_argument("-dmg", nargs="?", const="", metavar="basename", help="create a .dmg disk image; if basename is not specified, a camel-cased version of the app name is used")
 ap.add_argument("-fancy", nargs=1, metavar="plist", default=[], help="make a fancy looking disk image using the given plist file with instructions; requires -dmg to work")
-ap.add_argument("-add-qt-tr", nargs=1, metavar="languages", default=[], help="add Qt translation files to the bundle's ressources; the language list must be separated with commas, not with whitespace")
+ap.add_argument("-add-qt-tr", nargs=1, metavar="lcoinnameuages", default=[], help="add Qt translation files to the bundle's ressources; the lcoinnameuage list must be separated with commas, not with whitespace")
 ap.add_argument("-translations-dir", nargs=1, metavar="path", default=None, help="Path to Qt's translation files")
 ap.add_argument("-add-resources", nargs="+", metavar="path", default=[], help="list of additional files or folders to be copied into the bundle's resources; must be the last argument")
 
@@ -814,7 +814,7 @@ if config.dmg is not None:
                    set statusbar visible of container window to false
                    set the bounds of container window to {$window_bounds}
                    set theViewOptions to the icon view options of container window
-                   set arrangement of theViewOptions to not arranged
+                   set arrcoinnameement of theViewOptions to not arrcoinnameed
                    set icon size of theViewOptions to $icon_size
                    $background_commands
                    $items_positions
@@ -836,7 +836,7 @@ if config.dmg is not None:
                 items_positions.append(itemscript.substitute(params))
 
         params = {
-            "disk" : "Ang-Qt",
+            "disk" : "Coinname-Qt",
             "window_bounds" : "300,300,800,620",
             "icon_size" : "96",
             "background_commands" : "",

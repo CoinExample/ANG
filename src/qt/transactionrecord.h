@@ -14,7 +14,7 @@
 class CWallet;
 class CWalletTx;
 
-/** UI model for transaction status. The transaction status is the part of a transaction that will change over time.
+/** UI model for transaction status. The transaction status is the part of a transaction that will chcoinnamee over time.
  */
 class TransactionStatus
 {
@@ -128,7 +128,7 @@ public:
     /** Subtransaction index, for sort key */
     int idx;
 
-    /** Status: can change with block chain update */
+    /** Status: can chcoinnamee with block chain update */
     TransactionStatus status;
 
     /** Whether the transaction was sent/received with a watch-only address */

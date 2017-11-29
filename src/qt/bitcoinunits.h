@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -33,7 +33,7 @@
 
 // QMessageBox seems to have a bug whereby it doesn't display thin/hair spaces
 // correctly.  Workaround is to display a space in a small font.  If you
-// change this, please test that it doesn't cause the parent span to start
+// chcoinnamee this, please test that it doesn't cause the parent span to start
 // wrapping.
 #define HTML_HACK_SP "<span style='white-space: nowrap; font-size: 6pt'> </span>"
 
@@ -42,7 +42,7 @@
 #define THIN_SP_UTF8 REAL_THIN_SP_UTF8
 #define THIN_SP_HTML HTML_HACK_SP
 
-/** Ang unit definitions. Encapsulates parsing and formatting
+/** Coinname unit definitions. Encapsulates parsing and formatting
    and serves as list model for drop-down selection boxes.
 */
 class BitcoinUnits: public QAbstractListModel
@@ -52,14 +52,14 @@ class BitcoinUnits: public QAbstractListModel
 public:
     explicit BitcoinUnits(QObject *parent);
 
-    /** Ang units.
+    /** Coinname units.
       @note Source: https://en.bitcoin.it/wiki/Units . Please add only sensible ones
      */
     enum Unit
     {
-        ANG,
-        mANG,
-        uANG,
+        COINNAME,
+        mCOINNAME,
+        uCOINNAME,
         duffs
     };
 

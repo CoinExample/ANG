@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -31,7 +31,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::ANG)
+    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::COINNAME)
     {
 
     }
@@ -243,7 +243,7 @@ void OverviewPage::setClientModel(ClientModel *model)
     if(model)
     {
         // Show warning if this is a prerelease version
-        connect(model, SIGNAL(alertsChanged(QString)), this, SLOT(updateAlerts(QString)));
+        connect(model, SIGNAL(alertsChcoinnameed(QString)), this, SLOT(updateAlerts(QString)));
         updateAlerts(model->getStatusBarWarnings());
     }
 }
@@ -268,18 +268,18 @@ void OverviewPage::setWalletModel(WalletModel *model)
         // Keep up to date with wallet
         setBalance(model->getBalance(), model->getUnconfirmedBalance(), model->getImmatureBalance(), model->getAnonymizedBalance(),
                    model->getWatchBalance(), model->getWatchUnconfirmedBalance(), model->getWatchImmatureBalance());
-        connect(model, SIGNAL(balanceChanged(CAmount,CAmount,CAmount,CAmount,CAmount,CAmount,CAmount)), this, SLOT(setBalance(CAmount,CAmount,CAmount,CAmount,CAmount,CAmount,CAmount)));
+        connect(model, SIGNAL(balanceChcoinnameed(CAmount,CAmount,CAmount,CAmount,CAmount,CAmount,CAmount)), this, SLOT(setBalance(CAmount,CAmount,CAmount,CAmount,CAmount,CAmount,CAmount)));
 
-        connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
+        connect(model->getOptionsModel(), SIGNAL(displayUnitChcoinnameed(int)), this, SLOT(updateDisplayUnit()));
 
         connect(ui->darksendAuto, SIGNAL(clicked()), this, SLOT(darksendAuto()));
         connect(ui->darksendReset, SIGNAL(clicked()), this, SLOT(darksendReset()));
         connect(ui->toggleDarksend, SIGNAL(clicked()), this, SLOT(toggleDarksend()));
         updateWatchOnlyLabels(model->haveWatchOnly());
-        connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
+        connect(model, SIGNAL(notifyWatchonlyChcoinnameed(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
     }
 
-    // update the display unit, to not use the default ("ANG")
+    // update the display unit, to not use the default ("COINNAME")
     updateDisplayUnit();
 }
 
@@ -450,7 +450,7 @@ void OverviewPage::darkSendStatus()
     // check darksend status and unlock if needed
     if(nBestHeight != darkSendPool.cachedNumBlocks)
     {
-        // Balance and number of transactions might have changed
+        // Balance and number of transactions might have chcoinnameed
         darkSendPool.cachedNumBlocks = nBestHeight;
         updateDarksendProgress();
 

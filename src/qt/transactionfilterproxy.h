@@ -36,7 +36,7 @@ public:
         WatchOnlyFilter_No
     };
 
-    void setDateRange(const QDateTime &from, const QDateTime &to);
+    void setDateRcoinnamee(const QDateTime &from, const QDateTime &to);
     void setAddressPrefix(const QString &addrPrefix);
     /**
       @note Type filter takes a bit field created with TYPE() or ALL_TYPES

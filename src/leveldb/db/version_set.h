@@ -43,13 +43,13 @@ extern int FindFile(const InternalKeyComparator& icmp,
                     const std::vector<FileMetaData*>& files,
                     const Slice& key);
 
-// Returns true iff some file in "files" overlaps the user key range
+// Returns true iff some file in "files" overlaps the user key rcoinnamee
 // [*smallest,*largest].
 // smallest==NULL represents a key smaller than all keys in the DB.
 // largest==NULL represents a key largest than all keys in the DB.
-// REQUIRES: If disjoint_sorted_files, files[] contains disjoint ranges
+// REQUIRES: If disjoint_sorted_files, files[] contains disjoint rcoinnamees
 //           in sorted order.
-extern bool SomeFileOverlapsRange(
+extern bool SomeFileOverlapsRcoinnamee(
     const InternalKeyComparator& icmp,
     bool disjoint_sorted_files,
     const std::vector<FileMetaData*>& files,
@@ -104,7 +104,7 @@ class Version {
                       const Slice* largest_user_key);
 
   // Return the level at which we should place a new memtable compaction
-  // result that covers the range [smallest_user_key,largest_user_key].
+  // result that covers the rcoinnamee [smallest_user_key,largest_user_key].
   int PickLevelForMemTableOutput(const Slice& smallest_user_key,
                                  const Slice& largest_user_key);
 
@@ -190,7 +190,7 @@ class VersionSet {
   // Allocate and return a new file number
   uint64_t NewFileNumber() { return next_file_number_++; }
 
-  // Arrange to reuse "file_number" unless a newer file number has
+  // Arrcoinnamee to reuse "file_number" unless a newer file number has
   // already been allocated.
   // REQUIRES: "file_number" was returned by a call to NewFileNumber().
   void ReuseFileNumber(uint64_t file_number) {
@@ -230,11 +230,11 @@ class VersionSet {
   // describes the compaction.  Caller should delete the result.
   Compaction* PickCompaction();
 
-  // Return a compaction object for compacting the range [begin,end] in
+  // Return a compaction object for compacting the rcoinnamee [begin,end] in
   // the specified level.  Returns NULL if there is nothing in that
-  // level that overlaps the specified range.  Caller should delete
+  // level that overlaps the specified rcoinnamee.  Caller should delete
   // the result.
-  Compaction* CompactRange(
+  Compaction* CompactRcoinnamee(
       int level,
       const InternalKey* begin,
       const InternalKey* end);
@@ -276,11 +276,11 @@ class VersionSet {
 
   void Finalize(Version* v);
 
-  void GetRange(const std::vector<FileMetaData*>& inputs,
+  void GetRcoinnamee(const std::vector<FileMetaData*>& inputs,
                 InternalKey* smallest,
                 InternalKey* largest);
 
-  void GetRange2(const std::vector<FileMetaData*>& inputs1,
+  void GetRcoinnamee2(const std::vector<FileMetaData*>& inputs1,
                  const std::vector<FileMetaData*>& inputs2,
                  InternalKey* smallest,
                  InternalKey* largest);
@@ -385,7 +385,7 @@ class Compaction {
   // State for implementing IsBaseLevelForKey
 
   // level_ptrs_ holds indices into input_version_->levels_: our state
-  // is that we are positioned at one of the file ranges for each
+  // is that we are positioned at one of the file rcoinnamees for each
   // higher level than the ones involved in this compaction (i.e. for
   // all L >= level_ + 2).
   size_t level_ptrs_[config::kNumLevels];

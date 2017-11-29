@@ -72,7 +72,7 @@ TransactionView::TransactionView(QWidget *parent) :
     dateWidget->addItem(tr("This month"), ThisMonth);
     dateWidget->addItem(tr("Last month"), LastMonth);
     dateWidget->addItem(tr("This year"), ThisYear);
-    dateWidget->addItem(tr("Range..."), Range);
+    dateWidget->addItem(tr("Rcoinnamee..."), Rcoinnamee);
     dateWidget->setCurrentIndex(settings.value("transactionDate").toInt());
     hlayout->addWidget(dateWidget);
 
@@ -125,7 +125,7 @@ TransactionView::TransactionView(QWidget *parent) :
 
     QTableView *view = new QTableView(this);
     vlayout->addLayout(hlayout);
-    vlayout->addWidget(createDateRangeWidget());
+    vlayout->addWidget(createDateRcoinnameeWidget());
     vlayout->addWidget(view);
     vlayout->setSpacing(0);
     int width = view->verticalScrollBar()->sizeHint().width();
@@ -168,8 +168,8 @@ TransactionView::TransactionView(QWidget *parent) :
     connect(dateWidget, SIGNAL(activated(int)), this, SLOT(chooseDate(int)));
     connect(typeWidget, SIGNAL(activated(int)), this, SLOT(chooseType(int)));
     connect(watchOnlyWidget, SIGNAL(activated(int)), this, SLOT(chooseWatchonly(int)));
-    connect(addressWidget, SIGNAL(textChanged(QString)), this, SLOT(changedPrefix(QString)));
-    connect(amountWidget, SIGNAL(textChanged(QString)), this, SLOT(changedAmount(QString)));
+    connect(addressWidget, SIGNAL(textChcoinnameed(QString)), this, SLOT(chcoinnameedPrefix(QString)));
+    connect(amountWidget, SIGNAL(textChcoinnameed(QString)), this, SLOT(chcoinnameedAmount(QString)));
 
     connect(view, SIGNAL(doubleClicked(QModelIndex)), this, SIGNAL(doubleClicked(QModelIndex)));
     connect(view, SIGNAL(clicked(QModelIndex)), this, SLOT(computeSum()));
@@ -213,7 +213,7 @@ void TransactionView::setModel(WalletModel *model)
         transactionView->setColumnWidth(TransactionTableModel::Amount, AMOUNT_MINIMUM_COLUMN_WIDTH);
 
         // Note: it's a good idea to connect this signal AFTER the model is set
-        connect(transactionView->selectionModel(), SIGNAL(selectionChanged(QItemSelection, QItemSelection)), this, SLOT(computeSum()));
+        connect(transactionView->selectionModel(), SIGNAL(selectionChcoinnameed(QItemSelection, QItemSelection)), this, SLOT(computeSum()));
 
         columnResizingFixer = new GUIUtil::TableViewLastColumnResizingFixer(transactionView, AMOUNT_MINIMUM_COLUMN_WIDTH, MINIMUM_COLUMN_WIDTH);
 
@@ -240,7 +240,7 @@ void TransactionView::setModel(WalletModel *model)
         updateWatchOnlyColumn(model->haveWatchOnly());
 
         // Watch-only signal
-        connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyColumn(bool)));
+        connect(model, SIGNAL(notifyWatchonlyChcoinnameed(bool)), this, SLOT(updateWatchOnlyColumn(bool)));
         
         // Update transaction list with persisted settings
         chooseType(settings.value("transactionType").toInt());
@@ -253,49 +253,49 @@ void TransactionView::chooseDate(int idx)
     if(!transactionProxyModel)
         return;
     QDate current = QDate::currentDate();
-    dateRangeWidget->setVisible(false);
+    dateRcoinnameeWidget->setVisible(false);
     switch(dateWidget->itemData(idx).toInt())
     {
     case All:
-        transactionProxyModel->setDateRange(
+        transactionProxyModel->setDateRcoinnamee(
                 TransactionFilterProxy::MIN_DATE,
                 TransactionFilterProxy::MAX_DATE);
         break;
     case Today:
-        transactionProxyModel->setDateRange(
+        transactionProxyModel->setDateRcoinnamee(
                 QDateTime(current),
                 TransactionFilterProxy::MAX_DATE);
         break;
     case ThisWeek: {
         // Find last Monday
         QDate startOfWeek = current.addDays(-(current.dayOfWeek()-1));
-        transactionProxyModel->setDateRange(
+        transactionProxyModel->setDateRcoinnamee(
                 QDateTime(startOfWeek),
                 TransactionFilterProxy::MAX_DATE);
 
         } break;
     case ThisMonth:
-        transactionProxyModel->setDateRange(
+        transactionProxyModel->setDateRcoinnamee(
                 QDateTime(QDate(current.year(), current.month(), 1)),
                 TransactionFilterProxy::MAX_DATE);
         break;
     case LastMonth:
-        transactionProxyModel->setDateRange(
+        transactionProxyModel->setDateRcoinnamee(
                 QDateTime(QDate(current.year(), current.month()-1, 1)),
                 QDateTime(QDate(current.year(), current.month(), 1)));
         break;
     case ThisYear:
-        transactionProxyModel->setDateRange(
+        transactionProxyModel->setDateRcoinnamee(
                 QDateTime(QDate(current.year(), 1, 1)),
                 TransactionFilterProxy::MAX_DATE);
         break;
-    case Range:
-        dateRangeWidget->setVisible(true);
-        dateRangeChanged();
+    case Rcoinnamee:
+        dateRcoinnameeWidget->setVisible(true);
+        dateRcoinnameeChcoinnameed();
         break;
     }
     // Persist settings
-    if (dateWidget->itemData(idx).toInt() != Range){
+    if (dateWidget->itemData(idx).toInt() != Rcoinnamee){
         QSettings settings;
         settings.setValue("transactionDate", idx);
     }
@@ -320,14 +320,14 @@ void TransactionView::chooseWatchonly(int idx)
         (TransactionFilterProxy::WatchOnlyFilter)watchOnlyWidget->itemData(idx).toInt());
 }
 
-void TransactionView::changedPrefix(const QString &prefix)
+void TransactionView::chcoinnameedPrefix(const QString &prefix)
 {
     if(!transactionProxyModel)
         return;
     transactionProxyModel->setAddressPrefix(prefix);
 }
 
-void TransactionView::changedAmount(const QString &amount)
+void TransactionView::chcoinnameedAmount(const QString &amount)
 {
     if(!transactionProxyModel)
         return;
@@ -494,15 +494,15 @@ void TransactionView::openThirdPartyTxUrl(QString url)
          QDesktopServices::openUrl(QUrl::fromUserInput(url.replace("%s", selection.at(0).data(TransactionTableModel::TxHashRole).toString())));
 }
 
-QWidget *TransactionView::createDateRangeWidget()
+QWidget *TransactionView::createDateRcoinnameeWidget()
 {
-    dateRangeWidget = new QFrame();
-    dateRangeWidget->setFrameStyle(QFrame::Panel | QFrame::Raised);
-    dateRangeWidget->setContentsMargins(1,1,1,1);
-    QHBoxLayout *layout = new QHBoxLayout(dateRangeWidget);
+    dateRcoinnameeWidget = new QFrame();
+    dateRcoinnameeWidget->setFrameStyle(QFrame::Panel | QFrame::Raised);
+    dateRcoinnameeWidget->setContentsMargins(1,1,1,1);
+    QHBoxLayout *layout = new QHBoxLayout(dateRcoinnameeWidget);
     layout->setContentsMargins(0,0,0,0);
     layout->addSpacing(23);
-    layout->addWidget(new QLabel(tr("Range:")));
+    layout->addWidget(new QLabel(tr("Rcoinnamee:")));
 
     dateFrom = new QDateTimeEdit(this);
     dateFrom->setDisplayFormat("dd/MM/yy");
@@ -521,20 +521,20 @@ QWidget *TransactionView::createDateRangeWidget()
     layout->addStretch();
 
     // Hide by default
-    dateRangeWidget->setVisible(false);
+    dateRcoinnameeWidget->setVisible(false);
 
-    // Notify on change
-    connect(dateFrom, SIGNAL(dateChanged(QDate)), this, SLOT(dateRangeChanged()));
-    connect(dateTo, SIGNAL(dateChanged(QDate)), this, SLOT(dateRangeChanged()));
+    // Notify on chcoinnamee
+    connect(dateFrom, SIGNAL(dateChcoinnameed(QDate)), this, SLOT(dateRcoinnameeChcoinnameed()));
+    connect(dateTo, SIGNAL(dateChcoinnameed(QDate)), this, SLOT(dateRcoinnameeChcoinnameed()));
 
-    return dateRangeWidget;
+    return dateRcoinnameeWidget;
 }
 
-void TransactionView::dateRangeChanged()
+void TransactionView::dateRcoinnameeChcoinnameed()
 {
     if(!transactionProxyModel)
         return;
-    transactionProxyModel->setDateRange(
+    transactionProxyModel->setDateRcoinnamee(
             QDateTime(dateFrom->date()),
             QDateTime(dateTo->date()).addDays(1));
 }

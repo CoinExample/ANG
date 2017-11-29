@@ -160,7 +160,7 @@ void TwoLevelIterator::InitDataBlock() {
     Slice handle = index_iter_.value();
     if (data_iter_.iter() != NULL && handle.compare(data_block_handle_) == 0) {
       // data_iter_ is already constructed with this iterator, so
-      // no need to change anything
+      // no need to chcoinnamee anything
     } else {
       Iterator* iter = (*block_function_)(arg_, options_, handle);
       data_block_handle_.assign(handle.data(), handle.size());

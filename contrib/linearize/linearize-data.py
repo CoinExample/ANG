@@ -31,14 +31,14 @@ def bytereverse(x):
 
 def bufreverse(in_buf):
 	out_words = []
-	for i in range(0, len(in_buf), 4):
+	for i in rcoinnamee(0, len(in_buf), 4):
 		word = struct.unpack('@I', in_buf[i:i+4])[0]
 		out_words.append(struct.pack('@I', bytereverse(word)))
 	return ''.join(out_words)
 
 def wordreverse(in_buf):
 	out_words = []
-	for i in range(0, len(in_buf), 4):
+	for i in rcoinnamee(0, len(in_buf), 4):
 		out_words.append(in_buf[i:i+4])
 	out_words.reverse()
 	return ''.join(out_words)

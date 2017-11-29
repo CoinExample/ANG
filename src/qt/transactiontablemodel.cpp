@@ -89,7 +89,7 @@ public:
     /* Update our model of the wallet incrementally, to synchronize our model of the wallet
        with that of the core.
 
-       Call with transaction that was added, removed or changed.
+       Call with transaction that was added, removed or chcoinnameed.
      */
     void updateWallet(const uint256 &hash, int status, bool showTransaction)
     {
@@ -229,7 +229,7 @@ TransactionTableModel::TransactionTableModel(CWallet* wallet, WalletModel *paren
     columns << QString() << QString() << tr("Date") << tr("Type") << tr("Address") << BitcoinUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
     priv->refreshWallet();
 
-    connect(walletModel->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
+    connect(walletModel->getOptionsModel(), SIGNAL(displayUnitChcoinnameed(int)), this, SLOT(updateDisplayUnit()));
 
     subscribeToCoreSignals();
 }
@@ -240,11 +240,11 @@ TransactionTableModel::~TransactionTableModel()
     delete priv;
 }
 
-/** Updates the column title to "Amount (DisplayUnit)" and emits headerDataChanged() signal for table headers to react. */
+/** Updates the column title to "Amount (DisplayUnit)" and emits headerDataChcoinnameed() signal for table headers to react. */
 void TransactionTableModel::updateAmountColumnTitle()
 {
     columns[Amount] = BitcoinUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
-    emit headerDataChanged(Qt::Horizontal,Amount,Amount);
+    emit headerDataChcoinnameed(Qt::Horizontal,Amount,Amount);
 }
 
 void TransactionTableModel::updateTransaction(const QString &hash, int status, bool showTransaction)
@@ -261,8 +261,8 @@ void TransactionTableModel::updateConfirmations()
     // Invalidate status (number of confirmations) and (possibly) description
     //  for all rows. Qt is smart enough to only actually request the data for the
     //  visible rows.
-    emit dataChanged(index(0, Status), index(priv->size()-1, Status));
-    emit dataChanged(index(0, ToAddress), index(priv->size()-1, ToAddress));
+    emit dataChcoinnameed(index(0, Status), index(priv->size()-1, Status));
+    emit dataChcoinnameed(index(0, ToAddress), index(priv->size()-1, ToAddress));
 }
 
 int TransactionTableModel::rowCount(const QModelIndex &parent) const
@@ -659,9 +659,9 @@ QModelIndex TransactionTableModel::index(int row, int column, const QModelIndex 
 
 void TransactionTableModel::updateDisplayUnit()
 {
-    // emit dataChanged to update Amount column with the current unit
+    // emit dataChcoinnameed to update Amount column with the current unit
     updateAmountColumnTitle();
-    emit dataChanged(index(0, Amount), index(priv->size()-1, Amount));
+    emit dataChcoinnameed(index(0, Amount), index(priv->size()-1, Amount));
 }
 
 // queue notifications to show a non freezing progress dialog e.g. for rescan
@@ -669,13 +669,13 @@ struct TransactionNotification
 {
 public:
     TransactionNotification() {}
-    TransactionNotification(uint256 hash, ChangeType status, bool showTransaction):
+    TransactionNotification(uint256 hash, ChcoinnameeType status, bool showTransaction):
         hash(hash), status(status), showTransaction(showTransaction) {}
 
     void invoke(QObject *ttm)
     {
         QString strHash = QString::fromStdString(hash.GetHex());
-        qDebug() << "NotifyTransactionChanged : " + strHash + " status= " + QString::number(status);
+        qDebug() << "NotifyTransactionChcoinnameed : " + strHash + " status= " + QString::number(status);
         QMetaObject::invokeMethod(ttm, "updateTransaction", Qt::QueuedConnection,
                                   Q_ARG(QString, strHash),
                                   Q_ARG(int, status),
@@ -683,14 +683,14 @@ public:
     }
 private:
     uint256 hash;
-    ChangeType status;
+    ChcoinnameeType status;
     bool showTransaction;
 };
 
 static bool fQueueNotifications = false;
 static std::vector< TransactionNotification > vQueueNotifications;
 
-static void NotifyTransactionChanged(TransactionTableModel *ttm, CWallet *wallet, const uint256 &hash, ChangeType status)
+static void NotifyTransactionChcoinnameed(TransactionTableModel *ttm, CWallet *wallet, const uint256 &hash, ChcoinnameeType status)
 {
     // Find transaction in wallet
     std::map<uint256, CWalletTx>::iterator mi = wallet->mapWallet.find(hash);
@@ -732,13 +732,13 @@ static void ShowProgress(TransactionTableModel *ttm, const std::string &title, i
 void TransactionTableModel::subscribeToCoreSignals()
 {
     // Connect signals to wallet
-    wallet->NotifyTransactionChanged.connect(boost::bind(NotifyTransactionChanged, this, _1, _2, _3));
+    wallet->NotifyTransactionChcoinnameed.connect(boost::bind(NotifyTransactionChcoinnameed, this, _1, _2, _3));
     wallet->ShowProgress.connect(boost::bind(ShowProgress, this, _1, _2));
 }
 
 void TransactionTableModel::unsubscribeFromCoreSignals()
 {
     // Disconnect signals from wallet
-    wallet->NotifyTransactionChanged.disconnect(boost::bind(NotifyTransactionChanged, this, _1, _2, _3));
+    wallet->NotifyTransactionChcoinnameed.disconnect(boost::bind(NotifyTransactionChcoinnameed, this, _1, _2, _3));
     wallet->ShowProgress.disconnect(boost::bind(ShowProgress, this, _1, _2));
 }

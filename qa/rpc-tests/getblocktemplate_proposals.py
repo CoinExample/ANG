@@ -64,7 +64,7 @@ def genmrklroot(leaflist):
         n = []
         if len(cur) & 1:
             cur.append(cur[-1])
-        for i in range(0, len(cur), 2):
+        for i in rcoinnamee(0, len(cur), 2):
             n.append(dblsha(cur[i] + cur[i+1]))
         cur = n
     return cur[0]

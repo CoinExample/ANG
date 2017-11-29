@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/ang-config.h"
+#include "config/coinname-config.h"
 #endif
 
 #include "optionsdialog.h"
@@ -82,36 +82,36 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     }
     
     /* Theme selector */
-    ui->theme->addItem(QString("ANG-blue"), QVariant("drkblue"));
-    ui->theme->addItem(QString("ANG-traditional"), QVariant("trad"));
+    ui->theme->addItem(QString("COINNAME-blue"), QVariant("drkblue"));
+    ui->theme->addItem(QString("COINNAME-traditional"), QVariant("trad"));
 
     
-    /* Language selector */
+    /* Lcoinnameuage selector */
     QDir translations(":translations");
-    ui->lang->addItem(QString("(") + tr("default") + QString(")"), QVariant(""));
-    foreach(const QString &langStr, translations.entryList())
+    ui->lcoinname->addItem(QString("(") + tr("default") + QString(")"), QVariant(""));
+    foreach(const QString &lcoinnameStr, translations.entryList())
     {
-        QLocale locale(langStr);
+        QLocale locale(lcoinnameStr);
 
-        /** check if the locale name consists of 2 parts (language_country) */
-        if(langStr.contains("_"))
+        /** check if the locale name consists of 2 parts (lcoinnameuage_country) */
+        if(lcoinnameStr.contains("_"))
         {
 #if QT_VERSION >= 0x040800
-            /** display language strings as "native language - native country (locale name)", e.g. "Deutsch - Deutschland (de)" */
-            ui->lang->addItem(locale.nativeLanguageName() + QString(" - ") + locale.nativeCountryName() + QString(" (") + langStr + QString(")"), QVariant(langStr));
+            /** display lcoinnameuage strings as "native lcoinnameuage - native country (locale name)", e.g. "Deutsch - Deutschland (de)" */
+            ui->lcoinname->addItem(locale.nativeLcoinnameuageName() + QString(" - ") + locale.nativeCountryName() + QString(" (") + lcoinnameStr + QString(")"), QVariant(lcoinnameStr));
 #else
-            /** display language strings as "language - country (locale name)", e.g. "German - Germany (de)" */
-            ui->lang->addItem(QLocale::languageToString(locale.language()) + QString(" - ") + QLocale::countryToString(locale.country()) + QString(" (") + langStr + QString(")"), QVariant(langStr));
+            /** display lcoinnameuage strings as "lcoinnameuage - country (locale name)", e.g. "German - Germany (de)" */
+            ui->lcoinname->addItem(QLocale::lcoinnameuageToString(locale.lcoinnameuage()) + QString(" - ") + QLocale::countryToString(locale.country()) + QString(" (") + lcoinnameStr + QString(")"), QVariant(lcoinnameStr));
 #endif
         }
         else
         {
 #if QT_VERSION >= 0x040800
-            /** display language strings as "native language (locale name)", e.g. "Deutsch (de)" */
-            ui->lang->addItem(locale.nativeLanguageName() + QString(" (") + langStr + QString(")"), QVariant(langStr));
+            /** display lcoinnameuage strings as "native lcoinnameuage (locale name)", e.g. "Deutsch (de)" */
+            ui->lcoinname->addItem(locale.nativeLcoinnameuageName() + QString(" (") + lcoinnameStr + QString(")"), QVariant(lcoinnameStr));
 #else
-            /** display language strings as "language (locale name)", e.g. "German (de)" */
-            ui->lang->addItem(QLocale::languageToString(locale.language()) + QString(" (") + langStr + QString(")"), QVariant(langStr));
+            /** display lcoinnameuage strings as "lcoinnameuage (locale name)", e.g. "German (de)" */
+            ui->lcoinname->addItem(QLocale::lcoinnameuageToString(locale.lcoinnameuage()) + QString(" (") + lcoinnameStr + QString(")"), QVariant(lcoinnameStr));
 #endif
         }
     }
@@ -126,7 +126,7 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
     mapper->setOrientation(Qt::Vertical);
 
-    /* setup/change UI elements when proxy IP is invalid/valid */
+    /* setup/chcoinnamee UI elements when proxy IP is invalid/valid */
     connect(this, SIGNAL(proxyIpChecks(QValidatedLineEdit *, int)), this, SLOT(doProxyIpChecks(QValidatedLineEdit *, int)));
 }
 
@@ -156,21 +156,21 @@ void OptionsDialog::setModel(OptionsModel *model)
         mapper->toFirst();
     }
 
-    /* warn when one of the following settings changes by user action (placed here so init via mapper doesn't trigger them) */
+    /* warn when one of the following settings chcoinnamees by user action (placed here so init via mapper doesn't trigger them) */
 
     /* Main */
-    connect(ui->databaseCache, SIGNAL(valueChanged(int)), this, SLOT(showRestartWarning()));
-    connect(ui->threadsScriptVerif, SIGNAL(valueChanged(int)), this, SLOT(showRestartWarning()));
+    connect(ui->databaseCache, SIGNAL(valueChcoinnameed(int)), this, SLOT(showRestartWarning()));
+    connect(ui->threadsScriptVerif, SIGNAL(valueChcoinnameed(int)), this, SLOT(showRestartWarning()));
     /* Wallet */
-    connect(ui->spendZeroConfChange, SIGNAL(clicked(bool)), this, SLOT(showRestartWarning()));
+    connect(ui->spendZeroConfChcoinnamee, SIGNAL(clicked(bool)), this, SLOT(showRestartWarning()));
     /* Network */
     connect(ui->allowIncoming, SIGNAL(clicked(bool)), this, SLOT(showRestartWarning()));
     connect(ui->connectSocks, SIGNAL(clicked(bool)), this, SLOT(showRestartWarning()));
     /* Display */
-    connect(ui->digits, SIGNAL(valueChanged()), this, SLOT(showRestartWarning()));
-    connect(ui->theme, SIGNAL(valueChanged()), this, SLOT(showRestartWarning()));
-    connect(ui->lang, SIGNAL(valueChanged()), this, SLOT(showRestartWarning()));
-    connect(ui->thirdPartyTxUrls, SIGNAL(textChanged(const QString &)), this, SLOT(showRestartWarning()));
+    connect(ui->digits, SIGNAL(valueChcoinnameed()), this, SLOT(showRestartWarning()));
+    connect(ui->theme, SIGNAL(valueChcoinnameed()), this, SLOT(showRestartWarning()));
+    connect(ui->lcoinname, SIGNAL(valueChcoinnameed()), this, SLOT(showRestartWarning()));
+    connect(ui->thirdPartyTxUrls, SIGNAL(textChcoinnameed(const QString &)), this, SLOT(showRestartWarning()));
 }
 
 void OptionsDialog::setMapper()
@@ -181,7 +181,7 @@ void OptionsDialog::setMapper()
     mapper->addMapping(ui->databaseCache, OptionsModel::DatabaseCache);
 
     /* Wallet */
-    mapper->addMapping(ui->spendZeroConfChange, OptionsModel::SpendZeroConfChange);
+    mapper->addMapping(ui->spendZeroConfChcoinnamee, OptionsModel::SpendZeroConfChcoinnamee);
     mapper->addMapping(ui->coinControlFeatures, OptionsModel::CoinControlFeatures);
 
     /* Network */
@@ -202,7 +202,7 @@ void OptionsDialog::setMapper()
     mapper->addMapping(ui->digits, OptionsModel::Digits);
     mapper->addMapping(ui->theme, OptionsModel::Theme);
     mapper->addMapping(ui->theme, OptionsModel::Theme);
-    mapper->addMapping(ui->lang, OptionsModel::Language);
+    mapper->addMapping(ui->lcoinname, OptionsModel::Lcoinnameuage);
     mapper->addMapping(ui->unit, OptionsModel::DisplayUnit);
     mapper->addMapping(ui->thirdPartyTxUrls, OptionsModel::ThirdPartyTxUrls);
 
@@ -236,7 +236,7 @@ void OptionsDialog::on_resetButton_clicked()
     {
         // confirmation dialog
         QMessageBox::StandardButton btnRetVal = QMessageBox::question(this, tr("Confirm options reset"),
-            tr("Client restart required to activate changes.") + "<br><br>" + tr("Client will be shutdown, do you want to proceed?"),
+            tr("Client restart required to activate chcoinnamees.") + "<br><br>" + tr("Client will be shutdown, do you want to proceed?"),
             QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel);
 
         if(btnRetVal == QMessageBox::Cancel)
@@ -267,11 +267,11 @@ void OptionsDialog::showRestartWarning(bool fPersistent)
 
     if(fPersistent)
     {
-        ui->statusLabel->setText(tr("Client restart required to activate changes."));
+        ui->statusLabel->setText(tr("Client restart required to activate chcoinnamees."));
     }
     else
     {
-        ui->statusLabel->setText(tr("This change would require a client restart."));
+        ui->statusLabel->setText(tr("This chcoinnamee would require a client restart."));
         // clear non-persistent status label after 10 seconds
         // Todo: should perhaps be a class attribute, if we extend the use of statusLabel
         QTimer::singleShot(10000, this, SLOT(clearStatusLabel()));

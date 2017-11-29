@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -245,7 +245,7 @@ public:
 class CDarkSendSigner
 {
 public:
-    /// Is the inputs associated with this public key? (and there is 1000 ANG - checking if valid masternode)
+    /// Is the inputs associated with this public key? (and there is 1000 COINNAME - checking if valid masternode)
     bool IsVinAssociatedWithPubkey(CTxIn& vin, CPubKey& pubkey);
     /// Set the private/public key values, returns true if successful
     bool SetKey(std::string strSecret, std::string& errorMessage, CKey& key, CPubKey& pubkey);
@@ -265,7 +265,7 @@ private:
     std::vector<CDarkSendEntry> entries; // Masternode/clients entries
     CMutableTransaction finalTransaction; // the finalized transaction ready for signing
 
-    int64_t lastTimeChanged; // last time the 'state' changed, in UTC milliseconds
+    int64_t lastTimeChcoinnameed; // last time the 'state' chcoinnameed, in UTC milliseconds
 
     unsigned int state; // should be one of the POOL_STATUS_XXX values
     unsigned int entriesCount;
@@ -401,7 +401,7 @@ public:
         return countEntriesAccepted;
     }
 
-    // Set the 'state' value, with some logging and capturing when the state changed
+    // Set the 'state' value, with some logging and capturing when the state chcoinnameed
     void UpdateState(unsigned int newState)
     {
         if (fMasterNode && (newState == POOL_STATUS_ERROR || newState == POOL_STATUS_SUCCESS)){
@@ -411,7 +411,7 @@ public:
 
         LogPrintf("CDarksendPool::UpdateState() == %d | %d \n", state, newState);
         if(state != newState){
-            lastTimeChanged = GetTimeMillis();
+            lastTimeChcoinnameed = GetTimeMillis();
             if(fMasterNode) {
                 RelayStatus(darkSendPool.sessionID, darkSendPool.GetState(), darkSendPool.GetEntriesCount(), MASTERNODE_RESET);
             }
@@ -486,7 +486,7 @@ public:
 
     void GetDenominationsToString(int nDenom, std::string& strDenom);
 
-    /// Get the denominations for a specific amount of ang.
+    /// Get the denominations for a specific amount of coinname.
     int GetDenominationsByAmount(int64_t nAmount, int nDenomTarget=0); // is not used anymore?
     int GetDenominationsByAmounts(std::vector<int64_t>& vecAmount);
 

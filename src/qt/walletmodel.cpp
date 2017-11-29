@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -37,7 +37,7 @@ WalletModel::WalletModel(CWallet *wallet, OptionsModel *optionsModel, QObject *p
     cachedNumBlocks(0)
 {
     fHaveWatchOnly = wallet->HaveWatchOnly();
-    fForceCheckBalanceChanged = false;
+    fForceCheckBalanceChcoinnameed = false;
 
     addressTableModel = new AddressTableModel(wallet, this);
     transactionTableModel = new TransactionTableModel(wallet, this);
@@ -45,7 +45,7 @@ WalletModel::WalletModel(CWallet *wallet, OptionsModel *optionsModel, QObject *p
 
     // This timer will be fired repeatedly to update the balance
     pollTimer = new QTimer(this);
-    connect(pollTimer, SIGNAL(timeout()), this, SLOT(pollBalanceChanged()));
+    connect(pollTimer, SIGNAL(timeout()), this, SLOT(pollBalanceChcoinnameed()));
     pollTimer->start(MODEL_UPDATE_DELAY);
 
     subscribeToCoreSignals();
@@ -114,10 +114,10 @@ void WalletModel::updateStatus()
     EncryptionStatus newEncryptionStatus = getEncryptionStatus();
 
     if(cachedEncryptionStatus != newEncryptionStatus)
-        emit encryptionStatusChanged(newEncryptionStatus);
+        emit encryptionStatusChcoinnameed(newEncryptionStatus);
 }
 
-void WalletModel::pollBalanceChanged()
+void WalletModel::pollBalanceChcoinnameed()
 {
     // Get required locks upfront. This avoids the GUI from getting stuck on
     // periodical polls if the core is holding the locks for a longer time -
@@ -129,22 +129,22 @@ void WalletModel::pollBalanceChanged()
     if(!lockWallet)
         return;
 
-    if(fForceCheckBalanceChanged || chainActive.Height() != cachedNumBlocks || nDarksendRounds != cachedDarksendRounds || cachedTxLocks != nCompleteTXLocks)
+    if(fForceCheckBalanceChcoinnameed || chainActive.Height() != cachedNumBlocks || nDarksendRounds != cachedDarksendRounds || cachedTxLocks != nCompleteTXLocks)
     {
-        fForceCheckBalanceChanged = false;
+        fForceCheckBalanceChcoinnameed = false;
 
-        // Balance and number of transactions might have changed
+        // Balance and number of transactions might have chcoinnameed
         cachedNumBlocks = chainActive.Height();
         cachedDarksendRounds = nDarksendRounds;
 
-        checkBalanceChanged();
+        checkBalanceChcoinnameed();
         if(transactionTableModel){
             transactionTableModel->updateConfirmations();
         }
     }
 }
 
-void WalletModel::checkBalanceChanged()
+void WalletModel::checkBalanceChcoinnameed()
 {
     TRY_LOCK(cs_main, lockMain);
     if(!lockMain) return;
@@ -175,15 +175,15 @@ void WalletModel::checkBalanceChanged()
         cachedWatchOnlyBalance = newWatchOnlyBalance;
         cachedWatchUnconfBalance = newWatchUnconfBalance;
         cachedWatchImmatureBalance = newWatchImmatureBalance;
-        emit balanceChanged(newBalance, newUnconfirmedBalance, newImmatureBalance, newAnonymizedBalance,
+        emit balanceChcoinnameed(newBalance, newUnconfirmedBalance, newImmatureBalance, newAnonymizedBalance,
                             newWatchOnlyBalance, newWatchUnconfBalance, newWatchImmatureBalance);
     }
 }
 
 void WalletModel::updateTransaction()
 {
-    // Balance and number of transactions might have changed
-    fForceCheckBalanceChanged = true;
+    // Balance and number of transactions might have chcoinnameed
+    fForceCheckBalanceChcoinnameed = true;
 }
 
 void WalletModel::updateAddressBook(const QString &address, const QString &label,
@@ -196,7 +196,7 @@ void WalletModel::updateAddressBook(const QString &address, const QString &label
 void WalletModel::updateWatchOnlyFlag(bool fHaveWatchonly)
 {
     fHaveWatchOnly = fHaveWatchonly;
-    emit notifyWatchonlyChanged(fHaveWatchonly);
+    emit notifyWatchonlyChcoinnameed(fHaveWatchonly);
 }
 
 bool WalletModel::validateAddress(const QString &address)
@@ -247,7 +247,7 @@ WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransact
             total += subtotal;
         }
         else
-        {   // User-entered ang address / amount:
+        {   // User-entered coinname address / amount:
             if(!validateAddress(rcp.address))
             {
                 return InvalidAddress;
@@ -280,25 +280,25 @@ WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransact
     {
         LOCK2(cs_main, wallet->cs_wallet);
 
-        transaction.newPossibleKeyChange(wallet);
+        transaction.newPossibleKeyChcoinnamee(wallet);
         CAmount nFeeRequired = 0;
         std::string strFailReason;
 
         CWalletTx *newTx = transaction.getTransaction();
-        CReserveKey *keyChange = transaction.getPossibleKeyChange();
+        CReserveKey *keyChcoinnamee = transaction.getPossibleKeyChcoinnamee();
 
 
         if(recipients[0].useInstantX && total > GetSporkValue(SPORK_5_MAX_VALUE)*COIN){
-            emit message(tr("Send Coins"), tr("InstantX doesn't support sending values that high yet. Transactions are currently limited to %1 ANG.").arg(GetSporkValue(SPORK_5_MAX_VALUE)),
+            emit message(tr("Send Coins"), tr("InstantX doesn't support sending values that high yet. Transactions are currently limited to %1 COINNAME.").arg(GetSporkValue(SPORK_5_MAX_VALUE)),
                          CClientUIInterface::MSG_ERROR);
             return TransactionCreationFailed;
         }
 
-        bool fCreated = wallet->CreateTransaction(vecSend, *newTx, *keyChange, nFeeRequired, strFailReason, coinControl, recipients[0].inputType, recipients[0].useInstantX);
+        bool fCreated = wallet->CreateTransaction(vecSend, *newTx, *keyChcoinnamee, nFeeRequired, strFailReason, coinControl, recipients[0].inputType, recipients[0].useInstantX);
         transaction.setTransactionFee(nFeeRequired);
 
         if(recipients[0].useInstantX && newTx->GetValueOut() > GetSporkValue(SPORK_5_MAX_VALUE)*COIN){
-            emit message(tr("Send Coins"), tr("InstantX doesn't support sending values that high yet. Transactions are currently limited to %1 ANG.").arg(GetSporkValue(SPORK_5_MAX_VALUE)),
+            emit message(tr("Send Coins"), tr("InstantX doesn't support sending values that high yet. Transactions are currently limited to %1 COINNAME.").arg(GetSporkValue(SPORK_5_MAX_VALUE)),
                          CClientUIInterface::MSG_ERROR);
             return TransactionCreationFailed;
         }
@@ -346,17 +346,17 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(WalletModelTransaction &tran
                 rcp.paymentRequest.SerializeToString(&value);
                 newTx->vOrderForm.push_back(make_pair(key, value));
             }
-            else if (!rcp.message.isEmpty()) // Message from normal ang:URI (ang:XyZ...?message=example)
+            else if (!rcp.message.isEmpty()) // Message from normal coinname:URI (coinname:XyZ...?message=example)
             {
                 newTx->vOrderForm.push_back(make_pair("Message", rcp.message.toStdString()));
             }
         }
 
-        CReserveKey *keyChange = transaction.getPossibleKeyChange();
+        CReserveKey *keyChcoinnamee = transaction.getPossibleKeyChcoinnamee();
 
         transaction.getRecipients();
 
-        if(!wallet->CommitTransaction(*newTx, *keyChange, (recipients[0].useInstantX) ? "ix" : "tx"))
+        if(!wallet->CommitTransaction(*newTx, *keyChcoinnamee, (recipients[0].useInstantX) ? "ix" : "tx"))
             return TransactionCommitFailed;
 
         CTransaction* t = (CTransaction*)newTx;
@@ -387,13 +387,13 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(WalletModelTransaction &tran
                 }
                 else if (mi->second.name != strLabel)
                 {
-                    wallet->SetAddressBook(dest, strLabel, ""); // "" means don't change purpose
+                    wallet->SetAddressBook(dest, strLabel, ""); // "" means don't chcoinnamee purpose
                 }
             }
         }
         emit coinsSent(wallet, rcp, transaction_array);
     }
-    checkBalanceChanged(); // update balance immediately, otherwise there could be a short noticeable delay until pollBalanceChanged hits
+    checkBalanceChcoinnameed(); // update balance immediately, otherwise there could be a short noticeable delay until pollBalanceChcoinnameed hits
 
     return SendCoinsReturn(OK);
 }
@@ -471,13 +471,13 @@ bool WalletModel::isAnonymizeOnlyUnlocked()
     return wallet->fWalletUnlockAnonymizeOnly;
 }
 
-bool WalletModel::changePassphrase(const SecureString &oldPass, const SecureString &newPass)
+bool WalletModel::chcoinnameePassphrase(const SecureString &oldPass, const SecureString &newPass)
 {
     bool retval;
     {
         LOCK(wallet->cs_wallet);
-        wallet->Lock(); // Make sure wallet is locked before attempting pass change
-        retval = wallet->ChangeWalletPassphrase(oldPass, newPass);
+        wallet->Lock(); // Make sure wallet is locked before attempting pass chcoinnamee
+        retval = wallet->ChcoinnameeWalletPassphrase(oldPass, newPass);
     }
     return retval;
 }
@@ -488,21 +488,21 @@ bool WalletModel::backupWallet(const QString &filename)
 }
 
 // Handlers for core signals
-static void NotifyKeyStoreStatusChanged(WalletModel *walletmodel, CCryptoKeyStore *wallet)
+static void NotifyKeyStoreStatusChcoinnameed(WalletModel *walletmodel, CCryptoKeyStore *wallet)
 {
-    qDebug() << "NotifyKeyStoreStatusChanged";
+    qDebug() << "NotifyKeyStoreStatusChcoinnameed";
     QMetaObject::invokeMethod(walletmodel, "updateStatus", Qt::QueuedConnection);
 }
 
-static void NotifyAddressBookChanged(WalletModel *walletmodel, CWallet *wallet,
+static void NotifyAddressBookChcoinnameed(WalletModel *walletmodel, CWallet *wallet,
         const CTxDestination &address, const std::string &label, bool isMine,
-        const std::string &purpose, ChangeType status)
+        const std::string &purpose, ChcoinnameeType status)
 {
     QString strAddress = QString::fromStdString(CBitcoinAddress(address).ToString());
     QString strLabel = QString::fromStdString(label);
     QString strPurpose = QString::fromStdString(purpose);
 
-    qDebug() << "NotifyAddressBookChanged : " + strAddress + " " + strLabel + " isMine=" + QString::number(isMine) + " purpose=" + strPurpose + " status=" + QString::number(status);
+    qDebug() << "NotifyAddressBookChcoinnameed : " + strAddress + " " + strLabel + " isMine=" + QString::number(isMine) + " purpose=" + strPurpose + " status=" + QString::number(status);
     QMetaObject::invokeMethod(walletmodel, "updateAddressBook", Qt::QueuedConnection,
                               Q_ARG(QString, strAddress),
                               Q_ARG(QString, strLabel),
@@ -513,8 +513,8 @@ static void NotifyAddressBookChanged(WalletModel *walletmodel, CWallet *wallet,
 
 // queue notifications to show a non freezing progress dialog e.g. for rescan
 static bool fQueueNotifications = false;
-static std::vector<std::pair<uint256, ChangeType> > vQueueNotifications;
-static void NotifyTransactionChanged(WalletModel *walletmodel, CWallet *wallet, const uint256 &hash, ChangeType status)
+static std::vector<std::pair<uint256, ChcoinnameeType> > vQueueNotifications;
+static void NotifyTransactionChcoinnameed(WalletModel *walletmodel, CWallet *wallet, const uint256 &hash, ChcoinnameeType status)
 {
     if (fQueueNotifications)
     {
@@ -524,7 +524,7 @@ static void NotifyTransactionChanged(WalletModel *walletmodel, CWallet *wallet, 
 
     QString strHash = QString::fromStdString(hash.GetHex());
 
-    qDebug() << "NotifyTransactionChanged : " + strHash + " status= " + QString::number(status);
+    qDebug() << "NotifyTransactionChcoinnameed : " + strHash + " status= " + QString::number(status);
     QMetaObject::invokeMethod(walletmodel, "updateTransaction", Qt::QueuedConnection/*,
                               Q_ARG(QString, strHash),
                               Q_ARG(int, status)*/);
@@ -538,7 +538,7 @@ static void ShowProgress(WalletModel *walletmodel, const std::string &title, int
                               Q_ARG(int, nProgress));
 }
 
-static void NotifyWatchonlyChanged(WalletModel *walletmodel, bool fHaveWatchonly)
+static void NotifyWatchonlyChcoinnameed(WalletModel *walletmodel, bool fHaveWatchonly)
 {
     QMetaObject::invokeMethod(walletmodel, "updateWatchOnlyFlag", Qt::QueuedConnection,
                               Q_ARG(bool, fHaveWatchonly));
@@ -547,21 +547,21 @@ static void NotifyWatchonlyChanged(WalletModel *walletmodel, bool fHaveWatchonly
 void WalletModel::subscribeToCoreSignals()
 {
     // Connect signals to wallet
-    wallet->NotifyStatusChanged.connect(boost::bind(&NotifyKeyStoreStatusChanged, this, _1));
-    wallet->NotifyAddressBookChanged.connect(boost::bind(NotifyAddressBookChanged, this, _1, _2, _3, _4, _5, _6));
-    wallet->NotifyTransactionChanged.connect(boost::bind(NotifyTransactionChanged, this, _1, _2, _3));
+    wallet->NotifyStatusChcoinnameed.connect(boost::bind(&NotifyKeyStoreStatusChcoinnameed, this, _1));
+    wallet->NotifyAddressBookChcoinnameed.connect(boost::bind(NotifyAddressBookChcoinnameed, this, _1, _2, _3, _4, _5, _6));
+    wallet->NotifyTransactionChcoinnameed.connect(boost::bind(NotifyTransactionChcoinnameed, this, _1, _2, _3));
     wallet->ShowProgress.connect(boost::bind(ShowProgress, this, _1, _2));
-    wallet->NotifyWatchonlyChanged.connect(boost::bind(NotifyWatchonlyChanged, this, _1));
+    wallet->NotifyWatchonlyChcoinnameed.connect(boost::bind(NotifyWatchonlyChcoinnameed, this, _1));
 }
 
 void WalletModel::unsubscribeFromCoreSignals()
 {
     // Disconnect signals from wallet
-    wallet->NotifyStatusChanged.disconnect(boost::bind(&NotifyKeyStoreStatusChanged, this, _1));
-    wallet->NotifyAddressBookChanged.disconnect(boost::bind(NotifyAddressBookChanged, this, _1, _2, _3, _4, _5, _6));
-    wallet->NotifyTransactionChanged.disconnect(boost::bind(NotifyTransactionChanged, this, _1, _2, _3));
+    wallet->NotifyStatusChcoinnameed.disconnect(boost::bind(&NotifyKeyStoreStatusChcoinnameed, this, _1));
+    wallet->NotifyAddressBookChcoinnameed.disconnect(boost::bind(NotifyAddressBookChcoinnameed, this, _1, _2, _3, _4, _5, _6));
+    wallet->NotifyTransactionChcoinnameed.disconnect(boost::bind(NotifyTransactionChcoinnameed, this, _1, _2, _3));
     wallet->ShowProgress.disconnect(boost::bind(ShowProgress, this, _1, _2));
-    wallet->NotifyWatchonlyChanged.disconnect(boost::bind(NotifyWatchonlyChanged, this, _1));
+    wallet->NotifyWatchonlyChcoinnameed.disconnect(boost::bind(NotifyWatchonlyChcoinnameed, this, _1));
 }
 
 // WalletModel::UnlockContext implementation
@@ -634,7 +634,7 @@ bool WalletModel::isSpent(const COutPoint& outpoint) const
     return wallet->IsSpent(outpoint.hash, outpoint.n);
 }
 
-// AvailableCoins + LockedCoins grouped by wallet address (put change in one group with wallet address)
+// AvailableCoins + LockedCoins grouped by wallet address (put chcoinnamee in one group with wallet address)
 void WalletModel::listCoins(std::map<QString, std::vector<COutput> >& mapCoins) const
 {
     std::vector<COutput> vCoins;
@@ -659,7 +659,7 @@ void WalletModel::listCoins(std::map<QString, std::vector<COutput> >& mapCoins) 
     {
         COutput cout = out;
 
-        while (wallet->IsChange(cout.tx->vout[cout.i]) && cout.tx->vin.size() > 0 && wallet->IsMine(cout.tx->vin[0]))
+        while (wallet->IsChcoinnamee(cout.tx->vout[cout.i]) && cout.tx->vin.size() > 0 && wallet->IsMine(cout.tx->vin[0]))
         {
             if (!wallet->mapWallet.count(cout.tx->vin[0].prevout.hash)) break;
             cout = COutput(&wallet->mapWallet[cout.tx->vin[0].prevout.hash], cout.tx->vin[0].prevout.n, 0, true);

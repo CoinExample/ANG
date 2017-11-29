@@ -1,0 +1,22 @@
+[Unit]
+Description=Coinname's distributed currency daemon
+After=network.target
+
+[Service]
+User=coinname
+Group=coinname
+
+Type=forking
+PIDFile=/var/lib/coinnamed/coinnamed.pid
+ExecStart=/usr/bin/coinnamed -daemon -pid=/var/lib/coinnamed/coinnamed.pid \
+-conf=/etc/coinname/coinname.conf -datadir=/var/lib/coinnamed -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -120,14 +120,14 @@ void ClientModel::updateTimer()
     TRY_LOCK(cs_main, lockMain);
     if(!lockMain)
         return;
-    // Some quantities (such as number of blocks) change so fast that we don't want to be notified for each change.
+    // Some quantities (such as number of blocks) chcoinnamee so fast that we don't want to be notified for each chcoinnamee.
     // Periodically check and update with a timer.
     int newNumBlocks = getNumBlocks();
 
     static int prevAttempt = -1;
     static int prevAssets = -1;
 
-    // check for changed number of blocks we have, number of blocks peers claim to have, reindexing state and importing state
+    // check for chcoinnameed number of blocks we have, number of blocks peers claim to have, reindexing state and importing state
     if (cachedNumBlocks != newNumBlocks ||
         cachedReindexing != fReindex || cachedImporting != fImporting ||
             masternodeSync.RequestedMasternodeAttempt != prevAttempt || masternodeSync.RequestedMasternodeAssets != prevAssets)
@@ -138,10 +138,10 @@ void ClientModel::updateTimer()
         prevAttempt = masternodeSync.RequestedMasternodeAttempt;
         prevAssets = masternodeSync.RequestedMasternodeAssets;
 
-        emit numBlocksChanged(newNumBlocks);
+        emit numBlocksChcoinnameed(newNumBlocks);
     }
 
-    emit bytesChanged(getTotalBytesRecv(), getTotalBytesSent());
+    emit bytesChcoinnameed(getTotalBytesRecv(), getTotalBytesSent());
 }
 
 void ClientModel::updateMnTimer()
@@ -158,13 +158,13 @@ void ClientModel::updateMnTimer()
     {
         cachedMasternodeCountString = newMasternodeCountString;
 
-        emit strMasternodesChanged(cachedMasternodeCountString);
+        emit strMasternodesChcoinnameed(cachedMasternodeCountString);
     }
 }
 
 void ClientModel::updateNumConnections(int numConnections)
 {
-    emit numConnectionsChanged(numConnections);
+    emit numConnectionsChcoinnameed(numConnections);
 }
 
 void ClientModel::updateAlert(const QString &hash, int status)
@@ -181,7 +181,7 @@ void ClientModel::updateAlert(const QString &hash, int status)
         }
     }
 
-    emit alertsChanged(getStatusBarWarnings());
+    emit alertsChcoinnameed(getStatusBarWarnings());
 }
 
 bool ClientModel::inInitialBlockDownload() const
@@ -250,16 +250,16 @@ static void ShowProgress(ClientModel *clientmodel, const std::string &title, int
                               Q_ARG(int, nProgress));
 }
 
-static void NotifyNumConnectionsChanged(ClientModel *clientmodel, int newNumConnections)
+static void NotifyNumConnectionsChcoinnameed(ClientModel *clientmodel, int newNumConnections)
 {
-    // Too noisy: qDebug() << "NotifyNumConnectionsChanged : " + QString::number(newNumConnections);
+    // Too noisy: qDebug() << "NotifyNumConnectionsChcoinnameed : " + QString::number(newNumConnections);
     QMetaObject::invokeMethod(clientmodel, "updateNumConnections", Qt::QueuedConnection,
                               Q_ARG(int, newNumConnections));
 }
 
-static void NotifyAlertChanged(ClientModel *clientmodel, const uint256 &hash, ChangeType status)
+static void NotifyAlertChcoinnameed(ClientModel *clientmodel, const uint256 &hash, ChcoinnameeType status)
 {
-    qDebug() << "NotifyAlertChanged : " + QString::fromStdString(hash.GetHex()) + " status=" + QString::number(status);
+    qDebug() << "NotifyAlertChcoinnameed : " + QString::fromStdString(hash.GetHex()) + " status=" + QString::number(status);
     QMetaObject::invokeMethod(clientmodel, "updateAlert", Qt::QueuedConnection,
                               Q_ARG(QString, QString::fromStdString(hash.GetHex())),
                               Q_ARG(int, status));
@@ -269,14 +269,14 @@ void ClientModel::subscribeToCoreSignals()
 {
     // Connect signals to client
     uiInterface.ShowProgress.connect(boost::bind(ShowProgress, this, _1, _2));
-    uiInterface.NotifyNumConnectionsChanged.connect(boost::bind(NotifyNumConnectionsChanged, this, _1));
-    uiInterface.NotifyAlertChanged.connect(boost::bind(NotifyAlertChanged, this, _1, _2));
+    uiInterface.NotifyNumConnectionsChcoinnameed.connect(boost::bind(NotifyNumConnectionsChcoinnameed, this, _1));
+    uiInterface.NotifyAlertChcoinnameed.connect(boost::bind(NotifyAlertChcoinnameed, this, _1, _2));
 }
 
 void ClientModel::unsubscribeFromCoreSignals()
 {
     // Disconnect signals from client
     uiInterface.ShowProgress.disconnect(boost::bind(ShowProgress, this, _1, _2));
-    uiInterface.NotifyNumConnectionsChanged.disconnect(boost::bind(NotifyNumConnectionsChanged, this, _1));
-    uiInterface.NotifyAlertChanged.disconnect(boost::bind(NotifyAlertChanged, this, _1, _2));
+    uiInterface.NotifyNumConnectionsChcoinnameed.disconnect(boost::bind(NotifyNumConnectionsChcoinnameed, this, _1));
+    uiInterface.NotifyAlertChcoinnameed.disconnect(boost::bind(NotifyAlertChcoinnameed, this, _1, _2));
 }

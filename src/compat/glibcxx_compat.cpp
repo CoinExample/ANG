@@ -61,7 +61,7 @@ template ostream& __ostream_insert(ostream&, const char*, streamsize);
 template istream& istream::_M_extract(long&);
 template istream& istream::_M_extract(unsigned short&);
 
-out_of_range::~out_of_range() _GLIBCXX_USE_NOEXCEPT {}
+out_of_rcoinnamee::~out_of_rcoinnamee() _GLIBCXX_USE_NOEXCEPT {}
 
 length_error::~length_error() _GLIBCXX_USE_NOEXCEPT {}
 
@@ -84,11 +84,11 @@ void ctype<char>::_M_widen_init() const
         }
 }
 
-void __throw_out_of_range_fmt(const char*, ...) __attribute__((__noreturn__));
-void __throw_out_of_range_fmt(const char* err, ...)
+void __throw_out_of_rcoinnamee_fmt(const char*, ...) __attribute__((__noreturn__));
+void __throw_out_of_rcoinnamee_fmt(const char* err, ...)
 {
     // Safe and over-simplified version. Ignore the format and print it as-is.
-    __throw_out_of_range(err);
+    __throw_out_of_rcoinnamee(err);
 }
 
 } // namespace std

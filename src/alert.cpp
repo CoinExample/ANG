@@ -207,13 +207,13 @@ bool CAlert::ProcessAlert(bool fThread)
             if (Cancels(alert))
             {
                 LogPrint("alert", "cancelling alert %d\n", alert.nID);
-                uiInterface.NotifyAlertChanged((*mi).first, CT_DELETED);
+                uiInterface.NotifyAlertChcoinnameed((*mi).first, CT_DELETED);
                 mapAlerts.erase(mi++);
             }
             else if (!alert.IsInEffect())
             {
                 LogPrint("alert", "expiring alert %d\n", alert.nID);
-                uiInterface.NotifyAlertChanged((*mi).first, CT_DELETED);
+                uiInterface.NotifyAlertChcoinnameed((*mi).first, CT_DELETED);
                 mapAlerts.erase(mi++);
             }
             else
@@ -236,7 +236,7 @@ bool CAlert::ProcessAlert(bool fThread)
         // Notify UI and -alertnotify if it applies to me
         if(AppliesToMe())
         {
-            uiInterface.NotifyAlertChanged(GetHash(), CT_NEW);
+            uiInterface.NotifyAlertChcoinnameed(GetHash(), CT_NEW);
             Notify(strStatusBar, fThread);
         }
     }

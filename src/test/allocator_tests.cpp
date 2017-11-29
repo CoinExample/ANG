@@ -42,28 +42,28 @@ BOOST_AUTO_TEST_CASE(test_LockedPageManagerBase)
     addr = 0;
     for(int i=0; i<1000; ++i)
     {
-        lpm.LockRange(reinterpret_cast<void*>(addr), 33);
+        lpm.LockRcoinnamee(reinterpret_cast<void*>(addr), 33);
         addr += 33;
     }
     /* Try small number of page-sized objects, straddling two pages */
     addr = test_page_size*100 + 53;
     for(int i=0; i<100; ++i)
     {
-        lpm.LockRange(reinterpret_cast<void*>(addr), test_page_size);
+        lpm.LockRcoinnamee(reinterpret_cast<void*>(addr), test_page_size);
         addr += test_page_size;
     }
     /* Try small number of page-sized objects aligned to exactly one page */
     addr = test_page_size*300;
     for(int i=0; i<100; ++i)
     {
-        lpm.LockRange(reinterpret_cast<void*>(addr), test_page_size);
+        lpm.LockRcoinnamee(reinterpret_cast<void*>(addr), test_page_size);
         addr += test_page_size;
     }
     /* one very large object, straddling pages */
-    lpm.LockRange(reinterpret_cast<void*>(test_page_size*600+1), test_page_size*500);
+    lpm.LockRcoinnamee(reinterpret_cast<void*>(test_page_size*600+1), test_page_size*500);
     BOOST_CHECK(last_lock_addr == reinterpret_cast<void*>(test_page_size*(600+500)));
     /* one very large object, page aligned */
-    lpm.LockRange(reinterpret_cast<void*>(test_page_size*1200), test_page_size*500-1);
+    lpm.LockRcoinnamee(reinterpret_cast<void*>(test_page_size*1200), test_page_size*500-1);
     BOOST_CHECK(last_lock_addr == reinterpret_cast<void*>(test_page_size*(1200+500-1)));
 
     BOOST_CHECK(lpm.GetLockedPageCount() == (
@@ -77,23 +77,23 @@ BOOST_AUTO_TEST_CASE(test_LockedPageManagerBase)
     addr = 0;
     for(int i=0; i<1000; ++i)
     {
-        lpm.UnlockRange(reinterpret_cast<void*>(addr), 33);
+        lpm.UnlockRcoinnamee(reinterpret_cast<void*>(addr), 33);
         addr += 33;
     }
     addr = test_page_size*100 + 53;
     for(int i=0; i<100; ++i)
     {
-        lpm.UnlockRange(reinterpret_cast<void*>(addr), test_page_size);
+        lpm.UnlockRcoinnamee(reinterpret_cast<void*>(addr), test_page_size);
         addr += test_page_size;
     }
     addr = test_page_size*300;
     for(int i=0; i<100; ++i)
     {
-        lpm.UnlockRange(reinterpret_cast<void*>(addr), test_page_size);
+        lpm.UnlockRcoinnamee(reinterpret_cast<void*>(addr), test_page_size);
         addr += test_page_size;
     }
-    lpm.UnlockRange(reinterpret_cast<void*>(test_page_size*600+1), test_page_size*500);
-    lpm.UnlockRange(reinterpret_cast<void*>(test_page_size*1200), test_page_size*500-1);
+    lpm.UnlockRcoinnamee(reinterpret_cast<void*>(test_page_size*600+1), test_page_size*500);
+    lpm.UnlockRcoinnamee(reinterpret_cast<void*>(test_page_size*1200), test_page_size*500-1);
 
     /* Check that everything is released */
     BOOST_CHECK(lpm.GetLockedPageCount() == 0);
@@ -102,14 +102,14 @@ BOOST_AUTO_TEST_CASE(test_LockedPageManagerBase)
     addr = 0;
     for(int i=0; i<1000; ++i)
     {
-        lpm.LockRange(reinterpret_cast<void*>(addr), 0);
+        lpm.LockRcoinnamee(reinterpret_cast<void*>(addr), 0);
         addr += 1;
     }
     BOOST_CHECK(lpm.GetLockedPageCount() == 0);
     addr = 0;
     for(int i=0; i<1000; ++i)
     {
-        lpm.UnlockRange(reinterpret_cast<void*>(addr), 0);
+        lpm.UnlockRcoinnamee(reinterpret_cast<void*>(addr), 0);
         addr += 1;
     }
     BOOST_CHECK(lpm.GetLockedPageCount() == 0);

@@ -35,7 +35,7 @@ class CDBEnv
 private:
     bool fDbEnvInit;
     bool fMockDb;
-    // Don't change into boost::filesystem::path, as that can result in
+    // Don't chcoinnamee into boost::filesystem::path, as that can result in
     // shutdown problems/crashes caused by a static initialized internal pointer.
     std::string strPath;
 
@@ -234,12 +234,12 @@ protected:
     {
         // Read at cursor
         Dbt datKey;
-        if (fFlags == DB_SET || fFlags == DB_SET_RANGE || fFlags == DB_GET_BOTH || fFlags == DB_GET_BOTH_RANGE) {
+        if (fFlags == DB_SET || fFlags == DB_SET_RCOINNAMEE || fFlags == DB_GET_BOTH || fFlags == DB_GET_BOTH_RCOINNAMEE) {
             datKey.set_data(&ssKey[0]);
             datKey.set_size(ssKey.size());
         }
         Dbt datValue;
-        if (fFlags == DB_GET_BOTH || fFlags == DB_GET_BOTH_RANGE) {
+        if (fFlags == DB_GET_BOTH || fFlags == DB_GET_BOTH_RCOINNAMEE) {
             datValue.set_data(&ssValue[0]);
             datValue.set_size(ssValue.size());
         }

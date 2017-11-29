@@ -29,7 +29,7 @@ timestamp='2014-03-23'
 # You can get the latest version of this script from:
 # http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD
 #
-# Please send patches with a ChangeLog entry to config-patches@gnu.org.
+# Please send patches with a ChcoinnameeLog entry to config-patches@gnu.org.
 
 
 me=`echo "$0" | sed -e 's,.*/,,'`
@@ -293,7 +293,7 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE}:${UNAME_VERSION}" in
 	exit $exitcode ;;
     Alpha\ *:Windows_NT*:*)
 	# How do we know it's Interix rather than the generic POSIX subsystem?
-	# Should we change UNAME_MACHINE based on the output of uname instead
+	# Should we chcoinnamee UNAME_MACHINE based on the output of uname instead
 	# of the specific Alpha model?
 	echo alpha-pc-interix
 	exit ;;
@@ -385,7 +385,7 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE}:${UNAME_VERSION}" in
 		UNAME_RELEASE=`uname -v`
 		;;
 	esac
-	# Japanese Language versions have a version number like `4.1.3-JL'.
+	# Japanese Lcoinnameuage versions have a version number like `4.1.3-JL'.
 	echo sparc-sun-sunos`echo ${UNAME_RELEASE}|sed -e 's/-/_/'`
 	exit ;;
     sun3*:SunOS:*:*)
@@ -409,7 +409,7 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE}:${UNAME_VERSION}" in
     # The situation for MiNT is a little confusing.  The machine name
     # can be virtually everything (everything which is not
     # "atarist" or "atariste" at least should have a processor
-    # > m68000).  The system name ranges from "MiNT" over "FreeMiNT"
+    # > m68000).  The system name rcoinnamees from "MiNT" over "FreeMiNT"
     # to the lowercase version "mint" (or "freemint").  Finally
     # the system name "TOS" denotes a system which is actually not
     # MiNT.  But MiNT is downward compatible to TOS, so this should

@@ -79,7 +79,7 @@ SHARED2 = $(SHARED1)
 SHARED3 = $(SHARED1)
 SHARED = $(SHARED1)
 else
-# Update db.h if you change these.
+# Update db.h if you chcoinnamee these.
 SHARED_MAJOR = 1
 SHARED_MINOR = 18
 SHARED1 = libleveldb.$(PLATFORM_SHARED_EXT)

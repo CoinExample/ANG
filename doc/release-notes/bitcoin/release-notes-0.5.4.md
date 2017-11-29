@@ -1,6 +1,6 @@
 Bitcoin version 0.5.4 is now available for download at:
 http://sourceforge.net/projects/bitcoin/files/Bitcoin/bitcoin-0.5.4/
-NOTE: 0.5.4rc3 is being renamed to 0.5.4 final with no changes.
+NOTE: 0.5.4rc3 is being renamed to 0.5.4 final with no chcoinnamees.
 
 This is a bugfix-only release in the 0.5.x series, plus a few protocol updates.
 
@@ -17,7 +17,7 @@ Support for validating message signatures produced with compressed public keys.
 
 BUG FIXES
 
-Build with thread-safe MingW libraries for Windows, fixing a dangerous memory corruption scenario when exceptions are thrown.
+Build with thread-safe MingW libraries for Windows, fixing a dcoinnameerous memory corruption scenario when exceptions are thrown.
 Fix broken testnet mining.
 Stop excess inventory relay during initial block download.
 When disconnecting a node, clear the received buffer so that we do not process any already received messages.

@@ -1,7 +1,7 @@
 Version 0.3.14 is now available
 http://sourceforge.net/projects/bitcoin/files/Bitcoin/bitcoin-0.3.14/
 
-Changes:
+Chcoinnamees:
 * Key pool feature for safer wallet backup
 Gavin Andresen:
 * TEST network mode with switch -testnet

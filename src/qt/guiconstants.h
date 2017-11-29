@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -45,9 +45,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 35
 
-#define QAPP_ORG_NAME "Ang"
+#define QAPP_ORG_NAME "Coinname"
 #define QAPP_ORG_DOMAIN "andrijKolomiets.io"
-#define QAPP_APP_NAME_DEFAULT "Ang-Qt"
-#define QAPP_APP_NAME_TESTNET "Ang-Qt-testnet"
+#define QAPP_APP_NAME_DEFAULT "Coinname-Qt"
+#define QAPP_APP_NAME_TESTNET "Coinname-Qt-testnet"
 
 #endif // BITCOIN_QT_GUICONSTANTS_H

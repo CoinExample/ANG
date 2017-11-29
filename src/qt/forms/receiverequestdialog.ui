@@ -59,7 +59,7 @@
      <property name="frameShadow">
       <enum>QFrame::Plain</enum>
      </property>
-     <property name="tabChangesFocus">
+     <property name="tabChcoinnameesFocus">
       <bool>true</bool>
      </property>
      <property name="textInteractionFlags">

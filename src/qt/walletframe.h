@@ -66,8 +66,8 @@ public slots:
     void encryptWallet(bool status);
     /** Backup the wallet */
     void backupWallet();
-    /** Change encrypted wallet passphrase */
-    void changePassphrase();
+    /** Chcoinnamee encrypted wallet passphrase */
+    void chcoinnameePassphrase();
     /** Ask for passphrase to unlock wallet temporarily */
     void unlockWallet();
     /** Lock wallet */

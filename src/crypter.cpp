@@ -211,7 +211,7 @@ bool CCryptoKeyStore::Lock()
         vMasterKey.clear();
     }
 
-    NotifyStatusChanged(this);
+    NotifyStatusChcoinnameed(this);
     return true;
 }
 
@@ -261,7 +261,7 @@ bool CCryptoKeyStore::Unlock(const CKeyingMaterial& vMasterKeyIn)
         vMasterKey = vMasterKeyIn;
         fDecryptionThoroughlyChecked = true;
     }
-    NotifyStatusChanged(this);
+    NotifyStatusChcoinnameed(this);
     return true;
 }
 

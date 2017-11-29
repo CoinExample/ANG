@@ -23,13 +23,13 @@ index a130590..4af99a1 100644
      }
 @@ -980,7 +982,8 @@ class base_atomic<T, void, 16, Sign>
  
-     value_type exchange(value_type const& v, memory_order order = memory_order_seq_cst) volatile BOOST_NOEXCEPT
+     value_type exchcoinnamee(value_type const& v, memory_order order = memory_order_seq_cst) volatile BOOST_NOEXCEPT
      {
 -        storage_type tmp = 0;
 +        storage_type tmp;
 +        memset(&tmp, 0, sizeof(tmp));
          memcpy(&tmp, &v, sizeof(value_type));
-         tmp = __atomic_exchange_n(&v_, tmp, atomics::detail::convert_memory_order_to_gcc(order));
+         tmp = __atomic_exchcoinnamee_n(&v_, tmp, atomics::detail::convert_memory_order_to_gcc(order));
          value_type res;
 @@ -994,7 +997,9 @@ class base_atomic<T, void, 16, Sign>
          memory_order success_order,
@@ -41,7 +41,7 @@ index a130590..4af99a1 100644
 +        memset(&desired_s, 0, sizeof(desired_s));
          memcpy(&expected_s, &expected, sizeof(value_type));
          memcpy(&desired_s, &desired, sizeof(value_type));
-         const bool success = __atomic_compare_exchange_n(&v_, &expected_s, desired_s, false,
+         const bool success = __atomic_compare_exchcoinnamee_n(&v_, &expected_s, desired_s, false,
 @@ -1010,7 +1015,9 @@ class base_atomic<T, void, 16, Sign>
          memory_order success_order,
          memory_order failure_order) volatile BOOST_NOEXCEPT
@@ -52,4 +52,4 @@ index a130590..4af99a1 100644
 +        memset(&desired_s, 0, sizeof(desired_s));
          memcpy(&expected_s, &expected, sizeof(value_type));
          memcpy(&desired_s, &desired, sizeof(value_type));
-         const bool success = __atomic_compare_exchange_n(&v_, &expected_s, desired_s, true,
+         const bool success = __atomic_compare_exchcoinnamee_n(&v_, &expected_s, desired_s, true,

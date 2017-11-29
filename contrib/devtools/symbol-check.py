@@ -50,15 +50,15 @@ CPPFILT_CMD = '/usr/bin/c++filt'
 
 class CPPFilt(object):
     '''
-    Demangle C++ symbol names.
+    Demcoinnamele C++ symbol names.
 
     Use a pipe to the 'c++filt' command.
     '''
     def __init__(self):
         self.proc = subprocess.Popen(CPPFILT_CMD, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
-    def __call__(self, mangled):
-        self.proc.stdin.write(mangled + '\n')
+    def __call__(self, mcoinnameled):
+        self.proc.stdin.write(mcoinnameled + '\n')
         return self.proc.stdout.readline().rstrip()
 
     def close(self):

@@ -73,12 +73,12 @@ TableBuilder::~TableBuilder() {
   delete rep_;
 }
 
-Status TableBuilder::ChangeOptions(const Options& options) {
+Status TableBuilder::ChcoinnameeOptions(const Options& options) {
   // Note: if more fields are added to Options, update
-  // this function to catch changes that should not be allowed to
-  // change in the middle of building a Table.
+  // this function to catch chcoinnamees that should not be allowed to
+  // chcoinnamee in the middle of building a Table.
   if (options.comparator != rep_->options.comparator) {
-    return Status::InvalidArgument("changing comparator while building table");
+    return Status::InvalidArgument("chcoinnameing comparator while building table");
   }
 
   // Note that any live BlockBuilders point to rep_->options and therefore

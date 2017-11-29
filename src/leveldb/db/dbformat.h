@@ -46,7 +46,7 @@ static const int kReadBytesPeriod = 1048576;
 class InternalKey;
 
 // Value types encoded as the last component of internal keys.
-// DO NOT CHANGE THESE ENUM VALUES: they are embedded in the on-disk
+// DO NOT CHCOINNAMEE THESE ENUM VALUES: they are embedded in the on-disk
 // data structures.
 enum ValueType {
   kTypeDeletion = 0x0,

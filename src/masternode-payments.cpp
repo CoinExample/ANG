@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -377,7 +377,7 @@ void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::st
 
         int nFirstBlock = chainActive.Tip()->nHeight - (mnodeman.CountEnabled()*1.25);
         if(winner.nBlockHeight < nFirstBlock || winner.nBlockHeight > chainActive.Tip()->nHeight+20){
-            LogPrint("mnpayments", "mnw - winner out of range - FirstBlock %d Height %d bestHeight %d\n", nFirstBlock, winner.nBlockHeight, chainActive.Tip()->nHeight);
+            LogPrint("mnpayments", "mnw - winner out of rcoinnamee - FirstBlock %d Height %d bestHeight %d\n", nFirstBlock, winner.nBlockHeight, chainActive.Tip()->nHeight);
             return;
         }
 

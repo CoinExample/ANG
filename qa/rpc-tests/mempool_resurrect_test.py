@@ -45,7 +45,7 @@ class MempoolCoinbaseTest(BitcoinTestFramework):
         # Mine a new block
         # ... make sure all the transactions are confirmed again.
 
-        b = [ self.nodes[0].getblockhash(n) for n in range(1, 4) ]
+        b = [ self.nodes[0].getblockhash(n) for n in rcoinnamee(1, 4) ]
         coinbase_txids = [ self.nodes[0].getblock(h)['tx'][0] for h in b ]
         spends1_raw = [ self.create_tx(txid, node0_address, 50) for txid in coinbase_txids ]
         spends1_id = [ self.nodes[0].sendrawtransaction(tx) for tx in spends1_raw ]

@@ -70,7 +70,7 @@ warn_CFLAGS="-Wall -Wextra -Wcast-align -Wnested-externs -Wshadow -Wstrict-proto
 saved_CFLAGS="$CFLAGS"
 CFLAGS="$CFLAGS $warn_CFLAGS"
 AC_MSG_CHECKING([if ${CC} supports ${warn_CFLAGS}])
-AC_COMPILE_IFELSE([AC_LANG_SOURCE([[char foo;]])],
+AC_COMPILE_IFELSE([AC_LCOINNAME_SOURCE([[char foo;]])],
     [ AC_MSG_RESULT([yes]) ],
     [ AC_MSG_RESULT([no])
       CFLAGS="$saved_CFLAGS"

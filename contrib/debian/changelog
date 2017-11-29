@@ -132,7 +132,7 @@ bitcoin (0.5.3-natty0) natty; urgency=low
 
   * New upstream release.
 
- -- Luke Angjr <luke+bitcoin+deb@angjr.org>  Tue, 10 Jan 2012 15:57:00 -0500
+ -- Luke Coinnamejr <luke+bitcoin+deb@coinnamejr.org>  Tue, 10 Jan 2012 15:57:00 -0500
 
 bitcoin (0.5.2-natty1) natty; urgency=low
 
@@ -147,7 +147,7 @@ bitcoin (0.5.2-natty0) natty; urgency=low
 
   * New upstream release.
 
- -- Luke Angjr <luke+bitcoin+deb@angjr.org>  Fri, 16 Dec 2011 17:57:00 -0500
+ -- Luke Coinnamejr <luke+bitcoin+deb@coinnamejr.org>  Fri, 16 Dec 2011 17:57:00 -0500
 
 bitcoin (0.5.1-natty0) natty; urgency=low
 
@@ -365,8 +365,8 @@ bitcoin (0.3.19~dfsg-5) unstable; urgency=low
 bitcoin (0.3.19~dfsg-4) unstable; urgency=low
 
   [ Micah Anderson ]
-  * Provide example ang.conf.
-  * Add bitcoind(1) and ang.conf(5) man pages.
+  * Provide example coinname.conf.
+  * Add bitcoind(1) and coinname.conf(5) man pages.
 
   [ Jonas Smedegaard ]
   * Ease backporting:
@@ -389,7 +389,7 @@ bitcoin (0.3.19~dfsg-3) unstable; urgency=low
     + Build-depend on libdb4.8++-dev (and on on libdb4.7++-dev).
     + Suggest libdb4.8-util and db4.7-util.
     + Add README.Debian note on (untested) upgrade routine.
-    + Add NEWS entry on changed db version, referring to README.Debian.
+    + Add NEWS entry on chcoinnameed db version, referring to README.Debian.
 
  -- Jonas Smedegaard <dr@jones.dk>  Fri, 07 Jan 2011 22:50:57 +0100
 
@@ -402,7 +402,7 @@ bitcoin (0.3.19~dfsg-2) unstable; urgency=low
     -O3).
   * Extend long description to mention disk consumption and initial use
     of IRC.
-  All of above changes thanks to Helmuth Grohne.
+  All of above chcoinnamees thanks to Helmuth Grohne.
   * Add lintian override regarding OpenSSL and GPL: Linked code is Expat
     - only Debian packaging is GPL-2+.
 

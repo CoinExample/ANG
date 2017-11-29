@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015 The Ang Developers
+// Copyright (c) 2014-2015 The Coinname Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -31,9 +31,9 @@ Value mnbudget(const Array& params, bool fHelp)
                 "\nAvailable commands:\n"
                 "  prepare            - Prepare proposal for network by signing and creating tx\n"
                 "  submit             - Submit proposal for network\n"
-                "  vote-many          - Vote on a Ang initiative\n"
-                "  vote-alias         - Vote on a Ang initiative\n"
-                "  vote               - Vote on a Ang initiative/budget\n"
+                "  vote-many          - Vote on a Coinname initiative\n"
+                "  vote-alias         - Vote on a Coinname initiative\n"
+                "  vote               - Vote on a Coinname initiative/budget\n"
                 "  getvotes           - Show current masternode budgets\n"
                 "  getinfo            - Show current masternode budgets\n"
                 "  show               - Show all budgets\n"
@@ -60,7 +60,7 @@ Value mnbudget(const Array& params, bool fHelp)
         mnEntries = masternodeConfig.getEntries();
 
         if (params.size() != 7)
-            throw runtime_error("Correct usage is 'mnbudget prepare proposal-name url payment_count block_start ang_address monthly_payment_ang'");
+            throw runtime_error("Correct usage is 'mnbudget prepare proposal-name url payment_count block_start coinname_address monthly_payment_coinname'");
 
         std::string strProposalName = params[1].get_str();
         if(strProposalName.size() > 20)
@@ -93,9 +93,9 @@ Value mnbudget(const Array& params, bool fHelp)
 
         CBitcoinAddress address(params[5].get_str());
         if (!address.IsValid())
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Ang address");
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Coinname address");
 
-        // Parse Ang address
+        // Parse Coinname address
         CScript scriptPubKey = GetScriptForDestination(address.Get());
         CAmount nAmount = AmountFromValue(params[6]);
 
@@ -120,7 +120,7 @@ Value mnbudget(const Array& params, bool fHelp)
             return "Error making collateral transaction for proposal. Please check your wallet balance and make sure your wallet is unlocked.";
         }
 
-        // make our change address
+        // make our chcoinnamee address
         CReserveKey reservekey(pwalletMain);
         //send the tx to the network
         pwalletMain->CommitTransaction(wtx, reservekey, useIX ? "ix" : "tx");
@@ -137,7 +137,7 @@ Value mnbudget(const Array& params, bool fHelp)
         mnEntries = masternodeConfig.getEntries();
 
         if (params.size() != 8)
-            throw runtime_error("Correct usage is 'mnbudget submit proposal-name url payment_count block_start ang_address monthly_payment_ang fee_tx'");
+            throw runtime_error("Correct usage is 'mnbudget submit proposal-name url payment_count block_start coinname_address monthly_payment_coinname fee_tx'");
 
         // Check these inputs the same way we check the vote commands:
         // **********************************************************
@@ -173,9 +173,9 @@ Value mnbudget(const Array& params, bool fHelp)
 
         CBitcoinAddress address(params[5].get_str());
         if (!address.IsValid())
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Ang address");
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Coinname address");
 
-        // Parse Ang address
+        // Parse Coinname address
         CScript scriptPubKey = GetScriptForDestination(address.Get());
         CAmount nAmount = AmountFromValue(params[6]);
         uint256 hash = ParseHashV(params[7], "parameter 1");

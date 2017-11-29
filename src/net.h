@@ -273,10 +273,10 @@ protected:
 
     std::vector<std::string> vecRequestsFulfilled; //keep track of what client has asked for
     
-    // Whitelisted ranges. Any node connecting from these is automatically
+    // Whitelisted rcoinnamees. Any node connecting from these is automatically
     // whitelisted (as well as those connecting to whitelisted binds).
-    static std::vector<CSubNet> vWhitelistedRange;
-    static CCriticalSection cs_vWhitelistedRange;
+    static std::vector<CSubNet> vWhitelistedRcoinnamee;
+    static CCriticalSection cs_vWhitelistedRcoinnamee;
 
     // Basic fuzz-testing
     void Fuzz(int nChance); // modifies ssSend
@@ -665,7 +665,7 @@ public:
     // can isolate a node and/or try to split the network.
     // Dropping a node for sending stuff that is invalid
     // now but might be valid in a later version is also
-    // dangerous, because it can cause a network split
+    // dcoinnameerous, because it can cause a network split
     // between nodes running old code and nodes running
     // new code.
     static void ClearBanned(); // needed for unit testing
@@ -673,8 +673,8 @@ public:
     static bool Ban(const CNetAddr &ip);
     void copyStats(CNodeStats &stats);
 
-    static bool IsWhitelistedRange(const CNetAddr &ip);
-    static void AddWhitelistedRange(const CSubNet &subnet);
+    static bool IsWhitelistedRcoinnamee(const CNetAddr &ip);
+    static void AddWhitelistedRcoinnamee(const CSubNet &subnet);
 
     // Network stats
     static void RecordBytesRecv(uint64_t bytes);

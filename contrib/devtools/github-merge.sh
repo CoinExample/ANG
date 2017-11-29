@@ -134,7 +134,7 @@ if [[ "d$TESTCMD" != "d" ]]; then
 else
   # Verify the result.
   echo "Dropping you on a shell so you can try building/testing the merged source." >&2
-  echo "Run 'git diff HEAD~' to show the changes being merged." >&2
+  echo "Run 'git diff HEAD~' to show the chcoinnamees being merged." >&2
   echo "Type 'exit' when done." >&2
   if [[ -f /etc/debian_version ]]; then # Show pull number in prompt on Debian default prompt
       export debian_chroot="$PULL"

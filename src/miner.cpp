@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -28,7 +28,7 @@ using namespace std;
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// AngMiner
+// CoinnameMiner
 //
 
 //
@@ -85,7 +85,7 @@ void UpdateTime(CBlockHeader* pblock, const CBlockIndex* pindexPrev)
 {
     pblock->nTime = std::max(pindexPrev->GetMedianTimePast()+1, GetAdjustedTime());
 
-    // Updating time can change work required on testnet:
+    // Updating time can chcoinnamee work required on testnet:
     if (Params().AllowMinDifficultyBlocks())
         pblock->nBits = GetNextWorkRequired(pindexPrev, pblock);
 }
@@ -133,7 +133,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
 
         CBlockIndex* pindexPrev = chainActive.Tip();
         const int nHeight = pindexPrev->nHeight + 1;
-        CCoinsViewCache view(angsTip);
+        CCoinsViewCache view(coinnamesTip);
 
         // Add our coinbase tx as first transaction
         pblock->vtx.push_back(txNew);
@@ -377,7 +377,7 @@ void IncrementExtraNonce(CBlock* pblock, CBlockIndex* pindexPrev, unsigned int& 
 double dHashesPerSec = 0.0;
 int64_t nHPSTimerStart = 0;
 
-// ***TODO*** ScanHash is not yet used in Ang
+// ***TODO*** ScanHash is not yet used in Coinname
 //
 // ScanHash scans nonces looking for a hash with at least some zero bits.
 // The nonce is usually preserved between calls, but periodically or if the
@@ -432,7 +432,7 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     {
         LOCK(cs_main);
         if (pblock->hashPrevBlock != chainActive.Tip()->GetBlockHash())
-            return error("AngMiner : generated block is stale");
+            return error("CoinnameMiner : generated block is stale");
     }
 
     // Remove key from key pool
@@ -447,17 +447,17 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     // Process this block the same as if we had received it from another node
     CValidationState state;
     if (!ProcessNewBlock(state, NULL, pblock))
-        return error("AngMiner : ProcessNewBlock, block not accepted");
+        return error("CoinnameMiner : ProcessNewBlock, block not accepted");
 
     return true;
 }
 
-// ***TODO*** that part changed in bitcoin, we are using a mix with old one here for now
+// ***TODO*** that part chcoinnameed in bitcoin, we are using a mix with old one here for now
 void static BitcoinMiner(CWallet *pwallet)
 {
-    LogPrintf("AngMiner started\n");
+    LogPrintf("CoinnameMiner started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("ang-miner");
+    RenameThread("coinname-miner");
 
     // Each thread has its own key and counter
     CReserveKey reservekey(pwallet);
@@ -490,13 +490,13 @@ void static BitcoinMiner(CWallet *pwallet)
             auto_ptr<CBlockTemplate> pblocktemplate(CreateNewBlockWithKey(reservekey));
             if (!pblocktemplate.get())
             {
-                LogPrintf("Error in AngMiner: Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
+                LogPrintf("Error in CoinnameMiner: Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
                 return;
             }
             CBlock *pblock = &pblocktemplate->block;
             IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-            LogPrintf("Running AngMiner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
+            LogPrintf("Running CoinnameMiner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
                 ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
             //
@@ -579,7 +579,7 @@ void static BitcoinMiner(CWallet *pwallet)
                 UpdateTime(pblock, pindexPrev);
                 if (Params().AllowMinDifficultyBlocks())
                 {
-                    // Changing pblock->nTime can change work required on testnet:
+                    // Chcoinnameing pblock->nTime can chcoinnamee work required on testnet:
                     hashTarget.SetCompact(pblock->nBits);
                 }
             }
@@ -587,7 +587,7 @@ void static BitcoinMiner(CWallet *pwallet)
     }
     catch (boost::thread_interrupted)
     {
-        LogPrintf("AngMiner terminated\n");
+        LogPrintf("CoinnameMiner terminated\n");
         throw;
     }
     catch (const std::runtime_error &e)

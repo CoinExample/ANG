@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifdef HAVE_CONFIG_H
-#include "config/ang-config.h"
+#include "config/coinname-config.h"
 #endif
 
 #include "netbase.h"
@@ -1220,7 +1220,7 @@ CSubNet::CSubNet(const std::string &strSubnet, bool fAllowLookup)
             const int astartofs = network.IsIPv4() ? 12 : 0;
             if (ParseInt32(strNetmask, &n)) // If valid number, assume /24 symtex
             {
-                if(n >= 0 && n <= (128 - astartofs*8)) // Only valid if in range of bits of address
+                if(n >= 0 && n <= (128 - astartofs*8)) // Only valid if in rcoinnamee of bits of address
                 {
                     n += astartofs*8;
                     // Clear bits [n..127]
@@ -1303,7 +1303,7 @@ std::string NetworkErrorString(int err)
     char buf[256];
     buf[0] = 0;
     if(FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_MAX_WIDTH_MASK,
-            NULL, err, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+            NULL, err, MAKELCOINNAMEID(LCOINNAME_NEUTRAL, SUBLCOINNAME_DEFAULT),
             buf, sizeof(buf), NULL))
     {
         return strprintf("%s (%d)", buf, err);

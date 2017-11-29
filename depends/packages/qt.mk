@@ -33,7 +33,7 @@ $(package)_config_opts += -no-c++11 -openssl-linked  -v -static -silent -pkg-con
 $(package)_config_opts += -qt-libpng -qt-libjpeg -qt-zlib -qt-pcre
 
 ifneq ($(build_os),darwin)
-$(package)_config_opts_darwin = -xplatform macx-clang-linux -device-option MAC_SDK_PATH=$(OSX_SDK) -device-option CROSS_COMPILE="$(host)-"
+$(package)_config_opts_darwin = -xplatform macx-clcoinname-linux -device-option MAC_SDK_PATH=$(OSX_SDK) -device-option CROSS_COMPILE="$(host)-"
 $(package)_config_opts_darwin += -device-option MAC_MIN_VERSION=$(OSX_MIN_VERSION) -device-option MAC_TARGET=$(host)
 endif
 
@@ -49,11 +49,11 @@ define $(package)_preprocess_cmds
   sed -i.old "s/src_plugins.depends = src_sql src_xml src_network/src_plugins.depends = src_xml src_network/" qtbase/src/src.pro && \
   sed -i.old "/XIproto.h/d" qtbase/src/plugins/platforms/xcb/qxcbxsettings.cpp && \
   sed -i.old 's/if \[ "$$$$XPLATFORM_MAC" = "yes" \]; then xspecvals=$$$$(macSDKify/if \[ "$$$$BUILD_ON_MAC" = "yes" \]; then xspecvals=$$$$(macSDKify/' qtbase/configure && \
-  mkdir -p qtbase/mkspecs/macx-clang-linux &&\
-  cp -f qtbase/mkspecs/macx-clang/Info.plist.lib qtbase/mkspecs/macx-clang-linux/ &&\
-  cp -f qtbase/mkspecs/macx-clang/Info.plist.app qtbase/mkspecs/macx-clang-linux/ &&\
-  cp -f qtbase/mkspecs/macx-clang/qplatformdefs.h qtbase/mkspecs/macx-clang-linux/ &&\
-  cp -f $($(package)_patch_dir)/mac-qmake.conf qtbase/mkspecs/macx-clang-linux/qmake.conf && \
+  mkdir -p qtbase/mkspecs/macx-clcoinname-linux &&\
+  cp -f qtbase/mkspecs/macx-clcoinname/Info.plist.lib qtbase/mkspecs/macx-clcoinname-linux/ &&\
+  cp -f qtbase/mkspecs/macx-clcoinname/Info.plist.app qtbase/mkspecs/macx-clcoinname-linux/ &&\
+  cp -f qtbase/mkspecs/macx-clcoinname/qplatformdefs.h qtbase/mkspecs/macx-clcoinname-linux/ &&\
+  cp -f $($(package)_patch_dir)/mac-qmake.conf qtbase/mkspecs/macx-clcoinname-linux/qmake.conf && \
   patch -p1 < $($(package)_patch_dir)/fix-xcb-include-order.patch && \
   patch -p1 < $($(package)_patch_dir)/qt5-tablet-osx.patch && \
   echo "QMAKE_CFLAGS     += $($(package)_cflags) $($(package)_cppflags)" >> qtbase/mkspecs/common/gcc-base.conf && \

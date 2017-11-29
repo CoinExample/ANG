@@ -109,7 +109,7 @@ static bool BeforeFile(const Comparator* ucmp,
           ucmp->Compare(*user_key, f->smallest.user_key()) < 0);
 }
 
-bool SomeFileOverlapsRange(
+bool SomeFileOverlapsRcoinnamee(
     const InternalKeyComparator& icmp,
     bool disjoint_sorted_files,
     const std::vector<FileMetaData*>& files,
@@ -139,7 +139,7 @@ bool SomeFileOverlapsRange(
   }
 
   if (index >= files.size()) {
-    // beginning of range is after all files, so no overlap.
+    // beginning of rcoinnamee is after all files, so no overlap.
     return false;
   }
 
@@ -278,7 +278,7 @@ static bool NewestFirst(FileMetaData* a, FileMetaData* b) {
 void Version::ForEachOverlapping(Slice user_key, Slice internal_key,
                                  void* arg,
                                  bool (*func)(void*, int, FileMetaData*)) {
-  // TODO(sanjay): Change Version::Get() to use this function.
+  // TODO(sanjay): Chcoinnamee Version::Get() to use this function.
   const Comparator* ucmp = vset_->icmp_.user_comparator();
 
   // Search level-0 in order from newest to oldest.
@@ -486,7 +486,7 @@ void Version::Unref() {
 bool Version::OverlapInLevel(int level,
                              const Slice* smallest_user_key,
                              const Slice* largest_user_key) {
-  return SomeFileOverlapsRange(vset_->icmp_, (level > 0), files_[level],
+  return SomeFileOverlapsRcoinnamee(vset_->icmp_, (level > 0), files_[level],
                                smallest_user_key, largest_user_key);
 }
 
@@ -540,14 +540,14 @@ void Version::GetOverlappingInputs(
     const Slice file_start = f->smallest.user_key();
     const Slice file_limit = f->largest.user_key();
     if (begin != NULL && user_cmp->Compare(file_limit, user_begin) < 0) {
-      // "f" is completely before specified range; skip it
+      // "f" is completely before specified rcoinnamee; skip it
     } else if (end != NULL && user_cmp->Compare(file_start, user_end) > 0) {
-      // "f" is completely after specified range; skip it
+      // "f" is completely after specified rcoinnamee; skip it
     } else {
       inputs->push_back(f);
       if (level == 0) {
         // Level-0 files may overlap each other.  So check if the newly
-        // added file has expanded the range.  If so, restart search.
+        // added file has expanded the rcoinnamee.  If so, restart search.
         if (begin != NULL && user_cmp->Compare(file_start, user_begin) < 0) {
           user_begin = file_start;
           inputs->clear();
@@ -677,7 +677,7 @@ class VersionSet::Builder {
       FileMetaData* f = new FileMetaData(edit->new_files_[i].second);
       f->refs = 1;
 
-      // We arrange to automatically compact this file after
+      // We arrcoinnamee to automatically compact this file after
       // a certain number of seeks.  Let's assume:
       //   (1) One seek costs 10ms
       //   (2) Writing or reading 1MB costs 10ms (100MB/s)
@@ -736,7 +736,7 @@ class VersionSet::Builder {
           const InternalKey& prev_end = v->files_[level][i-1]->largest;
           const InternalKey& this_begin = v->files_[level][i]->smallest;
           if (vset_->icmp_.Compare(prev_end, this_begin) >= 0) {
-            fprintf(stderr, "overlapping ranges in same level %s vs. %s\n",
+            fprintf(stderr, "overlapping rcoinnamees in same level %s vs. %s\n",
                     prev_end.DebugString().c_str(),
                     this_begin.DebugString().c_str());
             abort();
@@ -1088,7 +1088,7 @@ int VersionSet::NumLevelFiles(int level) const {
 }
 
 const char* VersionSet::LevelSummary(LevelSummaryStorage* scratch) const {
-  // Update code if kNumLevels changes
+  // Update code if kNumLevels chcoinnamees
   assert(config::kNumLevels == 7);
   snprintf(scratch->buffer, sizeof(scratch->buffer),
            "files[ %d %d %d %d %d %d %d ]",
@@ -1119,7 +1119,7 @@ uint64_t VersionSet::ApproximateOffsetOf(Version* v, const InternalKey& ikey) {
           break;
         }
       } else {
-        // "ikey" falls in the range for this table.  Add the
+        // "ikey" falls in the rcoinnamee for this table.  Add the
         // approximate offset of "ikey" within the table.
         Table* tableptr;
         Iterator* iter = table_cache_->NewIterator(
@@ -1170,10 +1170,10 @@ int64_t VersionSet::MaxNextLevelOverlappingBytes() {
   return result;
 }
 
-// Stores the minimal range that covers all entries in inputs in
+// Stores the minimal rcoinnamee that covers all entries in inputs in
 // *smallest, *largest.
 // REQUIRES: inputs is not empty
-void VersionSet::GetRange(const std::vector<FileMetaData*>& inputs,
+void VersionSet::GetRcoinnamee(const std::vector<FileMetaData*>& inputs,
                           InternalKey* smallest,
                           InternalKey* largest) {
   assert(!inputs.empty());
@@ -1195,16 +1195,16 @@ void VersionSet::GetRange(const std::vector<FileMetaData*>& inputs,
   }
 }
 
-// Stores the minimal range that covers all entries in inputs1 and inputs2
+// Stores the minimal rcoinnamee that covers all entries in inputs1 and inputs2
 // in *smallest, *largest.
 // REQUIRES: inputs is not empty
-void VersionSet::GetRange2(const std::vector<FileMetaData*>& inputs1,
+void VersionSet::GetRcoinnamee2(const std::vector<FileMetaData*>& inputs1,
                            const std::vector<FileMetaData*>& inputs2,
                            InternalKey* smallest,
                            InternalKey* largest) {
   std::vector<FileMetaData*> all = inputs1;
   all.insert(all.end(), inputs2.begin(), inputs2.end());
-  GetRange(all, smallest, largest);
+  GetRcoinnamee(all, smallest, largest);
 }
 
 Iterator* VersionSet::MakeInputIterator(Compaction* c) {
@@ -1281,7 +1281,7 @@ Compaction* VersionSet::PickCompaction() {
   // Files in level 0 may overlap each other, so pick up all overlapping ones
   if (level == 0) {
     InternalKey smallest, largest;
-    GetRange(c->inputs_[0], &smallest, &largest);
+    GetRcoinnamee(c->inputs_[0], &smallest, &largest);
     // Note that the next call will discard the file we placed in
     // c->inputs_[0] earlier and replace it with an overlapping set
     // which will include the picked file.
@@ -1297,16 +1297,16 @@ Compaction* VersionSet::PickCompaction() {
 void VersionSet::SetupOtherInputs(Compaction* c) {
   const int level = c->level();
   InternalKey smallest, largest;
-  GetRange(c->inputs_[0], &smallest, &largest);
+  GetRcoinnamee(c->inputs_[0], &smallest, &largest);
 
   current_->GetOverlappingInputs(level+1, &smallest, &largest, &c->inputs_[1]);
 
-  // Get entire range covered by compaction
+  // Get entire rcoinnamee covered by compaction
   InternalKey all_start, all_limit;
-  GetRange2(c->inputs_[0], c->inputs_[1], &all_start, &all_limit);
+  GetRcoinnamee2(c->inputs_[0], c->inputs_[1], &all_start, &all_limit);
 
   // See if we can grow the number of inputs in "level" without
-  // changing the number of "level+1" files we pick up.
+  // chcoinnameing the number of "level+1" files we pick up.
   if (!c->inputs_[1].empty()) {
     std::vector<FileMetaData*> expanded0;
     current_->GetOverlappingInputs(level, &all_start, &all_limit, &expanded0);
@@ -1316,7 +1316,7 @@ void VersionSet::SetupOtherInputs(Compaction* c) {
     if (expanded0.size() > c->inputs_[0].size() &&
         inputs1_size + expanded0_size < kExpandedCompactionByteSizeLimit) {
       InternalKey new_start, new_limit;
-      GetRange(expanded0, &new_start, &new_limit);
+      GetRcoinnamee(expanded0, &new_start, &new_limit);
       std::vector<FileMetaData*> expanded1;
       current_->GetOverlappingInputs(level+1, &new_start, &new_limit,
                                      &expanded1);
@@ -1334,7 +1334,7 @@ void VersionSet::SetupOtherInputs(Compaction* c) {
         largest = new_limit;
         c->inputs_[0] = expanded0;
         c->inputs_[1] = expanded1;
-        GetRange2(c->inputs_[0], c->inputs_[1], &all_start, &all_limit);
+        GetRcoinnamee2(c->inputs_[0], c->inputs_[1], &all_start, &all_limit);
       }
     }
   }
@@ -1356,12 +1356,12 @@ void VersionSet::SetupOtherInputs(Compaction* c) {
   // Update the place where we will do the next compaction for this level.
   // We update this immediately instead of waiting for the VersionEdit
   // to be applied so that if the compaction fails, we will try a different
-  // key range next time.
+  // key rcoinnamee next time.
   compact_pointer_[level] = largest.Encode().ToString();
   c->edit_.SetCompactPointer(level, largest);
 }
 
-Compaction* VersionSet::CompactRange(
+Compaction* VersionSet::CompactRcoinnamee(
     int level,
     const InternalKey* begin,
     const InternalKey* end) {
@@ -1371,7 +1371,7 @@ Compaction* VersionSet::CompactRange(
     return NULL;
   }
 
-  // Avoid compacting too much in one shot in case the range is large.
+  // Avoid compacting too much in one shot in case the rcoinnamee is large.
   // But we cannot do this for level-0 since level-0 files can overlap
   // and we must not pick one file and drop another older file if the
   // two files overlap.
@@ -1441,7 +1441,7 @@ bool Compaction::IsBaseLevelForKey(const Slice& user_key) {
       if (user_cmp->Compare(user_key, f->largest.user_key()) <= 0) {
         // We've advanced far enough
         if (user_cmp->Compare(user_key, f->smallest.user_key()) >= 0) {
-          // Key falls in this file's range, so definitely not base level
+          // Key falls in this file's rcoinnamee, so definitely not base level
           return false;
         }
         break;

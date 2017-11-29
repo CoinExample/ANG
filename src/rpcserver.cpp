@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -99,7 +99,7 @@ CAmount AmountFromValue(const Value& value)
     if (dAmount <= 0.0 || dAmount > 21000000.0)
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid amount");
     CAmount nAmount = roundint64(dAmount * COIN);
-    if (!MoneyRange(nAmount))
+    if (!MoneyRcoinnamee(nAmount))
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid amount");
     return nAmount;
 }
@@ -140,7 +140,7 @@ vector<unsigned char> ParseHexO(const Object& o, string strKey)
 
 
 /**
- * Note: This interface may still be subject to change.
+ * Note: This interface may still be subject to chcoinnamee.
  */
 
 string CRPCTable::help(string strCommand) const
@@ -229,10 +229,10 @@ Value stop(const Array& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop Ang server.");
+            "\nStop Coinname server.");
     // Shutdown will take long enough that the response should get back
     StartShutdown();
-    return "Ang server stopping";
+    return "Coinname server stopping";
 }
 
 
@@ -308,16 +308,16 @@ static const CRPCCommand vRPCCommands[] =
     { "hidden",             "reconsiderblock",        &reconsiderblock,        true,      true,       false },
     { "hidden",             "setmocktime",            &setmocktime,            true,      false,      false },
 
-    /* Ang features */
-    { "ang",               "masternode",             &masternode,             true,      true,       false },
-    { "ang",               "masternodelist",         &masternodelist,         true,      true,       false },
-    { "ang",               "mnbudget",               &mnbudget,               true,      true,       false },
-    { "ang",               "mnbudgetvoteraw",        &mnbudgetvoteraw,        true,      true,       false },
-    { "ang",               "mnfinalbudget",          &mnfinalbudget,          true,      true,       false },
-    { "ang",               "mnsync",                 &mnsync,                 true,      true,       false },
-    { "ang",               "spork",                  &spork,                  true,      true,       false },
+    /* Coinname features */
+    { "coinname",               "masternode",             &masternode,             true,      true,       false },
+    { "coinname",               "masternodelist",         &masternodelist,         true,      true,       false },
+    { "coinname",               "mnbudget",               &mnbudget,               true,      true,       false },
+    { "coinname",               "mnbudgetvoteraw",        &mnbudgetvoteraw,        true,      true,       false },
+    { "coinname",               "mnfinalbudget",          &mnfinalbudget,          true,      true,       false },
+    { "coinname",               "mnsync",                 &mnsync,                 true,      true,       false },
+    { "coinname",               "spork",                  &spork,                  true,      true,       false },
 #ifdef ENABLE_WALLET
-    { "ang",               "darksend",               &darksend,               false,     false,      true  }, /* not threadSafe because of SendMoney */
+    { "coinname",               "darksend",               &darksend,               false,     false,      true  }, /* not threadSafe because of SendMoney */
 
     /* Wallet */
     { "wallet",             "addmultisigaddress",     &addmultisigaddress,     true,      false,      true },
@@ -330,7 +330,7 @@ static const CRPCCommand vRPCCommands[] =
     { "wallet",             "getaddressesbyaccount",  &getaddressesbyaccount,  true,      false,      true },
     { "wallet",             "getbalance",             &getbalance,             false,     false,      true },
     { "wallet",             "getnewaddress",          &getnewaddress,          true,      false,      true },
-    { "wallet",             "getrawchangeaddress",    &getrawchangeaddress,    true,      false,      true },
+    { "wallet",             "getrawchcoinnameeaddress",    &getrawchcoinnameeaddress,    true,      false,      true },
     { "wallet",             "getreceivedbyaccount",   &getreceivedbyaccount,   false,     false,      true },
     { "wallet",             "getreceivedbyaddress",   &getreceivedbyaddress,   false,     false,      true },
     { "wallet",             "gettransaction",         &gettransaction,         false,     false,      true },
@@ -359,7 +359,7 @@ static const CRPCCommand vRPCCommands[] =
     { "wallet",             "settxfee",               &settxfee,               true,      false,      true },
     { "wallet",             "signmessage",            &signmessage,            true,      false,      true },
     { "wallet",             "walletlock",             &walletlock,             true,      false,      true },
-    { "wallet",             "walletpassphrasechange", &walletpassphrasechange, true,      false,      true },
+    { "wallet",             "walletpassphrasechcoinnamee", &walletpassphrasechcoinnamee, true,      false,      true },
     { "wallet",             "walletpassphrase",       &walletpassphrase,       true,      false,      true },
 #endif // ENABLE_WALLET
 };
@@ -586,16 +586,16 @@ void StartRPCThreads()
         unsigned char rand_pwd[32];
         GetRandBytes(rand_pwd, 32);
         uiInterface.ThreadSafeMessageBox(strprintf(
-            _("To use angd, or the -server option to ang-qt, you must set an rpcpassword in the configuration file:\n"
+            _("To use coinnamed, or the -server option to coinname-qt, you must set an rpcpassword in the configuration file:\n"
               "%s\n"
               "It is recommended you use the following random password:\n"
-              "rpcuser=angrpc\n"
+              "rpcuser=coinnamerpc\n"
               "rpcpassword=%s\n"
               "(you do not need to remember this password)\n"
               "The username and password MUST NOT be the same.\n"
               "If the file does not exist, create it with owner-readable-only file permissions.\n"
               "It is also recommended to set alertnotify so you are notified of problems;\n"
-              "for example: alertnotify=echo %%s | mail -s \"Ang Alert\" admin@foo.com\n"),
+              "for example: alertnotify=echo %%s | mail -s \"Coinname Alert\" admin@foo.com\n"),
                 GetConfigFile().string(),
                 EncodeBase58(&rand_pwd[0],&rand_pwd[0]+32)),
                 "", CClientUIInterface::MSG_ERROR | CClientUIInterface::SECURE);
@@ -734,7 +734,7 @@ void StopRPCThreads()
 
     // First, cancel all timers and acceptors
     // This is not done automatically by ->stop(), and in some cases the destructor of
-    // asio::io_service can hang if this is skipped.
+    // asio::io_service can hcoinname if this is skipped.
     boost::system::error_code ec;
     BOOST_FOREACH(const boost::shared_ptr<ip::tcp::acceptor> &acceptor, rpc_acceptors)
     {
@@ -752,7 +752,7 @@ void StopRPCThreads()
     deadlineTimers.clear();
 
     rpc_io_service->stop();
-    cvBlockChange.notify_all();
+    cvBlockChcoinnamee.notify_all();
     if (rpc_worker_group != NULL)
         rpc_worker_group->join_all();
     delete rpc_dummy_work; rpc_dummy_work = NULL;
@@ -1046,7 +1046,7 @@ json_spirit::Value CRPCTable::execute(const std::string &strMethod, const json_s
 }
 
 std::string HelpExampleCli(string methodname, string args){
-    return "> ang-cli " + methodname + " " + args + "\n";
+    return "> coinname-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(string methodname, string args){

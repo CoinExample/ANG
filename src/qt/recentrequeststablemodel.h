@@ -53,7 +53,7 @@ private:
     Qt::SortOrder order;
 };
 
-/** Model for list of recently generated payment requests / ang: URIs.
+/** Model for list of recently generated payment requests / coinname: URIs.
  * Part of wallet model.
  */
 class RecentRequestsTableModel: public QAbstractTableModel
@@ -99,7 +99,7 @@ private:
     QList<RecentRequestEntry> list;
     int64_t nReceiveRequestsMaxId;
 
-    /** Updates the column title to "Amount (DisplayUnit)" and emits headerDataChanged() signal for table headers to react. */
+    /** Updates the column title to "Amount (DisplayUnit)" and emits headerDataChcoinnameed() signal for table headers to react. */
     void updateAmountColumnTitle();
     /** Gets title for amount column including current display unit if optionsModel reference available. */
     QString getAmountTitle();

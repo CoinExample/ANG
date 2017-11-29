@@ -6,7 +6,7 @@
 #define BITCOIN_CRYPTO_COMMON_H
 
 #if defined(HAVE_CONFIG_H)
-#include "ang-config.h"
+#include "coinname-config.h"
 #endif
 
 #include <stdint.h>

@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"io.andrijKolomiets.Ang-Qt";
+        return @"io.andrijKolomiets.Coinname-Qt";
     } else {
         return [self __bundleIdentifier];
     }
@@ -81,9 +81,9 @@ MacNotificationHandler *MacNotificationHandler::instance()
         
         Class aPossibleClass = objc_getClass("NSBundle");
         if (aPossibleClass) {
-            // change NSBundle -bundleIdentifier method to return a correct bundle identifier
+            // chcoinnamee NSBundle -bundleIdentifier method to return a correct bundle identifier
             // a bundle identifier is required to use OSXs User Notification Center
-            method_exchangeImplementations(class_getInstanceMethod(aPossibleClass, @selector(bundleIdentifier)),
+            method_exchcoinnameeImplementations(class_getInstanceMethod(aPossibleClass, @selector(bundleIdentifier)),
                                            class_getInstanceMethod(aPossibleClass, @selector(__bundleIdentifier)));
         }
     }

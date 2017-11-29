@@ -43,10 +43,10 @@ Every year newly updated files need to have its copyright headers updated to ref
 If you run this script from src/ it will automatically update the year on the copyright header for all
 .cpp and .h files if these have a git commit from the current year.
 
-For example a file changed in 2014 (with 2014 being the current year):
+For example a file chcoinnameed in 2014 (with 2014 being the current year):
 ```// Copyright (c) 2009-2013 The Bitcoin developers```
 
-would be changed to:
+would be chcoinnameed to:
 ```// Copyright (c) 2009-2014 The Bitcoin developers```
 
 symbol-check.py
@@ -64,10 +64,10 @@ If only supported symbols are used the return value will be 0 and the output wil
 
 If there are 'unsupported' symbols, the return value will be 1 a list like this will be printed:
 
-    .../64/test_ang: symbol memcpy from unsupported version GLIBC_2.14
-    .../64/test_ang: symbol __fdelt_chk from unsupported version GLIBC_2.15
-    .../64/test_ang: symbol std::out_of_range::~out_of_range() from unsupported version GLIBCXX_3.4.15
-    .../64/test_ang: symbol _ZNSt8__detail15_List_nod from unsupported version GLIBCXX_3.4.15
+    .../64/test_coinname: symbol memcpy from unsupported version GLIBC_2.14
+    .../64/test_coinname: symbol __fdelt_chk from unsupported version GLIBC_2.15
+    .../64/test_coinname: symbol std::out_of_rcoinnamee::~out_of_rcoinnamee() from unsupported version GLIBCXX_3.4.15
+    .../64/test_coinname: symbol _ZNSt8__detail15_List_nod from unsupported version GLIBCXX_3.4.15
 
 update-translations.py
 =======================

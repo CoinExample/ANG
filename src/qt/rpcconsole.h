@@ -46,11 +46,11 @@ protected:
 
 private slots:
     void on_lineEdit_returnPressed();
-    void on_tabWidget_currentChanged(int index);
+    void on_tabWidget_currentChcoinnameed(int index);
     /** open the debug.log from the current datadir */
     void on_openDebugLogfileButton_clicked();
-    /** change the time range of the network traffic graph */
-    void on_sldGraphRange_valueChanged(int value);
+    /** chcoinnamee the time rcoinnamee of the network traffic graph */
+    void on_sldGraphRcoinnamee_valueChcoinnameed(int value);
     /** update traffic statistics */
     void updateTrafficStats(quint64 totalBytesIn, quint64 totalBytesOut);
     void resizeEvent(QResizeEvent *event);
@@ -90,12 +90,12 @@ public slots:
     void showPeers();
     /** Switch to wallet-repair tab and show */
     void showRepair();
-    /** Open external (default) editor with ang.conf */
+    /** Open external (default) editor with coinname.conf */
     void showConfEditor();	
     /** Handle selection of peer in peers list */
     void peerSelected(const QItemSelection &selected, const QItemSelection &deselected);
     /** Handle updated peer information */
-    void peerLayoutChanged();
+    void peerLayoutChcoinnameed();
     /** Show folder with wallet backups in default browser */
     void showBackups();
 
@@ -109,7 +109,7 @@ signals:
 private:
     static QString FormatBytes(quint64 bytes);
     void startExecutor();
-    void setTrafficGraphRange(int mins);
+    void setTrafficGraphRcoinnamee(int mins);
     /** Build parameter list for restart */
     void buildParameterlist(QString arg);
     /** show detailed information on ui about selected node */

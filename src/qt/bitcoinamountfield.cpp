@@ -24,12 +24,12 @@ class AmountSpinBox: public QAbstractSpinBox
 public:
     explicit AmountSpinBox(QWidget *parent):
         QAbstractSpinBox(parent),
-        currentUnit(BitcoinUnits::ANG),
+        currentUnit(BitcoinUnits::COINNAME),
         singleStep(100000) // satoshis
     {
         setAlignment(Qt::AlignRight);
 
-        connect(lineEdit(), SIGNAL(textEdited(QString)), this, SIGNAL(valueChanged()));
+        connect(lineEdit(), SIGNAL(textEdited(QString)), this, SIGNAL(valueChcoinnameed()));
     }
 
     QValidator::State validate(QString &text, int &pos) const
@@ -61,7 +61,7 @@ public:
     void setValue(const CAmount& value)
     {
         lineEdit()->setText(BitcoinUnits::format(currentUnit, value, false, BitcoinUnits::separatorAlways));
-        emit valueChanged();
+        emit valueChcoinnameed();
     }
 
     void stepBy(int steps)
@@ -99,7 +99,7 @@ public:
 
             const QFontMetrics fm(fontMetrics());
             int h = lineEdit()->minimumSizeHint().height();
-            int w = fm.width(BitcoinUnits::format(BitcoinUnits::ANG, BitcoinUnits::maxMoney(), false, BitcoinUnits::separatorAlways));
+            int w = fm.width(BitcoinUnits::format(BitcoinUnits::COINNAME, BitcoinUnits::maxMoney(), false, BitcoinUnits::separatorAlways));
             w += 2; // cursor blinking space
 
             QStyleOptionSpinBox opt;
@@ -184,7 +184,7 @@ protected:
     }
 
 signals:
-    void valueChanged();
+    void valueChcoinnameed();
 };
 
 #include "bitcoinamountfield.moc"
@@ -211,12 +211,12 @@ BitcoinAmountField::BitcoinAmountField(QWidget *parent) :
     setFocusPolicy(Qt::TabFocus);
     setFocusProxy(amount);
 
-    // If one if the widgets changes, the combined content changes as well
-    connect(amount, SIGNAL(valueChanged()), this, SIGNAL(valueChanged()));
-    connect(unit, SIGNAL(currentIndexChanged(int)), this, SLOT(unitChanged(int)));
+    // If one if the widgets chcoinnamees, the combined content chcoinnamees as well
+    connect(amount, SIGNAL(valueChcoinnameed()), this, SIGNAL(valueChcoinnameed()));
+    connect(unit, SIGNAL(currentIndexChcoinnameed(int)), this, SLOT(unitChcoinnameed(int)));
 
     // Set default based on configuration
-    unitChanged(unit->currentIndex());
+    unitChcoinnameed(unit->currentIndex());
 }
 
 void BitcoinAmountField::clear()
@@ -280,7 +280,7 @@ void BitcoinAmountField::setReadOnly(bool fReadOnly)
     unit->setEnabled(!fReadOnly);
 }
 
-void BitcoinAmountField::unitChanged(int idx)
+void BitcoinAmountField::unitChcoinnameed(int idx)
 {
     // Use description tooltip for current unit for the combobox
     unit->setToolTip(unit->itemData(idx, Qt::ToolTipRole).toString());

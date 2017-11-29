@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -31,13 +31,13 @@ SendCoinsEntry::SendCoinsEntry(QWidget *parent) :
     ui->addAsLabel->setPlaceholderText(tr("Enter a label for this address to add it to your address book"));
 #endif
 
-    // normal ang address field
+    // normal coinname address field
     GUIUtil::setupAddressWidget(ui->payTo, this);
-    // just a label for displaying ang address(es)
+    // just a label for displaying coinname address(es)
     ui->payTo_is->setFont(GUIUtil::bitcoinAddressFont());
 
     // Connect signals
-    connect(ui->payAmount, SIGNAL(valueChanged()), this, SIGNAL(payAmountChanged()));
+    connect(ui->payAmount, SIGNAL(valueChcoinnameed()), this, SIGNAL(payAmountChcoinnameed()));
     connect(ui->deleteButton, SIGNAL(clicked()), this, SLOT(deleteClicked()));
     connect(ui->deleteButton_is, SIGNAL(clicked()), this, SLOT(deleteClicked()));
     connect(ui->deleteButton_s, SIGNAL(clicked()), this, SLOT(deleteClicked()));
@@ -67,7 +67,7 @@ void SendCoinsEntry::on_addressBookButton_clicked()
     }
 }
 
-void SendCoinsEntry::on_payTo_textChanged(const QString &address)
+void SendCoinsEntry::on_payTo_textChcoinnameed(const QString &address)
 {
     updateLabel(address);
 }
@@ -77,7 +77,7 @@ void SendCoinsEntry::setModel(WalletModel *model)
     this->model = model;
 
     if (model && model->getOptionsModel())
-        connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
+        connect(model->getOptionsModel(), SIGNAL(displayUnitChcoinnameed(int)), this, SLOT(updateDisplayUnit()));
 
     clear();
 }

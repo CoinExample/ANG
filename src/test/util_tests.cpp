@@ -249,7 +249,7 @@ BOOST_AUTO_TEST_CASE(util_seed_insecure_rand)
         while(mask<mod-1)mask=(mask<<1)+1;
 
         count = 0;
-        //How often does it get a zero from the uniform range [0,mod)?
+        //How often does it get a zero from the uniform rcoinnamee [0,mod)?
         for (i=0;i<10000;i++)
         {
             uint32_t rval;

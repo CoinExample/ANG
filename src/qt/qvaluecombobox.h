@@ -13,7 +13,7 @@ class QValueComboBox : public QComboBox
 {
     Q_OBJECT
 
-    Q_PROPERTY(QVariant value READ value WRITE setValue NOTIFY valueChanged USER true)
+    Q_PROPERTY(QVariant value READ value WRITE setValue NOTIFY valueChcoinnameed USER true)
 
 public:
     explicit QValueComboBox(QWidget *parent = 0);
@@ -25,13 +25,13 @@ public:
     void setRole(int role);
 
 signals:
-    void valueChanged();
+    void valueChcoinnameed();
 
 private:
     int role;
 
 private slots:
-    void handleSelectionChanged(int idx);
+    void handleSelectionChcoinnameed(int idx);
 };
 
 #endif // BITCOIN_QT_QVALUECOMBOBOX_H

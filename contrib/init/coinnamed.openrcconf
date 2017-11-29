@@ -1,0 +1,27 @@
+# /etc/conf.d/coinnamed: config file for /etc/init.d/coinnamed
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/coinname/coinname.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/coinnamed"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/coinnamed.pid"
+
+# Where to write coinnamed data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/coinnamed"
+
+# User and group to own coinnamed process
+#BITCOIND_USER="coinname"
+#BITCOIND_GROUP="coinname"
+
+# Path to coinnamed executable
+#BITCOIND_BIN="/usr/bin/coinnamed"
+
+# Nice value to run coinnamed under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS="-disablewallet"
+

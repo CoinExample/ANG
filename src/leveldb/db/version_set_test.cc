@@ -42,7 +42,7 @@ class FindFileTest {
     InternalKeyComparator cmp(BytewiseComparator());
     Slice s(smallest != NULL ? smallest : "");
     Slice l(largest != NULL ? largest : "");
-    return SomeFileOverlapsRange(cmp, disjoint_sorted_files_, files_,
+    return SomeFileOverlapsRcoinnamee(cmp, disjoint_sorted_files_, files_,
                                  (smallest != NULL ? &s : NULL),
                                  (largest != NULL ? &l : NULL));
   }

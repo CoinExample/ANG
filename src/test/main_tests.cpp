@@ -1,5 +1,5 @@
 // Copyright (c) 2014 The Bitcoin Core developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,7 +18,7 @@ BOOST_AUTO_TEST_CASE(subsidy_limit_test)
         CAmount nSubsidy = GetBlockValue(0, nHeight, 0);
         BOOST_CHECK(nSubsidy <= 50 * COIN);
         nSum += nSubsidy * 1000;
-        BOOST_CHECK(MoneyRange(nSum));
+        BOOST_CHECK(MoneyRcoinnamee(nSum));
     }
     BOOST_CHECK(nSum == 2099999997690000ULL);
 }

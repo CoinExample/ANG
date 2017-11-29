@@ -91,8 +91,8 @@ public slots:
     void encryptWallet(bool status);
     /** Backup the wallet */
     void backupWallet();
-    /** Change encrypted wallet passphrase */
-    void changePassphrase();
+    /** Chcoinnamee encrypted wallet passphrase */
+    void chcoinnameePassphrase();
     /** Ask for passphrase to unlock wallet temporarily */
     void unlockWallet();
     /** Lock wallet */
@@ -109,7 +109,7 @@ public slots:
     /** Show progress dialog e.g. for rescan */
     void showProgress(const QString &title, int nProgress);
 
-    /** Update selected ANG amount from transactionview */
+    /** Update selected COINNAME amount from transactionview */
     void trxAmount(QString amount);
 
 signals:
@@ -117,8 +117,8 @@ signals:
     void showNormalIfMinimized();
     /**  Fired when a message should be reported to the user */
     void message(const QString &title, const QString &message, unsigned int style);
-    /** Encryption status of wallet changed */
-    void encryptionStatusChanged(int status);
+    /** Encryption status of wallet chcoinnameed */
+    void encryptionStatusChcoinnameed(int status);
     /** Notify that a new transaction appeared */
     void incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address);
 };

@@ -22,7 +22,7 @@ your machine.
 
 0.8.2 Release notes
 
-Fee Policy changes
+Fee Policy chcoinnamees
 
 The default fee for low-priority transactions is lowered from 0.0005 BTC 
 (for each 1,000 bytes in the transaction; an average transaction is
@@ -43,7 +43,7 @@ with code that automatically calculates and suggests appropriate fees in the
 0.9 release and note that if you set a fee policy significantly different from
 the rest of the network your transactions may never confirm.
 
-Bitcoin-Qt changes
+Bitcoin-Qt chcoinnamees
 
 * New icon and splash screen
 * Improve reporting of synchronization process
@@ -71,7 +71,7 @@ Command-line options
 * -alertnotify will call a command on receiving an alert from the network.
 * -par now takes a negative number, to leave a certain amount of cores free.
 
-JSON-RPC API changes
+JSON-RPC API chcoinnamees
 
 * fixed a getblocktemplate bug that caused excessive CPU creating blocks.
 * listunspent now lists account and address information.
@@ -81,9 +81,9 @@ JSON-RPC API changes
 * gettxout returns information about a specific unspent transaction output.
 
 
-Networking changes
+Networking chcoinnamees
 
-* Significant changes to the networking code, reducing latency and memory consumption.
+* Significant chcoinnamees to the networking code, reducing latency and memory consumption.
 * Avoid initial block download stalling.
 * Remove IRC seeding support.
 * Performance tweaks.
@@ -116,7 +116,7 @@ Gregory Maxwell
 Jeff Garzik
 Jonas Schnelli
 Larry Gilbert
-Luke Angjr
+Luke Coinnamejr
 Matt Corallo
 Michael Ford
 Mike Hearn

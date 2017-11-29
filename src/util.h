@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,7 +12,7 @@
 #define BITCOIN_UTIL_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/ang-config.h"
+#include "config/coinname-config.h"
 #endif
 
 #include "compat.h"
@@ -28,7 +28,7 @@
 #include <boost/filesystem/path.hpp>
 #include <boost/thread/exceptions.hpp>
 
-//Ang only features
+//Coinname only features
 
 extern bool fMasterNode;
 extern bool fLiteMode;
@@ -107,7 +107,7 @@ void ParseParameters(int argc, const char*const argv[]);
 void FileCommit(FILE *fileout);
 bool TruncateFile(FILE *file, unsigned int length);
 int RaiseFileDescriptorLimit(int nMinFD);
-void AllocateFileRange(FILE *file, unsigned int offset, unsigned int length);
+void AllocateFileRcoinnamee(FILE *file, unsigned int offset, unsigned int length);
 bool RenameOver(boost::filesystem::path src, boost::filesystem::path dest);
 bool TryCreateDirectory(const boost::filesystem::path& p);
 boost::filesystem::path GetDefaultDataDir();
@@ -194,7 +194,7 @@ void RenameThread(const char* name);
  */
 template <typename Callable> void LoopForever(const char* name,  Callable func, int64_t msecs)
 {
-    std::string s = strprintf("ang-%s", name);
+    std::string s = strprintf("coinname-%s", name);
     RenameThread(s.c_str());
     LogPrintf("%s thread start\n", name);
     try
@@ -225,7 +225,7 @@ template <typename Callable> void LoopForever(const char* name,  Callable func, 
  */
 template <typename Callable> void TraceThread(const char* name,  Callable func)
 {
-    std::string s = strprintf("ang-%s", name);
+    std::string s = strprintf("coinname-%s", name);
     RenameThread(s.c_str());
     try
     {

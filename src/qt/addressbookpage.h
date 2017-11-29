@@ -74,7 +74,7 @@ private slots:
     void on_exportButton_clicked();
 
     /** Set button states based on selected tab and selection */
-    void selectionChanged();
+    void selectionChcoinnameed();
     /** Spawn contextual menu (right mouse menu) for address book entry */
     void contextualMenu(const QPoint &point);
     /** New entry/entries were added to address table */

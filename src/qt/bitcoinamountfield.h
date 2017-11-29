@@ -23,7 +23,7 @@ class BitcoinAmountField: public QWidget
 
     // ugly hack: for some unknown reason CAmount (instead of qint64) does not work here as expected
     // discussion: https://github.com/bitcoin/bitcoin/pull/5117
-    Q_PROPERTY(qint64 value READ value WRITE setValue NOTIFY valueChanged USER true)
+    Q_PROPERTY(qint64 value READ value WRITE setValue NOTIFY valueChcoinnameed USER true)
 
 public:
     explicit BitcoinAmountField(QWidget *parent = 0);
@@ -42,7 +42,7 @@ public:
     /** Perform input validation, mark field as invalid if entered value is not valid. */
     bool validate();
 
-    /** Change unit used to display amount. */
+    /** Chcoinnamee unit used to display amount. */
     void setDisplayUnit(int unit);
 
     /** Make field empty and ready for new input. */
@@ -57,7 +57,7 @@ public:
     QWidget *setupTabChain(QWidget *prev);
 
 signals:
-    void valueChanged();
+    void valueChcoinnameed();
 
 protected:
     /** Intercept focus-in event and ',' key presses */
@@ -68,7 +68,7 @@ private:
     QValueComboBox *unit;
 
 private slots:
-    void unitChanged(int idx);
+    void unitChcoinnameed(int idx);
 
 };
 

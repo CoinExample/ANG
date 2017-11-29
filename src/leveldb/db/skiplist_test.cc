@@ -134,7 +134,7 @@ TEST(SkipTest, InsertAndLookup) {
 // We generate multi-part keys:
 //     <key,gen,hash>
 // where:
-//     key is in range [0..K-1]
+//     key is in rcoinnamee [0..K-1]
 //     gen is a generation number for key
 //     hash is hash(key,gen)
 //
@@ -320,7 +320,7 @@ class TestState {
     mu_.Unlock();
   }
 
-  void Change(ReaderState s) {
+  void Chcoinnamee(ReaderState s) {
     mu_.Lock();
     state_ = s;
     state_cv_.Signal();
@@ -337,12 +337,12 @@ static void ConcurrentReader(void* arg) {
   TestState* state = reinterpret_cast<TestState*>(arg);
   Random rnd(state->seed_);
   int64_t reads = 0;
-  state->Change(TestState::RUNNING);
+  state->Chcoinnamee(TestState::RUNNING);
   while (!state->quit_flag_.Acquire_Load()) {
     state->t_.ReadStep(&rnd);
     ++reads;
   }
-  state->Change(TestState::DONE);
+  state->Chcoinnamee(TestState::DONE);
 }
 
 static void RunConcurrent(int run) {

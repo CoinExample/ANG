@@ -37,7 +37,7 @@ public:
 
     void setModel(WalletModel *model);
 
-    // Date ranges for filter
+    // Date rcoinnamees for filter
     enum DateEnum
     {
         All,
@@ -46,7 +46,7 @@ public:
         ThisMonth,
         LastMonth,
         ThisYear,
-        Range
+        Rcoinnamee
     };
 
     enum ColumnWidths {
@@ -71,11 +71,11 @@ private:
     QMenu *contextMenu;
     QSignalMapper *mapperThirdPartyTxUrls;
 
-    QFrame *dateRangeWidget;
+    QFrame *dateRcoinnameeWidget;
     QDateTimeEdit *dateFrom;
     QDateTimeEdit *dateTo;
 
-    QWidget *createDateRangeWidget();
+    QWidget *createDateRcoinnameeWidget();
 
     GUIUtil::TableViewLastColumnResizingFixer *columnResizingFixer;
 
@@ -85,7 +85,7 @@ private:
 
 private slots:
     void contextualMenu(const QPoint &);
-    void dateRangeChanged();
+    void dateRcoinnameeChcoinnameed();
     void showDetails();
     void copyAddress();
     void editLabel();
@@ -108,8 +108,8 @@ public slots:
     void chooseDate(int idx);
     void chooseType(int idx);
     void chooseWatchonly(int idx);
-    void changedPrefix(const QString &prefix);
-    void changedAmount(const QString &amount);
+    void chcoinnameedPrefix(const QString &prefix);
+    void chcoinnameedAmount(const QString &amount);
     void exportClicked();
     void focusTransaction(const QModelIndex&);
     void computeSum();

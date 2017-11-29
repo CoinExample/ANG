@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -41,7 +41,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     ui->sendButton->setIcon(QIcon());
 #endif
 
-    GUIUtil::setupAddressWidget(ui->lineEditCoinControlChange, this);
+    GUIUtil::setupAddressWidget(ui->lineEditCoinControlChcoinnamee, this);
 
     addEntry();
 
@@ -50,10 +50,10 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
 
     // Coin Control
     connect(ui->pushButtonCoinControl, SIGNAL(clicked()), this, SLOT(coinControlButtonClicked()));
-    connect(ui->checkBoxCoinControlChange, SIGNAL(stateChanged(int)), this, SLOT(coinControlChangeChecked(int)));
-    connect(ui->lineEditCoinControlChange, SIGNAL(textEdited(const QString &)), this, SLOT(coinControlChangeEdited(const QString &)));
+    connect(ui->checkBoxCoinControlChcoinnamee, SIGNAL(stateChcoinnameed(int)), this, SLOT(coinControlChcoinnameeChecked(int)));
+    connect(ui->lineEditCoinControlChcoinnamee, SIGNAL(textEdited(const QString &)), this, SLOT(coinControlChcoinnameeEdited(const QString &)));
 
-    // Ang specific
+    // Coinname specific
     QSettings settings;
     if (!settings.contains("bUseDarkSend"))
         settings.setValue("bUseDarkSend", false);
@@ -76,8 +76,8 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
         CoinControlDialog::coinControl->useInstantX = useInstantX;
     }
     
-    connect(ui->checkUseDarksend, SIGNAL(stateChanged ( int )), this, SLOT(updateDisplayUnit()));
-    connect(ui->checkInstantX, SIGNAL(stateChanged ( int )), this, SLOT(updateInstantX()));
+    connect(ui->checkUseDarksend, SIGNAL(stateChcoinnameed ( int )), this, SLOT(updateDisplayUnit()));
+    connect(ui->checkInstantX, SIGNAL(stateChcoinnameed ( int )), this, SLOT(updateInstantX()));
 
     // Coin Control: clipboard actions
     QAction *clipboardQuantityAction = new QAction(tr("Copy quantity"), this);
@@ -87,7 +87,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     QAction *clipboardBytesAction = new QAction(tr("Copy bytes"), this);
     QAction *clipboardPriorityAction = new QAction(tr("Copy priority"), this);
     QAction *clipboardLowOutputAction = new QAction(tr("Copy dust"), this);
-    QAction *clipboardChangeAction = new QAction(tr("Copy change"), this);
+    QAction *clipboardChcoinnameeAction = new QAction(tr("Copy chcoinnamee"), this);
     connect(clipboardQuantityAction, SIGNAL(triggered()), this, SLOT(coinControlClipboardQuantity()));
     connect(clipboardAmountAction, SIGNAL(triggered()), this, SLOT(coinControlClipboardAmount()));
     connect(clipboardFeeAction, SIGNAL(triggered()), this, SLOT(coinControlClipboardFee()));
@@ -95,7 +95,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     connect(clipboardBytesAction, SIGNAL(triggered()), this, SLOT(coinControlClipboardBytes()));
     connect(clipboardPriorityAction, SIGNAL(triggered()), this, SLOT(coinControlClipboardPriority()));
     connect(clipboardLowOutputAction, SIGNAL(triggered()), this, SLOT(coinControlClipboardLowOutput()));
-    connect(clipboardChangeAction, SIGNAL(triggered()), this, SLOT(coinControlClipboardChange()));
+    connect(clipboardChcoinnameeAction, SIGNAL(triggered()), this, SLOT(coinControlClipboardChcoinnamee()));
     ui->labelCoinControlQuantity->addAction(clipboardQuantityAction);
     ui->labelCoinControlAmount->addAction(clipboardAmountAction);
     ui->labelCoinControlFee->addAction(clipboardFeeAction);
@@ -103,7 +103,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     ui->labelCoinControlBytes->addAction(clipboardBytesAction);
     ui->labelCoinControlPriority->addAction(clipboardPriorityAction);
     ui->labelCoinControlLowOutput->addAction(clipboardLowOutputAction);
-    ui->labelCoinControlChange->addAction(clipboardChangeAction);
+    ui->labelCoinControlChcoinnamee->addAction(clipboardChcoinnameeAction);
 
     // init transaction fee section
     if (!settings.contains("fFeeSectionMinimized"))
@@ -143,7 +143,7 @@ void SendCoinsDialog::setClientModel(ClientModel *clientModel)
     this->clientModel = clientModel;
 
     if (clientModel) {
-        connect(clientModel, SIGNAL(numBlocksChanged(int)), this, SLOT(updateSmartFeeLabel()));
+        connect(clientModel, SIGNAL(numBlocksChcoinnameed(int)), this, SLOT(updateSmartFeeLabel()));
     }
 }
 
@@ -164,33 +164,33 @@ void SendCoinsDialog::setModel(WalletModel *model)
 
         setBalance(model->getBalance(), model->getUnconfirmedBalance(), model->getImmatureBalance(), model->getAnonymizedBalance(),
                    model->getWatchBalance(), model->getWatchUnconfirmedBalance(), model->getWatchImmatureBalance());
-        connect(model, SIGNAL(balanceChanged(CAmount,CAmount,CAmount,CAmount,CAmount,CAmount,CAmount)), this, SLOT(setBalance(CAmount,CAmount,CAmount,CAmount,CAmount,CAmount,CAmount)));
-        connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
+        connect(model, SIGNAL(balanceChcoinnameed(CAmount,CAmount,CAmount,CAmount,CAmount,CAmount,CAmount)), this, SLOT(setBalance(CAmount,CAmount,CAmount,CAmount,CAmount,CAmount,CAmount)));
+        connect(model->getOptionsModel(), SIGNAL(displayUnitChcoinnameed(int)), this, SLOT(updateDisplayUnit()));
         updateDisplayUnit();
 
         // Coin Control
-        connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(coinControlUpdateLabels()));
-        connect(model->getOptionsModel(), SIGNAL(coinControlFeaturesChanged(bool)), this, SLOT(coinControlFeatureChanged(bool)));
+        connect(model->getOptionsModel(), SIGNAL(displayUnitChcoinnameed(int)), this, SLOT(coinControlUpdateLabels()));
+        connect(model->getOptionsModel(), SIGNAL(coinControlFeaturesChcoinnameed(bool)), this, SLOT(coinControlFeatureChcoinnameed(bool)));
         ui->frameCoinControl->setVisible(model->getOptionsModel()->getCoinControlFeatures());
         coinControlUpdateLabels();
 
         // fee section
-        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(updateSmartFeeLabel()));
-        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(updateGlobalFeeVariables()));
-        connect(ui->sliderSmartFee, SIGNAL(valueChanged(int)), this, SLOT(coinControlUpdateLabels()));
+        connect(ui->sliderSmartFee, SIGNAL(valueChcoinnameed(int)), this, SLOT(updateSmartFeeLabel()));
+        connect(ui->sliderSmartFee, SIGNAL(valueChcoinnameed(int)), this, SLOT(updateGlobalFeeVariables()));
+        connect(ui->sliderSmartFee, SIGNAL(valueChcoinnameed(int)), this, SLOT(coinControlUpdateLabels()));
         connect(ui->groupFee, SIGNAL(buttonClicked(int)), this, SLOT(updateFeeSectionControls()));
         connect(ui->groupFee, SIGNAL(buttonClicked(int)), this, SLOT(updateGlobalFeeVariables()));
         connect(ui->groupFee, SIGNAL(buttonClicked(int)), this, SLOT(coinControlUpdateLabels()));
         connect(ui->groupCustomFee, SIGNAL(buttonClicked(int)), this, SLOT(updateGlobalFeeVariables()));
         connect(ui->groupCustomFee, SIGNAL(buttonClicked(int)), this, SLOT(coinControlUpdateLabels()));
-        connect(ui->customFee, SIGNAL(valueChanged()), this, SLOT(updateGlobalFeeVariables()));
-        connect(ui->customFee, SIGNAL(valueChanged()), this, SLOT(coinControlUpdateLabels()));
-        connect(ui->checkBoxMinimumFee, SIGNAL(stateChanged(int)), this, SLOT(setMinimumFee()));
-        connect(ui->checkBoxMinimumFee, SIGNAL(stateChanged(int)), this, SLOT(updateFeeSectionControls()));
-        connect(ui->checkBoxMinimumFee, SIGNAL(stateChanged(int)), this, SLOT(updateGlobalFeeVariables()));
-        connect(ui->checkBoxMinimumFee, SIGNAL(stateChanged(int)), this, SLOT(coinControlUpdateLabels()));
-        connect(ui->checkBoxFreeTx, SIGNAL(stateChanged(int)), this, SLOT(updateGlobalFeeVariables()));
-        connect(ui->checkBoxFreeTx, SIGNAL(stateChanged(int)), this, SLOT(coinControlUpdateLabels()));
+        connect(ui->customFee, SIGNAL(valueChcoinnameed()), this, SLOT(updateGlobalFeeVariables()));
+        connect(ui->customFee, SIGNAL(valueChcoinnameed()), this, SLOT(coinControlUpdateLabels()));
+        connect(ui->checkBoxMinimumFee, SIGNAL(stateChcoinnameed(int)), this, SLOT(setMinimumFee()));
+        connect(ui->checkBoxMinimumFee, SIGNAL(stateChcoinnameed(int)), this, SLOT(updateFeeSectionControls()));
+        connect(ui->checkBoxMinimumFee, SIGNAL(stateChcoinnameed(int)), this, SLOT(updateGlobalFeeVariables()));
+        connect(ui->checkBoxMinimumFee, SIGNAL(stateChcoinnameed(int)), this, SLOT(coinControlUpdateLabels()));
+        connect(ui->checkBoxFreeTx, SIGNAL(stateChcoinnameed(int)), this, SLOT(updateGlobalFeeVariables()));
+        connect(ui->checkBoxFreeTx, SIGNAL(stateChcoinnameed(int)), this, SLOT(coinControlUpdateLabels()));
         ui->customFee->setSingleStep(CWallet::minTxFee.GetFeePerK());
         updateFeeSectionControls();
         updateMinFeeLabel();
@@ -451,7 +451,7 @@ SendCoinsEntry *SendCoinsDialog::addEntry()
     entry->setModel(model);
     ui->entries->addWidget(entry);
     connect(entry, SIGNAL(removeEntry(SendCoinsEntry*)), this, SLOT(removeEntry(SendCoinsEntry*)));
-    connect(entry, SIGNAL(payAmountChanged()), this, SLOT(coinControlUpdateLabels()));
+    connect(entry, SIGNAL(payAmountChcoinnameed()), this, SLOT(coinControlUpdateLabels()));
 
     updateTabsAndLabels();
 
@@ -796,14 +796,14 @@ void SendCoinsDialog::coinControlClipboardLowOutput()
     GUIUtil::setClipboard(ui->labelCoinControlLowOutput->text());
 }
 
-// Coin Control: copy label "Change" to clipboard
-void SendCoinsDialog::coinControlClipboardChange()
+// Coin Control: copy label "Chcoinnamee" to clipboard
+void SendCoinsDialog::coinControlClipboardChcoinnamee()
 {
-    GUIUtil::setClipboard(ui->labelCoinControlChange->text().left(ui->labelCoinControlChange->text().indexOf(" ")).replace("~", ""));
+    GUIUtil::setClipboard(ui->labelCoinControlChcoinnamee->text().left(ui->labelCoinControlChcoinnamee->text().indexOf(" ")).replace("~", ""));
 }
 
 // Coin Control: settings menu - coin control enabled/disabled by user
-void SendCoinsDialog::coinControlFeatureChanged(bool checked)
+void SendCoinsDialog::coinControlFeatureChcoinnameed(bool checked)
 {
     ui->frameCoinControl->setVisible(checked);
 
@@ -823,61 +823,61 @@ void SendCoinsDialog::coinControlButtonClicked()
     coinControlUpdateLabels();
 }
 
-// Coin Control: checkbox custom change address
-void SendCoinsDialog::coinControlChangeChecked(int state)
+// Coin Control: checkbox custom chcoinnamee address
+void SendCoinsDialog::coinControlChcoinnameeChecked(int state)
 {
     if (state == Qt::Unchecked)
     {
-        CoinControlDialog::coinControl->destChange = CNoDestination();
-        ui->labelCoinControlChangeLabel->clear();
+        CoinControlDialog::coinControl->destChcoinnamee = CNoDestination();
+        ui->labelCoinControlChcoinnameeLabel->clear();
     }
     else
         // use this to re-validate an already entered address
-        coinControlChangeEdited(ui->lineEditCoinControlChange->text());
+        coinControlChcoinnameeEdited(ui->lineEditCoinControlChcoinnamee->text());
 
-    ui->lineEditCoinControlChange->setEnabled((state == Qt::Checked));
+    ui->lineEditCoinControlChcoinnamee->setEnabled((state == Qt::Checked));
 }
 
-// Coin Control: custom change address changed
-void SendCoinsDialog::coinControlChangeEdited(const QString& text)
+// Coin Control: custom chcoinnamee address chcoinnameed
+void SendCoinsDialog::coinControlChcoinnameeEdited(const QString& text)
 {
     if (model && model->getAddressTableModel())
     {
-        // Default to no change address until verified
-        CoinControlDialog::coinControl->destChange = CNoDestination();
-        ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:red;}");
+        // Default to no chcoinnamee address until verified
+        CoinControlDialog::coinControl->destChcoinnamee = CNoDestination();
+        ui->labelCoinControlChcoinnameeLabel->setStyleSheet("QLabel{color:red;}");
 
         CBitcoinAddress addr = CBitcoinAddress(text.toStdString());
 
         if (text.isEmpty()) // Nothing entered
         {
-            ui->labelCoinControlChangeLabel->setText("");
+            ui->labelCoinControlChcoinnameeLabel->setText("");
         }
         else if (!addr.IsValid()) // Invalid address
         {
-            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid Ang address"));
+            ui->labelCoinControlChcoinnameeLabel->setText(tr("Warning: Invalid Coinname address"));
         }
         else // Valid address
         {
             CPubKey pubkey;
             CKeyID keyid;
             addr.GetKeyID(keyid);
-            if (!model->getPubKey(keyid, pubkey)) // Unknown change address
+            if (!model->getPubKey(keyid, pubkey)) // Unknown chcoinnamee address
             {
-                ui->labelCoinControlChangeLabel->setText(tr("Warning: Unknown change address"));
+                ui->labelCoinControlChcoinnameeLabel->setText(tr("Warning: Unknown chcoinnamee address"));
             }
-            else // Known change address
+            else // Known chcoinnamee address
             {
-                ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:black;}");
+                ui->labelCoinControlChcoinnameeLabel->setStyleSheet("QLabel{color:black;}");
 
                 // Query label
                 QString associatedLabel = model->getAddressTableModel()->labelForAddress(text);
                 if (!associatedLabel.isEmpty())
-                    ui->labelCoinControlChangeLabel->setText(associatedLabel);
+                    ui->labelCoinControlChcoinnameeLabel->setText(associatedLabel);
                 else
-                    ui->labelCoinControlChangeLabel->setText(tr("(no label)"));
+                    ui->labelCoinControlChcoinnameeLabel->setText(tr("(no label)"));
 
-                CoinControlDialog::coinControl->destChange = addr.Get();
+                CoinControlDialog::coinControl->destChcoinnamee = addr.Get();
             }
         }
     }

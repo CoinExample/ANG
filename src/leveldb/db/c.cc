@@ -31,7 +31,7 @@ using leveldb::NewBloomFilterPolicy;
 using leveldb::NewLRUCache;
 using leveldb::Options;
 using leveldb::RandomAccessFile;
-using leveldb::Range;
+using leveldb::Rcoinnamee;
 using leveldb::ReadOptions;
 using leveldb::SequentialFile;
 using leveldb::Slice;
@@ -251,25 +251,25 @@ char* leveldb_property_value(
 
 void leveldb_approximate_sizes(
     leveldb_t* db,
-    int num_ranges,
-    const char* const* range_start_key, const size_t* range_start_key_len,
-    const char* const* range_limit_key, const size_t* range_limit_key_len,
+    int num_rcoinnamees,
+    const char* const* rcoinnamee_start_key, const size_t* rcoinnamee_start_key_len,
+    const char* const* rcoinnamee_limit_key, const size_t* rcoinnamee_limit_key_len,
     uint64_t* sizes) {
-  Range* ranges = new Range[num_ranges];
-  for (int i = 0; i < num_ranges; i++) {
-    ranges[i].start = Slice(range_start_key[i], range_start_key_len[i]);
-    ranges[i].limit = Slice(range_limit_key[i], range_limit_key_len[i]);
+  Rcoinnamee* rcoinnamees = new Rcoinnamee[num_rcoinnamees];
+  for (int i = 0; i < num_rcoinnamees; i++) {
+    rcoinnamees[i].start = Slice(rcoinnamee_start_key[i], rcoinnamee_start_key_len[i]);
+    rcoinnamees[i].limit = Slice(rcoinnamee_limit_key[i], rcoinnamee_limit_key_len[i]);
   }
-  db->rep->GetApproximateSizes(ranges, num_ranges, sizes);
-  delete[] ranges;
+  db->rep->GetApproximateSizes(rcoinnamees, num_rcoinnamees, sizes);
+  delete[] rcoinnamees;
 }
 
-void leveldb_compact_range(
+void leveldb_compact_rcoinnamee(
     leveldb_t* db,
     const char* start_key, size_t start_key_len,
     const char* limit_key, size_t limit_key_len) {
   Slice a, b;
-  db->rep->CompactRange(
+  db->rep->CompactRcoinnamee(
       // Pass NULL Slice if corresponding "const char*" is NULL
       (start_key ? (a = Slice(start_key, start_key_len), &a) : NULL),
       (limit_key ? (b = Slice(limit_key, limit_key_len), &b) : NULL));

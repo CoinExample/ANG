@@ -24,7 +24,7 @@ These variables are optional:
     cd to this dir before running configure/build/stage commands.
   $(package)_download_file:
     The file-name of the upstream source if it differs from how it should be
-    stored locally. This can be used to avoid storing file-names with strange
+    stored locally. This can be used to avoid storing file-names with strcoinnamee
     characters.
   $(package)_dependencies:
     Names of any other packages that this one depends on.

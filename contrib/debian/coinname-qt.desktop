@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Coinname
+Comment=Coinname P2P Cryptocurrency
+Comment[fr]=Coinname, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Coinname, eşten eşe kriptografik sanal para birimi
+Exec=coinname-qt %u
+Terminal=false
+Type=Application
+Icon=coinname128
+MimeType=x-scheme-handler/coinname;
+Categories=Office;Finance;

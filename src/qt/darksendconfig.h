@@ -8,7 +8,7 @@ namespace Ui {
 }
 class WalletModel;
 
-/** Multifunctional dialog to ask for passphrases. Used for encryption, unlocking, and changing the passphrase.
+/** Multifunctional dialog to ask for passphrases. Used for encryption, unlocking, and chcoinnameing the passphrase.
  */
 class DarksendConfig : public QDialog
 {

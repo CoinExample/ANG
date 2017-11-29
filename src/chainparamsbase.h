@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between ang-cli and angd)
- * of a given instance of the Ang system.
+ * CBaseChainParams defines the base parameters (shared between coinname-cli and coinnamed)
+ * of a given instance of the Coinname system.
  */
 class CBaseChainParams
 {
@@ -36,7 +36,7 @@ protected:
 };
 
 /**
- * Return the currently selected parameters. This won't change after app startup
+ * Return the currently selected parameters. This won't chcoinnamee after app startup
  * outside of the unit tests.
  */
 const CBaseChainParams& BaseParams();

@@ -10,10 +10,10 @@
 
 /**
  * Name of client reported in the 'version' message. Report the same name
- * for both angd and ang-qt, to make it harder for attackers to
+ * for both coinnamed and coinname-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("Ang Core");
+const std::string CLIENT_NAME("Coinname Core");
 
 /**
  * Client version number

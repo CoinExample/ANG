@@ -40,15 +40,15 @@ bool sanity_test_list(unsigned int size)
 
 } // anon namespace
 
-// trigger: string::at(x) on an empty string to trigger __throw_out_of_range_fmt.
-// test: force std::string to throw an out_of_range exception. Verify that
+// trigger: string::at(x) on an empty string to trigger __throw_out_of_rcoinnamee_fmt.
+// test: force std::string to throw an out_of_rcoinnamee exception. Verify that
 //   it's caught correctly.
-bool sanity_test_range_fmt()
+bool sanity_test_rcoinnamee_fmt()
 {
     std::string test;
     try {
         test.at(1);
-    } catch (const std::out_of_range&) {
+    } catch (const std::out_of_rcoinnamee&) {
         return true;
     } catch (...) {
     }
@@ -57,5 +57,5 @@ bool sanity_test_range_fmt()
 
 bool glibcxx_sanity_test()
 {
-    return sanity_test_widen('a') && sanity_test_list(100) && sanity_test_range_fmt();
+    return sanity_test_widen('a') && sanity_test_list(100) && sanity_test_rcoinnamee_fmt();
 }

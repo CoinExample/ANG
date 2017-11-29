@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -103,12 +103,12 @@ void EditAddressDialog::accept()
         case AddressTableModel::OK:
             // Failed with unknown reason. Just reject.
             break;
-        case AddressTableModel::NO_CHANGES:
-            // No changes were made during edit operation. Just reject.
+        case AddressTableModel::NO_CHCOINNAMEES:
+            // No chcoinnamees were made during edit operation. Just reject.
             break;
         case AddressTableModel::INVALID_ADDRESS:
             QMessageBox::warning(this, windowTitle(),
-                tr("The entered address \"%1\" is not a valid Ang address.").arg(ui->addressEdit->text()),
+                tr("The entered address \"%1\" is not a valid Coinname address.").arg(ui->addressEdit->text()),
                 QMessageBox::Ok, QMessageBox::Ok);
             break;
         case AddressTableModel::DUPLICATE_ADDRESS:

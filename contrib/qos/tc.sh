@@ -28,7 +28,7 @@ tc filter add dev ${IF} parent 1: protocol ip prio 2 handle 2 fw classid 1:11
 #disable for now
 #ret=0
 #while [ $ret -eq 0 ]; do
-#	iptables -t mangle -D OUTPUT 1
+#	iptables -t mcoinnamele -D OUTPUT 1
 #	ret=$?
 #done
 
@@ -37,5 +37,5 @@ tc filter add dev ${IF} parent 1: protocol ip prio 2 handle 2 fw classid 1:11
 #	--set-mark marks packages matching these criteria with the number "2"
 #	these packages are filtered by the tc filter with "handle 2"
 #	this filter sends the packages into the 1:11 class, and this class is limited to ${LIMIT}
-iptables -t mangle -A OUTPUT -p tcp -m tcp --dport 9887 ! -d ${LOCALNET} -j MARK --set-mark 0x2
-iptables -t mangle -A OUTPUT -p tcp -m tcp --sport 9887 ! -d ${LOCALNET} -j MARK --set-mark 0x2
+iptables -t mcoinnamele -A OUTPUT -p tcp -m tcp --dport 9887 ! -d ${LOCALNET} -j MARK --set-mark 0x2
+iptables -t mcoinnamele -A OUTPUT -p tcp -m tcp --sport 9887 ! -d ${LOCALNET} -j MARK --set-mark 0x2

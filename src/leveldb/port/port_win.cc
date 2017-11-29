@@ -127,12 +127,12 @@ void InitOnce(OnceType* once, void (*initializer)()) {
 
 void* AtomicPointer::Acquire_Load() const {
   void * p = NULL;
-  InterlockedExchangePointer(&p, rep_);
+  InterlockedExchcoinnameePointer(&p, rep_);
   return p;
 }
 
 void AtomicPointer::Release_Store(void* v) {
-  InterlockedExchangePointer(&rep_, v);
+  InterlockedExchcoinnameePointer(&rep_, v);
 }
 
 void* AtomicPointer::NoBarrier_Load() const {

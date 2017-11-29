@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -58,7 +58,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 sub.involvesWatchAddress = mine == ISMINE_WATCH_ONLY;
                 if (ExtractDestination(txout.scriptPubKey, address) && IsMine(*wallet, address))
                 {
-                    // Received by Ang Address
+                    // Received by Coinname Address
                     sub.type = TransactionRecord::RecvWithAddress;
                     sub.address = CBitcoinAddress(address).ToString();
                 }
@@ -129,7 +129,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 CTxDestination address;
                 if (ExtractDestination(wtx.vout[0].scriptPubKey, address))
                 {
-                    // Sent to Ang Address
+                    // Sent to Coinname Address
                     sub.address = CBitcoinAddress(address).ToString();
                 }
                 else
@@ -151,10 +151,10 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 }
             }
 
-            CAmount nChange = wtx.GetChange();
+            CAmount nChcoinnamee = wtx.GetChcoinnamee();
 
-            sub.debit = -(nDebit - nChange);
-            sub.credit = nCredit - nChange;
+            sub.debit = -(nDebit - nChcoinnamee);
+            sub.credit = nCredit - nChcoinnamee;
             parts.append(sub);
             parts.last().involvesWatchAddress = involvesWatchAddress;   // maybe pass to TransactionRecord as constructor argument
         }
@@ -174,7 +174,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
 
                 if(wallet->IsMine(txout))
                 {
-                    // Ignore parts sent to self, as this is usually the change
+                    // Ignore parts sent to self, as this is usually the chcoinnamee
                     // from a transaction sent back to our own address.
                     continue;
                 }
@@ -182,7 +182,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 CTxDestination address;
                 if (ExtractDestination(txout.scriptPubKey, address))
                 {
-                    // Sent to Ang Address
+                    // Sent to Coinname Address
                     sub.type = TransactionRecord::SendToAddress;
                     sub.address = CBitcoinAddress(address).ToString();
                 }

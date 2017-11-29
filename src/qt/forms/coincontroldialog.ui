@@ -132,7 +132,7 @@
           <enum>Qt::ActionsContextMenu</enum>
          </property>
          <property name="text">
-          <string notr="true">0.00 ANG</string>
+          <string notr="true">0.00 COINNAME</string>
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -206,7 +206,7 @@
           <enum>Qt::ActionsContextMenu</enum>
          </property>
          <property name="text">
-          <string notr="true">0.00 ANG</string>
+          <string notr="true">0.00 COINNAME</string>
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -286,7 +286,7 @@
           <enum>Qt::ActionsContextMenu</enum>
          </property>
          <property name="text">
-          <string notr="true">0.00 ANG</string>
+          <string notr="true">0.00 COINNAME</string>
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -294,7 +294,7 @@
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QLabel" name="labelCoinControlChangeText">
+        <widget class="QLabel" name="labelCoinControlChcoinnameeText">
          <property name="enabled">
           <bool>false</bool>
          </property>
@@ -305,12 +305,12 @@
           </font>
          </property>
          <property name="text">
-          <string>Change:</string>
+          <string>Chcoinnamee:</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLabel" name="labelCoinControlChange">
+        <widget class="QLabel" name="labelCoinControlChcoinnamee">
          <property name="enabled">
           <bool>false</bool>
          </property>
@@ -321,7 +321,7 @@
           <enum>Qt::ActionsContextMenu</enum>
          </property>
          <property name="text">
-          <string notr="true">0.00 ANG</string>
+          <string notr="true">0.00 COINNAME</string>
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>

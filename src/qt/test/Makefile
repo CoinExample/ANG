@@ -1,6 +1,6 @@
 all:
-	$(MAKE) -C ../../ test_ang_qt
+	$(MAKE) -C ../../ test_coinname_qt
 clean:
-	$(MAKE) -C ../../ test_ang_qt_clean
+	$(MAKE) -C ../../ test_coinname_qt_clean
 check:
-	$(MAKE) -C ../../ test_ang_qt_check
+	$(MAKE) -C ../../ test_coinname_qt_check

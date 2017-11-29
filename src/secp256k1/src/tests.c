@@ -274,7 +274,7 @@ void scalar_test(void) {
         secp256k1_num_mod(&negnum, &order);
         /* Check that comparison with the half order is equal to testing for high scalar after negation. */
         CHECK(secp256k1_scalar_is_high(&neg) == (secp256k1_num_cmp(&negnum, &half_order) > 0));
-        /* Negating should change the high property, unless the value was already zero. */
+        /* Negating should chcoinnamee the high property, unless the value was already zero. */
         CHECK((secp256k1_scalar_is_high(&s) == secp256k1_scalar_is_high(&neg)) == secp256k1_scalar_is_zero(&s));
         secp256k1_num_t negnum2;
         secp256k1_scalar_get_num(&negnum2, &neg);
@@ -819,8 +819,8 @@ void test_wnaf(const secp256k1_scalar_t *number, int w) {
             CHECK(zeroes == -1 || zeroes >= w-1); /* check that distance between non-zero elements is at least w-1 */
             zeroes=0;
             CHECK((v & 1) == 1); /* check non-zero elements are odd */
-            CHECK(v <= (1 << (w-1)) - 1); /* check range below */
-            CHECK(v >= -(1 << (w-1)) - 1); /* check range above */
+            CHECK(v <= (1 << (w-1)) - 1); /* check rcoinnamee below */
+            CHECK(v >= -(1 << (w-1)) - 1); /* check rcoinnamee above */
         } else {
             CHECK(zeroes != -1); /* check that no unnecessary zero padding exists */
             zeroes++;

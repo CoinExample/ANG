@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/ang-config.h"
+#include "config/coinname-config.h"
 #endif
 
 #include "net.h"
@@ -147,7 +147,7 @@ bool GetLocal(CService& addr, const CNetAddr *paddrPeer)
 
 // get best local address for a particular peer as a CAddress
 // Otherwise, return the unroutable 0.0.0.0 but filled in with
-// the normal parameters, since the IP may be changed to a useful
+// the normal parameters, since the IP may be chcoinnameed to a useful
 // one by discovery.
 CAddress GetLocalAddress(const CNetAddr *paddrPeer)
 {
@@ -467,7 +467,7 @@ void CNode::PushVersion()
 {
     int nBestHeight = g_signals.GetHeight().get_value_or(0);
 
-    /// when NTP implemented, change to just nTime = GetAdjustedTime()
+    /// when NTP implemented, chcoinnamee to just nTime = GetAdjustedTime()
     int64_t nTime = (fInbound ? GetAdjustedTime() : GetTime());
     CAddress addrYou = (addr.IsRoutable() && !IsProxy(addr) ? addr : CAddress(CService("0.0.0.0",0)));
     CAddress addrMe = GetLocalAddress(&addr);
@@ -519,21 +519,21 @@ bool CNode::Ban(const CNetAddr &addr) {
 }
 
 
-std::vector<CSubNet> CNode::vWhitelistedRange;
-CCriticalSection CNode::cs_vWhitelistedRange;
+std::vector<CSubNet> CNode::vWhitelistedRcoinnamee;
+CCriticalSection CNode::cs_vWhitelistedRcoinnamee;
 
-bool CNode::IsWhitelistedRange(const CNetAddr &addr) {
-    LOCK(cs_vWhitelistedRange);
-    BOOST_FOREACH(const CSubNet& subnet, vWhitelistedRange) {
+bool CNode::IsWhitelistedRcoinnamee(const CNetAddr &addr) {
+    LOCK(cs_vWhitelistedRcoinnamee);
+    BOOST_FOREACH(const CSubNet& subnet, vWhitelistedRcoinnamee) {
         if (subnet.Match(addr))
             return true;
     }
     return false;
 }
 
-void CNode::AddWhitelistedRange(const CSubNet &subnet) {
-    LOCK(cs_vWhitelistedRange);
-    vWhitelistedRange.push_back(subnet);
+void CNode::AddWhitelistedRcoinnamee(const CSubNet &subnet) {
+    LOCK(cs_vWhitelistedRcoinnamee);
+    vWhitelistedRcoinnamee.push_back(subnet);
 }
 
 #undef X
@@ -565,7 +565,7 @@ void CNode::copyStats(CNodeStats &stats)
         nPingUsecWait = GetTimeMicros() - nPingUsecStart;
     }
 
-    // Raw ping time is in microseconds, but show it to user as whole seconds (Ang users should be well used to small numbers with many decimal places by now :)
+    // Raw ping time is in microseconds, but show it to user as whole seconds (Coinname users should be well used to small numbers with many decimal places by now :)
     stats.dPingTime = (((double)nPingUsecTime) / 1e6);
     stats.dPingWait = (((double)nPingUsecWait) / 1e6);
 
@@ -779,7 +779,7 @@ void ThreadSocketHandler()
         }
         if(vNodes.size() != nPrevNodeCount) {
             nPrevNodeCount = vNodes.size();
-            uiInterface.NotifyNumConnectionsChanged(nPrevNodeCount);
+            uiInterface.NotifyNumConnectionsChcoinnameed(nPrevNodeCount);
         }
 
         //
@@ -881,7 +881,7 @@ void ThreadSocketHandler()
                     if (!addr.SetSockAddr((const struct sockaddr*)&sockaddr))
                         LogPrintf("Warning: Unknown socket family\n");
 
-                bool whitelisted = hListenSocket.whitelisted || CNode::IsWhitelistedRange(addr);
+                bool whitelisted = hListenSocket.whitelisted || CNode::IsWhitelistedRcoinnamee(addr);
                 {
                     LOCK(cs_vNodes);
                     BOOST_FOREACH(CNode* pnode, vNodes)
@@ -1080,7 +1080,7 @@ void ThreadMapPort()
             }
         }
 
-        string strDesc = "Ang " + FormatFullVersion();
+        string strDesc = "Coinname " + FormatFullVersion();
 
         try {
             while (true) {
@@ -1309,7 +1309,7 @@ void ThreadOpenConnections()
 
             // If we didn't find an appropriate destination after trying 100 addresses fetched from addrman,
             // stop this loop, and let the outer loop run again (which sleeps, adds seed nodes, recalculates
-            // already-connected network ranges, ...) before trying new addrman addresses.
+            // already-connected network rcoinnamees, ...) before trying new addrman addresses.
             nTries++;
             if (nTries > 100)
                 break;
@@ -1577,7 +1577,7 @@ bool BindListenPort(const CService &addrBind, string& strError, bool fWhiteliste
     {
         int nErr = WSAGetLastError();
         if (nErr == WSAEADDRINUSE)
-            strError = strprintf(_("Unable to bind to %s on this computer. Ang Core is probably already running."), addrBind.ToString());
+            strError = strprintf(_("Unable to bind to %s on this computer. Coinname Core is probably already running."), addrBind.ToString());
         else
             strError = strprintf(_("Unable to bind to %s on this computer (bind returned error %s)"), addrBind.ToString(), NetworkErrorString(nErr));
         LogPrintf("%s\n", strError);
@@ -1885,8 +1885,8 @@ void CNode::Fuzz(int nChance)
         }
         break;
     }
-    // Chance of more than one change half the time:
-    // (more changes exponentially less likely):
+    // Chance of more than one chcoinnamee half the time:
+    // (more chcoinnamees exponentially less likely):
     Fuzz(2);
 }
 

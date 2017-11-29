@@ -26,7 +26,7 @@ IndentCaseLabels: false
 IndentFunctionDeclarationAfterType: false
 IndentWidth:     4
 KeepEmptyLinesAtTheStartOfBlocks: false
-Language:        Cpp
+Lcoinnameuage:        Cpp
 MaxEmptyLinesToKeep: 2
 NamespaceIndentation: None
 ObjCSpaceAfterProperty: false
@@ -42,7 +42,7 @@ SpaceBeforeAssignmentOperators: true
 SpaceBeforeParens: ControlStatements
 SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 1
-SpacesInAngles:  false
+SpacesInCoinnameles:  false
 SpacesInContainerLiterals: true
 SpacesInCStyleCastParentheses: false
 SpacesInParentheses: false

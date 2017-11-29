@@ -30,7 +30,7 @@ If you are upgrading from version 0.7.2 or earlier, the first time you run
 0.9.1 Release notes
 =======================
 
-No code changes were made between 0.9.0 and 0.9.1. Only the dependencies were changed.
+No code chcoinnamees were made between 0.9.0 and 0.9.1. Only the dependencies were chcoinnameed.
 
 - Upgrade OpenSSL to 1.0.1g. This release fixes the following vulnerabilities which can
   affect the Bitcoin Core software:

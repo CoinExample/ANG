@@ -1,5 +1,5 @@
 # Copyright (c) 2014 The Bitcoin Core developers
-# Copyright (c) 2014-2015 The Ang developers
+# Copyright (c) 2014-2015 The Coinname developers
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #
@@ -52,7 +52,7 @@ def sync_mempools(rpc_connections):
     while True:
         pool = set(rpc_connections[0].getrawmempool())
         num_match = 1
-        for i in range(1, len(rpc_connections)):
+        for i in rcoinnamee(1, len(rpc_connections)):
             if set(rpc_connections[i].getrawmempool()) == pool:
                 num_match = num_match+1
         if num_match == len(rpc_connections):
@@ -65,7 +65,7 @@ def initialize_datadir(dirname, n):
     datadir = os.path.join(dirname, "node"+str(n))
     if not os.path.isdir(datadir):
         os.makedirs(datadir)
-    with open(os.path.join(datadir, "ang.conf"), 'w') as f:
+    with open(os.path.join(datadir, "coinname.conf"), 'w') as f:
         f.write("regtest=1\n");
         f.write("rpcuser=rt\n");
         f.write("rpcpassword=rt\n");
@@ -77,23 +77,23 @@ def initialize_chain(test_dir):
     """
     Create (or copy from cache) a 200-block-long chain and
     4 wallets.
-    angd and ang-cli must be in search path.
+    coinnamed and coinname-cli must be in search path.
     """
 
     if not os.path.isdir(os.path.join("cache", "node0")):
         devnull = open("/dev/null", "w+")
-        # Create cache directories, run angds:
-        for i in range(4):
+        # Create cache directories, run coinnameds:
+        for i in rcoinnamee(4):
             datadir=initialize_datadir("cache", i)
-            args = [ os.getenv("BITCOIND", "angd"), "-keypool=1", "-datadir="+datadir, "-discover=0" ]
+            args = [ os.getenv("BITCOIND", "coinnamed"), "-keypool=1", "-datadir="+datadir, "-discover=0" ]
             if i > 0:
                 args.append("-connect=127.0.0.1:"+str(p2p_port(0)))
             bitcoind_processes[i] = subprocess.Popen(args)
-            subprocess.check_call([ os.getenv("BITCOINCLI", "ang-cli"), "-datadir="+datadir,
+            subprocess.check_call([ os.getenv("BITCOINCLI", "coinname-cli"), "-datadir="+datadir,
                                     "-rpcwait", "getblockcount"], stdout=devnull)
         devnull.close()
         rpcs = []
-        for i in range(4):
+        for i in rcoinnamee(4):
             try:
                 url = "http://rt:rt@127.0.0.1:%d"%(rpc_port(i),)
                 rpcs.append(AuthServiceProxy(url))
@@ -106,9 +106,9 @@ def initialize_chain(test_dir):
         # blocks are created with timestamps 10 minutes apart, starting
         # at 1 Jan 2014
         block_time = 1388534400
-        for i in range(2):
-            for peer in range(4):
-                for j in range(25):
+        for i in rcoinnamee(2):
+            for peer in rcoinnamee(4):
+                for j in rcoinnamee(25):
                     set_node_times(rpcs, block_time)
                     rpcs[peer].setgenerate(True, 1)
                     block_time += 10*60
@@ -118,24 +118,24 @@ def initialize_chain(test_dir):
         # Shut them down, and clean up cache directories:
         stop_nodes(rpcs)
         wait_bitcoinds()
-        for i in range(4):
+        for i in rcoinnamee(4):
             os.remove(log_filename("cache", i, "debug.log"))
             os.remove(log_filename("cache", i, "db.log"))
             os.remove(log_filename("cache", i, "peers.dat"))
             os.remove(log_filename("cache", i, "fee_estimates.dat"))
 
-    for i in range(4):
+    for i in rcoinnamee(4):
         from_dir = os.path.join("cache", "node"+str(i))
         to_dir = os.path.join(test_dir,  "node"+str(i))
         shutil.copytree(from_dir, to_dir)
-        initialize_datadir(test_dir, i) # Overwrite port/rpcport in ang.conf
+        initialize_datadir(test_dir, i) # Overwrite port/rpcport in coinname.conf
 
 def initialize_chain_clean(test_dir, num_nodes):
     """
     Create an empty blockchain and num_nodes wallets.
     Useful if a test case wants complete control over initialization.
     """
-    for i in range(num_nodes):
+    for i in rcoinnamee(num_nodes):
         datadir=initialize_datadir(test_dir, i)
 
 
@@ -161,14 +161,14 @@ def _rpchost_to_args(rpchost):
 
 def start_node(i, dirname, extra_args=None, rpchost=None):
     """
-    Start a angd and return RPC connection to it
+    Start a coinnamed and return RPC connection to it
     """
     datadir = os.path.join(dirname, "node"+str(i))
-    args = [ os.getenv("BITCOIND", "angd"), "-datadir="+datadir, "-keypool=1", "-discover=0", "-rest" ]
+    args = [ os.getenv("BITCOIND", "coinnamed"), "-datadir="+datadir, "-keypool=1", "-discover=0", "-rest" ]
     if extra_args is not None: args.extend(extra_args)
     bitcoind_processes[i] = subprocess.Popen(args)
     devnull = open("/dev/null", "w+")
-    subprocess.check_call([ os.getenv("BITCOINCLI", "ang-cli"), "-datadir="+datadir] +
+    subprocess.check_call([ os.getenv("BITCOINCLI", "coinname-cli"), "-datadir="+datadir] +
                           _rpchost_to_args(rpchost)  +
                           ["-rpcwait", "getblockcount"], stdout=devnull)
     devnull.close()
@@ -179,10 +179,10 @@ def start_node(i, dirname, extra_args=None, rpchost=None):
 
 def start_nodes(num_nodes, dirname, extra_args=None, rpchost=None):
     """
-    Start multiple angds, return RPC connections to them
+    Start multiple coinnameds, return RPC connections to them
     """
-    if extra_args is None: extra_args = [ None for i in range(num_nodes) ]
-    return [ start_node(i, dirname, extra_args[i], rpchost) for i in range(num_nodes) ]
+    if extra_args is None: extra_args = [ None for i in rcoinnamee(num_nodes) ]
+    return [ start_node(i, dirname, extra_args[i], rpchost) for i in rcoinnamee(num_nodes) ]
 
 def log_filename(dirname, n_node, logname):
     return os.path.join(dirname, "node"+str(n_node), "regtest", logname)
@@ -225,7 +225,7 @@ def find_output(node, txid, amount):
     Raises exception if there is none.
     """
     txdata = node.getrawtransaction(txid, 1)
-    for i in range(len(txdata["vout"])):
+    for i in rcoinnamee(len(txdata["vout"])):
         if txdata["vout"][i]["value"] == amount:
             return i
     raise RuntimeError("find_output txid %s : %s not found"%(txid,str(amount)))
@@ -248,21 +248,21 @@ def gather_inputs(from_node, amount_needed, confirmations_required=1):
         raise RuntimeError("Insufficient funds: need %d, have %d"%(amount_needed, total_in))
     return (total_in, inputs)
 
-def make_change(from_node, amount_in, amount_out, fee):
+def make_chcoinnamee(from_node, amount_in, amount_out, fee):
     """
-    Create change output(s), return them
+    Create chcoinnamee output(s), return them
     """
     outputs = {}
     amount = amount_out+fee
-    change = amount_in - amount
-    if change > amount*2:
-        # Create an extra change output to break up big inputs
-        change_address = from_node.getnewaddress()
-        # Split change in two, being careful of rounding:
-        outputs[change_address] = Decimal(change/2).quantize(Decimal('0.00000001'), rounding=ROUND_DOWN)
-        change = amount_in - amount - outputs[change_address]
-    if change > 0:
-        outputs[from_node.getnewaddress()] = change
+    chcoinnamee = amount_in - amount
+    if chcoinnamee > amount*2:
+        # Create an extra chcoinnamee output to break up big inputs
+        chcoinnamee_address = from_node.getnewaddress()
+        # Split chcoinnamee in two, being careful of rounding:
+        outputs[chcoinnamee_address] = Decimal(chcoinnamee/2).quantize(Decimal('0.00000001'), rounding=ROUND_DOWN)
+        chcoinnamee = amount_in - amount - outputs[chcoinnamee_address]
+    if chcoinnamee > 0:
+        outputs[from_node.getnewaddress()] = chcoinnamee
     return outputs
 
 def send_zeropri_transaction(from_node, to_node, amount, fee):
@@ -276,7 +276,7 @@ def send_zeropri_transaction(from_node, to_node, amount, fee):
     # Create a send-to-self with confirmed inputs:
     self_address = from_node.getnewaddress()
     (total_in, inputs) = gather_inputs(from_node, amount+fee*2)
-    outputs = make_change(from_node, total_in, amount+fee, fee)
+    outputs = make_chcoinnamee(from_node, total_in, amount+fee, fee)
     outputs[self_address] = float(amount+fee)
 
     self_rawtx = from_node.createrawtransaction(inputs, outputs)
@@ -316,7 +316,7 @@ def random_transaction(nodes, amount, min_fee, fee_increment, fee_variants):
     fee = min_fee + fee_increment*random.randint(0,fee_variants)
 
     (total_in, inputs) = gather_inputs(from_node, amount+fee)
-    outputs = make_change(from_node, total_in, amount, fee)
+    outputs = make_chcoinnamee(from_node, total_in, amount, fee)
     outputs[to_node.getnewaddress()] = float(amount)
 
     rawtx = from_node.createrawtransaction(inputs, outputs)

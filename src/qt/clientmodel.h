@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -34,7 +34,7 @@ enum NumConnections {
     CONNECTIONS_ALL  = (CONNECTIONS_IN | CONNECTIONS_OUT),
 };
 
-/** Model for Ang network client. */
+/** Model for Coinname network client. */
 class ClientModel : public QObject
 {
     Q_OBJECT
@@ -89,11 +89,11 @@ private:
     void unsubscribeFromCoreSignals();
 
 signals:
-    void numConnectionsChanged(int count);
-    void numBlocksChanged(int count);
-    void strMasternodesChanged(const QString &strMasternodes);
-    void alertsChanged(const QString &warnings);
-    void bytesChanged(quint64 totalBytesIn, quint64 totalBytesOut);
+    void numConnectionsChcoinnameed(int count);
+    void numBlocksChcoinnameed(int count);
+    void strMasternodesChcoinnameed(const QString &strMasternodes);
+    void alertsChcoinnameed(const QString &warnings);
+    void bytesChcoinnameed(quint64 totalBytesIn, quint64 totalBytesOut);
 
     //! Fired when a message should be reported to the user
     void message(const QString &title, const QString &message, unsigned int style);

@@ -1,9 +1,9 @@
 Gitian building
 ================
 
-*Setup instructions for a gitian build of Ang using a Debian VM or physical system.*
+*Setup instructions for a gitian build of Coinname using a Debian VM or physical system.*
 
-Gitian is the deterministic build process that is used to build the Ang
+Gitian is the deterministic build process that is used to build the Coinname
 Core executables. It provides a way to be reasonably sure that the
 executables are really built from source on GitHub. It also makes sure that
 the same, tested dependencies are used and statically built into the executable.
@@ -26,7 +26,7 @@ Table of Contents
 - [Installing gitian](#installing-gitian)
 - [Setting up gitian images](#setting-up-gitian-images)
 - [Getting and building the inputs](#getting-and-building-the-inputs)
-- [Building Ang](#building-ang)
+- [Building Coinname](#building-coinname)
 - [Building an alternative repository](#building-an-alternative-repository)
 - [Signing externally](#signing-externally)
 - [Uploading signatures](#uploading-signatures)
@@ -120,7 +120,7 @@ and proceed, just press `Enter`. To select a different button, press `Tab`.
 
 - Choose locale and keyboard settings (doesn't matter, you can just go with the defaults or select your own information)
 
-![](gitian-building/debian_install_2_select_a_language.png)
+![](gitian-building/debian_install_2_select_a_lcoinnameuage.png)
 ![](gitian-building/debian_install_3_select_location.png)
 ![](gitian-building/debian_install_4_configure_keyboard.png)
 
@@ -162,10 +162,10 @@ and proceed, just press `Enter`. To select a different button, press `Tab`.
   
 ![](gitian-building/debian_install_13_partition_scheme.png)
 
-  - Finish partitioning and write changes to disk -> *Yes* (`Tab`, `Enter` to select the `Yes` button)
+  - Finish partitioning and write chcoinnamees to disk -> *Yes* (`Tab`, `Enter` to select the `Yes` button)
 
 ![](gitian-building/debian_install_14_finish.png) 
-![](gitian-building/debian_install_15_write_changes.png)
+![](gitian-building/debian_install_15_write_chcoinnamees.png)
 
 - The base system will be installed, this will take a minute or so
 - Choose a mirror (any will do) 
@@ -254,7 +254,7 @@ echo 'export LXC_GUEST_IP=10.0.3.5' >> /home/debian/.profile
 reboot
 ```
 
-At the end the VM is rebooted to make sure that the changes take effect. The steps in this
+At the end the VM is rebooted to make sure that the chcoinnamees take effect. The steps in this
 section need only to be performed once.
 
 Installing gitian
@@ -277,12 +277,12 @@ cd ..
 
 **Note**: When sudo asks for a password, enter the password for the user *debian* not for *root*.
 
-Clone the git repositories for ang and gitian and then checkout the ang version that you want to build.
+Clone the git repositories for coinname and gitian and then checkout the coinname version that you want to build.
 
 ```bash
 git clone https://github.com/devrandom/gitian-builder.git
 git clone https://github.com/CoinExample/CoinName.git
-cd ang
+cd coinname
 git checkout v${VERSION}
 cd ..
 ```
@@ -312,7 +312,7 @@ There will be a lot of warnings printed during build of the images. These can be
 
 **Note**: Repeat this step when you have upgraded to a newer version of Gitian.
 
-**Note**: if you get the error message *"bin/make-base-vm: mkfs.ext4: not found"* during this process you have to make the following change in file *"gitian-builder/bin/make-base-vm"* at line 117:
+**Note**: if you get the error message *"bin/make-base-vm: mkfs.ext4: not found"* during this process you have to make the following chcoinnamee in file *"gitian-builder/bin/make-base-vm"* at line 117:
 ```bash
 # mkfs.ext4 -F $OUT-lxc
 /sbin/mkfs.ext4 -F $OUT-lxc # (some Gitian environents do NOT find mkfs.ext4. Some do...)
@@ -321,16 +321,16 @@ There will be a lot of warnings printed during build of the images. These can be
 Getting and building the inputs
 --------------------------------
 
-Follow the instructions in [doc/release-process.md](release-process.md) in the ang repository
+Follow the instructions in [doc/release-process.md](release-process.md) in the coinname repository
 under 'Fetch and build inputs' to install sources which require manual intervention. Also follow
 the next step: 'Seed the Gitian sources cache', which will fetch all necessary source files allowing
 for gitian to work offline.
 
-Building Ang
+Building Coinname
 ----------------
 
-To build Ang (for Linux, OSX and Windows) just follow the steps under 'perform
-gitian builds' in [doc/release-process.md](release-process.md) in the ang repository.
+To build Coinname (for Linux, OSX and Windows) just follow the steps under 'perform
+gitian builds' in [doc/release-process.md](release-process.md) in the coinname repository.
 
 This may take a long time as it also builds the dependencies needed for each descriptor.
 These dependencies will be cached after a successful build to avoid rebuilding them when possible.
@@ -345,7 +345,7 @@ tail -f var/build.log
 Output from `gbuild` will look something like
 
 ```bash
-    Initialized empty Git repository in /home/debian/gitian-builder/inputs/ang/.git/
+    Initialized empty Git repository in /home/debian/gitian-builder/inputs/coinname/.git/
     remote: Reusing existing pack: 35606, done.
     remote: Total 35606 (delta 0), reused 0 (delta 0)
     Receiving objects: 100% (35606/35606), 26.52 MiB | 4.28 MiB/s, done.
@@ -377,11 +377,11 @@ and inputs.
 
 For example:
 ```bash
-URL=https://github.com/crowning-/ang.git
+URL=https://github.com/crowning-/coinname.git
 COMMIT=b616fb8ef0d49a919b72b0388b091aaec5849b96
-./bin/gbuild --commit ang=${COMMIT} --url ang=${URL} ../ang/contrib/gitian-descriptors/gitian-linux.yml
-./bin/gbuild --commit ang=${COMMIT} --url ang=${URL} ../ang/contrib/gitian-descriptors/gitian-win.yml
-./bin/gbuild --commit ang=${COMMIT} --url ang=${URL} ../ang/contrib/gitian-descriptors/gitian-osx.yml
+./bin/gbuild --commit coinname=${COMMIT} --url coinname=${URL} ../coinname/contrib/gitian-descriptors/gitian-linux.yml
+./bin/gbuild --commit coinname=${COMMIT} --url coinname=${URL} ../coinname/contrib/gitian-descriptors/gitian-win.yml
+./bin/gbuild --commit coinname=${COMMIT} --url coinname=${URL} ../coinname/contrib/gitian-descriptors/gitian-osx.yml
 ```
 
 Signing externally
@@ -396,9 +396,9 @@ When you execute `gsign` you will get an error from GPG, which can be ignored. C
 in `gitian.sigs` to your signing machine and do
 
 ```bash
-    gpg --detach-sign ${VERSION}-linux/${SIGNER}/ang-build.assert
-    gpg --detach-sign ${VERSION}-win/${SIGNER}/ang-build.assert
-    gpg --detach-sign ${VERSION}-osx/${SIGNER}/ang-build.assert
+    gpg --detach-sign ${VERSION}-linux/${SIGNER}/coinname-build.assert
+    gpg --detach-sign ${VERSION}-win/${SIGNER}/coinname-build.assert
+    gpg --detach-sign ${VERSION}-osx/${SIGNER}/coinname-build.assert
 ```
 
 This will create the `.sig` files that can be committed together with the `.assert` files to assert your
@@ -408,6 +408,6 @@ Uploading signatures (not yet implemented)
 ---------------------
 
 In the future it will be possible to push your signatures (both the `.assert` and `.assert.sig` files) to the
-[ang/gitian.sigs](https://github.com/andrijKolomiets/gitian.sigs/) repository, or if that's not possible to create a pull
+[coinname/gitian.sigs](https://github.com/andrijKolomiets/gitian.sigs/) repository, or if that's not possible to create a pull
 request.
 There will be an official announcement when this repository is online.

@@ -1,7 +1,7 @@
 Masternode Budget API
 =======================
 
-Ang now supports full decentralized budgets that are paid directly from the blockchain via superblocks once per month. 
+Coinname now supports full decentralized budgets that are paid directly from the blockchain via superblocks once per month. 
 
 Budgets go through a series of stages before being paid:
 * prepare - create a special transaction that destroys coins in order to make a proposal
@@ -16,15 +16,15 @@ Budgets go through a series of stages before being paid:
 1. Prepare collateral transaction
 --
 
-mnbudget prepare proposal-name url payment_count block_start ang_address monthly_payment_ang [use_ix(true|false)]
+mnbudget prepare proposal-name url payment_count block_start coinname_address monthly_payment_coinname [use_ix(true|false)]
 
 Example: ```mnbudget prepare cool-project http://www.cool-project/one.json 12 100000 y6R9oN12KnB9zydzTLc3LikD9cCjjQzYG7 1200 true```
 
 Output: ```464a0eb70ea91c94295214df48c47baa72b3876cfb658744aaf863c7b5bf1ff0``` - This is the collateral hash, copy this output for the next step
 
-In this transaction we prepare collateral for "_cool-project_". This proposal will pay _1200_ ANG, _12_ times over the course of a year totaling _24000_ ANG. 
+In this transaction we prepare collateral for "_cool-project_". This proposal will pay _1200_ COINNAME, _12_ times over the course of a year totaling _24000_ COINNAME. 
 
-**Warning -- if you change any fields within this command, the collateral transaction will become invalid.** 
+**Warning -- if you chcoinnamee any fields within this command, the collateral transaction will become invalid.** 
 
 2 Submit proposal to network
 --
@@ -111,15 +111,15 @@ After you get enough votes, execute ```mnbudget projection``` to see if you made
 6. Get paid
 --
 
-When block ```1000000``` is reached you'll receive a payment for ```1200``` ANG. 
+When block ```1000000``` is reached you'll receive a payment for ```1200``` COINNAME. 
 
 The following new RPC commands are supported:
 - mnbudget "command"... ( "passphrase" )
  - prepare            - Prepare proposal for network by signing and creating tx
  - submit             - Submit proposal for network
- - vote-many          - Vote on a Ang initiative
- - vote-alias         - Vote on a Ang initiative
- - vote               - Vote on a Ang initiative/budget
+ - vote-many          - Vote on a Coinname initiative
+ - vote-alias         - Vote on a Coinname initiative
+ - vote               - Vote on a Coinname initiative/budget
  - getvotes           - Show current masternode budgets
  - getinfo            - Show current masternode budgets
  - show               - Show all budgets

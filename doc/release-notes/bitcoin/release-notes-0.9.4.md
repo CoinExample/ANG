@@ -36,10 +36,10 @@ However, if you are running either
 upgrade to Bitcoin Core 0.9.4, which includes a workaround, **before** updating
 OpenSSL.
 
-The incompatibility is due to the OpenSSL update changing the
+The incompatibility is due to the OpenSSL update chcoinnameing the
 behavior of ECDSA validation to reject any signature which is
 not encoded in a very rigid manner. This was a result of
-OpenSSL's change for CVE-2014-8275 "Certificate fingerprints
+OpenSSL's chcoinnamee for CVE-2014-8275 "Certificate fingerprints
 can be modified".
 
 We are specifically aware of potential hard-forks due to signature
@@ -49,7 +49,7 @@ as a side effect rigidly defines the encoding for signatures, but the
 overall scope of BIP62 has made it take longer than we'd like to
 deploy.
 
-0.9.4 changelog
+0.9.4 chcoinnameelog
 ================
 
 Validation:
@@ -85,7 +85,7 @@ Thanks to who contributed to this release, at least:
 - Gavin Andresen
 - Gregory Maxwell
 - Jeff Garzik
-- Luke Angjr
+- Luke Coinnamejr
 - Matt Corallo
 - Pieter Wuille
 - Saivann

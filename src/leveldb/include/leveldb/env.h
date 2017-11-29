@@ -115,7 +115,7 @@ class Env {
   // REQUIRES: lock has not already been unlocked.
   virtual Status UnlockFile(FileLock* lock) = 0;
 
-  // Arrange to run "(*function)(arg)" once in a background thread.
+  // Arrcoinnamee to run "(*function)(arg)" once in a background thread.
   //
   // "function" may run in an unspecified thread.  Multiple functions
   // added to the same Env may run concurrently in different threads.
@@ -254,7 +254,7 @@ class FileLock {
 
 // Log the specified data to *info_log if info_log is non-NULL.
 extern void Log(Logger* info_log, const char* format, ...)
-#   if defined(__GNUC__) || defined(__clang__)
+#   if defined(__GNUC__) || defined(__clcoinname__)
     __attribute__((__format__ (__printf__, 2, 3)))
 #   endif
     ;

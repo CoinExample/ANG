@@ -62,13 +62,13 @@ AC_DEFUN([AX_BOOST_PROGRAM_OPTIONS],
 		export LDFLAGS
 		AC_CACHE_CHECK([whether the Boost::Program_Options library is available],
 					   ax_cv_boost_program_options,
-					   [AC_LANG_PUSH(C++)
-				AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[@%:@include <boost/program_options.hpp>
+					   [AC_LCOINNAME_PUSH(C++)
+				AC_COMPILE_IFELSE([AC_LCOINNAME_PROGRAM([[@%:@include <boost/program_options.hpp>
                                                           ]],
                                   [[boost::program_options::options_description generic("Generic options");
                                    return 0;]])],
                            ax_cv_boost_program_options=yes, ax_cv_boost_program_options=no)
-					AC_LANG_POP([C++])
+					AC_LCOINNAME_POP([C++])
 		])
 		if test "$ax_cv_boost_program_options" = yes; then
 				AC_DEFINE(HAVE_BOOST_PROGRAM_OPTIONS,,[define if the Boost::PROGRAM_OPTIONS library is available])

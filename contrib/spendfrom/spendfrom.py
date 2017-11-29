@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 #
-# Use the raw transactions API to spend angs received on particular addresses,
-# and send any change back to that same address.
+# Use the raw transactions API to spend coinnames received on particular addresses,
+# and send any chcoinnamee back to that same address.
 #
 # Example usage:
 #  spendfrom.py  # Lists available funds
 #  spendfrom.py --from=ADDRESS --to=ADDRESS --amount=11.00
 #
-# Assumes it will talk to a angd or Ang-Qt running
+# Assumes it will talk to a coinnamed or Coinname-Qt running
 # on localhost.
 #
 # Depends on jsonrpc
@@ -33,15 +33,15 @@ def check_json_precision():
         raise RuntimeError("JSON encode/decode loses precision")
 
 def determine_db_dir():
-    """Return the default location of the ang data directory"""
+    """Return the default location of the coinname data directory"""
     if platform.system() == "Darwin":
-        return os.path.expanduser("~/Library/Application Support/Ang/")
+        return os.path.expanduser("~/Library/Application Support/Coinname/")
     elif platform.system() == "Windows":
-        return os.path.join(os.environ['APPDATA'], "Ang")
-    return os.path.expanduser("~/.ang")
+        return os.path.join(os.environ['APPDATA'], "Coinname")
+    return os.path.expanduser("~/.coinname")
 
 def read_bitcoin_config(dbdir):
-    """Read the ang.conf file from dbdir, returns dictionary of settings"""
+    """Read the coinname.conf file from dbdir, returns dictionary of settings"""
     from ConfigParser import SafeConfigParser
 
     class FakeSecHead(object):
@@ -59,11 +59,11 @@ def read_bitcoin_config(dbdir):
                 return s
 
     config_parser = SafeConfigParser()
-    config_parser.readfp(FakeSecHead(open(os.path.join(dbdir, "ang.conf"))))
+    config_parser.readfp(FakeSecHead(open(os.path.join(dbdir, "coinname.conf"))))
     return dict(config_parser.items("all"))
 
 def connect_JSON(config):
-    """Connect to a ang JSON-RPC server"""
+    """Connect to a coinname JSON-RPC server"""
     testnet = config.get('testnet', '0')
     testnet = (int(testnet) > 0)  # 0/1 in config file, convert to True/False
     if not 'rpcport' in config:
@@ -72,7 +72,7 @@ def connect_JSON(config):
     try:
         result = ServiceProxy(connect)
         # ServiceProxy is lazy-connect, so send an RPC command mostly to catch connection errors,
-        # but also make sure the angd we're talking to is/isn't testnet:
+        # but also make sure the coinnamed we're talking to is/isn't testnet:
         if result.getmininginfo()['testnet'] != testnet:
             sys.stderr.write("RPC server at "+connect+" testnet setting mismatch\n")
             sys.exit(1)
@@ -81,36 +81,36 @@ def connect_JSON(config):
         sys.stderr.write("Error connecting to RPC server at "+connect+"\n")
         sys.exit(1)
 
-def unlock_wallet(angd):
-    info = angd.getinfo()
+def unlock_wallet(coinnamed):
+    info = coinnamed.getinfo()
     if 'unlocked_until' not in info:
         return True # wallet is not encrypted
     t = int(info['unlocked_until'])
     if t <= time.time():
         try:
             passphrase = getpass.getpass("Wallet is locked; enter passphrase: ")
-            angd.walletpassphrase(passphrase, 5)
+            coinnamed.walletpassphrase(passphrase, 5)
         except:
             sys.stderr.write("Wrong passphrase\n")
 
-    info = angd.getinfo()
+    info = coinnamed.getinfo()
     return int(info['unlocked_until']) > time.time()
 
-def list_available(angd):
+def list_available(coinnamed):
     address_summary = dict()
 
     address_to_account = dict()
-    for info in angd.listreceivedbyaddress(0):
+    for info in coinnamed.listreceivedbyaddress(0):
         address_to_account[info["address"]] = info["account"]
 
-    unspent = angd.listunspent(0)
+    unspent = coinnamed.listunspent(0)
     for output in unspent:
         # listunspent doesn't give addresses, so:
-        rawtx = angd.getrawtransaction(output['txid'], 1)
+        rawtx = coinnamed.getrawtransaction(output['txid'], 1)
         vout = rawtx["vout"][output['vout']]
         pk = vout["scriptPubKey"]
 
-        # This code only deals with ordinary pay-to-ang-address
+        # This code only deals with ordinary pay-to-coinname-address
         # or pay-to-script-hash outputs right now; anything exotic is ignored.
         if pk["type"] != "pubkeyhash" and pk["type"] != "scripthash":
             continue
@@ -139,8 +139,8 @@ def select_coins(needed, inputs):
         n += 1
     return (outputs, have-needed)
 
-def create_tx(angd, fromaddresses, toaddress, amount, fee):
-    all_coins = list_available(angd)
+def create_tx(coinnamed, fromaddresses, toaddress, amount, fee):
+    all_coins = list_available(coinnamed)
 
     total_available = Decimal("0.0")
     needed = amount+fee
@@ -159,19 +159,19 @@ def create_tx(angd, fromaddresses, toaddress, amount, fee):
     # Note:
     # Python's json/jsonrpc modules have inconsistent support for Decimal numbers.
     # Instead of wrestling with getting json.dumps() (used by jsonrpc) to encode
-    # Decimals, I'm casting amounts to float before sending them to angd.
+    # Decimals, I'm casting amounts to float before sending them to coinnamed.
     #
     outputs = { toaddress : float(amount) }
-    (inputs, change_amount) = select_coins(needed, potential_inputs)
-    if change_amount > BASE_FEE:  # don't bother with zero or tiny change
-        change_address = fromaddresses[-1]
-        if change_address in outputs:
-            outputs[change_address] += float(change_amount)
+    (inputs, chcoinnamee_amount) = select_coins(needed, potential_inputs)
+    if chcoinnamee_amount > BASE_FEE:  # don't bother with zero or tiny chcoinnamee
+        chcoinnamee_address = fromaddresses[-1]
+        if chcoinnamee_address in outputs:
+            outputs[chcoinnamee_address] += float(chcoinnamee_amount)
         else:
-            outputs[change_address] = float(change_amount)
+            outputs[chcoinnamee_address] = float(chcoinnamee_amount)
 
-    rawtx = angd.createrawtransaction(inputs, outputs)
-    signed_rawtx = angd.signrawtransaction(rawtx)
+    rawtx = coinnamed.createrawtransaction(inputs, outputs)
+    signed_rawtx = coinnamed.signrawtransaction(rawtx)
     if not signed_rawtx["complete"]:
         sys.stderr.write("signrawtransaction failed\n")
         sys.exit(1)
@@ -179,10 +179,10 @@ def create_tx(angd, fromaddresses, toaddress, amount, fee):
 
     return txdata
 
-def compute_amount_in(angd, txinfo):
+def compute_amount_in(coinnamed, txinfo):
     result = Decimal("0.0")
     for vin in txinfo['vin']:
-        in_info = angd.getrawtransaction(vin['txid'], 1)
+        in_info = coinnamed.getrawtransaction(vin['txid'], 1)
         vout = in_info['vout'][vin['vout']]
         result = result + vout['value']
     return result
@@ -193,12 +193,12 @@ def compute_amount_out(txinfo):
         result = result + vout['value']
     return result
 
-def sanity_test_fee(angd, txdata_hex, max_fee):
+def sanity_test_fee(coinnamed, txdata_hex, max_fee):
     class FeeError(RuntimeError):
         pass
     try:
-        txinfo = angd.decoderawtransaction(txdata_hex)
-        total_in = compute_amount_in(angd, txinfo)
+        txinfo = coinnamed.decoderawtransaction(txdata_hex)
+        total_in = compute_amount_in(coinnamed, txinfo)
         total_out = compute_amount_out(txinfo)
         if total_in-total_out > max_fee:
             raise FeeError("Rejecting transaction, unreasonable fee of "+str(total_in-total_out))
@@ -221,15 +221,15 @@ def main():
 
     parser = optparse.OptionParser(usage="%prog [options]")
     parser.add_option("--from", dest="fromaddresses", default=None,
-                      help="addresses to get angs from")
+                      help="addresses to get coinnames from")
     parser.add_option("--to", dest="to", default=None,
-                      help="address to get send angs to")
+                      help="address to get send coinnames to")
     parser.add_option("--amount", dest="amount", default=None,
                       help="amount to send")
     parser.add_option("--fee", dest="fee", default="0.0",
                       help="fee to include")
     parser.add_option("--datadir", dest="datadir", default=determine_db_dir(),
-                      help="location of ang.conf file with RPC username/password (default: %default)")
+                      help="location of coinname.conf file with RPC username/password (default: %default)")
     parser.add_option("--testnet", dest="testnet", default=False, action="store_true",
                       help="Use the test network")
     parser.add_option("--dry_run", dest="dry_run", default=False, action="store_true",
@@ -240,10 +240,10 @@ def main():
     check_json_precision()
     config = read_bitcoin_config(options.datadir)
     if options.testnet: config['testnet'] = True
-    angd = connect_JSON(config)
+    coinnamed = connect_JSON(config)
 
     if options.amount is None:
-        address_summary = list_available(angd)
+        address_summary = list_available(coinnamed)
         for address,info in address_summary.iteritems():
             n_transactions = len(info['outputs'])
             if n_transactions > 1:
@@ -253,14 +253,14 @@ def main():
     else:
         fee = Decimal(options.fee)
         amount = Decimal(options.amount)
-        while unlock_wallet(angd) == False:
+        while unlock_wallet(coinnamed) == False:
             pass # Keep asking for passphrase until they get it right
-        txdata = create_tx(angd, options.fromaddresses.split(","), options.to, amount, fee)
-        sanity_test_fee(angd, txdata, amount*Decimal("0.01"))
+        txdata = create_tx(coinnamed, options.fromaddresses.split(","), options.to, amount, fee)
+        sanity_test_fee(coinnamed, txdata, amount*Decimal("0.01"))
         if options.dry_run:
             print(txdata)
         else:
-            txid = angd.sendrawtransaction(txdata)
+            txid = coinnamed.sendrawtransaction(txdata)
             print(txid)
 
 if __name__ == '__main__':

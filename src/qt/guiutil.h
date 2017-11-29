@@ -29,7 +29,7 @@ class QUrl;
 class QWidget;
 QT_END_NAMESPACE
 
-/** Utility functions used by the Ang Qt UI.
+/** Utility functions used by the Coinname Qt UI.
  */
 namespace GUIUtil
 {
@@ -37,14 +37,14 @@ namespace GUIUtil
     QString dateTimeStr(const QDateTime &datetime);
     QString dateTimeStr(qint64 nTime);
 
-    // Render Ang addresses in monospace font
+    // Render Coinname addresses in monospace font
     QFont bitcoinAddressFont();
 
     // Set up widgets for address and amounts
     void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent);
     void setupAmountWidget(QLineEdit *widget, QWidget *parent);
 
-    // Parse "ang:" URI into recipient object, return true on successful parsing
+    // Parse "coinname:" URI into recipient object, return true on successful parsing
     bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out);
     bool parseBitcoinURI(QString uri, SendCoinsRecipient *out);
     QString formatBitcoinURI(const SendCoinsRecipient &info);
@@ -106,16 +106,16 @@ namespace GUIUtil
     // Open debug.log
     void openDebugLogfile();
 	
-    // Open ang.conf
+    // Open coinname.conf
     void openConfigfile();	
     
     // Browse backup folder
     void showBackups();
 
     // Replace invalid default fonts with known good ones
-    void SubstituteFonts(const QString& language);
+    void SubstituteFonts(const QString& lcoinnameuage);
 
-    /** Qt event filter that intercepts ToolTipChange events, and replaces the tooltip with a rich text
+    /** Qt event filter that intercepts ToolTipChcoinnamee events, and replaces the tooltip with a rich text
       representation if needed. This assures that Qt can word-wrap long tooltip messages.
       Tooltips longer than the provided size threshold (in characters) are wrapped.
      */
@@ -169,7 +169,7 @@ namespace GUIUtil
 
         private slots:
             void on_sectionResized(int logicalIndex, int oldSize, int newSize);
-            void on_geometriesChanged();
+            void on_geometriesChcoinnameed();
     };
 
     bool GetStartOnSystemStartup();

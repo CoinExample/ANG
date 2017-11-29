@@ -1,11 +1,11 @@
 Version 0.3.13 is now available.  You should upgrade to prevent potential problems with 0/unconfirmed transactions.  Note: 0.3.13 prevents problems if you haven't already spent a 0/unconfirmed transaction, but if that already happened, you need 0.3.13.2.
 
-Changes:
+Chcoinnamees:
 * Don't count or spend payments until they have 1 confirmation.
 * Internal version number from 312 to 31300.
 * Only accept transactions sent by IP address if -allowreceivebyip is specified.
 * Dropped DB_PRIVATE Berkeley DB flag.
-* Fix problem sending the last cent with sub-cent fractional change.
+* Fix problem sending the last cent with sub-cent fractional chcoinnamee.
 * Auto-detect whether to use 128-bit 4-way SSE2 on Linux.
 Gavin Andresen:
 * Option -rpcallowip= to accept json-rpc connections from another machine.

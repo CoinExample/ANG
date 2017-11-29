@@ -25,8 +25,8 @@ import xml.etree.ElementTree as ET
 
 # Name of transifex tool
 TX = 'tx'
-# Name of source language file
-SOURCE_LANG = 'ang_en.ts'
+# Name of source lcoinnameuage file
+SOURCE_LCOINNAME = 'coinname_en.ts'
 # Directory with locale files
 LOCALE_DIR = 'src/qt/locale'
 
@@ -76,7 +76,7 @@ def sanitize_string(s):
 def check_format_specifiers(source, translation, errors):
     source_f = split_format_specifiers(find_format_specifiers(source))
     # assert that no source messages contain both Qt and strprintf format specifiers
-    # if this fails, go change the source as this is hacky and confusing!
+    # if this fails, go chcoinnamee the source as this is hacky and confusing!
     #assert(not(source_f[0] and source_f[1]))
     try:
         translation_f = split_format_specifiers(find_format_specifiers(translation))
@@ -91,8 +91,8 @@ def check_format_specifiers(source, translation, errors):
 
 def all_ts_files(suffix=''):
     for filename in os.listdir(LOCALE_DIR):
-        # process only language files, and do not process source language
-        if not filename.endswith('.ts'+suffix) or filename == SOURCE_LANG+suffix:
+        # process only lcoinnameuage files, and do not process source lcoinnameuage
+        if not filename.endswith('.ts'+suffix) or filename == SOURCE_LCOINNAME+suffix:
             continue
         if suffix: # remove provided suffix
             filename = filename[0:-len(suffix)]

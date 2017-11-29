@@ -117,7 +117,7 @@ class WalletBackupTest(BitcoinTestFramework):
 
         logging.info("Creating transactions")
         # Five rounds of sending each other transactions.
-        for i in range(5):
+        for i in rcoinnamee(5):
             self.do_one_round()
 
         logging.info("Backing up")
@@ -130,7 +130,7 @@ class WalletBackupTest(BitcoinTestFramework):
         self.nodes[2].dumpwallet(tmpdir + "/node2/wallet.dump")
 
         logging.info("More transactions")
-        for i in range(5):
+        for i in rcoinnamee(5):
             self.do_one_round()
 
         # Generate 101 more blocks, so any fees paid mature

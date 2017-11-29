@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -87,7 +87,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle *networkStyle, QWidget *parent) :
     toggleHideAction(0),
     encryptWalletAction(0),
     backupWalletAction(0),
-    changePassphraseAction(0),
+    chcoinnameePassphraseAction(0),
     aboutQtAction(0),
     openRPCConsoleAction(0),
     openAction(0),
@@ -104,7 +104,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle *networkStyle, QWidget *parent) :
 
     GUIUtil::restoreWindowGeometry("nWindow", QSize(850, 550), this);
 
-    QString windowTitle = tr("Ang Core") + " - ";
+    QString windowTitle = tr("Coinname Core") + " - ";
 #ifdef ENABLE_WALLET
     /* if compiled with wallet support, -disablewallet can still disable the wallet */
     enableWallet = !GetBoolArg("-disablewallet", false);
@@ -271,7 +271,7 @@ void BitcoinGUI::createActions(const NetworkStyle *networkStyle)
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send"), this);
-    sendCoinsAction->setStatusTip(tr("Send coins to a Ang address"));
+    sendCoinsAction->setStatusTip(tr("Send coins to a Coinname address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -282,7 +282,7 @@ void BitcoinGUI::createActions(const NetworkStyle *networkStyle)
     tabGroup->addAction(sendCoinsAction);
 
     receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
-    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and ang: URIs)"));
+    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and coinname: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -320,8 +320,8 @@ void BitcoinGUI::createActions(const NetworkStyle *networkStyle)
     quitAction->setStatusTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-    aboutAction = new QAction(networkStyle->getAppIcon(), tr("&About Ang Core"), this);
-    aboutAction->setStatusTip(tr("Show information about Ang Core"));
+    aboutAction = new QAction(networkStyle->getAppIcon(), tr("&About Coinname Core"), this);
+    aboutAction->setStatusTip(tr("Show information about Coinname Core"));
     aboutAction->setMenuRole(QAction::AboutRole);
 #if QT_VERSION < 0x050000
     aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
@@ -331,7 +331,7 @@ void BitcoinGUI::createActions(const NetworkStyle *networkStyle)
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
-    optionsAction->setStatusTip(tr("Modify configuration options for Ang"));
+    optionsAction->setStatusTip(tr("Modify configuration options for Coinname"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     toggleHideAction = new QAction(networkStyle->getAppIcon(), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
@@ -341,15 +341,15 @@ void BitcoinGUI::createActions(const NetworkStyle *networkStyle)
     encryptWalletAction->setCheckable(true);
     backupWalletAction = new QAction(QIcon(":/icons/filesave"), tr("&Backup Wallet..."), this);
     backupWalletAction->setStatusTip(tr("Backup wallet to another location"));
-    changePassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Change Passphrase..."), this);
-    changePassphraseAction->setStatusTip(tr("Change the passphrase used for wallet encryption"));
+    chcoinnameePassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Chcoinnamee Passphrase..."), this);
+    chcoinnameePassphraseAction->setStatusTip(tr("Chcoinnamee the passphrase used for wallet encryption"));
     unlockWalletAction = new QAction(tr("&Unlock Wallet..."), this);
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
     lockWalletAction = new QAction(tr("&Lock Wallet"), this);
     signMessageAction = new QAction(QIcon(":/icons/edit"), tr("Sign &message..."), this);
-    signMessageAction->setStatusTip(tr("Sign messages with your Ang addresses to prove you own them"));
+    signMessageAction->setStatusTip(tr("Sign messages with your Coinname addresses to prove you own them"));
     verifyMessageAction = new QAction(QIcon(":/icons/transaction_0"), tr("&Verify message..."), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Ang addresses"));
+    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Coinname addresses"));
 
     openInfoAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Information"), this);
     openInfoAction->setStatusTip(tr("Show diagnostic information"));
@@ -372,11 +372,11 @@ void BitcoinGUI::createActions(const NetworkStyle *networkStyle)
     usedReceivingAddressesAction->setStatusTip(tr("Show the list of used receiving addresses and labels"));
 
     openAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_FileIcon), tr("Open &URI..."), this);
-    openAction->setStatusTip(tr("Open a ang: URI or payment request"));
+    openAction->setStatusTip(tr("Open a coinname: URI or payment request"));
 
     showHelpMessageAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
-    showHelpMessageAction->setStatusTip(tr("Show the Ang Core help message to get a list with possible Ang command-line options"));
+    showHelpMessageAction->setStatusTip(tr("Show the Coinname Core help message to get a list with possible Coinname command-line options"));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
@@ -389,7 +389,7 @@ void BitcoinGUI::createActions(const NetworkStyle *networkStyle)
     {
         connect(encryptWalletAction, SIGNAL(triggered(bool)), walletFrame, SLOT(encryptWallet(bool)));
         connect(backupWalletAction, SIGNAL(triggered()), walletFrame, SLOT(backupWallet()));
-        connect(changePassphraseAction, SIGNAL(triggered()), walletFrame, SLOT(changePassphrase()));
+        connect(chcoinnameePassphraseAction, SIGNAL(triggered()), walletFrame, SLOT(chcoinnameePassphrase()));
         connect(unlockWalletAction, SIGNAL(triggered()), walletFrame, SLOT(unlockWallet()));
         connect(lockWalletAction, SIGNAL(triggered()), walletFrame, SLOT(lockWallet()));
         connect(signMessageAction, SIGNAL(triggered()), this, SLOT(gotoSignMessageTab()));
@@ -430,7 +430,7 @@ void BitcoinGUI::createMenuBar()
     if(walletFrame)
     {
         settings->addAction(encryptWalletAction);
-        settings->addAction(changePassphraseAction);
+        settings->addAction(chcoinnameePassphraseAction);
         settings->addAction(unlockWalletAction);
         settings->addAction(lockWalletAction);
         settings->addSeparator();
@@ -495,10 +495,10 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
 
         // Keep up to date with client
         setNumConnections(clientModel->getNumConnections());
-        connect(clientModel, SIGNAL(numConnectionsChanged(int)), this, SLOT(setNumConnections(int)));
+        connect(clientModel, SIGNAL(numConnectionsChcoinnameed(int)), this, SLOT(setNumConnections(int)));
 
         setNumBlocks(clientModel->getNumBlocks());
-        connect(clientModel, SIGNAL(numBlocksChanged(int)), this, SLOT(setNumBlocks(int)));
+        connect(clientModel, SIGNAL(numBlocksChcoinnameed(int)), this, SLOT(setNumBlocks(int)));
 
         // Receive and report messages from client model
         connect(clientModel, SIGNAL(message(QString,QString,unsigned int)), this, SLOT(message(QString,QString,unsigned int)));
@@ -558,7 +558,7 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)
     historyAction->setEnabled(enabled);
     encryptWalletAction->setEnabled(enabled);
     backupWalletAction->setEnabled(enabled);
-    changePassphraseAction->setEnabled(enabled);
+    chcoinnameePassphraseAction->setEnabled(enabled);
     signMessageAction->setEnabled(enabled);
     verifyMessageAction->setEnabled(enabled);
     usedSendingAddressesAction->setEnabled(enabled);
@@ -570,7 +570,7 @@ void BitcoinGUI::createTrayIcon(const NetworkStyle *networkStyle)
 {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
-    QString toolTip = tr("Ang Core client") + " " + networkStyle->getTitleAddText();
+    QString toolTip = tr("Coinname Core client") + " " + networkStyle->getTitleAddText();
     trayIcon->setToolTip(toolTip);
     trayIcon->setIcon(networkStyle->getAppIcon());
     trayIcon->show();
@@ -717,7 +717,7 @@ void BitcoinGUI::setNumConnections(int count)
     }
     QIcon connectionItem = QIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE);
     labelConnectionsIcon->setIcon(connectionItem);
-    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Ang network", "", count));
+    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Coinname network", "", count));
 }
 
 void BitcoinGUI::setNumBlocks(int count)
@@ -856,7 +856,7 @@ void BitcoinGUI::setNumBlocks(int count)
 
 void BitcoinGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
 {
-    QString strTitle = tr("Ang Core"); // default title
+    QString strTitle = tr("Coinname Core"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
@@ -882,7 +882,7 @@ void BitcoinGUI::message(const QString &title, const QString &message, unsigned 
             break;
         }
     }
-    // Append title to "Ang - "
+    // Append title to "Coinname - "
     if (!msgType.isEmpty())
         strTitle += " - " + msgType;
 
@@ -913,15 +913,15 @@ void BitcoinGUI::message(const QString &title, const QString &message, unsigned 
         notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
 }
 
-void BitcoinGUI::changeEvent(QEvent *e)
+void BitcoinGUI::chcoinnameeEvent(QEvent *e)
 {
-    QMainWindow::changeEvent(e);
+    QMainWindow::chcoinnameeEvent(e);
 #ifndef Q_OS_MAC // Ignored on Mac
-    if(e->type() == QEvent::WindowStateChange)
+    if(e->type() == QEvent::WindowStateChcoinnamee)
     {
         if(clientModel && clientModel->getOptionsModel() && clientModel->getOptionsModel()->getMinimizeToTray())
         {
-            QWindowStateChangeEvent *wsevt = static_cast<QWindowStateChangeEvent*>(e);
+            QWindowStateChcoinnameeEvent *wsevt = static_cast<QWindowStateChcoinnameeEvent*>(e);
             if(!(wsevt->oldState() & Qt::WindowMinimized) && isMinimized())
             {
                 QTimer::singleShot(0, this, SLOT(hide()));
@@ -1013,7 +1013,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
     case WalletModel::Unencrypted:
         labelEncryptionIcon->hide();
         encryptWalletAction->setChecked(false);
-        changePassphraseAction->setEnabled(false);
+        chcoinnameePassphraseAction->setEnabled(false);
         unlockWalletAction->setVisible(false);
         lockWalletAction->setVisible(false);
         encryptWalletAction->setEnabled(true);
@@ -1023,7 +1023,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
         labelEncryptionIcon->setPixmap(QIcon(":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked</b>"));
         encryptWalletAction->setChecked(true);
-        changePassphraseAction->setEnabled(true);
+        chcoinnameePassphraseAction->setEnabled(true);
         unlockWalletAction->setVisible(false);
         lockWalletAction->setVisible(true);
         encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
@@ -1033,7 +1033,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
         labelEncryptionIcon->setPixmap(QIcon(":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked</b> for anonimization only"));
         encryptWalletAction->setChecked(true);
-        changePassphraseAction->setEnabled(true);
+        chcoinnameePassphraseAction->setEnabled(true);
         unlockWalletAction->setVisible(true);
         lockWalletAction->setVisible(true);
         encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
@@ -1043,7 +1043,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
         labelEncryptionIcon->setPixmap(QIcon(":/icons/lock_closed").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>locked</b>"));
         encryptWalletAction->setChecked(true);
-        changePassphraseAction->setEnabled(true);
+        chcoinnameePassphraseAction->setEnabled(true);
         unlockWalletAction->setVisible(true);
         lockWalletAction->setVisible(false);
         encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
@@ -1185,15 +1185,15 @@ void UnitDisplayStatusBarControl::setOptionsModel(OptionsModel *optionsModel)
     {
         this->optionsModel = optionsModel;
 
-        // be aware of a display unit change reported by the OptionsModel object.
-        connect(optionsModel,SIGNAL(displayUnitChanged(int)),this,SLOT(updateDisplayUnit(int)));
+        // be aware of a display unit chcoinnamee reported by the OptionsModel object.
+        connect(optionsModel,SIGNAL(displayUnitChcoinnameed(int)),this,SLOT(updateDisplayUnit(int)));
 
         // initialize the display units label with the current value in the model.
         updateDisplayUnit(optionsModel->getDisplayUnit());
     }
 }
 
-/** When Display Units are changed on OptionsModel it will refresh the display text of the control on the status bar */
+/** When Display Units are chcoinnameed on OptionsModel it will refresh the display text of the control on the status bar */
 void UnitDisplayStatusBarControl::updateDisplayUnit(int newUnits)
 {
     if(Params().NetworkID() == CBaseChainParams::MAIN){

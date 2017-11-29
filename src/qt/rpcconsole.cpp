@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -247,7 +247,7 @@ RPCConsole::RPCConsole(QWidget *parent) :
 #endif
 
     startExecutor();
-    setTrafficGraphRange(INITIAL_TRAFFIC_GRAPH_MINS);
+    setTrafficGraphRcoinnamee(INITIAL_TRAFFIC_GRAPH_MINS);
 
     ui->peerHeading->setText(tr("Select a peer to view detailed information."));
 
@@ -305,16 +305,16 @@ void RPCConsole::setClientModel(ClientModel *model)
     {
         // Keep up to date with client
         setNumConnections(model->getNumConnections());
-        connect(model, SIGNAL(numConnectionsChanged(int)), this, SLOT(setNumConnections(int)));
+        connect(model, SIGNAL(numConnectionsChcoinnameed(int)), this, SLOT(setNumConnections(int)));
 
         setNumBlocks(model->getNumBlocks());
-        connect(model, SIGNAL(numBlocksChanged(int)), this, SLOT(setNumBlocks(int)));
+        connect(model, SIGNAL(numBlocksChcoinnameed(int)), this, SLOT(setNumBlocks(int)));
 
         setMasternodeCount(model->getMasternodeCountString());
-        connect(model, SIGNAL(strMasternodesChanged(QString)), this, SLOT(setMasternodeCount(QString)));
+        connect(model, SIGNAL(strMasternodesChcoinnameed(QString)), this, SLOT(setMasternodeCount(QString)));
 
         updateTrafficStats(model->getTotalBytesRecv(), model->getTotalBytesSent());
-        connect(model, SIGNAL(bytesChanged(quint64,quint64)), this, SLOT(updateTrafficStats(quint64, quint64)));
+        connect(model, SIGNAL(bytesChcoinnameed(quint64,quint64)), this, SLOT(updateTrafficStats(quint64, quint64)));
 
         // set up peer table
         ui->peerWidget->setModel(model->getPeerTableModel());
@@ -327,9 +327,9 @@ void RPCConsole::setClientModel(ClientModel *model)
         ui->peerWidget->setColumnWidth(PeerTableModel::Ping, PING_COLUMN_WIDTH);
 
         // connect the peerWidget selection model to our peerSelected() handler
-        connect(ui->peerWidget->selectionModel(), SIGNAL(selectionChanged(const QItemSelection &, const QItemSelection &)),
+        connect(ui->peerWidget->selectionModel(), SIGNAL(selectionChcoinnameed(const QItemSelection &, const QItemSelection &)),
              this, SLOT(peerSelected(const QItemSelection &, const QItemSelection &)));
-        connect(model->getPeerTableModel(), SIGNAL(layoutChanged()), this, SLOT(peerLayoutChanged()));
+        connect(model->getPeerTableModel(), SIGNAL(layoutChcoinnameed()), this, SLOT(peerLayoutChcoinnameed()));
 
         // Provide initial values
         ui->clientVersion->setText(model->formatFullVersion());
@@ -438,7 +438,7 @@ void RPCConsole::clear()
                 "b { color: #006060; } "
                 );
 
-    message(CMD_REPLY, (tr("Welcome to the Ang RPC console.") + "<br>" +
+    message(CMD_REPLY, (tr("Welcome to the Coinname RPC console.") + "<br>" +
                         tr("Use up and down arrows to navigate history, and <b>Ctrl-L</b> to clear screen.") + "<br>" +
                         tr("Type <b>help</b> for an overview of available commands.")), true);
 }
@@ -550,7 +550,7 @@ void RPCConsole::startExecutor()
     thread->start();
 }
 
-void RPCConsole::on_tabWidget_currentChanged(int index)
+void RPCConsole::on_tabWidget_currentChcoinnameed(int index)
 {
     if(ui->tabWidget->widget(index) == ui->tab_console)
     {
@@ -569,11 +569,11 @@ void RPCConsole::scrollToEnd()
     scrollbar->setValue(scrollbar->maximum());
 }
 
-void RPCConsole::on_sldGraphRange_valueChanged(int value)
+void RPCConsole::on_sldGraphRcoinnamee_valueChcoinnameed(int value)
 {
     const int multiplier = 5; // each position on the slider represents 5 min
     int mins = value * multiplier;
-    setTrafficGraphRange(mins);
+    setTrafficGraphRcoinnamee(mins);
 }
 
 QString RPCConsole::FormatBytes(quint64 bytes)
@@ -588,10 +588,10 @@ QString RPCConsole::FormatBytes(quint64 bytes)
     return QString(tr("%1 GB")).arg(bytes / 1024 / 1024 / 1024);
 }
 
-void RPCConsole::setTrafficGraphRange(int mins)
+void RPCConsole::setTrafficGraphRcoinnamee(int mins)
 {
-    ui->trafficGraph->setGraphRangeMins(mins);
-    ui->lblGraphRange->setText(GUIUtil::formatDurationStr(mins * 60));
+    ui->trafficGraph->setGraphRcoinnameeMins(mins);
+    ui->lblGraphRcoinnamee->setText(GUIUtil::formatDurationStr(mins * 60));
 }
 
 void RPCConsole::updateTrafficStats(quint64 totalBytesIn, quint64 totalBytesOut)
@@ -646,7 +646,7 @@ void RPCConsole::peerSelected(const QItemSelection &selected, const QItemSelecti
         updateNodeDetail(stats);
 }
 
-void RPCConsole::peerLayoutChanged()
+void RPCConsole::peerLayoutChcoinnameed()
 {
     if (!clientModel)
         return;
@@ -667,7 +667,7 @@ void RPCConsole::peerLayoutChanged()
         selectedRow = selectedModelIndex.first().row();
 
     // check if our detail node has a row in the table (it may not necessarily
-    // be at selectedRow since its position can change after a layout change)
+    // be at selectedRow since its position can chcoinnamee after a layout chcoinnamee)
     int detailNodeRow = clientModel->getPeerTableModel()->getRowByNodeId(cachedNodeid);
 
     if (detailNodeRow < 0)

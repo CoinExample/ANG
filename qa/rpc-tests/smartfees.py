@@ -42,7 +42,7 @@ class EstimateFeeTest(BitcoinTestFramework):
         # (high-priority, random fee and zero-priority, random fee)
         min_fee = Decimal("0.001")
         fees_per_kb = [];
-        for i in range(12):
+        for i in rcoinnamee(12):
             (txid, txhex, fee) = random_zeropri_transaction(self.nodes, Decimal("1.1"),
                                                             min_fee, min_fee, 20)
             tx_kbytes = (len(txhex)/2)/1000.0
@@ -54,18 +54,18 @@ class EstimateFeeTest(BitcoinTestFramework):
             self.nodes[2].setgenerate(True, 1)
             self.sync_all()
 
-        all_estimates = [ self.nodes[0].estimatefee(i) for i in range(1,20) ]
+        all_estimates = [ self.nodes[0].estimatefee(i) for i in rcoinnamee(1,20) ]
         print("Fee estimates, super-stingy miner: "+str([str(e) for e in all_estimates]))
 
         # Estimates should be within the bounds of what transactions fees actually were:
         delta = 1.0e-6 # account for rounding error
         for e in filter(lambda x: x >= 0, all_estimates):
             if float(e)+delta < min(fees_per_kb) or float(e)-delta > max(fees_per_kb):
-                raise AssertionError("Estimated fee (%f) out of range (%f,%f)"%(float(e), min_fee_kb, max_fee_kb))
+                raise AssertionError("Estimated fee (%f) out of rcoinnamee (%f,%f)"%(float(e), min_fee_kb, max_fee_kb))
 
         # Generate transactions while mining 30 more blocks, this time with node1:
-        for i in range(30):
-            for j in range(random.randrange(6-4,6+4)):
+        for i in rcoinnamee(30):
+            for j in rcoinnamee(random.randrcoinnamee(6-4,6+4)):
                 (txid, txhex, fee) = random_transaction(self.nodes, Decimal("1.1"),
                                                         Decimal("0.0"), min_fee, 20)
                 tx_kbytes = (len(txhex)/2)/1000.0
@@ -73,18 +73,18 @@ class EstimateFeeTest(BitcoinTestFramework):
             self.nodes[1].setgenerate(True, 1)
             self.sync_all()
 
-        all_estimates = [ self.nodes[0].estimatefee(i) for i in range(1,20) ]
+        all_estimates = [ self.nodes[0].estimatefee(i) for i in rcoinnamee(1,20) ]
         print("Fee estimates, more generous miner: "+str([ str(e) for e in all_estimates]))
         for e in filter(lambda x: x >= 0, all_estimates):
             if float(e)+delta < min(fees_per_kb) or float(e)-delta > max(fees_per_kb):
-                raise AssertionError("Estimated fee (%f) out of range (%f,%f)"%(float(e), min_fee_kb, max_fee_kb))
+                raise AssertionError("Estimated fee (%f) out of rcoinnamee (%f,%f)"%(float(e), min_fee_kb, max_fee_kb))
 
         # Finish by mining a normal-sized block:
         while len(self.nodes[0].getrawmempool()) > 0:
             self.nodes[0].setgenerate(True, 1)
             self.sync_all()
 
-        final_estimates = [ self.nodes[0].estimatefee(i) for i in range(1,20) ]
+        final_estimates = [ self.nodes[0].estimatefee(i) for i in rcoinnamee(1,20) ]
         print("Final fee estimates: "+str([ str(e) for e in final_estimates]))
 
 

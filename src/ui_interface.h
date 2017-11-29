@@ -16,8 +16,8 @@ class CBasicKeyStore;
 class CWallet;
 class uint256;
 
-/** General change type (added, updated, removed). */
-enum ChangeType
+/** General chcoinnamee type (added, updated, removed). */
+enum ChcoinnameeType
 {
     CT_NEW,
     CT_UPDATED,
@@ -36,7 +36,7 @@ public:
         ICON_ERROR          = (1U << 1),
         /**
          * Mask of all available icons in CClientUIInterface::MessageBoxFlags
-         * This needs to be updated, when icons are changed there!
+         * This needs to be updated, when icons are chcoinnameed there!
          */
         ICON_MASK = (ICON_INFORMATION | ICON_WARNING | ICON_ERROR),
 
@@ -55,7 +55,7 @@ public:
         BTN_RESET   = 0x04000000U, // QMessageBox::Reset
         /**
          * Mask of all available buttons in CClientUIInterface::MessageBoxFlags
-         * This needs to be updated, when buttons are changed there!
+         * This needs to be updated, when buttons are chcoinnameed there!
          */
         BTN_MASK = (BTN_OK | BTN_YES | BTN_NO | BTN_ABORT | BTN_RETRY | BTN_IGNORE |
                     BTN_CLOSE | BTN_CANCEL | BTN_DISCARD | BTN_HELP | BTN_APPLY | BTN_RESET),
@@ -78,17 +78,17 @@ public:
     /** Progress message during initialization. */
     boost::signals2::signal<void (const std::string &message)> InitMessage;
 
-    /** Translate a message to the native language of the user. */
+    /** Translate a message to the native lcoinnameuage of the user. */
     boost::signals2::signal<std::string (const char* psz)> Translate;
 
-    /** Number of network connections changed. */
-    boost::signals2::signal<void (int newNumConnections)> NotifyNumConnectionsChanged;
+    /** Number of network connections chcoinnameed. */
+    boost::signals2::signal<void (int newNumConnections)> NotifyNumConnectionsChcoinnameed;
 
     /**
      * New, updated or cancelled alert.
      * @note called with lock cs_mapAlerts held.
      */
-    boost::signals2::signal<void (const uint256 &hash, ChangeType status)> NotifyAlertChanged;
+    boost::signals2::signal<void (const uint256 &hash, ChcoinnameeType status)> NotifyAlertChcoinnameed;
 
     /** A wallet has been loaded. */
     boost::signals2::signal<void (CWallet* wallet)> LoadWallet;

@@ -3,7 +3,7 @@ Used in 0.8.0
 * wallet.dat: personal wallet (BDB) with keys and transactions
 * peers.dat: peer IP address database (custom format); since 0.7.0
 * blocks/blk000??.dat: block data (custom, 128 MiB per file); since 0.8.0
-* blocks/rev000??.dat; block undo data (custom); since 0.8.0 (format changed since pre-0.8)
+* blocks/rev000??.dat; block undo data (custom); since 0.8.0 (format chcoinnameed since pre-0.8)
 * blocks/index/*; block index (LevelDB); since 0.8.0
 * chainstate/*; block chain state database (LevelDB); since 0.8.0
 * database/*: BDB database environment; only used for wallet since 0.8.0

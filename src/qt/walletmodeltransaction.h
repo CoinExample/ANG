@@ -32,13 +32,13 @@ public:
 
     CAmount getTotalTransactionAmount();
 
-    void newPossibleKeyChange(CWallet *wallet);
-    CReserveKey *getPossibleKeyChange();
+    void newPossibleKeyChcoinnamee(CWallet *wallet);
+    CReserveKey *getPossibleKeyChcoinnamee();
 
 private:
     const QList<SendCoinsRecipient> recipients;
     CWalletTx *walletTransaction;
-    CReserveKey *keyChange;
+    CReserveKey *keyChcoinnamee;
     CAmount fee;
 };
 

@@ -43,8 +43,8 @@ public:
     }
 
 
-    // For all pages in affected range, increase lock count
-    void LockRange(void* p, size_t size)
+    // For all pages in affected rcoinnamee, increase lock count
+    void LockRcoinnamee(void* p, size_t size)
     {
         boost::mutex::scoped_lock lock(mutex);
         if (!size)
@@ -65,8 +65,8 @@ public:
         }
     }
 
-    // For all pages in affected range, decrease lock count
-    void UnlockRange(void* p, size_t size)
+    // For all pages in affected rcoinnamee, decrease lock count
+    void UnlockRcoinnamee(void* p, size_t size)
     {
         boost::mutex::scoped_lock lock(mutex);
         if (!size)
@@ -167,14 +167,14 @@ private:
 template <typename T>
 void LockObject(const T& t)
 {
-    LockedPageManager::Instance().LockRange((void*)(&t), sizeof(T));
+    LockedPageManager::Instance().LockRcoinnamee((void*)(&t), sizeof(T));
 }
 
 template <typename T>
 void UnlockObject(const T& t)
 {
     OPENSSL_cleanse((void*)(&t), sizeof(T));
-    LockedPageManager::Instance().UnlockRange((void*)(&t), sizeof(T));
+    LockedPageManager::Instance().UnlockRcoinnamee((void*)(&t), sizeof(T));
 }
 
 //
@@ -209,7 +209,7 @@ struct secure_allocator : public std::allocator<T> {
         T* p;
         p = std::allocator<T>::allocate(n, hint);
         if (p != NULL)
-            LockedPageManager::Instance().LockRange(p, sizeof(T) * n);
+            LockedPageManager::Instance().LockRcoinnamee(p, sizeof(T) * n);
         return p;
     }
 
@@ -217,7 +217,7 @@ struct secure_allocator : public std::allocator<T> {
     {
         if (p != NULL) {
             OPENSSL_cleanse(p, sizeof(T) * n);
-            LockedPageManager::Instance().UnlockRange(p, sizeof(T) * n);
+            LockedPageManager::Instance().UnlockRcoinnamee(p, sizeof(T) * n);
         }
         std::allocator<T>::deallocate(p, n);
     }

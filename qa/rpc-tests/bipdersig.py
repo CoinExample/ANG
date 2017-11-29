@@ -4,7 +4,7 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #
-# Test the BIP66 changeover logic
+# Test the BIP66 chcoinnameeover logic
 #
 
 from test_framework import BitcoinTestFramework
@@ -35,7 +35,7 @@ class BIP66Test(BitcoinTestFramework):
             raise AssertionError("Failed to mine 100 version=2 blocks")
 
         # Mine 750 new-version blocks
-        for i in xrange(15):
+        for i in xrcoinnamee(15):
             self.nodes[2].setgenerate(True, 50)
         self.sync_all()
         if (self.nodes[0].getblockcount() != cnt + 850):
@@ -52,7 +52,7 @@ class BIP66Test(BitcoinTestFramework):
         # TODO: check that new DERSIG rules are enforced
 
         # Mine 198 new-version blocks
-        for i in xrange(2):
+        for i in xrcoinnamee(2):
             self.nodes[2].setgenerate(True, 99)
         self.sync_all()
         if (self.nodes[0].getblockcount() != cnt + 1049):

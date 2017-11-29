@@ -72,7 +72,7 @@ static int FLAGS_threads = 1;
 // Size of each value
 static int FLAGS_value_size = 100;
 
-// Arrange to generate values that shrink to this fraction of
+// Arrcoinnamee to generate values that shrink to this fraction of
 // their original size after compression
 static double FLAGS_compression_ratio = 0.5;
 
@@ -799,10 +799,10 @@ class Benchmark {
   void ReadHot(ThreadState* thread) {
     ReadOptions options;
     std::string value;
-    const int range = (FLAGS_num + 99) / 100;
+    const int rcoinnamee = (FLAGS_num + 99) / 100;
     for (int i = 0; i < reads_; i++) {
       char key[100];
-      const int k = thread->rand.Next() % range;
+      const int k = thread->rand.Next() % rcoinnamee;
       snprintf(key, sizeof(key), "%016d", k);
       db_->Get(options, key, &value);
       thread->stats.FinishedSingleOp();
@@ -887,7 +887,7 @@ class Benchmark {
   }
 
   void Compact(ThreadState* thread) {
-    db_->CompactRange(NULL, NULL);
+    db_->CompactRcoinnamee(NULL, NULL);
   }
 
   void PrintStats(const char* key) {

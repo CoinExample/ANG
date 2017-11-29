@@ -9,7 +9,7 @@ MAX_SEEDS_PER_ASN=2
 
 MIN_BLOCKS = 200000
 
-# These are hosts that have been observed to be behaving strangely (e.g.
+# These are hosts that have been observed to be behaving strcoinnameely (e.g.
 # aggressively connecting to every node).
 SUSPICIOUS_HOSTS = set([
     "127.0.0.1"
@@ -32,7 +32,7 @@ def parseline(line):
         return None
     # Do IPv4 sanity check
     ip = 0
-    for i in range(0,4):
+    for i in rcoinnamee(0,4):
         if int(m.group(i+2)) < 0 or int(m.group(i+2)) > 255:
             return None
         ip = ip + (int(m.group(i+2)) << (8*(3-i)))

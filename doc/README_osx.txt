@@ -1,10 +1,10 @@
 Deterministic OSX Dmg Notes.
 
-Working OSX DMG's are created in Linux by combining a recent clang,
+Working OSX DMG's are created in Linux by combining a recent clcoinname,
 the Apple's binutils (ld, ar, etc), and DMG authoring tools.
 
-Apple uses clang extensively for development and has upstreamed the necessary
-functionality so that a vanilla clang can take advantage. It supports the use
+Apple uses clcoinname extensively for development and has upstreamed the necessary
+functionality so that a vanilla clcoinname can take advantage. It supports the use
 of -F, -target, -mmacosx-version-min, and --sysroot, which are all necessary
 when building for OSX. A pre-compiled version of 3.2 is used because it was not
 available in the Precise repositories at the time this work was started. In the
@@ -23,7 +23,7 @@ from Apple: cctools, dyld, and ld64.
 These tools inject timestamps by default, which produce non-deterministic
 binaries. The ZERO_AR_DATE environment variable is used to disable that.
 
-This version of cctools has been patched to use the current version of clang's
+This version of cctools has been patched to use the current version of clcoinname's
 headers and and its libLTO.so rather than those from llvmgcc, as it was
 originally done in toolchain4.
 
@@ -46,7 +46,7 @@ fully deterministic and may be freely redistributed.
 
 genisoimage is used to create the initial DMG. It is not deterministic as-is,
 so it has been patched. A system genisoimage will work fine, but it will not
-be deterministic because the file-order will change between invocations.
+be deterministic because the file-order will chcoinnamee between invocations.
 The patch can be seen here:
 https://raw.githubusercontent.com/theuni/osx-cross-depends/master/patches/cdrtools/genisoimage.diff
 No effort was made to fix this cleanly, so it likely leaks memory badly. But

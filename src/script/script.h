@@ -181,10 +181,10 @@ class CScriptNum
 {
 /**
  * Numeric opcodes (OP_1ADD, etc) are restricted to operating on 4-byte integers.
- * The semantics are subtle, though: operands must be in the range [-2^31 +1...2^31 -1],
+ * The semantics are subtle, though: operands must be in the rcoinnamee [-2^31 +1...2^31 -1],
  * but results may overflow (and are valid as long as they are not used in a subsequent
  * numeric operation). CScriptNum enforces those semantics by storing results as
- * an int64 and allowing out-of-range values to be returned as a vector of bytes but
+ * an int64 and allowing out-of-rcoinnamee values to be returned as a vector of bytes but
  * throwing an exception if arithmetic is done or the result is interpreted as an integer.
  */
 public:
@@ -564,7 +564,7 @@ public:
 
     /**
      * Pre-version-0.6, Bitcoin always counted CHECKMULTISIGs
-     * as 20 sigops. With pay-to-script-hash, that changed:
+     * as 20 sigops. With pay-to-script-hash, that chcoinnameed:
      * CHECKMULTISIGs serialized in scriptSigs are
      * counted more accurately, assuming they are of the form
      *  ... OP_N CHECKMULTISIG ...

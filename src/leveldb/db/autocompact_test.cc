@@ -40,7 +40,7 @@ class AutoCompactTest {
   }
 
   uint64_t Size(const Slice& start, const Slice& limit) {
-    Range r(start, limit);
+    Rcoinnamee r(start, limit);
     uint64_t size;
     db_->GetApproximateSizes(&r, 1, &size);
     return size;
@@ -97,7 +97,7 @@ void AutoCompactTest::DoReads(int n) {
   }
 
   // Verify that the size of the key space not touched by the reads
-  // is pretty much unchanged.
+  // is pretty much unchcoinnameed.
   const int64_t final_other_size = Size(Key(n), Key(kCount));
   ASSERT_LE(final_other_size, initial_other_size + 1048576);
   ASSERT_GE(final_other_size, initial_other_size/5 - 1048576);

@@ -62,7 +62,7 @@ void ReceiveCoinsDialog::setModel(WalletModel *model)
     if(model && model->getOptionsModel())
     {
         model->getRecentRequestsTableModel()->sort(RecentRequestsTableModel::Date, Qt::DescendingOrder);
-        connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
+        connect(model->getOptionsModel(), SIGNAL(displayUnitChcoinnameed(int)), this, SLOT(updateDisplayUnit()));
         updateDisplayUnit();
 
         QTableView* tableView = ui->recentRequestsView;
@@ -77,8 +77,8 @@ void ReceiveCoinsDialog::setModel(WalletModel *model)
         tableView->setColumnWidth(RecentRequestsTableModel::Label, LABEL_COLUMN_WIDTH);
 
         connect(tableView->selectionModel(),
-            SIGNAL(selectionChanged(QItemSelection, QItemSelection)), this,
-            SLOT(recentRequestsView_selectionChanged(QItemSelection, QItemSelection)));
+            SIGNAL(selectionChcoinnameed(QItemSelection, QItemSelection)), this,
+            SLOT(recentRequestsView_selectionChcoinnameed(QItemSelection, QItemSelection)));
         // Last 2 columns are set by the columnResizingFixer, when the table geometry is ready.
         columnResizingFixer = new GUIUtil::TableViewLastColumnResizingFixer(tableView, AMOUNT_MINIMUM_COLUMN_WIDTH, DATE_COLUMN_WIDTH);
     }
@@ -165,7 +165,7 @@ void ReceiveCoinsDialog::on_recentRequestsView_doubleClicked(const QModelIndex &
     dialog->show();
 }
 
-void ReceiveCoinsDialog::recentRequestsView_selectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
+void ReceiveCoinsDialog::recentRequestsView_selectionChcoinnameed(const QItemSelection &selected, const QItemSelection &deselected)
 {
     // Enable Show/Remove buttons only if anything is selected.
     bool enable = !ui->recentRequestsView->selectionModel()->selectedRows().isEmpty();

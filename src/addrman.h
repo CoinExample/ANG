@@ -110,14 +110,14 @@ public:
  * To that end:
  *  * Addresses are organized into buckets.
  *    * Address that have not yet been tried go into 1024 "new" buckets.
- *      * Based on the address range (/16 for IPv4) of source of the information, 64 buckets are selected at random
- *      * The actual bucket is chosen from one of these, based on the range the address itself is located.
+ *      * Based on the address rcoinnamee (/16 for IPv4) of source of the information, 64 buckets are selected at random
+ *      * The actual bucket is chosen from one of these, based on the rcoinnamee the address itself is located.
  *      * One single address can occur in up to 8 different buckets, to increase selection chances for addresses that
  *        are seen frequently. The chance for increasing this multiplicity decreases exponentially.
  *      * When adding a new address to a full bucket, a randomly chosen entry (with a bias favoring less recently seen
  *        ones) is removed from it first.
  *    * Addresses of nodes that are known to be accessible go into 256 "tried" buckets.
- *      * Each address range selects at random 8 of these buckets.
+ *      * Each address rcoinnamee selects at random 8 of these buckets.
  *      * The actual bucket is chosen from one of these, based on the full address.
  *      * When adding a new good address to a full bucket, a randomly chosen entry (with a bias favoring less recently
  *        tried ones) is evicted from it, back to the "new" buckets.
@@ -265,11 +265,11 @@ public:
      * Notice that vvTried, mapAddr and vVector are never encoded explicitly;
      * they are instead reconstructed from the other information.
      *
-     * vvNew is serialized, but only used if ADDRMAN_UNKOWN_BUCKET_COUNT didn't change,
+     * vvNew is serialized, but only used if ADDRMAN_UNKOWN_BUCKET_COUNT didn't chcoinnamee,
      * otherwise it is reconstructed as well.
      *
      * This format is more complex, but significantly smaller (at most 1.5 MiB), and supports
-     * changes to the ADDRMAN_ parameters without breaking the on-disk structure.
+     * chcoinnamees to the ADDRMAN_ parameters without breaking the on-disk structure.
      *
      * We don't use ADD_SERIALIZE_METHODS since the serialization and deserialization code has
      * very little in common.

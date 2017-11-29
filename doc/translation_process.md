@@ -1,25 +1,25 @@
 Translations
 ============
 
-The Ang Core GUI can be easily translated into other languages. Here's how we
+The Coinname Core GUI can be easily translated into other lcoinnameuages. Here's how we
 handle those translations.
 
 Files and Folders
 -----------------
 
-### ang-qt.pro
+### coinname-qt.pro
 
 This file takes care of generating `.qm` files from `.ts` files. It is mostly
 automated.
 
-### src/qt/ang.qrc
+### src/qt/coinname.qrc
 
 This file must be updated whenever a new translation is added. Please note that
 files must end with `.qm`, not `.ts`.
 
 ```xml
 <qresource prefix="/translations">
-    <file alias="en">locale/ang_en.qm</file>
+    <file alias="en">locale/coinname_en.qm</file>
     ...
 </qresource>
 ```
@@ -28,17 +28,17 @@ files must end with `.qm`, not `.ts`.
 
 This directory contains all translations. Filenames must adhere to this format:
 
-    ang_xx_YY.ts or ang_xx.ts
+    coinname_xx_YY.ts or coinname_xx.ts
 
-#### ang_en.ts (Source file)
+#### coinname_en.ts (Source file)
 
-`src/qt/locale/ang_en.ts` is treated in a special way. It is used as the
-source for all other translations. Whenever a string in the code is changed
-this file must be updated to reflect those changes. A custom script is used
+`src/qt/locale/coinname_en.ts` is treated in a special way. It is used as the
+source for all other translations. Whenever a string in the code is chcoinnameed
+this file must be updated to reflect those chcoinnamees. A custom script is used
 to extract strings from the non-Qt parts. This script makes use of `gettext`,
 so make sure that utility is installed (ie, `apt-get install gettext` on
 Ubuntu/Debian). Once this has been updated, lupdate (included in the Qt SDK)
-is used to update ang_en.ts. This process has been automated, from src/,
+is used to update coinname_en.ts. This process has been automated, from src/,
 simply run:
     make translate
 
@@ -46,7 +46,7 @@ simply run:
 
 When new plurals are added to the source file, it's important to do the following steps:
 
-1. Open ang_en.ts in Qt Linguist (also included in the Qt SDK)
+1. Open coinname_en.ts in Qt Linguist (also included in the Qt SDK)
 2. Search for `%n`, which will take you to the parts in the translation that use plurals
 3. Look for empty `English Translation (Singular)` and `English Translation (Plural)` fields
 4. Add the appropriate strings for the singular and plural form of the base string
@@ -62,7 +62,7 @@ in Transifex and can be translated.
 
 To create the pull-request you have to do:
 
-    git add src/qt/angstrings.cpp src/qt/locale/ang_en.ts
+    git add src/qt/coinnamestrings.cpp src/qt/locale/coinname_en.ts
     git commit
 
 Syncing with Transifex
@@ -70,7 +70,7 @@ Syncing with Transifex
 
 We are using https://transifex.com as a frontend for translating the client.
 
-https://www.transifex.com/projects/p/ang/
+https://www.transifex.com/projects/p/coinname/
 
 The "Transifex client" (see: http://support.transifex.com/customer/portal/topics/440187-transifex-client/articles)
 is used to fetch new translations from Transifex. The configuration for this client (`.tx/config`)
@@ -82,8 +82,8 @@ postprocessing steps before committing the translations.
 ### Fetching new translations
 
 1. `python contrib/devtools/update-translations.py`
-2. update `src/qt/ang.qrc` manually or via
-   `ls src/qt/locale/*ts|xargs -n1 basename|sed 's/\(ang_\(.*\)\).ts/        <file alias="\2">locale\/\1.qm<\/file>/'`
+2. update `src/qt/coinname.qrc` manually or via
+   `ls src/qt/locale/*ts|xargs -n1 basename|sed 's/\(coinname_\(.*\)\).ts/        <file alias="\2">locale\/\1.qm<\/file>/'`
 3. update `src/Makefile.qt.include` manually or via
-   `ls src/qt/locale/*ts|xargs -n1 basename|sed 's/\(ang_\(.*\)\).ts/  qt\/locale\/\1.ts \\/'`
+   `ls src/qt/locale/*ts|xargs -n1 basename|sed 's/\(coinname_\(.*\)\).ts/  qt\/locale\/\1.ts \\/'`
 4. `git add` new translations from `src/qt/locale/`

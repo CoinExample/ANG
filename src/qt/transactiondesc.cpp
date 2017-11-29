@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -215,7 +215,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx, TransactionReco
             //
             BOOST_FOREACH(const CTxOut& txout, wtx.vout)
             {
-                // Ignore change
+                // Ignore chcoinnamee
                 isminetype toSelf = wallet->IsMine(txout);
                 if ((toSelf == ISMINE_SPENDABLE) && (fAllFromMe == ISMINE_SPENDABLE))
                     continue;
@@ -246,8 +246,8 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx, TransactionReco
             if (fAllToMe)
             {
                 // Payment to self
-                CAmount nChange = wtx.GetChange();
-                CAmount nValue = nCredit - nChange;
+                CAmount nChcoinnamee = wtx.GetChcoinnamee();
+                CAmount nValue = nCredit - nChcoinnamee;
                 strHTML += "<b>" + tr("Total debit") + ":</b> " + BitcoinUnits::formatHtmlWithUnit(unit, -nValue) + "<br>";
                 strHTML += "<b>" + tr("Total credit") + ":</b> " + BitcoinUnits::formatHtmlWithUnit(unit, nValue) + "<br>";
             }
@@ -282,7 +282,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx, TransactionReco
 
     strHTML += "<b>" + tr("Transaction ID") + ":</b> " + TransactionRecord::formatSubTxId(wtx.GetHash(), rec->idx) + "<br>";
 
-    // Message from normal ang:URI (ang:XyZ...?message=example)
+    // Message from normal coinname:URI (coinname:XyZ...?message=example)
     foreach (const PAIRTYPE(string, string)& r, wtx.vOrderForm)
         if (r.first == "Message")
             strHTML += "<br><b>" + tr("Message") + ":</b><br>" + GUIUtil::HtmlEscape(r.second, true) + "<br>";
@@ -305,7 +305,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx, TransactionReco
     if (wtx.IsCoinBase())
     {
         quint32 numBlocksToMaturity = COINBASE_MATURITY +  1;
-        strHTML += "<br>" + tr("Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to \"not accepted\" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.").arg(QString::number(numBlocksToMaturity)) + "<br>";
+        strHTML += "<br>" + tr("Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will chcoinnamee to \"not accepted\" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.").arg(QString::number(numBlocksToMaturity)) + "<br>";
     }
 
     //
@@ -332,7 +332,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx, TransactionReco
             COutPoint prevout = txin.prevout;
 
             CCoins prev;
-            if(angsTip->GetCoins(prevout.hash, prev))
+            if(coinnamesTip->GetCoins(prevout.hash, prev))
             {
                 if (prevout.n < prev.vout.size())
                 {

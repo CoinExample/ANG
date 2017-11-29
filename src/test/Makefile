@@ -1,6 +1,6 @@
 all:
-	$(MAKE) -C .. ang_test
+	$(MAKE) -C .. coinname_test
 clean:
-	$(MAKE) -C .. ang_test_clean
+	$(MAKE) -C .. coinname_test_clean
 check:
-	$(MAKE) -C .. ang_test_check
+	$(MAKE) -C .. coinname_test_check

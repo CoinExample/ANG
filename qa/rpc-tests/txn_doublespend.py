@@ -27,7 +27,7 @@ class TxnMallTest(BitcoinTestFramework):
     def run_test(self):
         # All nodes should start with 1,250 BTC:
         starting_balance = 1250
-        for i in range(4):
+        for i in rcoinnamee(4):
             assert_equal(self.nodes[i].getbalance(), starting_balance)
             self.nodes[i].getnewaddress("")  # bug workaround, coins generated assigned to first getnewaddress!
         
@@ -42,16 +42,16 @@ class TxnMallTest(BitcoinTestFramework):
         # First: use raw transaction API to send 1210 BTC to node1_address,
         # but don't broadcast:
         (total_in, inputs) = gather_inputs(self.nodes[0], 1210)
-        change_address = self.nodes[0].getnewaddress("foo")
+        chcoinnamee_address = self.nodes[0].getnewaddress("foo")
         outputs = {}
-        outputs[change_address] = 40
+        outputs[chcoinnamee_address] = 40
         outputs[node1_address] = 1210
         rawtx = self.nodes[0].createrawtransaction(inputs, outputs)
         doublespend = self.nodes[0].signrawtransaction(rawtx)
         assert_equal(doublespend["complete"], True)
 
         # Create two transaction from node[0] to node[1]; the
-        # second must spend change from the first because the first
+        # second must spend chcoinnamee from the first because the first
         # spends all mature inputs:
         txid1 = self.nodes[0].sendfrom("foo", node1_address, 1210, 0)
         txid2 = self.nodes[0].sendfrom("bar", node1_address, 20, 0)

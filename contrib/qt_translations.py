@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # Helpful little script that spits out a comma-separated list of
-# language codes for Qt icons that should be included
+# lcoinnameuage codes for Qt icons that should be included
 # in binary bitcoin distributions
 
 import glob

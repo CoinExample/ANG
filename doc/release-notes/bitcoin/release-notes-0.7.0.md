@@ -39,7 +39,7 @@ PPA and are switching to the binary release), then run the old version again
 with the -detachdb argument and shut it down; if you do not, then the new
 version will not be able to read the database files and will exit with an error.
 
-Incompatible Changes
+Incompatible Chcoinnamees
 
 * Replaced the 'getmemorypool' RPC command with 'getblocktemplate/submitblock'
   and 'getrawmempool' commands.
@@ -107,15 +107,15 @@ Qt GUI
 * Re-Enable URI handling on Windows, add safety checks and tray-notifications
 * Harmonize the use of ellipsis ("...") to be used in menus, but not on buttons
 * Add 2 labels to the overviewpage that display Wallet and Transaction status (obsolete or current)
-* Extend the optionsdialog (e.g. language selection) and re-work it to a tabbed UI
+* Extend the optionsdialog (e.g. lcoinnameuage selection) and re-work it to a tabbed UI
 * Merge sign/verify message into a single window with tabbed UI
-* Ensure a changed bitcoin unit immediately updates all GUI elements that use units
+* Ensure a chcoinnameed bitcoin unit immediately updates all GUI elements that use units
 * Update QR Code dialog
 * Improve error reporting at startup
 * Fine-grained UI updates for a much smoother UI during block downloads
 * Remove autocorrection of 0/i in addresses in UI
 * Reorganize tray icon menu into more logical order
-* Persistently poll for balance change when number of blocks changed
+* Persistently poll for balance chcoinnamee when number of blocks chcoinnameed
 * Much better translations
 * Override progress bar design on platforms with segmented progress bars to assist with readability
 * Added 'immature balance' display on the overview page
@@ -146,7 +146,7 @@ Gavin Andresen
 Giel van Schijndel
 Gregory Maxwell
 Jeff Garzik
-Luke Angjr
+Luke Coinnamejr
 Matt Corallo
 Michael Ford
 Michael Hendricks

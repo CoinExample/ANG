@@ -225,11 +225,11 @@ int main(int argc, char** argv) {
   CheckGet(db, roptions, "foo", "hello");
 
   StartPhase("compactall");
-  leveldb_compact_range(db, NULL, 0, NULL, 0);
+  leveldb_compact_rcoinnamee(db, NULL, 0, NULL, 0);
   CheckGet(db, roptions, "foo", "hello");
 
-  StartPhase("compactrange");
-  leveldb_compact_range(db, "a", 1, "z", 1);
+  StartPhase("compactrcoinnamee");
+  leveldb_compact_rcoinnamee(db, "a", 1, "z", 1);
   CheckGet(db, roptions, "foo", "hello");
 
   StartPhase("writebatch");
@@ -357,7 +357,7 @@ int main(int argc, char** argv) {
     CheckNoError(err);
     leveldb_put(db, woptions, "bar", 3, "barvalue", 8, &err);
     CheckNoError(err);
-    leveldb_compact_range(db, NULL, 0, NULL, 0);
+    leveldb_compact_rcoinnamee(db, NULL, 0, NULL, 0);
 
     fake_filter_result = 1;
     CheckGet(db, roptions, "foo", "foovalue");

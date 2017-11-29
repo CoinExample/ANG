@@ -24,7 +24,7 @@ public:
 
 void HandleError(const leveldb::Status& status) throw(leveldb_error);
 
-/** Batch of changes queued to be written to a CLevelDBWrapper */
+/** Batch of chcoinnamees queued to be written to a CLevelDBWrapper */
 class CLevelDBBatch
 {
     friend class CLevelDBWrapper;

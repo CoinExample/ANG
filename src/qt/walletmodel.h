@@ -163,7 +163,7 @@ public:
     bool setWalletEncrypted(bool encrypted, const SecureString &passphrase);
     // Passphrase only needed when unlocking
     bool setWalletLocked(bool locked, const SecureString &passPhrase=SecureString(), bool anonymizeOnly=false);
-    bool changePassphrase(const SecureString &oldPass, const SecureString &newPass);
+    bool chcoinnameePassphrase(const SecureString &oldPass, const SecureString &newPass);
     // Is wallet unlocked for anonymization only?
     bool isAnonymizeOnlyUnlocked();
     // Wallet backup
@@ -207,7 +207,7 @@ public:
 private:
     CWallet *wallet;
     bool fHaveWatchOnly;
-    bool fForceCheckBalanceChanged;
+    bool fForceCheckBalanceChcoinnameed;
 
     // Wallet has an options model for wallet-specific options
     // (transaction fee, for example)
@@ -217,7 +217,7 @@ private:
     TransactionTableModel *transactionTableModel;
     RecentRequestsTableModel *recentRequestsTableModel;
 
-    // Cache some values to be able to detect changes
+    // Cache some values to be able to detect chcoinnamees
     CAmount cachedBalance;
     CAmount cachedUnconfirmedBalance;
     CAmount cachedImmatureBalance;
@@ -234,15 +234,15 @@ private:
 
     void subscribeToCoreSignals();
     void unsubscribeFromCoreSignals();
-    void checkBalanceChanged();
+    void checkBalanceChcoinnameed();
 
 signals:
-    // Signal that balance in wallet changed
-    void balanceChanged(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, const CAmount& anonymizedBalance,
+    // Signal that balance in wallet chcoinnameed
+    void balanceChcoinnameed(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, const CAmount& anonymizedBalance,
                         const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance);
 
-    // Encryption status of wallet changed
-    void encryptionStatusChanged(int status);
+    // Encryption status of wallet chcoinnameed
+    void encryptionStatusChcoinnameed(int status);
 
     // Signal emitted when wallet needs to be unlocked
     // It is valid behaviour for listeners to keep the wallet locked after this signal;
@@ -259,19 +259,19 @@ signals:
     void showProgress(const QString &title, int nProgress);
 
     // Watch-only address added
-    void notifyWatchonlyChanged(bool fHaveWatchonly);
+    void notifyWatchonlyChcoinnameed(bool fHaveWatchonly);
 
 public slots:
-    /* Wallet status might have changed */
+    /* Wallet status might have chcoinnameed */
     void updateStatus();
-    /* New transaction, or transaction changed status */
+    /* New transaction, or transaction chcoinnameed status */
     void updateTransaction();
     /* New, updated or removed address book entry */
     void updateAddressBook(const QString &address, const QString &label, bool isMine, const QString &purpose, int status);
     /* Watch-only added */
     void updateWatchOnlyFlag(bool fHaveWatchonly);
-    /* Current, immature or unconfirmed balance might have changed - emit 'balanceChanged' if so */
-    void pollBalanceChanged();
+    /* Current, immature or unconfirmed balance might have chcoinnameed - emit 'balanceChcoinnameed' if so */
+    void pollBalanceChcoinnameed();
 };
 
 #endif // BITCOIN_QT_WALLETMODEL_H

@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -34,7 +34,7 @@
 extern CFeeRate payTxFee;
 extern CAmount maxTxFee;
 extern unsigned int nTxConfirmTarget;
-extern bool bSpendZeroConfChange;
+extern bool bSpendZeroConfChcoinnamee;
 extern bool fSendFreeTransactions;
 extern bool fPayAtLeastCustomFee;
 
@@ -276,7 +276,7 @@ public:
     bool LoadWatchOnly(const CScript &dest);
 
     bool Unlock(const SecureString& strWalletPassphrase, bool anonimizeOnly = false);
-    bool ChangeWalletPassphrase(const SecureString& strOldWalletPassphrase, const SecureString& strNewWalletPassphrase);
+    bool ChcoinnameeWalletPassphrase(const SecureString& strOldWalletPassphrase, const SecureString& strNewWalletPassphrase);
     bool EncryptWallet(const SecureString& strWalletPassphrase);
 
     void GetKeyBirthTimes(std::map<CKeyID, int64_t> &mapKeyBirth) const;
@@ -364,16 +364,16 @@ public:
     }
     CAmount GetCredit(const CTxOut& txout, const isminefilter& filter) const
     {
-        if (!MoneyRange(txout.nValue))
-            throw std::runtime_error("CWallet::GetCredit() : value out of range");
+        if (!MoneyRcoinnamee(txout.nValue))
+            throw std::runtime_error("CWallet::GetCredit() : value out of rcoinnamee");
         return ((IsMine(txout) & filter) ? txout.nValue : 0);
     }
-    bool IsChange(const CTxOut& txout) const;
-    CAmount GetChange(const CTxOut& txout) const
+    bool IsChcoinnamee(const CTxOut& txout) const;
+    CAmount GetChcoinnamee(const CTxOut& txout) const
     {
-        if (!MoneyRange(txout.nValue))
-            throw std::runtime_error("CWallet::GetChange() : value out of range");
-        return (IsChange(txout) ? txout.nValue : 0);
+        if (!MoneyRcoinnamee(txout.nValue))
+            throw std::runtime_error("CWallet::GetChcoinnamee() : value out of rcoinnamee");
+        return (IsChcoinnamee(txout) ? txout.nValue : 0);
     }
     bool IsMine(const CTransaction& tx) const
     {
@@ -393,8 +393,8 @@ public:
         BOOST_FOREACH(const CTxIn& txin, tx.vin)
         {
             nDebit += GetDebit(txin, filter);
-            if (!MoneyRange(nDebit))
-                throw std::runtime_error("CWallet::GetDebit() : value out of range");
+            if (!MoneyRcoinnamee(nDebit))
+                throw std::runtime_error("CWallet::GetDebit() : value out of rcoinnamee");
         }
         return nDebit;
     }
@@ -404,21 +404,21 @@ public:
         BOOST_FOREACH(const CTxOut& txout, tx.vout)
         {
             nCredit += GetCredit(txout, filter);
-            if (!MoneyRange(nCredit))
-                throw std::runtime_error("CWallet::GetCredit() : value out of range");
+            if (!MoneyRcoinnamee(nCredit))
+                throw std::runtime_error("CWallet::GetCredit() : value out of rcoinnamee");
         }
         return nCredit;
     }
-    CAmount GetChange(const CTransaction& tx) const
+    CAmount GetChcoinnamee(const CTransaction& tx) const
     {
-        CAmount nChange = 0;
+        CAmount nChcoinnamee = 0;
         BOOST_FOREACH(const CTxOut& txout, tx.vout)
         {
-            nChange += GetChange(txout);
-            if (!MoneyRange(nChange))
-                throw std::runtime_error("CWallet::GetChange() : value out of range");
+            nChcoinnamee += GetChcoinnamee(txout);
+            if (!MoneyRcoinnamee(nChcoinnamee))
+                throw std::runtime_error("CWallet::GetChcoinnamee() : value out of rcoinnamee");
         }
-        return nChange;
+        return nChcoinnamee;
     }
     void SetBestChain(const CBlockLocator& loc);
 
@@ -449,10 +449,10 @@ public:
 
     bool SetDefaultKey(const CPubKey &vchPubKey);
 
-    //! signify that a particular wallet feature is now used. this may change nWalletVersion and nWalletMaxVersion if those are lower
+    //! signify that a particular wallet feature is now used. this may chcoinnamee nWalletVersion and nWalletMaxVersion if those are lower
     bool SetMinVersion(enum WalletFeature, CWalletDB* pwalletdbIn = NULL, bool fExplicit = false);
 
-    //! change which version we're allowed to upgrade to (note that this does not immediately imply upgrading to that format)
+    //! chcoinnamee which version we're allowed to upgrade to (note that this does not immediately imply upgrading to that format)
     bool SetMaxVersion(int nVersion);
 
     //! get the current wallet format (the oldest client version guaranteed to understand this wallet)
@@ -462,26 +462,26 @@ public:
     std::set<uint256> GetConflicts(const uint256& txid) const;
 
     /** 
-     * Address book entry changed.
+     * Address book entry chcoinnameed.
      * @note called with lock cs_wallet held.
      */
     boost::signals2::signal<void (CWallet *wallet, const CTxDestination
             &address, const std::string &label, bool isMine,
             const std::string &purpose,
-            ChangeType status)> NotifyAddressBookChanged;
+            ChcoinnameeType status)> NotifyAddressBookChcoinnameed;
 
     /** 
      * Wallet transaction added, removed or updated.
      * @note called with lock cs_wallet held.
      */
     boost::signals2::signal<void (CWallet *wallet, const uint256 &hashTx,
-            ChangeType status)> NotifyTransactionChanged;
+            ChcoinnameeType status)> NotifyTransactionChcoinnameed;
 
     /** Show progress e.g. for rescan */
     boost::signals2::signal<void (const std::string &title, int nProgress)> ShowProgress;
 
     /** Watch-only address added */
-    boost::signals2::signal<void (bool fHaveWatchOnly)> NotifyWatchonlyChanged;
+    boost::signals2::signal<void (bool fHaveWatchOnly)> NotifyWatchonlyChcoinnameed;
 };
 
 /** A key allocated from the key pool. */
@@ -630,7 +630,7 @@ public:
     mutable bool fWatchCreditCached;
     mutable bool fImmatureWatchCreditCached;
     mutable bool fAvailableWatchCreditCached;
-    mutable bool fChangeCached;
+    mutable bool fChcoinnameeCached;
     mutable CAmount nDebitCached;
     mutable CAmount nCreditCached;
     mutable CAmount nImmatureCreditCached;
@@ -643,7 +643,7 @@ public:
     mutable CAmount nWatchCreditCached;
     mutable CAmount nImmatureWatchCreditCached;
     mutable CAmount nAvailableWatchCreditCached;
-    mutable CAmount nChangeCached;
+    mutable CAmount nChcoinnameeCached;
 
     CWalletTx()
     {
@@ -687,7 +687,7 @@ public:
         fWatchCreditCached = false;
         fImmatureWatchCreditCached = false;
         fAvailableWatchCreditCached = false;
-        fChangeCached = false;
+        fChcoinnameeCached = false;
         nDebitCached = 0;
         nCreditCached = 0;
         nImmatureCreditCached = 0;
@@ -700,7 +700,7 @@ public:
         nWatchCreditCached = 0;
         nAvailableWatchCreditCached = 0;
         nImmatureWatchCreditCached = 0;
-        nChangeCached = 0;
+        nChcoinnameeCached = 0;
         nOrderPos = -1;
     }
 
@@ -762,7 +762,7 @@ public:
         fAvailableWatchCreditCached = false;
         fImmatureWatchCreditCached = false;
         fDebitCached = false;
-        fChangeCached = false;
+        fChcoinnameeCached = false;
     }
 
     void BindWallet(CWallet *pwalletIn)
@@ -812,7 +812,7 @@ public:
         int64_t credit = 0;
         if (filter & ISMINE_SPENDABLE)
         {
-            // GetBalance can assume transactions in mapWallet won't change
+            // GetBalance can assume transactions in mapWallet won't chcoinnamee
             if (fCreditCached)
                 credit += nCreditCached;
             else
@@ -870,8 +870,8 @@ public:
             {
                 const CTxOut &txout = vout[i];
                 nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
-                if (!MoneyRange(nCredit))
-                    throw std::runtime_error("CWalletTx::GetAvailableCredit() : value out of range");
+                if (!MoneyRcoinnamee(nCredit))
+                    throw std::runtime_error("CWalletTx::GetAvailableCredit() : value out of rcoinnamee");
             }
         }
 
@@ -905,8 +905,8 @@ public:
             const int rounds = pwallet->GetInputDarksendRounds(vin);
             if(rounds >=-2 && rounds < nDarksendRounds) {
                 nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
-                if (!MoneyRange(nCredit))
-                    throw std::runtime_error("CWalletTx::GetAnonamizableCredit() : value out of range");
+                if (!MoneyRcoinnamee(nCredit))
+                    throw std::runtime_error("CWalletTx::GetAnonamizableCredit() : value out of rcoinnamee");
             }
         }
 
@@ -939,8 +939,8 @@ public:
             const int rounds = pwallet->GetInputDarksendRounds(vin);
             if(rounds >= nDarksendRounds){
                 nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
-                if (!MoneyRange(nCredit))
-                    throw std::runtime_error("CWalletTx::GetAnonymizedCredit() : value out of range");
+                if (!MoneyRcoinnamee(nCredit))
+                    throw std::runtime_error("CWalletTx::GetAnonymizedCredit() : value out of rcoinnamee");
             }
         }
 
@@ -980,8 +980,8 @@ public:
             if(pwallet->IsSpent(hashTx, i) || !pwallet->IsDenominatedAmount(vout[i].nValue)) continue;
 
             nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
-            if (!MoneyRange(nCredit))
-                throw std::runtime_error("CWalletTx::GetDenominatedCredit() : value out of range");
+            if (!MoneyRcoinnamee(nCredit))
+                throw std::runtime_error("CWalletTx::GetDenominatedCredit() : value out of rcoinnamee");
         }
 
         if(unconfirmed) {
@@ -1027,8 +1027,8 @@ public:
             {
                 const CTxOut &txout = vout[i];
                 nCredit += pwallet->GetCredit(txout, ISMINE_WATCH_ONLY);
-                if (!MoneyRange(nCredit))
-                    throw std::runtime_error("CWalletTx::GetAvailableCredit() : value out of range");
+                if (!MoneyRcoinnamee(nCredit))
+                    throw std::runtime_error("CWalletTx::GetAvailableCredit() : value out of rcoinnamee");
             }
         }
 
@@ -1037,13 +1037,13 @@ public:
         return nCredit;
     }
 
-    CAmount GetChange() const
+    CAmount GetChcoinnamee() const
     {
-        if (fChangeCached)
-            return nChangeCached;
-        nChangeCached = pwallet->GetChange(*this);
-        fChangeCached = true;
-        return nChangeCached;
+        if (fChcoinnameeCached)
+            return nChcoinnameeCached;
+        nChcoinnameeCached = pwallet->GetChcoinnamee(*this);
+        fChcoinnameeCached = true;
+        return nChcoinnameeCached;
     }
 
     void GetAmounts(std::list<COutputEntry>& listReceived,
@@ -1067,7 +1067,7 @@ public:
             return true;
         if (nDepth < 0)
             return false;
-        if (!bSpendZeroConfChange || !IsFromMe(ISMINE_ALL)) // using wtx's cached debit
+        if (!bSpendZeroConfChcoinnamee || !IsFromMe(ISMINE_ALL)) // using wtx's cached debit
             return false;
 
         // Trusted if all inputs are from us and are in the mempool:
@@ -1135,7 +1135,7 @@ public:
     int64_t nTimeCreated;
     int64_t nTimeExpires;
     std::string strComment;
-    //! todo: add something to note what created it (user, getnewaddress, change)
+    //! todo: add something to note what created it (user, getnewaddress, chcoinnamee)
     //!   maybe should have a map<string, string> property map
 
     CWalletKey(int64_t nExpires=0);

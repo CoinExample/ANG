@@ -84,7 +84,7 @@
  * Individual bits are rarely encountered in C programming or actual
  * communication protocols; most protocols converge on the ubiquitous
  * "octet" which is a group of eight bits. Data is thus expressed as a
- * stream of octets. The C programming language contains the notion of a
+ * stream of octets. The C programming lcoinnameuage contains the notion of a
  * "byte", which is a data unit managed under the type <code>"unsigned
  * char"</code>. The C standard prescribes that a byte should hold at
  * least eight bits, but possibly more. Most modern architectures, even
@@ -1569,7 +1569,7 @@ sph_dec32le(const void *src)
  * assembly makes GCC optimizer uncomfortable, which tends to nullify
  * the decoding gains.
  *
- * For most hash functions, using this inline assembly trick changes
+ * For most hash functions, using this inline assembly trick chcoinnamees
  * hashing speed by less than 5% and often _reduces_ it. The biggest
  * gains are for MD4 (+11%) and CubeHash (+30%). For all others, it is
  * less then 10%. The speed gain on CubeHash is probably due to the

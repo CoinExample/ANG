@@ -23,7 +23,7 @@ struct CDNSSeedData {
 
 /**
  * CChainParams defines various tweakable parameters of a given instance of the
- * Ang system. There are three: the main network on which people trade goods
+ * Coinname system. There are three: the main network on which people trade goods
  * and services, the public test network which gets reset from time to time and
  * a regression test mode which is intended for private networks only. It has
  * minimal difficulty to ensure that blocks can be found instantly.
@@ -131,7 +131,7 @@ protected:
 
 class CModifiableParams {
 public:
-    //! Published setters to allow changing values in unit test cases
+    //! Published setters to allow chcoinnameing values in unit test cases
     virtual void setSubsidyHalvingInterval(int anSubsidyHalvingInterval) =0;
     virtual void setEnforceBlockUpgradeMajority(int anEnforceBlockUpgradeMajority)=0;
     virtual void setRejectBlockOutdatedMajority(int anRejectBlockOutdatedMajority)=0;
@@ -143,7 +143,7 @@ public:
 
 
 /**
- * Return the currently selected parameters. This won't change after app startup
+ * Return the currently selected parameters. This won't chcoinnamee after app startup
  * outside of the unit tests.
  */
 const CChainParams &Params();

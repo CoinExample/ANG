@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -37,7 +37,7 @@ bool CWalletDB::WriteName(const string& strAddress, const string& strName)
 bool CWalletDB::EraseName(const string& strAddress)
 {
     // This should only be used for sending addresses, never for receiving addresses,
-    // receiving addresses must always have an address book entry if they're not change return.
+    // receiving addresses must always have an address book entry if they're not chcoinnamee return.
     nWalletDBUpdated++;
     return Erase(make_pair(string("name"), strAddress));
 }
@@ -213,12 +213,12 @@ void CWalletDB::ListAccountCreditDebit(const string& strAccount, list<CAccountin
     Dbc* pcursor = GetCursor();
     if (!pcursor)
         throw runtime_error("CWalletDB::ListAccountCreditDebit() : cannot create DB cursor");
-    unsigned int fFlags = DB_SET_RANGE;
+    unsigned int fFlags = DB_SET_RCOINNAMEE;
     while (true)
     {
         // Read next record
         CDataStream ssKey(SER_DISK, CLIENT_VERSION);
-        if (fFlags == DB_SET_RANGE)
+        if (fFlags == DB_SET_RCOINNAMEE)
             ssKey << std::make_pair(std::string("acentry"), std::make_pair((fAllAccounts ? string("") : strAccount), uint64_t(0)));
         CDataStream ssValue(SER_DISK, CLIENT_VERSION);
         int ret = ReadAtCursor(pcursor, ssKey, ssValue, fFlags);
@@ -253,7 +253,7 @@ DBErrors CWalletDB::ReorderTransactions(CWallet* pwallet)
 {
     LOCK(pwallet->cs_wallet);
     // Old wallets didn't have any defined order for transactions
-    // Probably a bad idea to change the output of this
+    // Probably a bad idea to chcoinnamee the output of this
 
     // First: get all CWalletTx and CAccountingEntry into a sorted-by-time multimap.
     typedef pair<CWalletTx*, CAccountingEntry*> TxPair;
@@ -309,7 +309,7 @@ DBErrors CWalletDB::ReorderTransactions(CWallet* pwallet)
             if (!nOrderPosOff)
                 continue;
 
-            // Since we're changing the order, write it back
+            // Since we're chcoinnameing the order, write it back
             if (pwtx)
             {
                 if (!WriteTx(pwtx->GetHash(), *pwtx))
@@ -374,7 +374,7 @@ ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue,
             if (!(CheckTransaction(wtx, state) && (wtx.GetHash() == hash) && state.IsValid()))
                 return false;
 
-            // Undo serialize changes in 31600
+            // Undo serialize chcoinnamees in 31600
             if (31404 <= wtx.fTimeReceivedIsTxTime && wtx.fTimeReceivedIsTxTime <= 31703)
             {
                 if (!ssValue.empty())
@@ -791,7 +791,7 @@ DBErrors CWalletDB::ZapWalletTx(CWallet* pwallet, vector<CWalletTx>& vWtx)
 void ThreadFlushWalletDB(const string& strFile)
 {
     // Make this thread recognisable as the wallet flushing thread
-    RenameThread("ang-wallet");
+    RenameThread("coinname-wallet");
 
     static bool fOneThread;
     if (fOneThread)

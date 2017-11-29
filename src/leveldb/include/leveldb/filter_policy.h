@@ -27,8 +27,8 @@ class FilterPolicy {
   virtual ~FilterPolicy();
 
   // Return the name of this policy.  Note that if the filter encoding
-  // changes in an incompatible way, the name returned by this method
-  // must be changed.  Otherwise, old incompatible filters may be
+  // chcoinnamees in an incompatible way, the name returned by this method
+  // must be chcoinnameed.  Otherwise, old incompatible filters may be
   // passed to methods of this type.
   virtual const char* Name() const = 0;
 
@@ -36,7 +36,7 @@ class FilterPolicy {
   // that are ordered according to the user supplied comparator.
   // Append a filter that summarizes keys[0,n-1] to *dst.
   //
-  // Warning: do not change the initial contents of *dst.  Instead,
+  // Warning: do not chcoinnamee the initial contents of *dst.  Instead,
   // append the newly constructed filter to *dst.
   virtual void CreateFilter(const Slice* keys, int n, std::string* dst)
       const = 0;

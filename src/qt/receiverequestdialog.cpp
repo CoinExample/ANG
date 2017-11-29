@@ -22,7 +22,7 @@
 #endif
 
 #if defined(HAVE_CONFIG_H)
-#include "config/ang-config.h" /* for USE_QRCODE */
+#include "config/coinname-config.h" /* for USE_QRCODE */
 #endif
 
 #ifdef USE_QRCODE
@@ -114,7 +114,7 @@ void ReceiveRequestDialog::setModel(OptionsModel *model)
     this->model = model;
 
     if (model)
-        connect(model, SIGNAL(displayUnitChanged(int)), this, SLOT(update()));
+        connect(model, SIGNAL(displayUnitChcoinnameed(int)), this, SLOT(update()));
 
     // update the display unit if necessary
     update();

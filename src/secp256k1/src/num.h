@@ -60,7 +60,7 @@ static int secp256k1_num_is_zero(const secp256k1_num_t *a);
 /** Check whether a number is strictly negative. */
 static int secp256k1_num_is_neg(const secp256k1_num_t *a);
 
-/** Change a number's sign. */
+/** Chcoinnamee a number's sign. */
 static void secp256k1_num_negate(secp256k1_num_t *r);
 
 #endif

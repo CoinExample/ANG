@@ -36,7 +36,7 @@ public:
     /** Return status of edit/insert operation */
     enum EditStatus {
         OK,                     /**< Everything ok */
-        NO_CHANGES,             /**< No changes were made during edit operation */
+        NO_CHCOINNAMEES,             /**< No chcoinnamees were made during edit operation */
         INVALID_ADDRESS,        /**< Unparseable address */
         DUPLICATE_ADDRESS,      /**< Address already in address book */
         WALLET_UNLOCK_FAILURE,  /**< Wallet could not be unlocked to create new receiving address */
@@ -81,8 +81,8 @@ private:
     QStringList columns;
     EditStatus editStatus;
 
-    /** Notify listeners that data changed. */
-    void emitDataChanged(int index);
+    /** Notify listeners that data chcoinnameed. */
+    void emitDataChcoinnameed(int index);
 
 public slots:
     /* Update address list from core.

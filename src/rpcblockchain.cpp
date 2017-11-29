@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -173,7 +173,7 @@ Value getrawmempool(const Array& params, bool fHelp)
             "{                           (json object)\n"
             "  \"transactionid\" : {       (json object)\n"
             "    \"size\" : n,             (numeric) transaction size in bytes\n"
-            "    \"fee\" : n,              (numeric) transaction fee in angs\n"
+            "    \"fee\" : n,              (numeric) transaction fee in coinnames\n"
             "    \"time\" : n,             (numeric) local time transaction entered pool in seconds since 1 Jan 1970 GMT\n"
             "    \"height\" : n,           (numeric) block height when transaction entered pool\n"
             "    \"startingpriority\" : n, (numeric) priority when transaction entered pool\n"
@@ -250,7 +250,7 @@ Value getblockhash(const Array& params, bool fHelp)
 
     int nHeight = params[0].get_int();
     if (nHeight < 0 || nHeight > chainActive.Height())
-        throw JSONRPCError(RPC_INVALID_PARAMETER, "Block height out of range");
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "Block height out of rcoinnamee");
 
     CBlockIndex* pblockindex = chainActive[nHeight];
     return pblockindex->GetBlockHash().GetHex();
@@ -398,7 +398,7 @@ Value gettxoutsetinfo(const Array& params, bool fHelp)
 
     CCoinsStats stats;
     FlushStateToDisk();
-    if (angsTip->GetStats(stats)) {
+    if (coinnamesTip->GetStats(stats)) {
         ret.push_back(Pair("height", (int64_t)stats.nHeight));
         ret.push_back(Pair("bestblock", stats.hashBlock.GetHex()));
         ret.push_back(Pair("transactions", (int64_t)stats.nTransactions));
@@ -430,8 +430,8 @@ Value gettxout(const Array& params, bool fHelp)
             "     \"hex\" : \"hex\",        (string) \n"
             "     \"reqSigs\" : n,          (numeric) Number of required signatures\n"
             "     \"type\" : \"pubkeyhash\", (string) The type, eg pubkeyhash\n"
-            "     \"addresses\" : [          (array of string) array of ang addresses\n"
-            "        \"angaddress\"     (string) ang address\n"
+            "     \"addresses\" : [          (array of string) array of coinname addresses\n"
+            "        \"coinnameaddress\"     (string) coinname address\n"
             "        ,...\n"
             "     ]\n"
             "  },\n"
@@ -460,18 +460,18 @@ Value gettxout(const Array& params, bool fHelp)
     CCoins coins;
     if (fMempool) {
         LOCK(mempool.cs);
-        CCoinsViewMemPool view(angsTip, mempool);
+        CCoinsViewMemPool view(coinnamesTip, mempool);
         if (!view.GetCoins(hash, coins))
             return Value::null;
         mempool.pruneSpent(hash, coins); // TODO: this should be done by the CCoinsViewMemPool
     } else {
-        if (!angsTip->GetCoins(hash, coins))
+        if (!coinnamesTip->GetCoins(hash, coins))
             return Value::null;
     }
     if (n<0 || (unsigned int)n>=coins.vout.size() || coins.vout[n].IsNull())
         return Value::null;
 
-    BlockMap::iterator it = mapBlockIndex.find(angsTip->GetBestBlock());
+    BlockMap::iterator it = mapBlockIndex.find(coinnamesTip->GetBestBlock());
     CBlockIndex *pindex = it->second;
     ret.push_back(Pair("bestblock", pindex->GetBlockHash().GetHex()));
     if ((unsigned int)coins.nHeight == MEMPOOL_HEIGHT)
@@ -511,7 +511,7 @@ Value verifychain(const Array& params, bool fHelp)
     if (params.size() > 1)
         nCheckDepth = params[1].get_int();
 
-    return CVerifyDB().VerifyDB(angsTip, nCheckLevel, nCheckDepth);
+    return CVerifyDB().VerifyDB(coinnamesTip, nCheckLevel, nCheckDepth);
 }
 
 Value getblockchaininfo(const Array& params, bool fHelp)

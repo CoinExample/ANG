@@ -30,7 +30,7 @@ namespace json_spirit
 
         bool read_next( Value_type& value )
         {
-            return read_range( iters_.begin_, iters_.end_, value );
+            return read_rcoinnamee( iters_.begin_, iters_.end_, value );
         }
 
     private:
@@ -54,7 +54,7 @@ namespace json_spirit
 
         void read_next( Value_type& value )
         {
-            posn_begin_ = read_range_or_throw( posn_begin_, posn_end_, value );
+            posn_begin_ = read_rcoinnamee_or_throw( posn_begin_, posn_end_, value );
         }
 
     private:

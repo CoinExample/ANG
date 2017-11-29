@@ -1,4 +1,4 @@
-Building Ang
+Building Coinname
 
 Use the autogen script to prepare the build environment.
 
@@ -7,10 +7,10 @@ Use the autogen script to prepare the build environment.
     make
 
 Precompiled binaries are available at github, see
-https://github.com/angproject/ang-binaries
+https://github.com/coinnameproject/coinname-binaries
 
 Always verify the signatures and checksums.
 
-See doc/build-*.md for instructions on building angd,
+See doc/build-*.md for instructions on building coinnamed,
 the intended-for-services, no-graphical-interface, reference
-implementation of Ang.
+implementation of Coinname.

@@ -62,7 +62,7 @@ else
 fi
 if test x"$has_libcrypto" == x"yes" && test x"$has_openssl_ec" = x; then
   AC_MSG_CHECKING(for EC functions in libcrypto)
-  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+  AC_COMPILE_IFELSE([AC_LCOINNAME_PROGRAM([[
     #include <openssl/ec.h>
     #include <openssl/ecdsa.h>
     #include <openssl/obj_mac.h>]],[[

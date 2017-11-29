@@ -41,21 +41,21 @@ TEST(Issue178, Test) {
   db_options.compression = leveldb::kNoCompression;
   ASSERT_OK(leveldb::DB::Open(db_options, dbpath, &db));
 
-  // create first key range
+  // create first key rcoinnamee
   leveldb::WriteBatch batch;
   for (size_t i = 0; i < kNumKeys; i++) {
-    batch.Put(Key1(i), "value for range 1 key");
+    batch.Put(Key1(i), "value for rcoinnamee 1 key");
   }
   ASSERT_OK(db->Write(leveldb::WriteOptions(), &batch));
 
-  // create second key range
+  // create second key rcoinnamee
   batch.Clear();
   for (size_t i = 0; i < kNumKeys; i++) {
-    batch.Put(Key2(i), "value for range 2 key");
+    batch.Put(Key2(i), "value for rcoinnamee 2 key");
   }
   ASSERT_OK(db->Write(leveldb::WriteOptions(), &batch));
 
-  // delete second key range
+  // delete second key rcoinnamee
   batch.Clear();
   for (size_t i = 0; i < kNumKeys; i++) {
     batch.Delete(Key2(i));
@@ -69,7 +69,7 @@ TEST(Issue178, Test) {
   leveldb::Slice greatest(end_key.data(), end_key.size());
 
   // commenting out the line below causes the example to work correctly
-  db->CompactRange(&least, &greatest);
+  db->CompactRcoinnamee(&least, &greatest);
 
   // count the keys
   leveldb::Iterator* iter = db->NewIterator(leveldb::ReadOptions());

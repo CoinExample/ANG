@@ -63,7 +63,7 @@ enum
     // Discourage use of NOPs reserved for upgrades (NOP1-10)
     //
     // Provided so that nodes can avoid accepting or mining transactions
-    // containing executed NOP's whose meaning may change after a soft-fork,
+    // containing executed NOP's whose meaning may chcoinnamee after a soft-fork,
     // thus rendering the script invalid; with this flag set executing
     // discouraged NOPs fails the script. This verification flag will never be
     // a mandatory flag applied to scripts in a block. NOPs that are not

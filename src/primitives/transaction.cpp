@@ -119,8 +119,8 @@ CAmount CTransaction::GetValueOut() const
     for (std::vector<CTxOut>::const_iterator it(vout.begin()); it != vout.end(); ++it)
     {
         nValueOut += it->nValue;
-        if (!MoneyRange(it->nValue) || !MoneyRange(nValueOut))
-            throw std::runtime_error("CTransaction::GetValueOut() : value out of range");
+        if (!MoneyRcoinnamee(it->nValue) || !MoneyRcoinnamee(nValueOut))
+            throw std::runtime_error("CTransaction::GetValueOut() : value out of rcoinnamee");
     }
     return nValueOut;
 }

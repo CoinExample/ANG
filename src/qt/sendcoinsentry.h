@@ -50,11 +50,11 @@ public slots:
 
 signals:
     void removeEntry(SendCoinsEntry *entry);
-    void payAmountChanged();
+    void payAmountChcoinnameed();
 
 private slots:
     void deleteClicked();
-    void on_payTo_textChanged(const QString &address);
+    void on_payTo_textChcoinnameed(const QString &address);
     void on_addressBookButton_clicked();
     void on_pasteButton_clicked();
     void updateDisplayUnit();

@@ -4,13 +4,13 @@ SUBDIRS = src
 
 GZIP_ENV="-9n"
 
-BITCOIND_BIN=$(top_builddir)/src/angd$(EXEEXT)
-BITCOIN_QT_BIN=$(top_builddir)/src/qt/ang-qt$(EXEEXT)
-BITCOIN_CLI_BIN=$(top_builddir)/src/ang-cli$(EXEEXT)
+BITCOIND_BIN=$(top_builddir)/src/coinnamed$(EXEEXT)
+BITCOIN_QT_BIN=$(top_builddir)/src/qt/coinname-qt$(EXEEXT)
+BITCOIN_CLI_BIN=$(top_builddir)/src/coinname-cli$(EXEEXT)
 BITCOIN_WIN_INSTALLER=$(PACKAGE)-$(PACKAGE_VERSION)-win$(WINDOWS_BITS)-setup$(EXEEXT)
 
-OSX_APP=Ang-Qt.app
-OSX_DMG=Ang-Qt.dmg
+OSX_APP=Coinname-Qt.app
+OSX_DMG=Coinname-Qt.dmg
 OSX_DEPLOY_SCRIPT=$(top_srcdir)/contrib/macdeploy/macdeployqtplus
 OSX_FANCY_PLIST=$(top_srcdir)/contrib/macdeploy/fancy.plist
 OSX_INSTALLER_ICONS=$(top_srcdir)/src/qt/res/icons/bitcoin.icns
@@ -31,9 +31,9 @@ OSX_PACKAGING = $(OSX_DEPLOY_SCRIPT) $(OSX_FANCY_PLIST) $(OSX_INSTALLER_ICONS) \
   $(top_srcdir)/contrib/macdeploy/detached-sig-create.sh
 
 COVERAGE_INFO = baseline_filtered_combined.info baseline.info block_test.info \
-  leveldb_baseline.info test_ang_filtered.info total_coverage.info \
+  leveldb_baseline.info test_coinname_filtered.info total_coverage.info \
   baseline_filtered.info block_test_filtered.info \
-  leveldb_baseline_filtered.info test_ang_coverage.info test_ang.info
+  leveldb_baseline_filtered.info test_coinname_coverage.info test_coinname.info
 
 dist-hook:
 	-$(MAKE) -C $(top_distdir)/src/leveldb clean
@@ -75,13 +75,13 @@ $(OSX_APP)/Contents/Resources/bitcoin.icns: $(OSX_INSTALLER_ICONS)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
-$(OSX_APP)/Contents/MacOS/Ang-Qt: $(BITCOIN_QT_BIN)
+$(OSX_APP)/Contents/MacOS/Coinname-Qt: $(BITCOIN_QT_BIN)
 	$(MKDIR_P) $(@D)
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $< $@
 
 OSX_APP_BUILT=$(OSX_APP)/Contents/PkgInfo $(OSX_APP)/Contents/Resources/empty.lproj \
   $(OSX_APP)/Contents/Resources/bitcoin.icns $(OSX_APP)/Contents/Info.plist \
-  $(OSX_APP)/Contents/MacOS/Ang-Qt
+  $(OSX_APP)/Contents/MacOS/Coinname-Qt
 
 if BUILD_DARWIN
 $(OSX_DMG): $(OSX_APP_BUILT) $(OSX_PACKAGING)
@@ -96,10 +96,10 @@ $(APP_DIST_DIR)/Applications:
 	@rm -f $@
 	@cd $(@D); $(LN_S) /Applications $(@F)
 
-$(APP_DIST_EXTRAS): $(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/Ang-Qt
+$(APP_DIST_EXTRAS): $(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/Coinname-Qt
 
 $(OSX_DMG): $(APP_DIST_EXTRAS)
-	$(GENISOIMAGE) -no-cache-inodes -D -l -probe -V "Ang-Qt" -no-pad -r -apple -o $@ dist
+	$(GENISOIMAGE) -no-cache-inodes -D -l -probe -V "Coinname-Qt" -no-pad -r -apple -o $@ dist
 
 $(APP_DIST_DIR)/.background/background.png:
 	$(MKDIR_P) $(@D)
@@ -107,7 +107,7 @@ $(APP_DIST_DIR)/.background/background.png:
 $(APP_DIST_DIR)/.DS_Store:
 	$(INSTALL) $(top_srcdir)/contrib/macdeploy/DS_Store $@
 
-$(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/Ang-Qt: $(OSX_APP_BUILT) $(OSX_PACKAGING)
+$(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/Coinname-Qt: $(OSX_APP_BUILT) $(OSX_PACKAGING)
 	INSTALLNAMETOOL=$(INSTALLNAMETOOL)  OTOOL=$(OTOOL) STRIP=$(STRIP) $(OSX_DEPLOY_SCRIPT) $(OSX_APP) -translations-dir=$(QT_TRANSLATION_DIR) -add-qt-tr $(OSX_QT_TRANSLATIONS) -verbose 2
 
 deploydir: $(APP_DIST_EXTRAS)
@@ -147,16 +147,16 @@ leveldb_baseline_filtered.info: leveldb_baseline.info
 baseline_filtered_combined.info: leveldb_baseline_filtered.info baseline_filtered.info
 	$(LCOV) -a leveldb_baseline_filtered.info -a baseline_filtered.info -o $@
 
-test_ang.info: baseline_filtered_combined.info
+test_coinname.info: baseline_filtered_combined.info
 	$(MAKE) -C src/ check
-	$(LCOV) -c -d $(abs_builddir)/src -t test_ang -o $@
+	$(LCOV) -c -d $(abs_builddir)/src -t test_coinname -o $@
 	$(LCOV) -z -d $(abs_builddir)/src
 	$(LCOV) -z -d $(abs_builddir)/src/leveldb
 
-test_ang_filtered.info: test_ang.info
+test_coinname_filtered.info: test_coinname.info
 	$(LCOV) -r $< "/usr/include/*" -o $@
 
-block_test.info: test_ang_filtered.info
+block_test.info: test_coinname_filtered.info
 	$(MKDIR_P) qa/tmp
 	-@TIMEOUT=15 qa/pull-tester/run-bitcoind-for-test.sh $(JAVA) -jar $(JAVA_COMPARISON_TOOL) qa/tmp/compTool 0
 	$(LCOV) -c -d $(abs_builddir)/src --t BitcoinJBlockTest -o $@
@@ -166,13 +166,13 @@ block_test.info: test_ang_filtered.info
 block_test_filtered.info: block_test.info
 	$(LCOV) -r $< "/usr/include/*" -o $@
 
-test_ang_coverage.info: baseline_filtered_combined.info test_ang_filtered.info
-	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_ang_filtered.info -o $@
+test_coinname_coverage.info: baseline_filtered_combined.info test_coinname_filtered.info
+	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_coinname_filtered.info -o $@
 
-total_coverage.info:  baseline_filtered_combined.info test_ang_filtered.info block_test_filtered.info
-	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_ang_filtered.info -a block_test_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
+total_coverage.info:  baseline_filtered_combined.info test_coinname_filtered.info block_test_filtered.info
+	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_coinname_filtered.info -a block_test_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
 
-test_ang.coverage/.dirstamp:  test_ang_coverage.info
+test_coinname.coverage/.dirstamp:  test_coinname_coverage.info
 	$(GENHTML) -s $< -o $(@D)
 	@touch $@
 
@@ -180,7 +180,7 @@ total.coverage/.dirstamp: total_coverage.info
 	$(GENHTML) -s $< -o $(@D)
 	@touch $@
 
-cov: test_ang.coverage/.dirstamp total.coverage/.dirstamp
+cov: test_coinname.coverage/.dirstamp total.coverage/.dirstamp
 
 endif
 
@@ -197,4 +197,4 @@ CLEANFILES = $(OSX_DMG) $(BITCOIN_WIN_INSTALLER)
 .INTERMEDIATE: $(COVERAGE_INFO)
 
 clean-local:
-	rm -rf test_ang.coverage/ total.coverage/ $(OSX_APP)
+	rm -rf test_coinname.coverage/ total.coverage/ $(OSX_APP)

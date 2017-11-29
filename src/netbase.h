@@ -6,7 +6,7 @@
 #define BITCOIN_NETBASE_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/ang-config.h"
+#include "config/coinname-config.h"
 #endif
 
 #include "compat.h"
@@ -37,7 +37,7 @@ enum Network
     NET_MAX,
 };
 
-/** IP address (IPv6, or IPv4 using mapped IPv6 range (::FFFF:0:0/96)) */
+/** IP address (IPv6, or IPv4 using mapped IPv6 rcoinnamee (::FFFF:0:0/96)) */
 class CNetAddr
 {
     protected:

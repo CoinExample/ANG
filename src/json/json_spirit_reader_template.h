@@ -515,7 +515,7 @@ namespace json_spirit
     };
 
     template< class Iter_type, class Value_type >
-    Iter_type read_range_or_throw( Iter_type begin, Iter_type end, Value_type& value )
+    Iter_type read_rcoinnamee_or_throw( Iter_type begin, Iter_type end, Value_type& value )
     {
         Semantic_actions< Value_type, Iter_type > semantic_actions( value );
      
@@ -533,22 +533,22 @@ namespace json_spirit
     }
 
     template< class Iter_type, class Value_type >
-    void add_posn_iter_and_read_range_or_throw( Iter_type begin, Iter_type end, Value_type& value )
+    void add_posn_iter_and_read_rcoinnamee_or_throw( Iter_type begin, Iter_type end, Value_type& value )
     {
         typedef spirit_namespace::position_iterator< Iter_type > Posn_iter_t;
 
         const Posn_iter_t posn_begin( begin, end );
         const Posn_iter_t posn_end( end, end );
      
-        read_range_or_throw( posn_begin, posn_end, value );
+        read_rcoinnamee_or_throw( posn_begin, posn_end, value );
     }
 
     template< class Iter_type, class Value_type >
-    bool read_range( Iter_type& begin, Iter_type end, Value_type& value )
+    bool read_rcoinnamee( Iter_type& begin, Iter_type end, Value_type& value )
     {
         try
         {
-            begin = read_range_or_throw( begin, end, value );
+            begin = read_rcoinnamee_or_throw( begin, end, value );
 
             return true;
         }
@@ -561,7 +561,7 @@ namespace json_spirit
     template< class String_type, class Value_type >
     void read_string_or_throw( const String_type& s, Value_type& value )
     {
-        add_posn_iter_and_read_range_or_throw( s.begin(), s.end(), value );
+        add_posn_iter_and_read_rcoinnamee_or_throw( s.begin(), s.end(), value );
     }
 
     template< class String_type, class Value_type >
@@ -569,7 +569,7 @@ namespace json_spirit
     {
         typename String_type::const_iterator begin = s.begin();
 
-        bool success = read_range( begin, s.end(), value );
+        bool success = read_rcoinnamee( begin, s.end(), value );
         return success && begin == s.end();
     }
 
@@ -597,7 +597,7 @@ namespace json_spirit
     {
         Multi_pass_iters< Istream_type > mp_iters( is );
 
-        return read_range( mp_iters.begin_, mp_iters.end_, value );
+        return read_rcoinnamee( mp_iters.begin_, mp_iters.end_, value );
     }
 
     template< class Istream_type, class Value_type >
@@ -605,7 +605,7 @@ namespace json_spirit
     {
         const Multi_pass_iters< Istream_type > mp_iters( is );
 
-        add_posn_iter_and_read_range_or_throw( mp_iters.begin_, mp_iters.end_, value );
+        add_posn_iter_and_read_rcoinnamee_or_throw( mp_iters.begin_, mp_iters.end_, value );
     }
 }
 

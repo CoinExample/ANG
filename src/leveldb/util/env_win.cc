@@ -122,7 +122,7 @@ private:
     char* _base;            // The mapped region
     HANDLE _base_handle;	
     char* _limit;           // Limit of the mapped region
-    char* _dst;             // Where to write next  (in range [base_,limit_])
+    char* _dst;             // Where to write next  (in rcoinnamee [base_,limit_])
     char* _last_sync;       // Where have we synced up to
     uint64_t _file_offset;  // Offset of base_ in file
     //LARGE_INTEGER file_offset_;
@@ -271,7 +271,7 @@ std::string GetLastErrSz()
         FORMAT_MESSAGE_IGNORE_INSERTS,
         NULL,
         GetLastError(),
-        0, // Default language
+        0, // Default lcoinnameuage
         (LPWSTR) &lpMsgBuf,
         0,
         NULL 
@@ -291,7 +291,7 @@ std::wstring GetLastErrSzW()
         FORMAT_MESSAGE_IGNORE_INSERTS,
         NULL,
         GetLastError(),
-        0, // Default language
+        0, // Default lcoinnameuage
         (LPWSTR) &lpMsgBuf,
         0,
         NULL 

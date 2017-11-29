@@ -8,7 +8,7 @@
 #
 # DESCRIPTION
 #
-#   Check whether the given FLAG works with the current language's
+#   Check whether the given FLAG works with the current lcoinnameuage's
 #   preprocessor or gives an error.  (Warnings, however, are ignored)
 #
 #   ACTION-SUCCESS/ACTION-FAILURE are shell commands to execute on
@@ -56,12 +56,12 @@
 #serial 2
 
 AC_DEFUN([AX_CHECK_PREPROC_FLAG],
-[AC_PREREQ(2.59)dnl for _AC_LANG_PREFIX
-AS_VAR_PUSHDEF([CACHEVAR],[ax_cv_check_[]_AC_LANG_ABBREV[]cppflags_$4_$1])dnl
-AC_CACHE_CHECK([whether _AC_LANG preprocessor accepts $1], CACHEVAR, [
+[AC_PREREQ(2.59)dnl for _AC_LCOINNAME_PREFIX
+AS_VAR_PUSHDEF([CACHEVAR],[ax_cv_check_[]_AC_LCOINNAME_ABBREV[]cppflags_$4_$1])dnl
+AC_CACHE_CHECK([whether _AC_LCOINNAME preprocessor accepts $1], CACHEVAR, [
   ax_check_save_flags=$CPPFLAGS
   CPPFLAGS="$CPPFLAGS $4 $1"
-  AC_PREPROC_IFELSE([AC_LANG_PROGRAM()],
+  AC_PREPROC_IFELSE([AC_LCOINNAME_PROGRAM()],
     [AS_VAR_SET(CACHEVAR,[yes])],
     [AS_VAR_SET(CACHEVAR,[no])])
   CPPFLAGS=$ax_check_save_flags])

@@ -149,7 +149,7 @@ void DBIter::Next() {
   if (direction_ == kReverse) {  // Switch directions?
     direction_ = kForward;
     // iter_ is pointing just before the entries for this->key(),
-    // so advance into the range of entries for this->key() and then
+    // so advance into the rcoinnamee of entries for this->key() and then
     // use the normal skipping code below.
     if (!iter_->Valid()) {
       iter_->SeekToFirst();
@@ -179,7 +179,7 @@ void DBIter::FindNextUserEntry(bool skipping, std::string* skip) {
     if (ParseKey(&ikey) && ikey.sequence <= sequence_) {
       switch (ikey.type) {
         case kTypeDeletion:
-          // Arrange to skip all upcoming entries for this key since
+          // Arrcoinnamee to skip all upcoming entries for this key since
           // they are hidden by this deletion.
           SaveKey(ikey.user_key, skip);
           skipping = true;
@@ -207,7 +207,7 @@ void DBIter::Prev() {
 
   if (direction_ == kForward) {  // Switch directions?
     // iter_ is pointing at the current entry.  Scan backwards until
-    // the key changes so we can use the normal reverse scanning code.
+    // the key chcoinnamees so we can use the normal reverse scanning code.
     assert(iter_->Valid());  // Otherwise valid_ would have been false
     SaveKey(ExtractUserKey(iter_->key()), &saved_key_);
     while (true) {

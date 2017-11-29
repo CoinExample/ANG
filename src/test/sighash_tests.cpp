@@ -26,7 +26,7 @@ uint256 static SignatureHashOld(CScript scriptCode, const CTransaction& txTo, un
 {
     if (nIn >= txTo.vin.size())
     {
-        printf("ERROR: SignatureHash() : nIn=%d out of range\n", nIn);
+        printf("ERROR: SignatureHash() : nIn=%d out of rcoinnamee\n", nIn);
         return 1;
     }
     CMutableTransaction txTmp(txTo);
@@ -57,7 +57,7 @@ uint256 static SignatureHashOld(CScript scriptCode, const CTransaction& txTo, un
         unsigned int nOut = nIn;
         if (nOut >= txTmp.vout.size())
         {
-            printf("ERROR: SignatureHash() : nOut=%d out of range\n", nOut);
+            printf("ERROR: SignatureHash() : nOut=%d out of rcoinnamee\n", nOut);
             return 1;
         }
         txTmp.vout.resize(nOut+1);

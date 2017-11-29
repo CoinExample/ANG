@@ -52,7 +52,7 @@ class Slice {
     return data_[n];
   }
 
-  // Change this slice to refer to an empty array
+  // Chcoinnamee this slice to refer to an empty array
   void clear() { data_ = ""; size_ = 0; }
 
   // Drop the first "n" bytes from this slice.

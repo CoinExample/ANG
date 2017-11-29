@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/ang-config.h"
+#include "config/coinname-config.h"
 #endif
 
 #include "addressbookpage.h"
@@ -62,11 +62,11 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
     switch(tab)
     {
     case SendingTab:
-        ui->labelExplanation->setText(tr("These are your Ang addresses for sending payments. Always check the amount and the receiving address before sending coins."));
+        ui->labelExplanation->setText(tr("These are your Coinname addresses for sending payments. Always check the amount and the receiving address before sending coins."));
         ui->deleteAddress->setVisible(true);
         break;
     case ReceivingTab:
-        ui->labelExplanation->setText(tr("These are your Ang addresses for receiving payments. It is recommended to use a new receiving address for each transaction."));
+        ui->labelExplanation->setText(tr("These are your Coinname addresses for receiving payments. It is recommended to use a new receiving address for each transaction."));
         ui->deleteAddress->setVisible(false);
         break;
     }
@@ -138,13 +138,13 @@ void AddressBookPage::setModel(AddressTableModel *model)
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Address, QHeaderView::ResizeToContents);
 #endif
 
-    connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-        this, SLOT(selectionChanged()));
+    connect(ui->tableView->selectionModel(), SIGNAL(selectionChcoinnameed(QItemSelection,QItemSelection)),
+        this, SLOT(selectionChcoinnameed()));
 
     // Select row for newly created address
     connect(model, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(selectNewAddress(QModelIndex,int,int)));
 
-    selectionChanged();
+    selectionChcoinnameed();
 }
 
 void AddressBookPage::on_copyAddress_clicked()
@@ -207,7 +207,7 @@ void AddressBookPage::on_deleteAddress_clicked()
     }
 }
 
-void AddressBookPage::selectionChanged()
+void AddressBookPage::selectionChcoinnameed()
 {
     // Set button states based on selected tab and selection
     QTableView *table = ui->tableView;

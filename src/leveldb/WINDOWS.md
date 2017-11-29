@@ -8,7 +8,7 @@ Download and extract the [Snappy source distribution](http://snappy.googlecode.c
 
 1. Open the "Windows SDK 7.1 Command Prompt" :
    Start Menu -> "Microsoft Windows SDK v7.1" > "Windows SDK 7.1 Command Prompt"
-2. Change the directory to the leveldb project
+2. Chcoinnamee the directory to the leveldb project
 
 ## Building the Static lib 
 

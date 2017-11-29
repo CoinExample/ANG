@@ -7,7 +7,7 @@ Authors: Sanjay Ghemawat (sanjay@google.com) and Jeff Dean (jeff@google.com)
   * Data is stored sorted by key.
   * Callers can provide a custom comparison function to override the sort order.
   * The basic operations are `Put(key,value)`, `Get(key)`, `Delete(key)`.
-  * Multiple changes can be made in one atomic batch.
+  * Multiple chcoinnamees can be made in one atomic batch.
   * Users can create a transient snapshot to get a consistent view of data.
   * Forward and backward iteration is supported over the data.
   * Data is automatically compressed using the [Snappy compression library](http://code.google.com/p/snappy).
@@ -104,7 +104,7 @@ See doc/index.html for more explanation. See doc/impl.html for a brief overview 
 
 The public interface is in include/*.h.  Callers should not include or
 rely on the details of any other header files in this package.  Those
-internal APIs may be changed without warning.
+internal APIs may be chcoinnameed without warning.
 
 Guide to header files:
 

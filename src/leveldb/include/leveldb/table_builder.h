@@ -33,13 +33,13 @@ class TableBuilder {
   // REQUIRES: Either Finish() or Abandon() has been called.
   ~TableBuilder();
 
-  // Change the options used by this builder.  Note: only some of the
-  // option fields can be changed after construction.  If a field is
-  // not allowed to change dynamically and its value in the structure
+  // Chcoinnamee the options used by this builder.  Note: only some of the
+  // option fields can be chcoinnameed after construction.  If a field is
+  // not allowed to chcoinnamee dynamically and its value in the structure
   // passed to the constructor is different from its value in the
   // structure passed to this method, this method will return an error
-  // without changing any fields.
-  Status ChangeOptions(const Options& options);
+  // without chcoinnameing any fields.
+  Status ChcoinnameeOptions(const Options& options);
 
   // Add key,value to the table being constructed.
   // REQUIRES: key is after any previously added key according to comparator.

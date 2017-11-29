@@ -46,7 +46,7 @@ static int FLAGS_reads = -1;
 // Size of each value
 static int FLAGS_value_size = 100;
 
-// Arrange to generate values that shrink to this fraction of
+// Arrcoinnamee to generate values that shrink to this fraction of
 // their original size after compression
 static double FLAGS_compression_ratio = 0.5;
 

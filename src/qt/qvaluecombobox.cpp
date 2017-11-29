@@ -7,7 +7,7 @@
 QValueComboBox::QValueComboBox(QWidget *parent) :
         QComboBox(parent), role(Qt::UserRole)
 {
-    connect(this, SIGNAL(currentIndexChanged(int)), this, SLOT(handleSelectionChanged(int)));
+    connect(this, SIGNAL(currentIndexChcoinnameed(int)), this, SLOT(handleSelectionChcoinnameed(int)));
 }
 
 QVariant QValueComboBox::value() const
@@ -25,7 +25,7 @@ void QValueComboBox::setRole(int role)
     this->role = role;
 }
 
-void QValueComboBox::handleSelectionChanged(int idx)
+void QValueComboBox::handleSelectionChcoinnameed(int idx)
 {
-    emit valueChanged();
+    emit valueChcoinnameed();
 }

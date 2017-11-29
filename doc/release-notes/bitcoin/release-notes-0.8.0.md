@@ -19,7 +19,7 @@ The first time you run after the upgrade a re-indexing process will be
 started that will take anywhere from 30 minutes to several hours,
 depending on the speed of your machine.
 
-Incompatible Changes
+Incompatible Chcoinnamees
 --------------------
 
 This release no longer maintains a full index of historical transaction ids
@@ -57,11 +57,11 @@ at sourceforge have not been tampered with. If you are able, you can help make
 everybody's downloads more secure by running this occasionally to check PGP
 signatures against download file checksums.
 
-contrib/spendfrom is a python-language command-line utility that demonstrates
+contrib/spendfrom is a python-lcoinnameuage command-line utility that demonstrates
 how to use the "raw transactions" JSON-RPC api to send coins received from particular
 addresses (also known as "coin control").
 
-New/changed settings (command-line or ang.conf file)
+New/chcoinnameed settings (command-line or coinname.conf file)
 --------------------------------------------------------
 
 dbcache : controls LevelDB memory usage.
@@ -88,7 +88,7 @@ or not to rescan the blockchain for transactions after importing a new private k
 Important Bug Fixes
 -------------------
 
-Privacy leak: the position of the "change" output in most transactions was not being
+Privacy leak: the position of the "chcoinnamee" output in most transactions was not being
 properly randomized, making network analysis of the transaction graph to identify
 users' wallets easier.
 
@@ -99,7 +99,7 @@ double-spend zero-confirmation transactions. However, this release includes a bu
 fix that makes it a little bit more difficult for attackers to double-spend a
 certain type ("lockTime in the future") of zero-confirmation transaction.
 
-Dependency Changes
+Dependency Chcoinnamees
 ------------------
 
 Qt 4.8.3 (compiling against older versions of Qt 4 should continue to work)
@@ -117,7 +117,7 @@ Forrest Voight
 Gavin Andresen
 Gregory Maxwell
 Jeff Garzik
-Luke Angjr
+Luke Coinnamejr
 Matt Corallo
 Mike Cassano
 Mike Hearn

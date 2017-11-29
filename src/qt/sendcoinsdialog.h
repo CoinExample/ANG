@@ -76,10 +76,10 @@ private slots:
     void removeEntry(SendCoinsEntry* entry);
     void updateDisplayUnit();
     void updateInstantX();
-    void coinControlFeatureChanged(bool);
+    void coinControlFeatureChcoinnameed(bool);
     void coinControlButtonClicked();
-    void coinControlChangeChecked(int);
-    void coinControlChangeEdited(const QString &);
+    void coinControlChcoinnameeChecked(int);
+    void coinControlChcoinnameeEdited(const QString &);
     void coinControlUpdateLabels();
     void coinControlClipboardQuantity();
     void coinControlClipboardAmount();
@@ -88,7 +88,7 @@ private slots:
     void coinControlClipboardBytes();
     void coinControlClipboardPriority();
     void coinControlClipboardLowOutput();
-    void coinControlClipboardChange();
+    void coinControlClipboardChcoinnamee();
     void setMinimumFee();
     void updateFeeSectionControls();
     void updateMinFeeLabel();

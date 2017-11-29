@@ -44,7 +44,7 @@ supported and may break as soon as the older version attempts to reindex.
 This does not affect wallet forward or backward compatibility.
 
 
-Notable changes
+Notable chcoinnamees
 ===============
 
 Faster synchronization
@@ -72,7 +72,7 @@ have requested from peers (but haven't received yet) are also listed as
 - A new RPC `getchaintips` lists all known branches of the block chain,
 including those we only have headers for.
 
-Transaction fee changes
+Transaction fee chcoinnamees
 -----------------------
 
 This release automatically estimates how high a transaction fee (or how
@@ -89,7 +89,7 @@ Statistics used to estimate fees and priorities are saved in the
 data directory in the `fee_estimates.dat` file just before
 program shutdown, and are read in at startup.
 
-New command line options for transaction fee changes:
+New command line options for transaction fee chcoinnamees:
 - `-txconfirmtarget=n` : create transactions that have enough fees (or priority)
 so they are likely to begin confirmation within n blocks (default: 1). This setting
 is over-ridden by the -paytxfee option.
@@ -105,7 +105,7 @@ a zero-fee transaction to begin confirmation within nblocks. Returns -1 if not
 enough free transactions have been observed to compute a good
 estimate.
 
-RPC access control changes
+RPC access control chcoinnamees
 --------------------------
 
 Subnet matching for the purpose of access control is now done
@@ -123,10 +123,10 @@ For example:
 
 | 0.9.x and before                           | 0.10.x                                |
 |--------------------------------------------|---------------------------------------|
-| `-rpcallowip=192.168.1.1`                  | `-rpcallowip=192.168.1.1` (unchanged) |
+| `-rpcallowip=192.168.1.1`                  | `-rpcallowip=192.168.1.1` (unchcoinnameed) |
 | `-rpcallowip=192.168.1.*`                  | `-rpcallowip=192.168.1.0/24`          |
 | `-rpcallowip=192.168.*`                    | `-rpcallowip=192.168.0.0/16`          |
-| `-rpcallowip=*` (dangerous!)               | `-rpcallowip=::/0` (still dangerous!) |
+| `-rpcallowip=*` (dcoinnameerous!)               | `-rpcallowip=::/0` (still dcoinnameerous!) |
 
 Using wildcards will result in the rule being rejected with the following error in debug.log:
 
@@ -170,7 +170,7 @@ Improved signing security
 For 0.10 the security of signing against unusual attacks has been
 improved by making the signatures constant time and deterministic.
 
-This change is a result of switching signing to use libsecp256k1
+This chcoinnamee is a result of switching signing to use libsecp256k1
 instead of OpenSSL. Libsecp256k1 is a cryptographic library
 optimized for the curve Bitcoin uses which was created by Bitcoin
 Core developer Pieter Wuille.
@@ -225,7 +225,7 @@ Consensus library
 Starting from 0.10.0, the Bitcoin Core distribution includes a consensus library.
 
 The purpose of this library is to make the verification functionality that is
-critical to Bitcoin's consensus available to other applications, e.g. to language
+critical to Bitcoin's consensus available to other applications, e.g. to lcoinnameuage
 bindings such as [python-bitcoinlib](https://pypi.python.org/pypi/python-bitcoinlib) or
 alternative node implementations.
 
@@ -306,7 +306,7 @@ if this is 1.
 - `-datacarriersize=n` : Maximum size, in bytes, we consider acceptable for
 "data carrier" outputs.
 
-The relay policy has changed to more properly implement the desired behavior of not 
+The relay policy has chcoinnameed to more properly implement the desired behavior of not 
 relaying free (or very low fee) transactions unless they have a priority above the 
 AllowFreeThreshold(), in which case they are relayed subject to the rate limiter.
 
@@ -318,7 +318,7 @@ consensus rule, which prohibits non-DER signatures. Such transactions have been
 non-standard since Bitcoin v0.8.0 (released in February 2013), but were
 technically still permitted inside blocks.
 
-This change breaks the dependency on OpenSSL's signature parsing, and is
+This chcoinnamee breaks the dependency on OpenSSL's signature parsing, and is
 required if implementations would want to remove all of OpenSSL from the
 consensus code.
 
@@ -330,10 +330,10 @@ blocks have version number 3 or higher, it becomes mandatory for all blocks.
 Backward compatibility with current mining software is NOT provided, thus miners
 should read the first paragraph of "Mining and relay policy enhancements" above.
 
-0.10.0 Change log
+0.10.0 Chcoinnamee log
 =================
 
-Detailed release notes follow. This overview includes changes that affect external
+Detailed release notes follow. This overview includes chcoinnamees that affect external
 behavior, not code moves, refactors or string updates.
 
 RPC:
@@ -353,7 +353,7 @@ RPC:
 - `d7d5d23` Added argument to listtransactions and listsinceblock to include watchonly addresses
 - `f87ba3d` added includeWatchonly argument to 'gettransaction' because it affects balance calculation
 - `0fa2f88` added includedWatchonly argument to listreceivedbyaddress/...account
-- `6c37f7f` `getrawchangeaddress`: fail when keypool exhausted and wallet locked
+- `6c37f7f` `getrawchcoinnameeaddress`: fail when keypool exhausted and wallet locked
 - `ff6a7af` getblocktemplate: longpolling support
 - `c4a321f` Add peerid to getpeerinfo to allow correlation with the logs
 - `1b4568c` Add vout to ListTransactions output
@@ -396,7 +396,7 @@ Command-line options:
 - `ad96e7c` Make -reindex cope with out-of-order blocks
 - `16d5194` Skip reindexed blocks individually
 - `ec01243` --tracerpc option for regression tests
-- `f654f00` Change -genproclimit default to 1
+- `f654f00` Chcoinnamee -genproclimit default to 1
 - `3c77714` Make -proxy set all network types, avoiding a connect leak
 - `57be955` Remove -printblock, -printblocktree, and -printblockindex
 - `ad3d208` remove -maxorphanblocks config parameter since it is no longer functional
@@ -420,7 +420,7 @@ Block and transaction handling:
 - `4fad8e6` Reject transactions with excessive numbers of sigops
 - `b0875eb` Allow BatchWrite to destroy its input, reducing copying (optimization)
 - `92bb6f2` Bypass reloading blocks from disk (optimization)
-- `2e28031` Perform CVerifyDB on angsdbview instead of angsTip (reduce memory usage)
+- `2e28031` Perform CVerifyDB on coinnamesdbview instead of coinnamesTip (reduce memory usage)
 - `ab15b2e` Avoid copying undo data (optimization)
 - `341735e` Headers-first synchronization
 - `afc32c5` Fix rebuild-chainstate feature and improve its performance
@@ -510,7 +510,7 @@ Wallet:
 - `d5087d1` Use script matching rather than destination matching for watch-only
 - `d88af56` Fee fixes
 - `a35b55b` Dont run full check every time we decrypt wallet
-- `3a7c348` Fix make_change to not create half-satoshis
+- `3a7c348` Fix make_chcoinnamee to not create half-satoshis
 - `f606bb9` fix a possible memory leak in CWalletDB::Recover
 - `870da77` fix possible memory leaks in CWallet::EncryptWallet
 - `ccca27a` Watch-only fixes
@@ -532,21 +532,21 @@ GUI:
 - `95a9383` Remove CENT-fee-rule from coin control completely
 - `56b07d2` Allow setting listen via GUI
 - `d95ba75` Log messages with type>QtDebugMsg as non-debug
-- `8969828` New status bar Unit Display Control and related changes
+- `8969828` New status bar Unit Display Control and related chcoinnamees
 - `674c070` seed OpenSSL PNRG with Windows event data
-- `509f926` Payment request parsing on startup now only changes network if a valid network name is specified
+- `509f926` Payment request parsing on startup now only chcoinnamees network if a valid network name is specified
 - `acd432b` Prevent balloon-spam after rescan
 - `7007402` Implement SI-style (thin space) thoudands separator
 - `91cce17` Use fixed-point arithmetic in amount spinbox
 - `bdba2dd` Remove an obscure option no-one cares about
-- `bd0aa10` Replace the temporary file hack currently used to change Bitcoin-Qt's dock icon (OS X) with a buffer-based solution
+- `bd0aa10` Replace the temporary file hack currently used to chcoinnamee Bitcoin-Qt's dock icon (OS X) with a buffer-based solution
 - `94e1b9e` Re-work overviewpage UI
 - `8bfdc9a` Better looking trayicon
 - `b197bf3` disable tray interactions when client model set to 0
 - `1c5f0af` Add column Watch-only to transactions list
 - `21f139b` Fix tablet crash. closes #4854
 - `e84843c` Broken addresses on command line no longer trigger testnet
-- `a49f11d` Change splash screen to normal window
+- `a49f11d` Chcoinnamee splash screen to normal window
 - `1f9be98` Disable App Nap on OSX 10.9+
 - `27c3e91` Add proxy to options overridden if necessary
 - `4bd1185` Allow "emergency" shutdown during startup
@@ -604,21 +604,21 @@ Tests:
 - `7667850` tests: replace the old (unused since Travis) tests with new rpc test scripts
 - `f4e0aef` Do signature-s negation inside the tests
 - `1837987` Optimize -regtest setgenerate block generation
-- `2db4c8a` Fix node ranges in the test framework
+- `2db4c8a` Fix node rcoinnamees in the test framework
 - `a8b2ce5` regression test only setmocktime RPC call
 - `daf03e7` RPC tests: create initial chain with specific timestamps
 - `8656dbb` Port/fix txnmall.sh regression test
 - `ca81587` Test the exact order of CHECKMULTISIG sig/pubkey evaluation
 - `7357893` Prioritize and display -testsafemode status in UI
 - `f321d6b` Add key generation/verification to ECC sanity check
-- `132ea9b` miner_tests: Disable checkpoints so they don't fail the subsidy-change test
+- `132ea9b` miner_tests: Disable checkpoints so they don't fail the subsidy-chcoinnamee test
 - `bc6cb41` QA RPC tests: Add tests block block proposals
 - `f67a9ce` Use deterministically generated script tests
 - `11d7a7d` [RPC] add rpc-test for http keep-alive (persistent connections)
 - `34318d7` RPC-test based on invalidateblock for mempool coinbase spends
 - `76ec867` Use actually valid transactions for script tests
 - `c8589bf` Add actual signature tests
-- `e2677d7` Fix smartfees test for change to relay policy
+- `e2677d7` Fix smartfees test for chcoinnamee to relay policy
 - `263b65e` tests: run sanity checks in tests too
 
 Miscellaneous:
@@ -637,8 +637,8 @@ Miscellaneous:
 - `403c1bf` contrib: remove getwork-based pyminer (as getwork API call has been removed)
 - `0c3e101` contrib: Added systemd .service file in order to help distributions integrate bitcoind
 - `0a0878d` doc: Add new DNSseed policy
-- `2887bff` Update coding style and add .clang-format
-- `5cbda4f` Changed LevelDB cursors to use scoped pointers to ensure destruction when going out of scope
+- `2887bff` Update coding style and add .clcoinname-format
+- `5cbda4f` Chcoinnameed LevelDB cursors to use scoped pointers to ensure destruction when going out of scope
 - `b4a72a7` contrib/linearize: split output files based on new-timestamp-year or max-file-size
 - `e982b57` Use explicit fflush() instead of setvbuf()
 - `234bfbf` contrib: Add init scripts and docs for Upstart and OpenRC
@@ -696,7 +696,7 @@ Thanks to everyone who contributed to this release:
 - gubatron
 - HarryWu
 - himynameismartin
-- Huang Le
+- Hucoinname Le
 - Ian Carroll
 - imharrywu
 - Jameson Lopp
@@ -714,7 +714,7 @@ Thanks to everyone who contributed to this release:
 - kiwigb
 - Kosta Zertsekel
 - LongShao007
-- Luke Angjr
+- Luke Coinnamejr
 - Mark Friedenbach
 - Mathy Vanvoorden
 - Matt Corallo

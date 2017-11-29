@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -39,7 +39,7 @@ using namespace boost;
 using namespace std;
 
 #if defined(NDEBUG)
-# error "Ang cannot be compiled without assertions."
+# error "Coinname cannot be compiled without assertions."
 #endif
 
 /**
@@ -53,7 +53,7 @@ CChain chainActive;
 CBlockIndex *pindexBestHeader = NULL;
 int64_t nTimeBestReceived = 0;
 CWaitableCriticalSection csBestBlock;
-CConditionVariable cvBlockChange;
+CConditionVariable cvBlockChcoinnamee;
 int nScriptCheckThreads = 0;
 bool fImporting = false;
 bool fReindex = false;
@@ -558,7 +558,7 @@ CBlockIndex* FindForkInGlobalIndex(const CChain& chain, const CBlockLocator& loc
     return chain.Genesis();
 }
 
-CCoinsViewCache *angsTip = NULL;
+CCoinsViewCache *coinnamesTip = NULL;
 CBlockTreeDB *pblocktree = NULL;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -860,7 +860,7 @@ int GetInputAge(CTxIn& vin)
     CCoinsViewCache view(&viewDummy);
     {
         LOCK(mempool.cs);
-        CCoinsViewMemPool viewMempool(angsTip, mempool);
+        CCoinsViewMemPool viewMempool(coinnamesTip, mempool);
         view.SetBackend(viewMempool); // temporarily switch cache backend to db+mempool view
 
         const CCoins* coins = view.AccessCoins(vin.prevout.hash);
@@ -934,8 +934,8 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state)
             return state.DoS(100, error("CheckTransaction() : txout.nValue too high"),
                              REJECT_INVALID, "bad-txns-vout-toolarge");
         nValueOut += txout.nValue;
-        if (!MoneyRange(nValueOut))
-            return state.DoS(100, error("CheckTransaction() : txout total out of range"),
+        if (!MoneyRcoinnamee(nValueOut))
+            return state.DoS(100, error("CheckTransaction() : txout total out of rcoinnamee"),
                              REJECT_INVALID, "bad-txns-txouttotal-toolarge");
     }
 
@@ -990,7 +990,7 @@ CAmount GetMinRelayFee(const CTransaction& tx, unsigned int nBytes, bool fAllowF
             nMinFee = 0;
     }
 
-    if (!MoneyRange(nMinFee))
+    if (!MoneyRcoinnamee(nMinFee))
         nMinFee = MAX_MONEY;
     return nMinFee;
 }
@@ -1057,7 +1057,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransa
         CAmount nValueIn = 0;
         {
         LOCK(pool.cs);
-        CCoinsViewMemPool viewMemPool(angsTip, pool);
+        CCoinsViewMemPool viewMemPool(coinnamesTip, pool);
         view.SetBackend(viewMemPool);
 
         // do we already have it?
@@ -1251,7 +1251,7 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, const CTransact
         CAmount nValueIn = 0;
         {
             LOCK(pool.cs);
-            CCoinsViewMemPool viewMemPool(angsTip, pool);
+            CCoinsViewMemPool viewMemPool(coinnamesTip, pool);
             view.SetBackend(viewMemPool);
 
             // do we already have it?
@@ -1422,7 +1422,7 @@ bool GetTransaction(const uint256 &hash, CTransaction &txOut, uint256 &hashBlock
         if (fAllowSlow) { // use coin database to locate block that contains transaction, and scan it
             int nHeight = -1;
             {
-                CCoinsViewCache &view = *angsTip;
+                CCoinsViewCache &view = *coinnamesTip;
                 const CCoins* coins = view.AccessCoins(hash);
                 if (coins)
                     nHeight = coins->nHeight;
@@ -1830,9 +1830,9 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi
 
             // Check for negative or overflow input values
             nValueIn += coins->vout[prevout.n].nValue;
-            if (!MoneyRange(coins->vout[prevout.n].nValue) || !MoneyRange(nValueIn))
-                return state.DoS(100, error("CheckInputs() : txin values out of range"),
-                                 REJECT_INVALID, "bad-txns-inputvalues-outofrange");
+            if (!MoneyRcoinnamee(coins->vout[prevout.n].nValue) || !MoneyRcoinnamee(nValueIn))
+                return state.DoS(100, error("CheckInputs() : txin values out of rcoinnamee"),
+                                 REJECT_INVALID, "bad-txns-inputvalues-outofrcoinnamee");
 
         }
 
@@ -1847,9 +1847,9 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi
             return state.DoS(100, error("CheckInputs() : %s nTxFee < 0", tx.GetHash().ToString()),
                              REJECT_INVALID, "bad-txns-fee-negative");
         nFees += nTxFee;
-        if (!MoneyRange(nFees))
-            return state.DoS(100, error("CheckInputs() : nFees out of range"),
-                             REJECT_INVALID, "bad-txns-fee-outofrange");
+        if (!MoneyRcoinnamee(nFees))
+            return state.DoS(100, error("CheckInputs() : nFees out of rcoinnamee"),
+                             REJECT_INVALID, "bad-txns-fee-outofrcoinnamee");
 
         // The first loop above does all the inexpensive checks.
         // Only if ALL inputs pass do we perform expensive ECDSA signature checks.
@@ -1857,7 +1857,7 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi
 
         // Skip ECDSA signature verification when connecting blocks
         // before the last block chain checkpoint. This is safe because block merkle hashes are
-        // still computed and checked, and any change will be caught at the next checkpoint.
+        // still computed and checked, and any chcoinnamee will be caught at the next checkpoint.
         if (fScriptChecks) {
             for (unsigned int i = 0; i < tx.vin.size(); i++) {
                 const COutPoint &prevout = tx.vin[i].prevout;
@@ -2013,7 +2013,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("ang-scriptch");
+    RenameThread("coinname-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -2181,7 +2181,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     int64_t nTime3 = GetTimeMicros(); nTimeIndex += nTime3 - nTime2;
     LogPrint("bench", "    - Index writing: %.2fms [%.2fs]\n", 0.001 * (nTime3 - nTime2), nTimeIndex * 0.000001);
 
-    // Watch for changes to the previous coinbase transaction.
+    // Watch for chcoinnamees to the previous coinbase transaction.
     static uint256 hashPrevBestCoinBase;
     g_signals.UpdatedTransaction(hashPrevBestCoinBase);
     hashPrevBestCoinBase = block.vtx[0].GetHash();
@@ -2208,27 +2208,27 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
     static int64_t nLastWrite = 0;
     try {
     if ((mode == FLUSH_STATE_ALWAYS) ||
-        ((mode == FLUSH_STATE_PERIODIC || mode == FLUSH_STATE_IF_NEEDED) && angsTip->GetCacheSize() > nCoinCacheSize) ||
+        ((mode == FLUSH_STATE_PERIODIC || mode == FLUSH_STATE_IF_NEEDED) && coinnamesTip->GetCacheSize() > nCoinCacheSize) ||
         (mode == FLUSH_STATE_PERIODIC && GetTimeMicros() > nLastWrite + DATABASE_WRITE_INTERVAL * 1000000)) {
         // Typical CCoins structures on disk are around 100 bytes in size.
         // Pushing a new one to the database can cause it to be written
         // twice (once in the log, and once in the tables). This is already
         // an overestimation, as most will delete an existing entry or
         // overwrite one. Still, use a conservative safety factor of 2.
-        if (!CheckDiskSpace(100 * 2 * 2 * angsTip->GetCacheSize()))
+        if (!CheckDiskSpace(100 * 2 * 2 * coinnamesTip->GetCacheSize()))
             return state.Error("out of disk space");
         // First make sure all block and undo data is flushed to disk.
         FlushBlockFile();
         // Then update all block file information (which may refer to block and undo files).
-        bool fileschanged = false;
+        bool fileschcoinnameed = false;
         for (set<int>::iterator it = setDirtyFileInfo.begin(); it != setDirtyFileInfo.end(); ) {
             if (!pblocktree->WriteBlockFileInfo(*it, vinfoBlockFile[*it])) {
                 return state.Abort("Failed to write to block index");
             }
-            fileschanged = true;
+            fileschcoinnameed = true;
             setDirtyFileInfo.erase(it++);
         }
-        if (fileschanged && !pblocktree->WriteLastBlockFile(nLastBlockFile)) {
+        if (fileschcoinnameed && !pblocktree->WriteLastBlockFile(nLastBlockFile)) {
             return state.Abort("Failed to write to block index");
         }
         for (set<CBlockIndex*>::iterator it = setDirtyBlockIndex.begin(); it != setDirtyBlockIndex.end(); ) {
@@ -2239,7 +2239,7 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
         }
         pblocktree->Sync();
         // Finally flush the chainstate (which may refer to block index entries).
-        if (!angsTip->Flush())
+        if (!coinnamesTip->Flush())
             return state.Abort("Failed to write to coin database");
         // Update best block in wallet (so we can detect restored wallets).
         if (mode != FLUSH_STATE_IF_NEEDED) {
@@ -2269,9 +2269,9 @@ void static UpdateTip(CBlockIndex *pindexNew) {
     LogPrintf("UpdateTip: new best=%s  height=%d  log2_work=%.8g  tx=%lu  date=%s progress=%f  cache=%u\n",
       chainActive.Tip()->GetBlockHash().ToString(), chainActive.Height(), log(chainActive.Tip()->nChainWork.getdouble())/log(2.0), (unsigned long)chainActive.Tip()->nChainTx,
       DateTimeStrFormat("%Y-%m-%d %H:%M:%S", chainActive.Tip()->GetBlockTime()),
-      Checkpoints::GuessVerificationProgress(chainActive.Tip()), (unsigned int)angsTip->GetCacheSize());
+      Checkpoints::GuessVerificationProgress(chainActive.Tip()), (unsigned int)coinnamesTip->GetCacheSize());
 
-    cvBlockChange.notify_all();
+    cvBlockChcoinnamee.notify_all();
 
     // Check the version of the last 100 blocks to see if we need to upgrade:
     static bool fWarned = false;
@@ -2301,7 +2301,7 @@ void static UpdateTip(CBlockIndex *pindexNew) {
 bool static DisconnectTip(CValidationState &state) {
     CBlockIndex *pindexDelete = chainActive.Tip();
     assert(pindexDelete);
-    mempool.check(angsTip);
+    mempool.check(coinnamesTip);
     // Read block from disk.
     CBlock block;
     if (!ReadBlockFromDisk(block, pindexDelete))
@@ -2309,7 +2309,7 @@ bool static DisconnectTip(CValidationState &state) {
     // Apply the block atomically to the chain state.
     int64_t nStart = GetTimeMicros();
     {
-        CCoinsViewCache view(angsTip);
+        CCoinsViewCache view(coinnamesTip);
         if (!DisconnectBlock(block, state, pindexDelete, view))
             return error("DisconnectTip() : DisconnectBlock %s failed", pindexDelete->GetBlockHash().ToString());
         assert(view.Flush());
@@ -2326,8 +2326,8 @@ bool static DisconnectTip(CValidationState &state) {
         if (tx.IsCoinBase() || !AcceptToMemoryPool(mempool, stateDummy, tx, false, NULL))
             mempool.remove(tx, removed, true);
     }
-    mempool.removeCoinbaseSpends(angsTip, pindexDelete->nHeight);
-    mempool.check(angsTip);
+    mempool.removeCoinbaseSpends(coinnamesTip, pindexDelete->nHeight);
+    mempool.check(coinnamesTip);
     // Update chainActive and related variables.
     UpdateTip(pindexDelete->pprev);
     // Let wallets know transactions went from 1-confirmed to
@@ -2350,7 +2350,7 @@ static int64_t nTimePostConnect = 0;
  */
 bool static ConnectTip(CValidationState &state, CBlockIndex *pindexNew, CBlock *pblock) {
     assert(pindexNew->pprev == chainActive.Tip());
-    mempool.check(angsTip);
+    mempool.check(coinnamesTip);
     // Read block from disk.
     int64_t nTime1 = GetTimeMicros();
     CBlock block;
@@ -2364,7 +2364,7 @@ bool static ConnectTip(CValidationState &state, CBlockIndex *pindexNew, CBlock *
     int64_t nTime3;
     LogPrint("bench", "  - Load block from disk: %.2fms [%.2fs]\n", (nTime2 - nTime1) * 0.001, nTimeReadFromDisk * 0.000001);
     {
-        CCoinsViewCache view(angsTip);
+        CCoinsViewCache view(coinnamesTip);
         CInv inv(MSG_BLOCK, pindexNew->GetBlockHash());
         bool rv = ConnectBlock(*pblock, state, pindexNew, view);
         g_signals.BlockChecked(*pblock, state);
@@ -2388,7 +2388,7 @@ bool static ConnectTip(CValidationState &state, CBlockIndex *pindexNew, CBlock *
     // Remove conflicting transactions from the mempool.
     list<CTransaction> txConflicted;
     mempool.removeForBlock(pblock->vtx, pindexNew->nHeight, txConflicted);
-    mempool.check(angsTip);
+    mempool.check(coinnamesTip);
     // Update chainActive & related variables.
     UpdateTip(pindexNew);
     // Tell wallet about transactions that went from mempool
@@ -2431,8 +2431,8 @@ bool DisconnectBlockAndInputs(CValidationState &state, CTransaction txLock)
 {
 
     // All modifications to the coin state will be done in this cache.
-    // Only when all have succeeded, we push it to angsTip.
-//    CCoinsViewCache view(*angsTip, true);
+    // Only when all have succeeded, we push it to coinnamesTip.
+//    CCoinsViewCache view(*coinnamesTip, true);
 
     CBlockIndex* BlockReading = chainActive.Tip();
     CBlockIndex* pindexNew = NULL;
@@ -2675,7 +2675,7 @@ bool ActivateBestChain(CValidationState &state, CBlock *pblock) {
     } while(pindexMostWork != chainActive.Tip());
     CheckBlockIndex();
 
-    // Write changes periodically to disk, after relay.
+    // Write chcoinnamees periodically to disk, after relay.
     if (!FlushStateToDisk(state, FLUSH_STATE_PERIODIC)) {
         return false;
     }
@@ -2813,11 +2813,11 @@ bool ReceivedBlockTransactions(const CBlock &block, CValidationState& state, CBl
             if (chainActive.Tip() == NULL || !setBlockIndexCandidates.value_comp()(pindex, chainActive.Tip())) {
                 setBlockIndexCandidates.insert(pindex);
             }
-            std::pair<std::multimap<CBlockIndex*, CBlockIndex*>::iterator, std::multimap<CBlockIndex*, CBlockIndex*>::iterator> range = mapBlocksUnlinked.equal_range(pindex);
-            while (range.first != range.second) {
-                std::multimap<CBlockIndex*, CBlockIndex*>::iterator it = range.first;
+            std::pair<std::multimap<CBlockIndex*, CBlockIndex*>::iterator, std::multimap<CBlockIndex*, CBlockIndex*>::iterator> rcoinnamee = mapBlocksUnlinked.equal_rcoinnamee(pindex);
+            while (rcoinnamee.first != rcoinnamee.second) {
+                std::multimap<CBlockIndex*, CBlockIndex*>::iterator it = rcoinnamee.first;
                 queue.push_back(it->second);
-                range.first++;
+                rcoinnamee.first++;
                 mapBlocksUnlinked.erase(it);
             }
         }
@@ -2867,7 +2867,7 @@ bool FindBlockPos(CValidationState &state, CDiskBlockPos &pos, unsigned int nAdd
                 FILE *file = OpenBlockFile(pos);
                 if (file) {
                     LogPrintf("Pre-allocating up to position 0x%x in blk%05u.dat\n", nNewChunks * BLOCKFILE_CHUNK_SIZE, pos.nFile);
-                    AllocateFileRange(file, pos.nPos, nNewChunks * BLOCKFILE_CHUNK_SIZE - pos.nPos);
+                    AllocateFileRcoinnamee(file, pos.nPos, nNewChunks * BLOCKFILE_CHUNK_SIZE - pos.nPos);
                     fclose(file);
                 }
             }
@@ -2898,7 +2898,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
             FILE *file = OpenUndoFile(pos);
             if (file) {
                 LogPrintf("Pre-allocating up to position 0x%x in rev%05u.dat\n", nNewChunks * UNDOFILE_CHUNK_SIZE, pos.nFile);
-                AllocateFileRange(file, pos.nPos, nNewChunks * UNDOFILE_CHUNK_SIZE - pos.nPos);
+                AllocateFileRcoinnamee(file, pos.nPos, nNewChunks * UNDOFILE_CHUNK_SIZE - pos.nPos);
                 fclose(file);
             }
         }
@@ -3328,7 +3328,7 @@ bool TestBlockValidity(CValidationState &state, const CBlock& block, CBlockIndex
     AssertLockHeld(cs_main);
     assert(pindexPrev == chainActive.Tip());
 
-    CCoinsViewCache viewNew(angsTip);
+    CCoinsViewCache viewNew(coinnamesTip);
     CBlockIndex indexDummy(block);
     indexDummy.pprev = pindexPrev;
     indexDummy.nHeight = pindexPrev->nHeight + 1;
@@ -3518,7 +3518,7 @@ bool static LoadBlockIndexDB()
     LogPrintf("LoadBlockIndexDB(): transaction index %s\n", fTxIndex ? "enabled" : "disabled");
 
     // Load pointer to end of best chain
-    BlockMap::iterator it = mapBlockIndex.find(angsTip->GetBestBlock());
+    BlockMap::iterator it = mapBlockIndex.find(coinnamesTip->GetBestBlock());
     if (it == mapBlockIndex.end())
         return true;
     chainActive.SetTip(it->second);
@@ -3584,7 +3584,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
             }
         }
         // check level 3: check for inconsistencies during memory-only disconnect of tip blocks
-        if (nCheckLevel >= 3 && pindex == pindexState && (coins.GetCacheSize() + angsTip->GetCacheSize()) <= nCoinCacheSize) {
+        if (nCheckLevel >= 3 && pindex == pindexState && (coins.GetCacheSize() + coinnamesTip->GetCacheSize()) <= nCoinCacheSize) {
             bool fClean = true;
             if (!DisconnectBlock(block, state, pindex, coins, &fClean))
                 return error("VerifyDB() : *** irrecoverable inconsistency in block data at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString());
@@ -3750,9 +3750,9 @@ bool LoadExternalBlockFile(FILE* fileIn, CDiskBlockPos *dbp)
                 while (!queue.empty()) {
                     uint256 head = queue.front();
                     queue.pop_front();
-                    std::pair<std::multimap<uint256, CDiskBlockPos>::iterator, std::multimap<uint256, CDiskBlockPos>::iterator> range = mapBlocksUnknownParent.equal_range(head);
-                    while (range.first != range.second) {
-                        std::multimap<uint256, CDiskBlockPos>::iterator it = range.first;
+                    std::pair<std::multimap<uint256, CDiskBlockPos>::iterator, std::multimap<uint256, CDiskBlockPos>::iterator> rcoinnamee = mapBlocksUnknownParent.equal_rcoinnamee(head);
+                    while (rcoinnamee.first != rcoinnamee.second) {
+                        std::multimap<uint256, CDiskBlockPos>::iterator it = rcoinnamee.first;
                         if (ReadBlockFromDisk(block, it->second))
                         {
                             LogPrintf("%s: Processing out of order child %s of %s\n", __func__, block.GetHash().ToString(),
@@ -3764,7 +3764,7 @@ bool LoadExternalBlockFile(FILE* fileIn, CDiskBlockPos *dbp)
                                 queue.push_back(block.GetHash());
                             }
                         }
-                        range.first++;
+                        rcoinnamee.first++;
                         mapBlocksUnknownParent.erase(it);
                     }
                 }
@@ -3804,10 +3804,10 @@ void static CheckBlockIndex()
 
     assert(forward.size() == mapBlockIndex.size());
 
-    std::pair<std::multimap<CBlockIndex*,CBlockIndex*>::iterator,std::multimap<CBlockIndex*,CBlockIndex*>::iterator> rangeGenesis = forward.equal_range(NULL);
-    CBlockIndex *pindex = rangeGenesis.first->second;
-    rangeGenesis.first++;
-    assert(rangeGenesis.first == rangeGenesis.second); // There is only one index entry with parent NULL.
+    std::pair<std::multimap<CBlockIndex*,CBlockIndex*>::iterator,std::multimap<CBlockIndex*,CBlockIndex*>::iterator> rcoinnameeGenesis = forward.equal_rcoinnamee(NULL);
+    CBlockIndex *pindex = rcoinnameeGenesis.first->second;
+    rcoinnameeGenesis.first++;
+    assert(rcoinnameeGenesis.first == rcoinnameeGenesis.second); // There is only one index entry with parent NULL.
 
     // Iterate over the entire block tree, using depth-first search.
     // Along the way, remember whether there are blocks on the path from genesis
@@ -3858,15 +3858,15 @@ void static CheckBlockIndex()
             assert(setBlockIndexCandidates.count(pindex) == 0);
         }
         // Check whether this block is in mapBlocksUnlinked.
-        std::pair<std::multimap<CBlockIndex*,CBlockIndex*>::iterator,std::multimap<CBlockIndex*,CBlockIndex*>::iterator> rangeUnlinked = mapBlocksUnlinked.equal_range(pindex->pprev);
+        std::pair<std::multimap<CBlockIndex*,CBlockIndex*>::iterator,std::multimap<CBlockIndex*,CBlockIndex*>::iterator> rcoinnameeUnlinked = mapBlocksUnlinked.equal_rcoinnamee(pindex->pprev);
         bool foundInUnlinked = false;
-        while (rangeUnlinked.first != rangeUnlinked.second) {
-            assert(rangeUnlinked.first->first == pindex->pprev);
-            if (rangeUnlinked.first->second == pindex) {
+        while (rcoinnameeUnlinked.first != rcoinnameeUnlinked.second) {
+            assert(rcoinnameeUnlinked.first->first == pindex->pprev);
+            if (rcoinnameeUnlinked.first->second == pindex) {
                 foundInUnlinked = true;
                 break;
             }
-            rangeUnlinked.first++;
+            rcoinnameeUnlinked.first++;
         }
         if (pindex->pprev && pindex->nStatus & BLOCK_HAVE_DATA && pindexFirstMissing != NULL) {
             if (pindexFirstInvalid == NULL) { // If this block has block data available, some parent doesn't, and has no invalid parents, it must be in mapBlocksUnlinked.
@@ -3879,10 +3879,10 @@ void static CheckBlockIndex()
         // End: actual consistency checks.
 
         // Try descending into the first subnode.
-        std::pair<std::multimap<CBlockIndex*,CBlockIndex*>::iterator,std::multimap<CBlockIndex*,CBlockIndex*>::iterator> range = forward.equal_range(pindex);
-        if (range.first != range.second) {
+        std::pair<std::multimap<CBlockIndex*,CBlockIndex*>::iterator,std::multimap<CBlockIndex*,CBlockIndex*>::iterator> rcoinnamee = forward.equal_rcoinnamee(pindex);
+        if (rcoinnamee.first != rcoinnamee.second) {
             // A subnode was found.
-            pindex = range.first->second;
+            pindex = rcoinnamee.first->second;
             nHeight++;
             continue;
         }
@@ -3899,16 +3899,16 @@ void static CheckBlockIndex()
             // Find our parent.
             CBlockIndex* pindexPar = pindex->pprev;
             // Find which child we just visited.
-            std::pair<std::multimap<CBlockIndex*,CBlockIndex*>::iterator,std::multimap<CBlockIndex*,CBlockIndex*>::iterator> rangePar = forward.equal_range(pindexPar);
-            while (rangePar.first->second != pindex) {
-                assert(rangePar.first != rangePar.second); // Our parent must have at least the node we're coming from as child.
-                rangePar.first++;
+            std::pair<std::multimap<CBlockIndex*,CBlockIndex*>::iterator,std::multimap<CBlockIndex*,CBlockIndex*>::iterator> rcoinnameePar = forward.equal_rcoinnamee(pindexPar);
+            while (rcoinnameePar.first->second != pindex) {
+                assert(rcoinnameePar.first != rcoinnameePar.second); // Our parent must have at least the node we're coming from as child.
+                rcoinnameePar.first++;
             }
             // Proceed to the next one.
-            rangePar.first++;
-            if (rangePar.first != rangePar.second) {
+            rcoinnameePar.first++;
+            if (rcoinnameePar.first != rcoinnameePar.second) {
                 // Move to the sibling.
-                pindex = rangePar.first->second;
+                pindex = rcoinnameePar.first->second;
                 break;
             } else {
                 // Move up further.
@@ -4002,7 +4002,7 @@ bool static AlreadyHave(const CInv& inv)
             bool txInMap = false;
             txInMap = mempool.exists(inv.hash);
             return txInMap || mapOrphanTransactions.count(inv.hash) ||
-                angsTip->HaveCoins(inv.hash);
+                coinnamesTip->HaveCoins(inv.hash);
         }
     case MSG_DSTX:
         return mapDarksendBroadcastTxes.count(inv.hash);
@@ -4375,7 +4375,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         // Potentially mark this peer as a preferred download peer.
         UpdatePreferredDownload(pfrom, State(pfrom->GetId()));
 
-        // Change version
+        // Chcoinnamee version
         pfrom->PushMessage("verack");
         pfrom->ssSend.SetVersion(min(pfrom->nVersion, PROTOCOL_VERSION));
 
@@ -4748,7 +4748,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
         if (AcceptToMemoryPool(mempool, state, tx, true, &fMissingInputs, false, ignoreFees))
         {
-            mempool.check(angsTip);
+            mempool.check(coinnamesTip);
             RelayTransaction(tx);
             vWorkQueue.push_back(inv.hash);
 
@@ -4802,7 +4802,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                         LogPrint("mempool", "   removed orphan tx %s\n", orphanHash.ToString());
                         vEraseQueue.push_back(orphanHash);
                     }
-                    mempool.check(angsTip);
+                    mempool.check(coinnamesTip);
                 }
             }
 

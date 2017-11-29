@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,7 +8,7 @@
 #define BITCOIN_MAIN_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/ang-config.h"
+#include "config/coinname-config.h"
 #endif
 
 #include "amount.h"
@@ -50,7 +50,7 @@ class CValidationState;
 struct CBlockTemplate;
 struct CNodeStateStats;
 
-/** Default for -blockmaxsize and -blockminsize, which control the range of sizes the mining code will create **/
+/** Default for -blockmaxsize and -blockminsize, which control the rcoinnamee of sizes the mining code will create **/
 static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 750000;
 static const unsigned int DEFAULT_BLOCK_MIN_SIZE = 0;
 /** Default for -blockprioritysize, maximum space for zero/low-fee transactions **/
@@ -86,7 +86,7 @@ static const int MAX_BLOCKS_IN_TRANSIT_PER_PEER = 16;
 /** Timeout in seconds during which a peer must stall block download progress before being disconnected. */
 static const unsigned int BLOCK_STALLING_TIMEOUT = 2;
 /** Number of headers sent in one getheaders result. We rely on the assumption that if a peer sends
- *  less than this number, we reached their tip. Changing this value is a protocol upgrade. */
+ *  less than this number, we reached their tip. Chcoinnameing this value is a protocol upgrade. */
 static const unsigned int MAX_HEADERS_RESULTS = 2000;
 /** Size of the "block download window": how far ahead of our current height do we fetch?
  *  Larger windows tolerate larger download speed differences between peer, but increase the potential
@@ -123,7 +123,7 @@ extern uint64_t nLastBlockSize;
 extern const std::string strMessageMagic;
 extern int64_t nTimeBestReceived;
 extern CWaitableCriticalSection csBestBlock;
-extern CConditionVariable cvBlockChange;
+extern CConditionVariable cvBlockChcoinnamee;
 extern bool fImporting;
 extern bool fReindex;
 extern int nScriptCheckThreads;
@@ -564,7 +564,7 @@ bool ReconsiderBlock(CValidationState& state, CBlockIndex *pindex);
 extern CChain chainActive;
 
 /** Global variable that points to the active CCoinsView (protected by cs_main) */
-extern CCoinsViewCache *angsTip;
+extern CCoinsViewCache *coinnamesTip;
 
 /** Global variable that points to the active block tree (protected by cs_main) */
 extern CBlockTreeDB *pblocktree;

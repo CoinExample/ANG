@@ -482,7 +482,7 @@ void CTxMemPool::remove(const CTransaction &origTx, std::list<CTransaction>& rem
     }
 }
 
-void CTxMemPool::removeCoinbaseSpends(const CCoinsViewCache *angs, unsigned int nMemPoolHeight)
+void CTxMemPool::removeCoinbaseSpends(const CCoinsViewCache *coinnames, unsigned int nMemPoolHeight)
 {
     // Remove transactions spending a coinbase which are now immature
     LOCK(cs);
@@ -493,7 +493,7 @@ void CTxMemPool::removeCoinbaseSpends(const CCoinsViewCache *angs, unsigned int 
             std::map<uint256, CTxMemPoolEntry>::const_iterator it2 = mapTx.find(txin.prevout.hash);
             if (it2 != mapTx.end())
                 continue;
-            const CCoins *coins = angs->AccessCoins(txin.prevout.hash);
+            const CCoins *coins = coinnames->AccessCoins(txin.prevout.hash);
             if (fSanityCheck) assert(coins);
             if (!coins || (coins->IsCoinBase() && nMemPoolHeight - coins->nHeight < COINBASE_MATURITY)) {
                 transactionsToRemove.push_back(tx);
@@ -558,7 +558,7 @@ void CTxMemPool::clear()
     ++nTransactionsUpdated;
 }
 
-void CTxMemPool::check(const CCoinsViewCache *angs) const
+void CTxMemPool::check(const CCoinsViewCache *coinnames) const
 {
     if (!fSanityCheck)
         return;
@@ -567,7 +567,7 @@ void CTxMemPool::check(const CCoinsViewCache *angs) const
 
     uint64_t checkTotal = 0;
 
-    CCoinsViewCache mempoolDuplicate(const_cast<CCoinsViewCache*>(angs));
+    CCoinsViewCache mempoolDuplicate(const_cast<CCoinsViewCache*>(coinnames));
 
     LOCK(cs);
     list<const CTxMemPoolEntry*> waitingOnDependants;
@@ -584,7 +584,7 @@ void CTxMemPool::check(const CCoinsViewCache *angs) const
                 assert(tx2.vout.size() > txin.prevout.n && !tx2.vout[txin.prevout.n].IsNull());
                 fDependsWait = true;
             } else {
-                const CCoins* coins = angs->AccessCoins(txin.prevout.hash);
+                const CCoins* coins = coinnames->AccessCoins(txin.prevout.hash);
                 assert(coins && coins->IsAvailable(txin.prevout.n));
             }
             // Check whether its inputs are marked in mapNextTx.

@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -54,7 +54,7 @@ struct AddressTableEntryLessThan
 static AddressTableEntry::Type translateTransactionType(const QString &strPurpose, bool isMine)
 {
     AddressTableEntry::Type addressType = AddressTableEntry::Hidden;
-    // "refund" addresses aren't shown, and change addresses aren't in mapAddressBook at all.
+    // "refund" addresses aren't shown, and chcoinnamee addresses aren't in mapAddressBook at all.
     if (strPurpose == "send")
         addressType = AddressTableEntry::Sending;
     else if (strPurpose == "receive")
@@ -130,7 +130,7 @@ public:
             }
             lower->type = newEntryType;
             lower->label = label;
-            parent->emitDataChanged(lowerIndex);
+            parent->emitDataChcoinnameed(lowerIndex);
             break;
         case CT_DELETED:
             if(!inModel)
@@ -252,7 +252,7 @@ bool AddressTableModel::setData(const QModelIndex &index, const QVariant &value,
             // Do nothing, if old label == new label
             if(rec->label == value.toString())
             {
-                editStatus = NO_CHANGES;
+                editStatus = NO_CHCOINNAMEES;
                 return false;
             }
             wallet->SetAddressBook(curAddress, value.toString().toStdString(), strPurpose);
@@ -267,7 +267,7 @@ bool AddressTableModel::setData(const QModelIndex &index, const QVariant &value,
             // Do nothing, if old address == new address
             else if(newAddress == curAddress)
             {
-                editStatus = NO_CHANGES;
+                editStatus = NO_CHCOINNAMEES;
                 return false;
             }
             // Check for duplicate addresses to prevent accidental deletion of addresses, if you try
@@ -337,7 +337,7 @@ QModelIndex AddressTableModel::index(int row, int column, const QModelIndex &par
 void AddressTableModel::updateEntry(const QString &address,
         const QString &label, bool isMine, const QString &purpose, int status)
 {
-    // Update address book model from Ang core
+    // Update address book model from Coinname core
     priv->updateEntry(address, label, isMine, purpose, status);
 }
 
@@ -447,7 +447,7 @@ int AddressTableModel::lookupAddress(const QString &address) const
     }
 }
 
-void AddressTableModel::emitDataChanged(int idx)
+void AddressTableModel::emitDataChcoinnameed(int idx)
 {
-    emit dataChanged(index(idx, 0, QModelIndex()), index(idx, columns.length()-1, QModelIndex()));
+    emit dataChcoinnameed(index(idx, 0, QModelIndex()), index(idx, columns.length()-1, QModelIndex()));
 }

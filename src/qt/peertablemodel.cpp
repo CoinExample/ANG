@@ -219,9 +219,9 @@ const CNodeCombinedStats *PeerTableModel::getNodeStats(int idx)
 
 void PeerTableModel::refresh()
 {
-    emit layoutAboutToBeChanged();
+    emit layoutAboutToBeChcoinnameed();
     priv->refreshPeers();
-    emit layoutChanged();
+    emit layoutChcoinnameed();
 }
 
 int PeerTableModel::getRowByNodeId(NodeId nodeid)

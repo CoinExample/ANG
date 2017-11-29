@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/ang-config.h"
+#include "config/coinname-config.h"
 #endif
 
 #include "init.h"
@@ -142,8 +142,8 @@ public:
     // Writes do not need similar protection, as failure to write is handled by the caller.
 };
 
-static CCoinsViewDB *angsdbview = NULL;
-static CCoinsViewErrorCatcher *angscatcher = NULL;
+static CCoinsViewDB *coinnamesdbview = NULL;
+static CCoinsViewErrorCatcher *coinnamescatcher = NULL;
 
 /** Preparing steps before shutting down or restarting the wallet */
 void PrepareShutdown()
@@ -160,7 +160,7 @@ void PrepareShutdown()
     /// for example if the data directory was found to be locked.
     /// Be sure that anything that writes files or flushes caches only does this if the respective
     /// module was initialized.
-    RenameThread("ang-shutoff");
+    RenameThread("coinname-shutoff");
     mempool.AddTransactionsUpdated(1);
     StopRPCThreads();
 #ifdef ENABLE_WALLET
@@ -187,15 +187,15 @@ void PrepareShutdown()
 
     {
         LOCK(cs_main);
-        if (angsTip != NULL) {
+        if (coinnamesTip != NULL) {
             FlushStateToDisk();
         }
-        delete angsTip;
-        angsTip = NULL;
-        delete angscatcher;
-        angscatcher = NULL;
-        delete angsdbview;
-        angsdbview = NULL;
+        delete coinnamesTip;
+        coinnamesTip = NULL;
+        delete coinnamescatcher;
+        coinnamescatcher = NULL;
+        delete coinnamesdbview;
+        coinnamesdbview = NULL;
         delete pblocktree;
         pblocktree = NULL;
     }
@@ -277,10 +277,10 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += "  -?                     " + _("This help message") + "\n";
     strUsage += "  -alertnotify=<cmd>     " + _("Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)") + "\n";
     strUsage += "  -alerts                " + strprintf(_("Receive and display P2P network alerts (default: %u)"), DEFAULT_ALERTS);
-    strUsage += "  -blocknotify=<cmd>     " + _("Execute command when the best block changes (%s in cmd is replaced by block hash)") + "\n";
+    strUsage += "  -blocknotify=<cmd>     " + _("Execute command when the best block chcoinnamees (%s in cmd is replaced by block hash)") + "\n";
     strUsage += "  -checkblocks=<n>       " + strprintf(_("How many blocks to check at startup (default: %u, 0 = all)"), 288) + "\n";
     strUsage += "  -checklevel=<n>        " + strprintf(_("How thorough the block verification of -checkblocks is (0-4, default: %u)"), 3) + "\n";
-    strUsage += "  -conf=<file>           " + strprintf(_("Specify configuration file (default: %s)"), "ang.conf") + "\n";
+    strUsage += "  -conf=<file>           " + strprintf(_("Specify configuration file (default: %s)"), "coinname.conf") + "\n";
     if (mode == HMM_BITCOIND)
     {
 #if !defined(WIN32)
@@ -293,7 +293,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += "  -maxorphantx=<n>       " + strprintf(_("Keep at most <n> unconnectable transactions in memory (default: %u)"), DEFAULT_MAX_ORPHAN_TRANSACTIONS) + "\n";
     strUsage += "  -par=<n>               " + strprintf(_("Set the number of script verification threads (%u to %d, 0 = auto, <0 = leave that many cores free, default: %d)"), -(int)boost::thread::hardware_concurrency(), MAX_SCRIPTCHECK_THREADS, DEFAULT_SCRIPTCHECK_THREADS) + "\n";
 #ifndef WIN32
-    strUsage += "  -pid=<file>            " + strprintf(_("Specify pid file (default: %s)"), "angd.pid") + "\n";
+    strUsage += "  -pid=<file>            " + strprintf(_("Specify pid file (default: %s)"), "coinnamed.pid") + "\n";
 #endif
     strUsage += "  -reindex               " + _("Rebuild block chain index from current blk000??.dat files") + " " + _("on startup") + "\n";
 #if !defined(WIN32)
@@ -345,17 +345,17 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += "  -keepassname=<name>      " + _("Name to construct url for KeePass entry that stores the wallet passphrase") + "\n";
     strUsage += "  -keypool=<n>             " + strprintf(_("Set key pool size to <n> (default: %u)"), 100) + "\n";
     if (GetBoolArg("-help-debug", false))
-        strUsage += "  -mintxfee=<amt>          " + strprintf(_("Fees (in ANG/Kb) smaller than this are considered zero fee for transaction creation (default: %s)"), FormatMoney(CWallet::minTxFee.GetFeePerK())) + "\n";
-    strUsage += "  -paytxfee=<amt>          " + strprintf(_("Fee (in ANG/kB) to add to transactions you send (default: %s)"), FormatMoney(payTxFee.GetFeePerK())) + "\n";
+        strUsage += "  -mintxfee=<amt>          " + strprintf(_("Fees (in COINNAME/Kb) smaller than this are considered zero fee for transaction creation (default: %s)"), FormatMoney(CWallet::minTxFee.GetFeePerK())) + "\n";
+    strUsage += "  -paytxfee=<amt>          " + strprintf(_("Fee (in COINNAME/kB) to add to transactions you send (default: %s)"), FormatMoney(payTxFee.GetFeePerK())) + "\n";
     strUsage += "  -rescan                  " + _("Rescan the block chain for missing wallet transactions") + " " + _("on startup") + "\n";
     strUsage += "  -salvagewallet           " + _("Attempt to recover private keys from a corrupt wallet.dat") + " " + _("on startup") + "\n";
     strUsage += "  -sendfreetransactions    " + strprintf(_("Send transactions as zero-fee transactions if possible (default: %u)"), 0) + "\n";
-    strUsage += "  -spendzeroconfchange     " + strprintf(_("Spend unconfirmed change when sending transactions (default: %u)"), 1) + "\n";
+    strUsage += "  -spendzeroconfchcoinnamee     " + strprintf(_("Spend unconfirmed chcoinnamee when sending transactions (default: %u)"), 1) + "\n";
     strUsage += "  -txconfirmtarget=<n>     " + strprintf(_("If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)"), 1) + "\n";
     strUsage += "  -maxtxfee=<amt>          " + strprintf(_("Maximum total fees to use in a single wallet transaction, setting too low may abort large transactions (default: %s)"), FormatMoney(maxTxFee)) + "\n";
     strUsage += "  -upgradewallet           " + _("Upgrade wallet to latest format") + " " + _("on startup") + "\n";
     strUsage += "  -wallet=<file>           " + _("Specify wallet file (within data directory)") + " " + strprintf(_("(default: %s)"), "wallet.dat") + "\n";
-    strUsage += "  -walletnotify=<cmd>      " + _("Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)") + "\n";
+    strUsage += "  -walletnotify=<cmd>      " + _("Execute command when a wallet transaction chcoinnamees (%s in cmd is replaced by TxID)") + "\n";
     if (mode == HMM_BITCOIN_QT)
         strUsage += "  -windowtitle=<name>  " + _("Wallet window title") + "\n";
     strUsage += "  -zapwallettxes=<mode>    " + _("Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup") + "\n";
@@ -378,7 +378,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += "                         " + _("If <category> is not supplied, output all debugging information.") + "\n";
     strUsage += "                         " + _("<category> can be:\n");
     strUsage += "                           addrman, alert, bench, coindb, db, lock, rand, rpc, selectcoins, mempool, net,\n"; // Don't translate these and qt below
-    strUsage += "                           ang (or specifically: darksend, instantx, masternode, keepass, mnpayments, mnbudget)"; // Don't translate these and qt below
+    strUsage += "                           coinname (or specifically: darksend, instantx, masternode, keepass, mnpayments, mnbudget)"; // Don't translate these and qt below
     if (mode == HMM_BITCOIN_QT)
         strUsage += ", qt";
     strUsage += ".\n";
@@ -395,7 +395,7 @@ std::string HelpMessage(HelpMessageMode mode)
         strUsage += "  -relaypriority         " + strprintf(_("Require high priority for relaying free or low-fee transactions (default:%u)"), 1) + "\n";
         strUsage += "  -maxsigcachesize=<n>   " + strprintf(_("Limit size of signature cache to <n> entries (default: %u)"), 50000) + "\n";
     }
-    strUsage += "  -minrelaytxfee=<amt>   " + strprintf(_("Fees (in ANG/Kb) smaller than this are considered zero fee for relaying (default: %s)"), FormatMoney(::minRelayTxFee.GetFeePerK())) + "\n";
+    strUsage += "  -minrelaytxfee=<amt>   " + strprintf(_("Fees (in COINNAME/Kb) smaller than this are considered zero fee for relaying (default: %s)"), FormatMoney(::minRelayTxFee.GetFeePerK())) + "\n";
     strUsage += "  -printtoconsole        " + strprintf(_("Send trace/debug info to console instead of debug.log file (default: %u)"), 0) + "\n";
     if (GetBoolArg("-help-debug", false))
     {
@@ -407,7 +407,7 @@ std::string HelpMessage(HelpMessageMode mode)
     }
     strUsage += "  -shrinkdebugfile       " + _("Shrink debug.log file on client startup (default: 1 when no -debug)") + "\n";
     strUsage += "  -testnet               " + _("Use the test network") + "\n";
-    strUsage += "  -litemode=<n>          " + strprintf(_("Disable all Ang specific functionality (Masternodes, Darksend, InstantX, Budgeting) (0-1, default: %u)"), 0) + "\n";
+    strUsage += "  -litemode=<n>          " + strprintf(_("Disable all Coinname specific functionality (Masternodes, Darksend, InstantX, Budgeting) (0-1, default: %u)"), 0) + "\n";
 
     strUsage += "\n" + _("Masternode options:") + "\n";
     strUsage += "  -masternode=<n>            " + strprintf(_("Enable the client to act as a masternode (0-1, default: %u)"), 0) + "\n";
@@ -415,12 +415,12 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += "  -mnconflock=<n>            " + strprintf(_("Lock masternodes from masternode configuration file (default: %u)"), 1) + "\n";
     strUsage += "  -masternodeprivkey=<n>     " + _("Set the masternode private key") + "\n";
     strUsage += "  -masternodeaddr=<n>        " + strprintf(_("Set external address:port to get to this masternode (example: %s)"), "128.127.106.235:9999") + "\n";
-    strUsage += "  -budgetvotemode=<mode>     " + _("Change automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)") + "\n";
+    strUsage += "  -budgetvotemode=<mode>     " + _("Chcoinnamee automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)") + "\n";
 
     strUsage += "\n" + _("Darksend options:") + "\n";
     strUsage += "  -enabledarksend=<n>          " + strprintf(_("Enable use of automated darksend for funds stored in this wallet (0-1, default: %u)"), 0) + "\n";
     strUsage += "  -darksendrounds=<n>          " + strprintf(_("Use N separate masternodes to anonymize funds  (2-8, default: %u)"), 2) + "\n";
-    strUsage += "  -anonymizeangamount=<n>     " + strprintf(_("Keep N ANG anonymized (default: %u)"), 0) + "\n";
+    strUsage += "  -anonymizecoinnameamount=<n>     " + strprintf(_("Keep N COINNAME anonymized (default: %u)"), 0) + "\n";
     strUsage += "  -liquidityprovider=<n>       " + strprintf(_("Provide liquidity to Darksend by infrequently mixing coins on a continual basis (0-100, default: %u, 1=very frequent, high fees, 100=very infrequent, low fees)"), 0) + "\n";
 
     strUsage += "\n" + _("InstantX options:") + "\n";
@@ -460,7 +460,7 @@ std::string LicenseInfo()
 {
     return FormatParagraph(strprintf(_("Copyright (C) 2009-%i The Bitcoin Core Developers"), COPYRIGHT_YEAR)) + "\n" +
            "\n" +
-           FormatParagraph(strprintf(_("Copyright (C) 2014-%i The Ang Core Developers"), COPYRIGHT_YEAR)) + "\n" +
+           FormatParagraph(strprintf(_("Copyright (C) 2014-%i The Coinname Core Developers"), COPYRIGHT_YEAR)) + "\n" +
            "\n" +
            FormatParagraph(_("This is experimental software.")) + "\n" +
            "\n" +
@@ -493,7 +493,7 @@ struct CImportingNow
 
 void ThreadImport(std::vector<boost::filesystem::path> vImportFiles)
 {
-    RenameThread("ang-loadblk");
+    RenameThread("coinname-loadblk");
 
     // -reindex
     if (fReindex) {
@@ -551,7 +551,7 @@ void ThreadImport(std::vector<boost::filesystem::path> vImportFiles)
 }
 
 /** Sanity checks
- *  Ensure that Ang is running in a usable environment with all
+ *  Ensure that Coinname is running in a usable environment with all
  *  necessary library support.
  */
 bool InitSanityCheck(void)
@@ -569,7 +569,7 @@ bool InitSanityCheck(void)
 
 
 
-/** Initialize ang.
+/** Initialize coinname.
  *  @pre Parameters should be parsed and config file should be read.
  */
 bool AppInit2(boost::thread_group& threadGroup)
@@ -811,7 +811,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
     }
     nTxConfirmTarget = GetArg("-txconfirmtarget", 1);
-    bSpendZeroConfChange = GetArg("-spendzeroconfchange", true);
+    bSpendZeroConfChcoinnamee = GetArg("-spendzeroconfchcoinnamee", true);
     fSendFreeTransactions = GetArg("-sendfreetransactions", false);
 
     std::string strWalletFile = GetArg("-wallet", "wallet.dat");
@@ -826,7 +826,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     // Sanity check
     if (!InitSanityCheck())
-        return InitError(_("Initialization sanity check failed. Ang Core is shutting down."));
+        return InitError(_("Initialization sanity check failed. Coinname Core is shutting down."));
 
     std::string strDataDir = GetDataDir().string();
 #ifdef ENABLE_WALLET
@@ -834,7 +834,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     if (strWalletFile != boost::filesystem::basename(strWalletFile) + boost::filesystem::extension(strWalletFile))
         return InitError(strprintf(_("Wallet %s resides outside data directory %s"), strWalletFile, strDataDir));
 #endif
-    // Make sure only a single Ang process is using the data directory.
+    // Make sure only a single Coinname process is using the data directory.
     boost::filesystem::path pathLockFile = GetDataDir() / ".lock";
     FILE* file = fopen(pathLockFile.string().c_str(), "a"); // empty lock file; created if it doesn't exist.
     if (file) fclose(file);
@@ -842,7 +842,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     // Wait maximum 10 seconds if an old wallet is still running. Avoids lockup during restart
     if (!lock.timed_lock(boost::get_system_time() + boost::posix_time::seconds(10)))
-        return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Ang Core is probably already running."), strDataDir));
+        return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Coinname Core is probably already running."), strDataDir));
 
 #ifndef WIN32
     CreatePidFile(GetPidFile(), getpid());
@@ -850,7 +850,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     if (GetBoolArg("-shrinkdebugfile", !fDebug))
         ShrinkDebugFile();
     LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    LogPrintf("Ang version %s (%s)\n", FormatFullVersion(), CLIENT_DATE);
+    LogPrintf("Coinname version %s (%s)\n", FormatFullVersion(), CLIENT_DATE);
     LogPrintf("Using OpenSSL version %s\n", SSLeay_version(SSLEAY_VERSION));
 #ifdef ENABLE_WALLET
     LogPrintf("Using BerkeleyDB version %s\n", DbEnv::version(0, 0, 0));
@@ -1034,7 +1034,7 @@ bool AppInit2(boost::thread_group& threadGroup)
             CSubNet subnet(net);
             if (!subnet.IsValid())
                 return InitError(strprintf(_("Invalid netmask specified in -whitelist: '%s'"), net));
-            CNode::AddWhitelistedRange(subnet);
+            CNode::AddWhitelistedRcoinnamee(subnet);
         }
     }
 
@@ -1166,15 +1166,15 @@ bool AppInit2(boost::thread_group& threadGroup)
         do {
             try {
                 UnloadBlockIndex();
-                delete angsTip;
-                delete angsdbview;
-                delete angscatcher;
+                delete coinnamesTip;
+                delete coinnamesdbview;
+                delete coinnamescatcher;
                 delete pblocktree;
 
                 pblocktree = new CBlockTreeDB(nBlockTreeDBCache, false, fReindex);
-                angsdbview = new CCoinsViewDB(nCoinDBCache, false, fReindex);
-                angscatcher = new CCoinsViewErrorCatcher(angsdbview);
-                angsTip = new CCoinsViewCache(angscatcher);
+                coinnamesdbview = new CCoinsViewDB(nCoinDBCache, false, fReindex);
+                coinnamescatcher = new CCoinsViewErrorCatcher(coinnamesdbview);
+                coinnamesTip = new CCoinsViewCache(coinnamescatcher);
 
                 if (fReindex)
                     pblocktree->WriteReindexing(true);
@@ -1195,14 +1195,14 @@ bool AppInit2(boost::thread_group& threadGroup)
                     break;
                 }
 
-                // Check for changed -txindex state
+                // Check for chcoinnameed -txindex state
                 if (fTxIndex != GetBoolArg("-txindex", true)) {
-                    strLoadError = _("You need to rebuild the database using -reindex to change -txindex");
+                    strLoadError = _("You need to rebuild the database using -reindex to chcoinnamee -txindex");
                     break;
                 }
 
                 uiInterface.InitMessage(_("Verifying blocks..."));
-                if (!CVerifyDB().VerifyDB(angsdbview, GetArg("-checklevel", 3),
+                if (!CVerifyDB().VerifyDB(coinnamesdbview, GetArg("-checklevel", 3),
                               GetArg("-checkblocks", 288))) {
                     strLoadError = _("Corrupted block database detected");
                     break;
@@ -1293,10 +1293,10 @@ bool AppInit2(boost::thread_group& threadGroup)
                 InitWarning(msg);
             }
             else if (nLoadWalletRet == DB_TOO_NEW)
-                strErrors << _("Error loading wallet.dat: Wallet requires newer version of Ang Core") << "\n";
+                strErrors << _("Error loading wallet.dat: Wallet requires newer version of Coinname Core") << "\n";
             else if (nLoadWalletRet == DB_NEED_REWRITE)
             {
-                strErrors << _("Wallet needed to be rewritten: restart Ang Core to complete") << "\n";
+                strErrors << _("Wallet needed to be rewritten: restart Coinname Core to complete") << "\n";
                 LogPrintf("%s", strErrors.str());
                 return InitError(strErrors.str());
             }
@@ -1533,7 +1533,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         nDarksendRounds = 99999;
     }
 
-    nAnonymizeDarkcoinAmount = GetArg("-anonymizeangamount", 0);
+    nAnonymizeDarkcoinAmount = GetArg("-anonymizecoinnameamount", 0);
     if(nAnonymizeDarkcoinAmount > 999999) nAnonymizeDarkcoinAmount = 999999;
     if(nAnonymizeDarkcoinAmount < 2) nAnonymizeDarkcoinAmount = 2;
 
@@ -1550,7 +1550,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     LogPrintf("fLiteMode %d\n", fLiteMode);
     LogPrintf("nInstantXDepth %d\n", nInstantXDepth);
     LogPrintf("Darksend rounds %d\n", nDarksendRounds);
-    LogPrintf("Anonymize Ang Amount %d\n", nAnonymizeDarkcoinAmount);
+    LogPrintf("Anonymize Coinname Amount %d\n", nAnonymizeDarkcoinAmount);
     LogPrintf("Budget Mode %s\n", strBudgetMode.c_str());
 
     /* Denominations

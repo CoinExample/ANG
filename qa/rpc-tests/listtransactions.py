@@ -43,7 +43,7 @@ class ListTransactionsTest(BitcoinTestFramework):
         check_array_result(self.nodes[1].listtransactions(),
                            {"txid":txid},
                            {"category":"receive","account":"","amount":Decimal("0.1"),"confirmations":0})
-        # mine a block, confirmations should change:
+        # mine a block, confirmations should chcoinnamee:
         self.nodes[0].setgenerate(True, 1)
         self.sync_all()
         check_array_result(self.nodes[0].listtransactions(),

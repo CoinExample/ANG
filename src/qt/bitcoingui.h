@@ -6,7 +6,7 @@
 #define BITCOIN_QT_BITCOINGUI_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/ang-config.h"
+#include "config/coinname-config.h"
 #endif
 
 #include "amount.h"
@@ -68,7 +68,7 @@ public:
     bool enableWallet;
 
 protected:
-    void changeEvent(QEvent *e);
+    void chcoinnameeEvent(QEvent *e);
     void closeEvent(QCloseEvent *event);
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
@@ -101,7 +101,7 @@ private:
     QAction *toggleHideAction;
     QAction *encryptWalletAction;
     QAction *backupWalletAction;
-    QAction *changePassphraseAction;
+    QAction *chcoinnameePassphraseAction;
     QAction *unlockWalletAction;
     QAction *lockWalletAction;
     QAction *aboutQtAction;
@@ -244,7 +244,7 @@ private:
     void createContextMenu();
 
 private slots:
-    /** When Display Units are changed on OptionsModel it will refresh the display text of the control on the status bar */
+    /** When Display Units are chcoinnameed on OptionsModel it will refresh the display text of the control on the status bar */
     void updateDisplayUnit(int newUnits);
     /** Tells underlying optionsModel to update its current display unit. */
     void onMenuSelection(QAction* action);

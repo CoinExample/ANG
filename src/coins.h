@@ -319,7 +319,7 @@ public:
     //! Retrieve the block hash whose state this CCoinsView currently represents
     virtual uint256 GetBestBlock() const;
 
-    //! Do a bulk modification (multiple CCoins changes + BestBlock change).
+    //! Do a bulk modification (multiple CCoins chcoinnamees + BestBlock chcoinnamee).
     //! The passed mapCoins can be modified.
     virtual bool BatchWrite(CCoinsMap &mapCoins, const uint256 &hashBlock);
 
@@ -410,7 +410,7 @@ public:
 
     /**
      * Push the modifications applied to this cache to its base.
-     * Failure to call this method before destruction will cause the changes to be forgotten.
+     * Failure to call this method before destruction will cause the chcoinnamees to be forgotten.
      * If false is returned, the state of this cache (and its backing view) will be undefined.
      */
     bool Flush();
@@ -419,7 +419,7 @@ public:
     unsigned int GetCacheSize() const;
 
     /** 
-     * Amount of ang coming in to a transaction
+     * Amount of coinname coming in to a transaction
      * Note that lightweight clients may not know anything besides the hash of previous transactions,
      * so may not be able to calculate this.
      *

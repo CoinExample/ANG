@@ -27,7 +27,7 @@ RecentRequestsTableModel::RecentRequestsTableModel(CWallet *wallet, WalletModel 
     /* These columns must match the indices in the ColumnIndex enumeration */
     columns << tr("Date") << tr("Label") << tr("Message") << getAmountTitle();
 
-    connect(walletModel->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
+    connect(walletModel->getOptionsModel(), SIGNAL(displayUnitChcoinnameed(int)), this, SLOT(updateDisplayUnit()));
 }
 
 RecentRequestsTableModel::~RecentRequestsTableModel()
@@ -114,11 +114,11 @@ QVariant RecentRequestsTableModel::headerData(int section, Qt::Orientation orien
     return QVariant();
 }
 
-/** Updates the column title to "Amount (DisplayUnit)" and emits headerDataChanged() signal for table headers to react. */
+/** Updates the column title to "Amount (DisplayUnit)" and emits headerDataChcoinnameed() signal for table headers to react. */
 void RecentRequestsTableModel::updateAmountColumnTitle()
 {
     columns[Amount] = getAmountTitle();
-    emit headerDataChanged(Qt::Horizontal,Amount,Amount);
+    emit headerDataChcoinnameed(Qt::Horizontal,Amount,Amount);
 }
 
 /** Gets title for amount column including current display unit if optionsModel reference available. */
@@ -213,7 +213,7 @@ void RecentRequestsTableModel::addNewRequest(RecentRequestEntry &recipient)
 void RecentRequestsTableModel::sort(int column, Qt::SortOrder order)
 {
     qSort(list.begin(), list.end(), RecentRequestEntryLessThan(column, order));
-    emit dataChanged(index(0, 0, QModelIndex()), index(list.size() - 1, NUMBER_OF_COLUMNS - 1, QModelIndex()));
+    emit dataChcoinnameed(index(0, 0, QModelIndex()), index(list.size() - 1, NUMBER_OF_COLUMNS - 1, QModelIndex()));
 }
 
 void RecentRequestsTableModel::updateDisplayUnit()

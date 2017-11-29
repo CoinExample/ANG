@@ -12,7 +12,7 @@ AC_DEFUN([BITCOIN_FIND_BDB48],[
   done
   for searchpath in $bdbdirlist ''; do
     test -n "${searchpath}" && searchpath="${searchpath}/"
-    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+    AC_COMPILE_IFELSE([AC_LCOINNAME_PROGRAM([[
       #include <${searchpath}db_cxx.h>
     ]],[[
       #if !((DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 8) || DB_VERSION_MAJOR > 4)
@@ -25,7 +25,7 @@ AC_DEFUN([BITCOIN_FIND_BDB48],[
     ],[
       continue
     ])
-    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+    AC_COMPILE_IFELSE([AC_LCOINNAME_PROGRAM([[
       #include <${searchpath}db_cxx.h>
     ]],[[
       #if !(DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR == 8)

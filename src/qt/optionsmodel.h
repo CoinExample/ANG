@@ -16,7 +16,7 @@ QT_END_NAMESPACE
 /** Interface from Qt to configuration data structure for Bitcoin client.
    To Qt, the options are presented as a list with the different options
    laid out vertically.
-   This can be changed to a tree once the settings become sufficiently
+   This can be chcoinnameed to a tree once the settings become sufficiently
    complex.
  */
 class OptionsModel : public QAbstractListModel
@@ -38,11 +38,11 @@ public:
         ThirdPartyTxUrls,       // QString
         Digits,                 // QString
         Theme,                  // QString
-        Language,               // QString
+        Lcoinnameuage,               // QString
         CoinControlFeatures,    // bool
         ThreadsScriptVerif,     // int
         DatabaseCache,          // int
-        SpendZeroConfChange,    // bool
+        SpendZeroConfChcoinnamee,    // bool
         DarksendRounds,    // int
         AnonymizeDarkcoinAmount, //int
         Listen,                 // bool
@@ -55,7 +55,7 @@ public:
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
     bool setData(const QModelIndex & index, const QVariant & value, int role = Qt::EditRole);
-    /** Updates current unit in memory, settings and emits displayUnitChanged(newUnit) signal */
+    /** Updates current unit in memory, settings and emits displayUnitChcoinnameed(newUnit) signal */
     void setDisplayUnit(const QVariant &value);
 
     /* Explicit getters */
@@ -76,7 +76,7 @@ private:
     /* Qt-only settings */
     bool fMinimizeToTray;
     bool fMinimizeOnClose;
-    QString language;
+    QString lcoinnameuage;
     int nDisplayUnit;
     QString strThirdPartyTxUrls;
     bool fCoinControlFeatures;
@@ -87,10 +87,10 @@ private:
     void addOverriddenOption(const std::string &option);
 
 signals:
-    void displayUnitChanged(int unit);
-    void darksendRoundsChanged(int);
-    void anonymizeDarkcoinAmountChanged(int);
-    void coinControlFeaturesChanged(bool);
+    void displayUnitChcoinnameed(int unit);
+    void darksendRoundsChcoinnameed(int);
+    void anonymizeDarkcoinAmountChcoinnameed(int);
+    void coinControlFeaturesChcoinnameed(bool);
 };
 
 #endif // BITCOIN_QT_OPTIONSMODEL_H

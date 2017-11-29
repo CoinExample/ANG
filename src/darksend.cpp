@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -35,8 +35,8 @@ map<uint256, CDarksendBroadcastTx> mapDarksendBroadcastTxes;
 // Keep track of the active Masternode
 CActiveMasternode activeMasternode;
 
-/* *** BEGIN DARKSEND MAGIC - ANG **********
-    Copyright (c) 2014-2015, Ang Developers
+/* *** BEGIN DARKSEND MAGIC - COINNAME **********
+    Copyright (c) 2014-2015, Coinname Developers
         eduffield - evan@andrijKolomiets.io
         udjinm6   - udjinm6@andrijKolomiets.io
 */
@@ -409,7 +409,7 @@ void CDarksendPool::SetNull(){
     entries.clear();
     finalTransaction.vin.clear();
     finalTransaction.vout.clear();
-    lastTimeChanged = GetTimeMillis();
+    lastTimeChcoinnameed = GetTimeMillis();
 
     // -- seed random number generator (used for ordering output lists)
     unsigned int seed = 0;
@@ -503,7 +503,7 @@ std::string CDarksendPool::GetStatus()
 void CDarksendPool::Check()
 {
     if(fMasterNode) LogPrint("darksend", "CDarksendPool::Check() - entries count %lu\n", entries.size());
-    //printf("CDarksendPool::Check() %d - %d - %d\n", state, anonTx.CountEntries(), GetTimeMillis()-lastTimeChanged);
+    //printf("CDarksendPool::Check() %d - %d - %d\n", state, anonTx.CountEntries(), GetTimeMillis()-lastTimeChcoinnameed);
 
     if(fMasterNode) {
         LogPrint("darksend", "CDarksendPool::Check() - entries count %lu\n", entries.size());
@@ -555,7 +555,7 @@ void CDarksendPool::Check()
     }
 
     // reset if we're here for 10 seconds
-    if((state == POOL_STATUS_ERROR || state == POOL_STATUS_SUCCESS) && GetTimeMillis()-lastTimeChanged >= 10000) {
+    if((state == POOL_STATUS_ERROR || state == POOL_STATUS_SUCCESS) && GetTimeMillis()-lastTimeChcoinnameed >= 10000) {
         LogPrint("darksend", "CDarksendPool::Check() -- timeout, RESETTING\n");
         UnlockCoins();
         SetNull();
@@ -766,7 +766,7 @@ void CDarksendPool::ChargeRandomFees(){
 
                 Being that Darksend has "no fees" we need to have some kind of cost associated
                 with using it to stop abuse. Otherwise it could serve as an attack vector and
-                allow endless transaction that would bloat Ang and make it unusable. To
+                allow endless transaction that would bloat Coinname and make it unusable. To
                 stop these kinds of attacks 1 in 10 successful transactions are charged. This
                 adds up to a cost of 0.001DRK per transaction on average.
             */
@@ -794,7 +794,7 @@ void CDarksendPool::ChargeRandomFees(){
 void CDarksendPool::CheckTimeout(){
     if(!fEnableDarksend && !fMasterNode) return;
 
-    // catching hanging sessions
+    // catching hcoinnameing sessions
     if(!fMasterNode) {
         switch(state) {
             case POOL_STATUS_TRANSMISSION:
@@ -846,11 +846,11 @@ void CDarksendPool::CheckTimeout(){
             c++;
         }
 
-        if(GetTimeMillis()-lastTimeChanged >= (DARKSEND_QUEUE_TIMEOUT*1000)+addLagTime){
+        if(GetTimeMillis()-lastTimeChcoinnameed >= (DARKSEND_QUEUE_TIMEOUT*1000)+addLagTime){
             UnlockCoins();
             SetNull();
         }
-    } else if(GetTimeMillis()-lastTimeChanged >= (DARKSEND_QUEUE_TIMEOUT*1000)+addLagTime){
+    } else if(GetTimeMillis()-lastTimeChcoinnameed >= (DARKSEND_QUEUE_TIMEOUT*1000)+addLagTime){
         LogPrint("darksend", "CDarksendPool::CheckTimeout() -- Session timed out (%ds) -- resetting\n", DARKSEND_QUEUE_TIMEOUT);
         UnlockCoins();
         SetNull();
@@ -859,7 +859,7 @@ void CDarksendPool::CheckTimeout(){
         lastMessage = _("Session timed out.");
     }
 
-    if(state == POOL_STATUS_SIGNING && GetTimeMillis()-lastTimeChanged >= (DARKSEND_SIGNING_TIMEOUT*1000)+addLagTime ) {
+    if(state == POOL_STATUS_SIGNING && GetTimeMillis()-lastTimeChcoinnameed >= (DARKSEND_SIGNING_TIMEOUT*1000)+addLagTime ) {
             LogPrint("darksend", "CDarksendPool::CheckTimeout() -- Session timed out (%ds) -- restting\n", DARKSEND_SIGNING_TIMEOUT);
             ChargeFees();
             UnlockCoins();
@@ -1288,7 +1288,7 @@ bool CDarksendPool::SignFinalTransaction(CTransaction& finalTransactionNew, CNod
                 const CKeyStore& keystore = *pwalletMain;
 
                 LogPrint("darksend", "CDarksendPool::Sign - Signing my input %i\n", mine);
-                if(!SignSignature(keystore, prevPubKey, finalTransaction, mine, int(SIGHASH_ALL|SIGHASH_ANYONECANPAY))) { // changes scriptSig
+                if(!SignSignature(keystore, prevPubKey, finalTransaction, mine, int(SIGHASH_ALL|SIGHASH_ANYONECANPAY))) { // chcoinnamees scriptSig
                     LogPrint("darksend", "CDarksendPool::Sign - Unable to sign my own transaction! \n");
                     // not sure what to do here, it will timeout...?
                 }
@@ -1593,7 +1593,7 @@ bool CDarksendPool::DoAutomaticDenominating(bool fDryRun)
                 continue;
             }
 
-            lastTimeChanged = GetTimeMillis();
+            lastTimeChcoinnameed = GetTimeMillis();
             LogPrintf("DoAutomaticDenominating -- attempt %d connection to Masternode %s\n", i, pmn->addr.ToString());
             CNode* pnode = ConnectNode((CAddress)pmn->addr, NULL, true);
             if(pnode != NULL){
@@ -1637,7 +1637,7 @@ bool CDarksendPool::PrepareDarksendDenominate()
         if(strError == "") return true;
     }
 
-    // We failed? That's strange but let's just make final attempt and try to mix everything
+    // We failed? That's strcoinnamee but let's just make final attempt and try to mix everything
     strError = pwalletMain->PrepareDarksendDenominate(0, nDarksendRounds);
     LogPrintf("DoAutomaticDenominating : Running Darksend denominate for all rounds. Return '%s'\n", strError);
     if(strError == "") return true;
@@ -1655,13 +1655,13 @@ bool CDarksendPool::SendRandomPaymentToSelf()
 
     if(nPayment > nBalance) nPayment = nBalance-(0.1*COIN);
 
-    // make our change address
+    // make our chcoinnamee address
     CReserveKey reservekey(pwalletMain);
 
-    CScript scriptChange;
+    CScript scriptChcoinnamee;
     CPubKey vchPubKey;
     assert(reservekey.GetReservedKey(vchPubKey)); // should never fail, as we just unlocked
-    scriptChange = GetScriptForDestination(vchPubKey.GetID());
+    scriptChcoinnamee = GetScriptForDestination(vchPubKey.GetID());
 
     CWalletTx wtx;
     int64_t nFeeRet = 0;
@@ -1669,7 +1669,7 @@ bool CDarksendPool::SendRandomPaymentToSelf()
     vector< pair<CScript, int64_t> > vecSend;
 
     // ****** Add fees ************ /
-    vecSend.push_back(make_pair(scriptChange, nPayment));
+    vecSend.push_back(make_pair(scriptChcoinnamee, nPayment));
 
     CCoinControl *coinControl=NULL;
     bool success = pwalletMain->CreateTransaction(vecSend, wtx, reservekey, nFeeRet, strFail, coinControl, ONLY_DENOMINATED);
@@ -1696,8 +1696,8 @@ bool CDarksendPool::MakeCollateralAmounts()
 
     // make our collateral address
     CReserveKey reservekeyCollateral(pwalletMain);
-    // make our change address
-    CReserveKey reservekeyChange(pwalletMain);
+    // make our chcoinnamee address
+    CReserveKey reservekeyChcoinnamee(pwalletMain);
 
     CScript scriptCollateral;
     CPubKey vchPubKey;
@@ -1707,13 +1707,13 @@ bool CDarksendPool::MakeCollateralAmounts()
     vecSend.push_back(make_pair(scriptCollateral, DARKSEND_COLLATERAL*4));
 
     // try to use non-denominated and not mn-like funds
-    bool success = pwalletMain->CreateTransaction(vecSend, wtx, reservekeyChange,
+    bool success = pwalletMain->CreateTransaction(vecSend, wtx, reservekeyChcoinnamee,
             nFeeRet, strFail, coinControl, ONLY_NONDENOMINATED_NOT1000IFMN);
     if(!success){
         // if we failed (most likeky not enough funds), try to use all coins instead -
         // MN-like funds should not be touched in any case and we can't mix denominated without collaterals anyway
         LogPrintf("MakeCollateralAmounts: ONLY_NONDENOMINATED_NOT1000IFMN Error - %s\n", strFail);
-        success = pwalletMain->CreateTransaction(vecSend, wtx, reservekeyChange,
+        success = pwalletMain->CreateTransaction(vecSend, wtx, reservekeyChcoinnamee,
                 nFeeRet, strFail, coinControl, ONLY_NOT1000IFMN);
         if(!success){
             LogPrintf("MakeCollateralAmounts: ONLY_NOT1000IFMN Error - %s\n", strFail);
@@ -1727,7 +1727,7 @@ bool CDarksendPool::MakeCollateralAmounts()
     LogPrintf("MakeCollateralAmounts: tx %s\n", wtx.GetHash().GetHex());
 
     // use the same cachedLastSuccess as for DS mixinx to prevent race
-    if(!pwalletMain->CommitTransaction(wtx, reservekeyChange)) {
+    if(!pwalletMain->CommitTransaction(wtx, reservekeyChcoinnamee)) {
         LogPrintf("MakeCollateralAmounts: CommitTransaction failed!\n");
         return false;
     }
@@ -1748,8 +1748,8 @@ bool CDarksendPool::CreateDenominated(int64_t nTotalValue)
 
     // make our collateral address
     CReserveKey reservekeyCollateral(pwalletMain);
-    // make our change address
-    CReserveKey reservekeyChange(pwalletMain);
+    // make our chcoinnamee address
+    CReserveKey reservekeyChcoinnamee(pwalletMain);
     // make our denom addresses
     CReserveKey reservekeyDenom(pwalletMain);
 
@@ -1772,7 +1772,7 @@ bool CDarksendPool::CreateDenominated(int64_t nTotalValue)
         while(nValueLeft - v >= DARKSEND_COLLATERAL && nOutputs <= 10) {
             CScript scriptDenom;
             CPubKey vchPubKey;
-            //use a unique change address
+            //use a unique chcoinnamee address
             assert(reservekeyDenom.GetReservedKey(vchPubKey)); // should never fail, as we just unlocked
             scriptDenom = GetScriptForDestination(vchPubKey.GetID());
             // TODO: do not keep reservekeyDenom here
@@ -1790,10 +1790,10 @@ bool CDarksendPool::CreateDenominated(int64_t nTotalValue)
     }
     LogPrintf("CreateDenominated2 %d\n", nValueLeft);
 
-    // if we have anything left over, it will be automatically send back as change - there is no need to send it manually
+    // if we have anything left over, it will be automatically send back as chcoinnamee - there is no need to send it manually
 
     CCoinControl *coinControl=NULL;
-    bool success = pwalletMain->CreateTransaction(vecSend, wtx, reservekeyChange,
+    bool success = pwalletMain->CreateTransaction(vecSend, wtx, reservekeyChcoinnamee,
             nFeeRet, strFail, coinControl, ONLY_NONDENOMINATED_NOT1000IFMN);
     if(!success){
         LogPrintf("CreateDenominated: Error - %s\n", strFail);
@@ -1806,7 +1806,7 @@ bool CDarksendPool::CreateDenominated(int64_t nTotalValue)
     reservekeyCollateral.KeepKey();
 
     // use the same cachedLastSuccess as for DS mixinx to prevent race
-    if(pwalletMain->CommitTransaction(wtx, reservekeyChange))
+    if(pwalletMain->CommitTransaction(wtx, reservekeyChcoinnamee))
         cachedLastSuccess = chainActive.Tip()->nHeight;
     else
         LogPrintf("CreateDenominated: CommitTransaction failed!\n");
@@ -1853,7 +1853,7 @@ bool CDarksendPool::IsCompatibleWithSession(int64_t nDenom, CTransaction txColla
         sessionID = 1 + (rand() % 999999);
         sessionDenom = nDenom;
         sessionUsers++;
-        lastTimeChanged = GetTimeMillis();
+        lastTimeChcoinnameed = GetTimeMillis();
 
         if(!unitTest){
             //broadcast that I'm accepting entries, only if it's the first entry through
@@ -1885,7 +1885,7 @@ bool CDarksendPool::IsCompatibleWithSession(int64_t nDenom, CTransaction txColla
     LogPrintf("CDarkSendPool::IsCompatibleWithSession - compatible\n");
 
     sessionUsers++;
-    lastTimeChanged = GetTimeMillis();
+    lastTimeChcoinnameed = GetTimeMillis();
     vecSessionCollateral.push_back(txCollateral);
 
     return true;
@@ -2223,7 +2223,7 @@ void ThreadCheckDarkSendPool()
     if(fLiteMode) return; //disable all Darksend/Masternode related functionality
 
     // Make this thread recognisable as the wallet flushing thread
-    RenameThread("ang-darksend");
+    RenameThread("coinname-darksend");
 
     unsigned int c = 0;
 

@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -51,7 +51,7 @@ static void convertSeed6(std::vector<CAddress> &vSeedsOut, const SeedSpec6 *data
  * + Is surrounded by blocks with reasonable timestamps
  *   (no blocks before with a timestamp after, none after with
  *    timestamp before)
- * + Contains no strange transactions
+ * + Contains no strcoinnamee transactions
  */
 
 static Checkpoints::MapCheckpoints mapCheckpoints =
@@ -105,14 +105,14 @@ public:
         pchMessageStart[3] = 0x4f;
         vAlertPubKey = ParseHex("0478e2b22bce9d86ef1c1fb101bb9f11d833ebe1ab8ae070292c69c15793079c16a3172cd4f0ee2164d4767c30c8a7e258ed90b94e257530ffff0b112b05f1495e");
         nDefaultPort = 9887;
-        bnProofOfWorkLimit = ~uint256(0) >> 20;  // Ang starting difficulty is 1 / 2^12
+        bnProofOfWorkLimit = ~uint256(0) >> 20;  // Coinname starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;
         nEnforceBlockUpgradeMajority = 750;
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
-        nTargetTimespan = 24 * 60 * 60; // Ang: 1 day
-        nTargetSpacing = 2.5 * 60; // Ang: 2.5 minutes
+        nTargetTimespan = 24 * 60 * 60; // Coinname: 1 day
+        nTargetSpacing = 2.5 * 60; // Coinname: 2.5 minutes
 
         /**
          * Build the genesis block. Note that the output of the genesis coinbase cannot
@@ -145,12 +145,12 @@ public:
 
         vSeeds.clear();
 
-        base58Prefixes[PUBKEY_ADDRESS] = list_of( 76);                    // Ang addresses start with 'X'
-        base58Prefixes[SCRIPT_ADDRESS] = list_of( 16);                    // Ang script addresses start with '7'
-        base58Prefixes[SECRET_KEY] =     list_of(204);                    // Ang private keys start with '7' or 'X'
-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x02)(0xFE)(0x52)(0xF8); // Ang BIP32 pubkeys start with 'drkv'
-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x02)(0xFE)(0x52)(0xCC); // Ang BIP32 prvkeys start with 'drkp'
-        base58Prefixes[EXT_COIN_TYPE]  = list_of(0x80000005);             // Ang BIP44 coin type is '5'
+        base58Prefixes[PUBKEY_ADDRESS] = list_of( 76);                    // Coinname addresses start with 'X'
+        base58Prefixes[SCRIPT_ADDRESS] = list_of( 16);                    // Coinname script addresses start with '7'
+        base58Prefixes[SECRET_KEY] =     list_of(204);                    // Coinname private keys start with '7' or 'X'
+        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x02)(0xFE)(0x52)(0xF8); // Coinname BIP32 pubkeys start with 'drkv'
+        base58Prefixes[EXT_SECRET_KEY] = list_of(0x02)(0xFE)(0x52)(0xCC); // Coinname BIP32 prvkeys start with 'drkp'
+        base58Prefixes[EXT_COIN_TYPE]  = list_of(0x80000005);             // Coinname BIP44 coin type is '5'
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
@@ -195,8 +195,8 @@ public:
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
         nMinerThreads = 0;
-        nTargetTimespan = 24 * 60 * 60; // Ang: 1 day
-        nTargetSpacing = 2.5 * 60; // Ang: 2.5 minutes
+        nTargetTimespan = 24 * 60 * 60; // Coinname: 1 day
+        nTargetSpacing = 2.5 * 60; // Coinname: 2.5 minutes
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1511338801;
@@ -208,16 +208,16 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
         /*vSeeds.push_back(CDNSSeedData("andrijKolomiets.io", "testnet-seed.andrijKolomiets.io"));
-        vSeeds.push_back(CDNSSeedData("ang.qa", "testnet-seed.ang.qa"));
+        vSeeds.push_back(CDNSSeedData("coinname.qa", "testnet-seed.coinname.qa"));
         *///legacy seeders
         vSeeds.clear();
 
-        base58Prefixes[PUBKEY_ADDRESS] = list_of(139);                    // Testnet ang addresses start with 'x' or 'y'
-        base58Prefixes[SCRIPT_ADDRESS] = list_of( 19);                    // Testnet ang script addresses start with '8' or '9'
+        base58Prefixes[PUBKEY_ADDRESS] = list_of(139);                    // Testnet coinname addresses start with 'x' or 'y'
+        base58Prefixes[SCRIPT_ADDRESS] = list_of( 19);                    // Testnet coinname script addresses start with '8' or '9'
         base58Prefixes[SECRET_KEY]     = list_of(239);                    // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x3a)(0x80)(0x61)(0xa0); // Testnet ang BIP32 pubkeys start with 'DRKV'
-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x3a)(0x80)(0x58)(0x37); // Testnet ang BIP32 prvkeys start with 'DRKP'
-        base58Prefixes[EXT_COIN_TYPE]  = list_of(0x80000001);             // Testnet ang BIP44 coin type is '5' (All coin's testnet default)
+        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x3a)(0x80)(0x61)(0xa0); // Testnet coinname BIP32 pubkeys start with 'DRKV'
+        base58Prefixes[EXT_SECRET_KEY] = list_of(0x3a)(0x80)(0x58)(0x37); // Testnet coinname BIP32 prvkeys start with 'DRKP'
+        base58Prefixes[EXT_COIN_TYPE]  = list_of(0x80000001);             // Testnet coinname BIP44 coin type is '5' (All coin's testnet default)
 
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
 
@@ -259,8 +259,8 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 1;
-        nTargetTimespan = 24 * 60 * 60; // Ang: 1 day
-        nTargetSpacing = 2.5 * 60; // Ang: 2.5 minutes
+        nTargetTimespan = 24 * 60 * 60; // Coinname: 1 day
+        nTargetSpacing = 2.5 * 60; // Coinname: 2.5 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         genesis.nTime = 1511338803;
         genesis.nBits = 0x207fffff;
@@ -312,7 +312,7 @@ public:
         return data;
     }
 
-    //! Published setters to allow changing values in unit test cases
+    //! Published setters to allow chcoinnameing values in unit test cases
     virtual void setSubsidyHalvingInterval(int anSubsidyHalvingInterval)  { nSubsidyHalvingInterval=anSubsidyHalvingInterval; }
     virtual void setEnforceBlockUpgradeMajority(int anEnforceBlockUpgradeMajority)  { nEnforceBlockUpgradeMajority=anEnforceBlockUpgradeMajority; }
     virtual void setRejectBlockOutdatedMajority(int anRejectBlockOutdatedMajority)  { nRejectBlockOutdatedMajority=anRejectBlockOutdatedMajority; }

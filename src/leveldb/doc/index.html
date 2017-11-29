@@ -168,7 +168,7 @@ in a database.
   delete it;
 </pre>
 The following variation shows how to process just the keys in the
-range <code>[start,limit)</code>:
+rcoinnamee <code>[start,limit)</code>:
 <p>
 <pre>
   for (it-&gt;Seek(start);
@@ -296,8 +296,8 @@ Now create a database using this custom comparator:
 <p>
 The result of the comparator's <code>Name</code> method is attached to the
 database when it is created, and is checked on every subsequent
-database open.  If the name changes, the <code>leveldb::DB::Open</code> call will
-fail.  Therefore, change the name if and only if the new key format
+database open.  If the name chcoinnamees, the <code>leveldb::DB::Open</code> call will
+fail.  Therefore, chcoinnamee the name if and only if the new key format
 and comparison function are incompatible with existing databases, and
 it is ok to discard the contents of all existing databases.
 <p>
@@ -307,12 +307,12 @@ number at the end of each key (one byte should suffice for most uses).
 When you wish to switch to a new key format (e.g., adding an optional
 third part to the keys processed by <code>TwoPartComparator</code>),
 (a) keep the same comparator name (b) increment the version number
-for new keys (c) change the comparator function so it uses the
+for new keys (c) chcoinnamee the comparator function so it uses the
 version numbers found in the keys to decide how to interpret them.
 <p>
 <h1>Performance</h1>
 <p>
-Performance can be tuned by changing the default values of the
+Performance can be tuned by chcoinnameing the default values of the
 types defined in <code>include/leveldb/options.h</code>.
 
 <p>
@@ -491,18 +491,18 @@ checksums are verified:
 <h1>Approximate Sizes</h1>
 <p>
 The <code>GetApproximateSizes</code> method can used to get the approximate
-number of bytes of file system space used by one or more key ranges.
+number of bytes of file system space used by one or more key rcoinnamees.
 <p>
 <pre>
-   leveldb::Range ranges[2];
-   ranges[0] = leveldb::Range("a", "c");
-   ranges[1] = leveldb::Range("x", "z");
+   leveldb::Rcoinnamee rcoinnamees[2];
+   rcoinnamees[0] = leveldb::Rcoinnamee("a", "c");
+   rcoinnamees[1] = leveldb::Rcoinnamee("x", "z");
    uint64_t sizes[2];
-   leveldb::Status s = db-&gt;GetApproximateSizes(ranges, 2, sizes);
+   leveldb::Status s = db-&gt;GetApproximateSizes(rcoinnamees, 2, sizes);
 </pre>
 The preceding call will set <code>sizes[0]</code> to the approximate number of
-bytes of file system space used by the key range <code>[a..c)</code> and
-<code>sizes[1]</code> to the approximate number of bytes used by the key range
+bytes of file system space used by the key rcoinnamee <code>[a..c)</code> and
+<code>sizes[1]</code> to the approximate number of bytes used by the key rcoinnamee
 <code>[x..z)</code>.
 <p>
 <h1>Environment</h1>

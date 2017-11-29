@@ -46,11 +46,11 @@ uint256 CCoinsViewDB::GetBestBlock() const {
 bool CCoinsViewDB::BatchWrite(CCoinsMap &mapCoins, const uint256 &hashBlock) {
     CLevelDBBatch batch;
     size_t count = 0;
-    size_t changed = 0;
+    size_t chcoinnameed = 0;
     for (CCoinsMap::iterator it = mapCoins.begin(); it != mapCoins.end();) {
         if (it->second.flags & CCoinsCacheEntry::DIRTY) {
             BatchWriteCoins(batch, it->first, it->second.coins);
-            changed++;
+            chcoinnameed++;
         }
         count++;
         CCoinsMap::iterator itOld = it++;
@@ -59,7 +59,7 @@ bool CCoinsViewDB::BatchWrite(CCoinsMap &mapCoins, const uint256 &hashBlock) {
     if (hashBlock != uint256(0))
         BatchWriteHashBestChain(batch, hashBlock);
 
-    LogPrint("coindb", "Committing %u changed transactions (out of %u) to coin database...\n", (unsigned int)changed, (unsigned int)count);
+    LogPrint("coindb", "Committing %u chcoinnameed transactions (out of %u) to coin database...\n", (unsigned int)chcoinnameed, (unsigned int)count);
     return db.WriteBatch(batch);
 }
 

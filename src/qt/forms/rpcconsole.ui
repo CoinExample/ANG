@@ -185,7 +185,7 @@
        <item row="16" column="0">
         <widget class="QPushButton" name="openDebugLogfileButton">
          <property name="toolTip">
-          <string>Open the Ang debug log file from the current data directory. This can take a few seconds for large log files.</string>
+          <string>Open the Coinname debug log file from the current data directory. This can take a few seconds for large log files.</string>
          </property>
          <property name="text">
           <string>&amp;Open</string>
@@ -414,7 +414,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../ang.qrc">
+            <iconset resource="../coinname.qrc">
              <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
            </property>
            <property name="shortcut">
@@ -449,7 +449,7 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QSlider" name="sldGraphRange">
+            <widget class="QSlider" name="sldGraphRcoinnamee">
              <property name="minimum">
               <number>1</number>
              </property>
@@ -468,7 +468,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="lblGraphRange">
+            <widget class="QLabel" name="lblGraphRcoinnamee">
              <property name="minimumSize">
               <size>
                <width>100</width>
@@ -1334,7 +1334,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../ang.qrc"/>
+  <include location="../coinname.qrc"/>
  </resources>
  <connections/>
 </ui>

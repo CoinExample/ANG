@@ -157,8 +157,8 @@ if test "x$want_boost" = "xyes"; then
     export LDFLAGS
 
     AC_REQUIRE([AC_PROG_CXX])
-    AC_LANG_PUSH(C++)
-        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+    AC_LCOINNAME_PUSH(C++)
+        AC_COMPILE_IFELSE([AC_LCOINNAME_PROGRAM([[
     @%:@include <boost/version.hpp>
     ]], [[
     #if BOOST_VERSION >= $WANT_BOOST_VERSION
@@ -172,7 +172,7 @@ if test "x$want_boost" = "xyes"; then
     found_system=yes
         ],[:
         ])
-    AC_LANG_POP([C++])
+    AC_LCOINNAME_POP([C++])
 
 
 
@@ -240,8 +240,8 @@ if test "x$want_boost" = "xyes"; then
         LDFLAGS="$LDFLAGS $BOOST_LDFLAGS"
         export LDFLAGS
 
-        AC_LANG_PUSH(C++)
-            AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+        AC_LCOINNAME_PUSH(C++)
+            AC_COMPILE_IFELSE([AC_LCOINNAME_PROGRAM([[
         @%:@include <boost/version.hpp>
         ]], [[
         #if BOOST_VERSION >= $WANT_BOOST_VERSION
@@ -255,7 +255,7 @@ if test "x$want_boost" = "xyes"; then
         found_system=yes
             ],[:
             ])
-        AC_LANG_POP([C++])
+        AC_LCOINNAME_POP([C++])
     fi
 
     if test "$succeeded" != "yes" ; then

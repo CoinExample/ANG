@@ -19,10 +19,10 @@ instructions for how to sign and return it.
 ## Submitting a Patch
 
 1. Sign the contributors license agreement above.
-2. Decide which code you want to submit. A submission should be a set of changes
+2. Decide which code you want to submit. A submission should be a set of chcoinnamees
 that addresses one issue in the [issue tracker](https://github.com/google/leveldb/issues).
-Please don't mix more than one logical change per submission, because it makes
-the history hard to follow. If you want to make a change
+Please don't mix more than one logical chcoinnamee per submission, because it makes
+the history hard to follow. If you want to make a chcoinnamee
 (e.g. add a sample or feature) that doesn't have a corresponding issue in the
 issue tracker, please create one.
 3. **Submitting**: When you are ready to submit, send us a Pull Request. Be
@@ -33,4 +33,4 @@ the CLA.
 
 If your contribution contains code, please make sure that it follows 
 [the style guide](http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml).
-Otherwise we will have to ask you to make changes, and that's no fun for anyone.
+Otherwise we will have to ask you to make chcoinnamees, and that's no fun for anyone.

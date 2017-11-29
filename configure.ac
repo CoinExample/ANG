@@ -6,17 +6,17 @@ define(_CLIENT_VERSION_REVISION, 0)
 define(_CLIENT_VERSION_BUILD, 3)
 define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2017)
-AC_INIT([Ang Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[info@andrijKolomiets.io],[ang])
+AC_INIT([Coinname Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[info@andrijKolomiets.io],[coinname])
 AC_CONFIG_SRCDIR([src/main.cpp])
-AC_CONFIG_HEADERS([src/config/ang-config.h])
+AC_CONFIG_HEADERS([src/config/coinname-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
 
 AC_CANONICAL_HOST
 
-AH_TOP([#ifndef ANG_CONFIG_H])
-AH_TOP([#define ANG_CONFIG_H])
-AH_BOTTOM([#endif //ANG_CONFIG_H])
+AH_TOP([#ifndef COINNAME_CONFIG_H])
+AH_TOP([#define COINNAME_CONFIG_H])
+AH_BOTTOM([#endif //COINNAME_CONFIG_H])
 
 dnl faketime breaks configure and is only needed for make. Disable it here.
 unset FAKETIME
@@ -173,7 +173,7 @@ CPPFLAGS="$CPPFLAGS -DBOOST_SPIRIT_THREADSAFE -DHAVE_BUILD_INFO -D__STDC_FORMAT_
 
 AC_ARG_WITH([utils],
   [AS_HELP_STRING([--with-utils],
-  [build ang-cli ang-tx (default=yes)])],
+  [build coinname-cli coinname-tx (default=yes)])],
   [build_bitcoin_utils=$withval],
   [build_bitcoin_utils=yes])
 
@@ -185,11 +185,11 @@ AC_ARG_WITH([libs],
 
 AC_ARG_WITH([daemon],
   [AS_HELP_STRING([--with-daemon],
-  [build angd daemon (default=yes)])],
+  [build coinnamed daemon (default=yes)])],
   [build_bitcoind=$withval],
   [build_bitcoind=yes])
 
-AC_LANG_PUSH([C++])
+AC_LCOINNAME_PUSH([C++])
 
 use_pkgconfig=yes
 case $host in
@@ -363,7 +363,7 @@ AC_C_BIGENDIAN([AC_MSG_ERROR("Big Endian not supported")])
 dnl Check for pthread compile/link requirements
 AX_PTHREAD
 
-# The following macro will add the necessary defines to ang-config.h, but
+# The following macro will add the necessary defines to coinname-config.h, but
 # they also need to be passed down to any subprojects. Pull the results out of
 # the cache and add them to CPPFLAGS.
 AC_SYS_LARGEFILE
@@ -390,10 +390,10 @@ AX_GCC_FUNC_ATTRIBUTE([dllimport])
 
 if test x$use_glibc_compat != xno; then
 
-  #__fdelt_chk's params and return type have changed from long unsigned int to long int.
+  #__fdelt_chk's params and return type have chcoinnameed from long unsigned int to long int.
   # See which one is present here.
   AC_MSG_CHECKING(__fdelt_chk type)
-  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#ifdef _FORTIFY_SOURCE
+  AC_COMPILE_IFELSE([AC_LCOINNAME_PROGRAM([[#ifdef _FORTIFY_SOURCE
                     #undef _FORTIFY_SOURCE
                   #endif
                   #define _FORTIFY_SOURCE 2
@@ -458,7 +458,7 @@ AC_CHECK_DECLS([le32toh, le64toh, htole32, htole64, be32toh, be64toh, htobe32, h
 
 dnl Check for MSG_NOSIGNAL
 AC_MSG_CHECKING(for MSG_NOSIGNAL)
-AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <sys/socket.h>]],
+AC_COMPILE_IFELSE([AC_LCOINNAME_PROGRAM([[#include <sys/socket.h>]],
  [[ int f = MSG_NOSIGNAL; ]])],
  [ AC_MSG_RESULT(yes); AC_DEFINE(HAVE_MSG_NOSIGNAL, 1,[Define this symbol if you have MSG_NOSIGNAL]) ],
  [ AC_MSG_RESULT(no)]
@@ -467,7 +467,7 @@ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <sys/socket.h>]],
 AC_SEARCH_LIBS([clock_gettime],[rt])
 
 AC_MSG_CHECKING([for visibility attribute])
-AC_LINK_IFELSE([AC_LANG_SOURCE([
+AC_LINK_IFELSE([AC_LCOINNAME_SOURCE([
   int foo_def( void ) __attribute__((visibility("default")));
   int main(){}
   ])],
@@ -544,7 +544,7 @@ if test x$use_reduce_exports != xno; then
   AC_MSG_CHECKING([for working boost reduced exports])
   TEMP_CPPFLAGS="$CPPFLAGS"
   CPPFLAGS="$BOOST_CPPFLAGS $CPPFLAGS"
-  AC_PREPROC_IFELSE([AC_LANG_PROGRAM([[
+  AC_PREPROC_IFELSE([AC_LCOINNAME_PROGRAM([[
       @%:@include <boost/version.hpp>
     ]], [[
       #if BOOST_VERSION >= 104900
@@ -594,7 +594,7 @@ if test x$use_tests = xyes; then
   LIBS="$LIBS $BOOST_LDFLAGS $BOOST_UNIT_TEST_FRAMEWORK_LIB"
   TEMP_CPPFLAGS="$CPPFLAGS"
   CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
-  AC_LINK_IFELSE([AC_LANG_SOURCE([
+  AC_LINK_IFELSE([AC_LCOINNAME_SOURCE([
        #define BOOST_TEST_DYN_LINK
        #define BOOST_TEST_MAIN
         #include <boost/test/unit_test.hpp>
@@ -624,7 +624,7 @@ TEMP_LIBS="$LIBS"
 LIBS="$BOOST_LIBS $BOOST_CHRONO_LIB $LIBS"
 TEMP_CPPFLAGS="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
-AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+AC_LINK_IFELSE([AC_LCOINNAME_PROGRAM([[
   #include <boost/thread/thread.hpp>
   #include <boost/version.hpp>
   ]],[[
@@ -646,7 +646,7 @@ TEMP_LIBS="$LIBS"
 LIBS="$BOOST_LIBS $LIBS"
 TEMP_CPPFLAGS="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
-AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+AC_LINK_IFELSE([AC_LCOINNAME_PROGRAM([[
   #include <boost/version.hpp>
   #include <boost/thread.hpp>
   #include <boost/date_time/posix_time/posix_time_types.hpp>
@@ -703,7 +703,7 @@ fi
 
 AC_CHECK_LIB([crypto],[RAND_egd],[],[
   AC_ARG_WITH([libressl],
-    [AS_HELP_STRING([--with-libressl],[Build with system LibreSSL (default is no; DANGEROUS; NOT SUPPORTED)])],
+    [AS_HELP_STRING([--with-libressl],[Build with system LibreSSL (default is no; DCOINNAMEEROUS; NOT SUPPORTED)])],
     [AC_MSG_WARN([Detected LibreSSL: This is NOT supported, and may break consensus compatibility!])],
     [AC_MSG_ERROR([Detected LibreSSL: This is NOT supported, and may break consensus compatibility!])]
   )
@@ -719,11 +719,11 @@ LIBS="$LIBS_TEMP"
 
 BITCOIN_QT_PATH_PROGS([PROTOC], [protoc],$protoc_bin_path)
 
-AC_MSG_CHECKING([whether to build angd])
+AC_MSG_CHECKING([whether to build coinnamed])
 AM_CONDITIONAL([BUILD_BITCOIND], [test x$build_bitcoind = xyes])
 AC_MSG_RESULT($build_bitcoind)
 
-AC_MSG_CHECKING([whether to build utils (ang-cli ang-tx)])
+AC_MSG_CHECKING([whether to build utils (coinname-cli coinname-tx)])
 AM_CONDITIONAL([BUILD_BITCOIN_UTILS], [test x$build_bitcoin_utils = xyes])
 AC_MSG_RESULT($build_bitcoin_utils)
 
@@ -734,7 +734,7 @@ if test x$build_bitcoin_libs = xyes; then
 fi
 AC_MSG_RESULT($build_bitcoin_libs)
 
-AC_LANG_POP
+AC_LCOINNAME_POP
 
 if test "x$use_ccache" != "xno"; then
   AC_MSG_CHECKING(if ccache should be used)
@@ -823,7 +823,7 @@ if test x$bitcoin_enable_qt != xno; then
     AC_MSG_WARN("xgettext is required to update qt translations")
   fi
 
-  AC_MSG_CHECKING([whether to build test_ang-qt])
+  AC_MSG_CHECKING([whether to build test_coinname-qt])
   if test x$use_tests$bitcoin_enable_qt_test = xyesyes; then
     AC_MSG_RESULT([yes])
     BUILD_TEST_QT="test"
@@ -832,7 +832,7 @@ if test x$bitcoin_enable_qt != xno; then
   fi
 fi
 
-AC_MSG_CHECKING([whether to build test_ang])
+AC_MSG_CHECKING([whether to build test_coinname])
 if test x$use_tests = xyes; then
   AC_MSG_RESULT([yes])
   BUILD_TEST="test"

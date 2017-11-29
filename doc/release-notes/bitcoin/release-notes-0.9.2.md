@@ -38,7 +38,7 @@ Also, the first time you run a 0.8.x release on a 0.9 wallet it will rescan
 the blockchain for missing spent coins, which will take a long time (tens
 of minutes on a typical machine).
 
-Important changes
+Important chcoinnamees
 ==================
 
 Gitian OSX build
@@ -68,7 +68,7 @@ RPC:
 
 - Add `getwalletinfo`, `getblockchaininfo` and `getnetworkinfo` calls (will replace hodge-podge `getinfo` at some point)
 - Add a `relayfee` field to `getnetworkinfo`
-- Fix RPC related shutdown hangs and leaks
+- Fix RPC related shutdown hcoinnames and leaks
 - Always show syncnode in `getpeerinfo`
 - `sendrawtransaction`: report the reject code and reason, and make it possible to re-send transactions that are already in the mempool
 - `getmininginfo` show right genproclimit
@@ -126,7 +126,7 @@ GUI:
 - Only override -datadir if different from the default (fixes -datadir in config file)
 - Show rescan progress at start-up
 - Show importwallet progress
-- Get required locks upfront in polling functions (avoids hanging on locks)
+- Get required locks upfront in polling functions (avoids hcoinnameing on locks)
 - Catch Windows shutdown events while client is running
 - Optionally add third party links to transaction context menu
 - Check for !pixmap() before trying to export QR code (avoids crashes when no QR code could be generated)
@@ -137,7 +137,7 @@ Miscellaneous:
 - Replace non-threadsafe C functions (gmtime, strerror and setlocale)
 - Add missing cs_main and wallet locks
 - Avoid exception at startup when system locale not recognized
-- Changed bitrpc.py's raw_input to getpass for passwords to conceal characters during command line input
+- Chcoinnameed bitrpc.py's raw_input to getpass for passwords to conceal characters during command line input
 - devtools: add a script to fetch and postprocess translations
 
 Credits
@@ -174,8 +174,8 @@ Thanks to everyone who contributed to this release:
 - Johnathan Corgan
 - jtimon
 - Kamil Domanski
-- langerhans
-- Luke Angjr
+- lcoinnameerhans
+- Luke Coinnamejr
 - Manuel Araoz
 - Mark Friedenbach
 - Matt Corallo

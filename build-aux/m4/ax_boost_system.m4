@@ -66,14 +66,14 @@ AC_DEFUN([AX_BOOST_SYSTEM],
 
         AC_CACHE_CHECK(whether the Boost::System library is available,
 					   ax_cv_boost_system,
-        [AC_LANG_PUSH([C++])
+        [AC_LCOINNAME_PUSH([C++])
 			 CXXFLAGS_SAVE=$CXXFLAGS
 
-			 AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[@%:@include <boost/system/error_code.hpp>]],
+			 AC_COMPILE_IFELSE([AC_LCOINNAME_PROGRAM([[@%:@include <boost/system/error_code.hpp>]],
                                    [[boost::system::system_category]])],
                    ax_cv_boost_system=yes, ax_cv_boost_system=no)
 			 CXXFLAGS=$CXXFLAGS_SAVE
-             AC_LANG_POP([C++])
+             AC_LCOINNAME_POP([C++])
 		])
 		if test "x$ax_cv_boost_system" = "xyes"; then
 			AC_SUBST(BOOST_CPPFLAGS)

@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/ang-config.h"
+#include "config/coinname-config.h"
 #endif
 
 #include "optionsmodel.h"
@@ -60,7 +60,7 @@ void OptionsModel::Init()
 
     // Display
     if (!settings.contains("nDisplayUnit"))
-        settings.setValue("nDisplayUnit", BitcoinUnits::ANG);
+        settings.setValue("nDisplayUnit", BitcoinUnits::COINNAME);
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
 
     if (!settings.contains("strThirdPartyTxUrls"))
@@ -101,10 +101,10 @@ void OptionsModel::Init()
 
     // Wallet
 #ifdef ENABLE_WALLET
-    if (!settings.contains("bSpendZeroConfChange"))
-        settings.setValue("bSpendZeroConfChange", true);
-    if (!SoftSetBoolArg("-spendzeroconfchange", settings.value("bSpendZeroConfChange").toBool()))
-        addOverriddenOption("-spendzeroconfchange");
+    if (!settings.contains("bSpendZeroConfChcoinnamee"))
+        settings.setValue("bSpendZeroConfChcoinnamee", true);
+    if (!SoftSetBoolArg("-spendzeroconfchcoinnamee", settings.value("bSpendZeroConfChcoinnamee").toBool()))
+        addOverriddenOption("-spendzeroconfchcoinnamee");
 #endif
 
     // Network
@@ -133,17 +133,17 @@ void OptionsModel::Init()
         settings.setValue("digits", "2");
     if (!settings.contains("theme"))
         settings.setValue("theme", "");
-    if (!settings.contains("language"))
-        settings.setValue("language", "");
-    if (!SoftSetArg("-lang", settings.value("language").toString().toStdString()))
-        addOverriddenOption("-lang");
+    if (!settings.contains("lcoinnameuage"))
+        settings.setValue("lcoinnameuage", "");
+    if (!SoftSetArg("-lcoinname", settings.value("lcoinnameuage").toString().toStdString()))
+        addOverriddenOption("-lcoinname");
 
     if (settings.contains("nDarksendRounds"))
         SoftSetArg("-darksendrounds", settings.value("nDarksendRounds").toString().toStdString());
     if (settings.contains("nAnonymizeDarkcoinAmount"))
-        SoftSetArg("-anonymizeangamount", settings.value("nAnonymizeDarkcoinAmount").toString().toStdString());
+        SoftSetArg("-anonymizecoinnameamount", settings.value("nAnonymizeDarkcoinAmount").toString().toStdString());
 
-    language = settings.value("language").toString();
+    lcoinnameuage = settings.value("lcoinnameuage").toString();
 }
 
 void OptionsModel::Reset()
@@ -152,7 +152,7 @@ void OptionsModel::Reset()
 
     // Remove all entries from our QSettings object
     settings.clear();
-    resetSettings = true; // Needed in ang.cpp during shotdown to also remove the window positions
+    resetSettings = true; // Needed in coinname.cpp during shotdown to also remove the window positions
 
     // default setting for OptionsModel::StartAtStartup - disabled
     if (GUIUtil::GetStartOnSystemStartup())
@@ -200,8 +200,8 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
         }
 
 #ifdef ENABLE_WALLET
-        case SpendZeroConfChange:
-            return settings.value("bSpendZeroConfChange");
+        case SpendZeroConfChcoinnamee:
+            return settings.value("bSpendZeroConfChcoinnamee");
 #endif
         case DisplayUnit:
             return nDisplayUnit;
@@ -211,8 +211,8 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
             return settings.value("digits");            
         case Theme:
             return settings.value("theme");            
-        case Language:
-            return settings.value("language");
+        case Lcoinnameuage:
+            return settings.value("lcoinnameuage");
         case CoinControlFeatures:
             return fCoinControlFeatures;
         case DatabaseCache:
@@ -248,7 +248,7 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
             fMinimizeToTray = value.toBool();
             settings.setValue("fMinimizeToTray", fMinimizeToTray);
             break;
-        case MapPortUPnP: // core option - can be changed on-the-fly
+        case MapPortUPnP: // core option - can be chcoinnameed on-the-fly
             settings.setValue("fUseUPnP", value.toBool());
             MapPort(value.toBool());
             break;
@@ -267,7 +267,7 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
         case ProxyIP: {
             // contains current IP at index 0 and current port at index 1
             QStringList strlIpPort = settings.value("addrProxy").toString().split(":", QString::SkipEmptyParts);
-            // if that key doesn't exist or has a changed IP
+            // if that key doesn't exist or has a chcoinnameed IP
             if (!settings.contains("addrProxy") || strlIpPort.at(0) != value.toString()) {
                 // construct new value from new IP and current port
                 QString strNewValue = value.toString() + ":" + strlIpPort.at(1);
@@ -279,7 +279,7 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
         case ProxyPort: {
             // contains current IP at index 0 and current port at index 1
             QStringList strlIpPort = settings.value("addrProxy").toString().split(":", QString::SkipEmptyParts);
-            // if that key doesn't exist or has a changed port
+            // if that key doesn't exist or has a chcoinnameed port
             if (!settings.contains("addrProxy") || strlIpPort.at(1) != value.toString()) {
                 // construct new value from current IP and new port
                 QString strNewValue = strlIpPort.at(0) + ":" + value.toString();
@@ -289,9 +289,9 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
         }
         break;
 #ifdef ENABLE_WALLET
-        case SpendZeroConfChange:
-            if (settings.value("bSpendZeroConfChange") != value) {
-                settings.setValue("bSpendZeroConfChange", value);
+        case SpendZeroConfChcoinnamee:
+            if (settings.value("bSpendZeroConfChcoinnamee") != value) {
+                settings.setValue("bSpendZeroConfChcoinnamee", value);
                 setRestartRequired(true);
             }
             break;
@@ -318,26 +318,26 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
                 setRestartRequired(true);
             }
             break;            
-        case Language:
-            if (settings.value("language") != value) {
-                settings.setValue("language", value);
+        case Lcoinnameuage:
+            if (settings.value("lcoinnameuage") != value) {
+                settings.setValue("lcoinnameuage", value);
                 setRestartRequired(true);
             }
             break;
         case DarksendRounds:
             nDarksendRounds = value.toInt();
             settings.setValue("nDarksendRounds", nDarksendRounds);
-            emit darksendRoundsChanged(nDarksendRounds);
+            emit darksendRoundsChcoinnameed(nDarksendRounds);
             break;
         case AnonymizeDarkcoinAmount:
             nAnonymizeDarkcoinAmount = value.toInt();
             settings.setValue("nAnonymizeDarkcoinAmount", nAnonymizeDarkcoinAmount);
-            emit anonymizeDarkcoinAmountChanged(nAnonymizeDarkcoinAmount);
+            emit anonymizeDarkcoinAmountChcoinnameed(nAnonymizeDarkcoinAmount);
             break;
         case CoinControlFeatures:
             fCoinControlFeatures = value.toBool();
             settings.setValue("fCoinControlFeatures", fCoinControlFeatures);
-            emit coinControlFeaturesChanged(fCoinControlFeatures);
+            emit coinControlFeaturesChcoinnameed(fCoinControlFeatures);
             break;
         case DatabaseCache:
             if (settings.value("nDatabaseCache") != value) {
@@ -362,12 +362,12 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
         }
     }
 
-    emit dataChanged(index, index);
+    emit dataChcoinnameed(index, index);
 
     return successful;
 }
 
-/** Updates current unit in memory, settings and emits displayUnitChanged(newUnit) signal */
+/** Updates current unit in memory, settings and emits displayUnitChcoinnameed(newUnit) signal */
 void OptionsModel::setDisplayUnit(const QVariant &value)
 {
     if (!value.isNull())
@@ -375,7 +375,7 @@ void OptionsModel::setDisplayUnit(const QVariant &value)
         QSettings settings;
         nDisplayUnit = value.toInt();
         settings.setValue("nDisplayUnit", nDisplayUnit);
-        emit displayUnitChanged(nDisplayUnit);
+        emit displayUnitChcoinnameed(nDisplayUnit);
     }
 }
 

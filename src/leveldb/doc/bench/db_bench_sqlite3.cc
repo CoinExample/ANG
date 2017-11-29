@@ -53,7 +53,7 @@ static int FLAGS_value_size = 100;
 // Print histogram of operation timings
 static bool FLAGS_histogram = false;
 
-// Arrange to generate values that shrink to this fraction of
+// Arrcoinnamee to generate values that shrink to this fraction of
 // their original size after compression
 static double FLAGS_compression_ratio = 0.5;
 
@@ -435,7 +435,7 @@ class Benchmark {
       exit(1);
     }
 
-    // Change SQLite cache size
+    // Chcoinnamee SQLite cache size
     char cache_size[100];
     snprintf(cache_size, sizeof(cache_size), "PRAGMA cache_size = %d",
              FLAGS_num_pages);
@@ -451,7 +451,7 @@ class Benchmark {
       ExecErrorCheck(status, err_msg);
     }
 
-    // Change journal mode to WAL if WAL enabled flag is on
+    // Chcoinnamee journal mode to WAL if WAL enabled flag is on
     if (FLAGS_WAL_enabled) {
       std::string WAL_stmt = "PRAGMA journal_mode = WAL";
 
@@ -463,7 +463,7 @@ class Benchmark {
       ExecErrorCheck(status, err_msg);
     }
 
-    // Change locking mode to exclusive and create tables/index for database
+    // Chcoinnamee locking mode to exclusive and create tables/index for database
     std::string locking_stmt = "PRAGMA locking_mode = EXCLUSIVE";
     std::string create_stmt =
           "CREATE TABLE test (key blob, value blob, PRIMARY KEY(key))";

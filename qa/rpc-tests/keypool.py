@@ -62,15 +62,15 @@ def run_test(nodes, tmpdir):
 
     # drain the keys
     addr = set()
-    addr.add(nodes[0].getrawchangeaddress())
-    addr.add(nodes[0].getrawchangeaddress())
-    addr.add(nodes[0].getrawchangeaddress())
-    addr.add(nodes[0].getrawchangeaddress())
+    addr.add(nodes[0].getrawchcoinnameeaddress())
+    addr.add(nodes[0].getrawchcoinnameeaddress())
+    addr.add(nodes[0].getrawchcoinnameeaddress())
+    addr.add(nodes[0].getrawchcoinnameeaddress())
     # assert that four unique addresses were returned
     assert(len(addr) == 4)
     # the next one should fail
     try:
-        addr = nodes[0].getrawchangeaddress()
+        addr = nodes[0].getrawchcoinnameeaddress()
         raise AssertionError('Keypool should be exhausted after three addresses')
     except JSONRPCException,e:
         assert(e.error['code']==-12)

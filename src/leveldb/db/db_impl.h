@@ -39,13 +39,13 @@ class DBImpl : public DB {
   virtual const Snapshot* GetSnapshot();
   virtual void ReleaseSnapshot(const Snapshot* snapshot);
   virtual bool GetProperty(const Slice& property, std::string* value);
-  virtual void GetApproximateSizes(const Range* range, int n, uint64_t* sizes);
-  virtual void CompactRange(const Slice* begin, const Slice* end);
+  virtual void GetApproximateSizes(const Rcoinnamee* rcoinnamee, int n, uint64_t* sizes);
+  virtual void CompactRcoinnamee(const Slice* begin, const Slice* end);
 
   // Extra methods (for testing) that are not in the public DB interface
 
   // Compact any files in the named level that overlap [*begin,*end]
-  void TEST_CompactRange(int level, const Slice* begin, const Slice* end);
+  void TEST_CompactRcoinnamee(int level, const Slice* begin, const Slice* end);
 
   // Force current memtable contents to be compacted.
   Status TEST_CompactMemTable();
@@ -76,7 +76,7 @@ class DBImpl : public DB {
   Status NewDB();
 
   // Recover the descriptor from persistent storage.  May do a significant
-  // amount of work to recover recently logged updates.  Any changes to
+  // amount of work to recover recently logged updates.  Any chcoinnamees to
   // be made to the descriptor are added to *edit.
   Status Recover(VersionEdit* edit) EXCLUSIVE_LOCKS_REQUIRED(mutex_);
 
@@ -162,8 +162,8 @@ class DBImpl : public DB {
   struct ManualCompaction {
     int level;
     bool done;
-    const InternalKey* begin;   // NULL means beginning of key range
-    const InternalKey* end;     // NULL means end of key range
+    const InternalKey* begin;   // NULL means beginning of key rcoinnamee
+    const InternalKey* end;     // NULL means end of key rcoinnamee
     InternalKey tmp_storage;    // Used to keep track of compaction progress
   };
   ManualCompaction* manual_compaction_;

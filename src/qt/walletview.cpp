@@ -105,8 +105,8 @@ void WalletView::setBitcoinGUI(BitcoinGUI *gui)
         // Receive and report messages
         connect(this, SIGNAL(message(QString,QString,unsigned int)), gui, SLOT(message(QString,QString,unsigned int)));
 
-        // Pass through encryption status changed signals
-        connect(this, SIGNAL(encryptionStatusChanged(int)), gui, SLOT(setEncryptionStatus(int)));
+        // Pass through encryption status chcoinnameed signals
+        connect(this, SIGNAL(encryptionStatusChcoinnameed(int)), gui, SLOT(setEncryptionStatus(int)));
 
         // Pass through transaction notifications
         connect(this, SIGNAL(incomingTransaction(QString,int,CAmount,QString,QString)), gui, SLOT(incomingTransaction(QString,int,CAmount,QString,QString)));
@@ -136,8 +136,8 @@ void WalletView::setWalletModel(WalletModel *walletModel)
         // Receive and pass through messages from wallet model
         connect(walletModel, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
 
-        // Handle changes in encryption status
-        connect(walletModel, SIGNAL(encryptionStatusChanged(int)), this, SIGNAL(encryptionStatusChanged(int)));
+        // Handle chcoinnamees in encryption status
+        connect(walletModel, SIGNAL(encryptionStatusChcoinnameed(int)), this, SIGNAL(encryptionStatusChcoinnameed(int)));
         updateEncryptionStatus();
 
         // Balloon pop-up for new transaction
@@ -229,7 +229,7 @@ void WalletView::showOutOfSyncWarning(bool fShow)
 
 void WalletView::updateEncryptionStatus()
 {
-    emit encryptionStatusChanged(walletModel->getEncryptionStatus());
+    emit encryptionStatusChcoinnameed(walletModel->getEncryptionStatus());
 }
 
 void WalletView::encryptWallet(bool status)
@@ -262,9 +262,9 @@ void WalletView::backupWallet()
     }
 }
 
-void WalletView::changePassphrase()
+void WalletView::chcoinnameePassphrase()
 {
-    AskPassphraseDialog dlg(AskPassphraseDialog::ChangePass, this);
+    AskPassphraseDialog dlg(AskPassphraseDialog::ChcoinnameePass, this);
     dlg.setModel(walletModel);
     dlg.exec();
 }

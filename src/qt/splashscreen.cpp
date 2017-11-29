@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -33,10 +33,10 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     float fontFactor            = 1.0;
 
     // define text to place
-    QString titleText       = tr("Ang Core");
+    QString titleText       = tr("Coinname Core");
     QString versionText     = QString(tr("Version %1")).arg(QString::fromStdString(FormatFullVersion()));
     QString copyrightTextBtc   = QChar(0xA9)+QString(" 2009-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitcoin Core developers"));
-    QString copyrightTextAng   = QChar(0xA9)+QString(" 2014-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Ang Core developers"));
+    QString copyrightTextCoinname   = QChar(0xA9)+QString(" 2014-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Coinname Core developers"));
     QString titleAddText    = networkStyle->getTitleAddText();
 
     QString font            = QApplication::font().toString();
@@ -52,7 +52,7 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     QFontMetrics fm = pixPaint.fontMetrics();
     int titleTextWidth  = fm.width(titleText);
     if(titleTextWidth > 160) {
-        // strange font rendering, Arial probably not found
+        // strcoinnamee font rendering, Arial probably not found
         fontFactor = 0.75;
     }
 
@@ -67,7 +67,7 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     // draw copyright stuff
     pixPaint.setFont(QFont(font, 10*fontFactor));
     pixPaint.drawText(paddingLeft,paddingTop+titleCopyrightVSpace,copyrightTextBtc);
-    pixPaint.drawText(paddingLeft,paddingTop+titleCopyrightVSpace+12,copyrightTextAng);
+    pixPaint.drawText(paddingLeft,paddingTop+titleCopyrightVSpace+12,copyrightTextCoinname);
 
     // draw additional text if special network
     if(!titleAddText.isEmpty()) {

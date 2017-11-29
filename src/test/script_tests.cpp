@@ -855,7 +855,7 @@ BOOST_AUTO_TEST_CASE(script_combineSigs)
     BOOST_CHECK(combined.empty());
 
     // Single signature case:
-    SignSignature(keystore, txFrom, txTo, 0); // changes scriptSig
+    SignSignature(keystore, txFrom, txTo, 0); // chcoinnamees scriptSig
     combined = CombineSignatures(scriptPubKey, txTo, 0, scriptSig, empty);
     BOOST_CHECK(combined == scriptSig);
     combined = CombineSignatures(scriptPubKey, txTo, 0, empty, scriptSig);

@@ -321,13 +321,13 @@ elif cmd == "walletpassphrase":
     except:
         print "\n---An error occurred---\n"
 
-elif cmd == "walletpassphrasechange":
+elif cmd == "walletpassphrasechcoinnamee":
     try:
         pwd = getpass.getpass(prompt="Enter old wallet passphrase: ")
         pwd2 = getpass.getpass(prompt="Enter new wallet passphrase: ")
-        access.walletpassphrasechange(pwd, pwd2)
+        access.walletpassphrasechcoinnamee(pwd, pwd2)
         print
-        print "\n---Passphrase changed---\n"
+        print "\n---Passphrase chcoinnameed---\n"
     except:
         print
         print "\n---An error occurred---\n"

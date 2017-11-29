@@ -40,7 +40,7 @@ void TrafficGraphWidget::setClientModel(ClientModel *model)
     }
 }
 
-int TrafficGraphWidget::getGraphRangeMins() const
+int TrafficGraphWidget::getGraphRcoinnameeMins() const
 {
     return nMins;
 }
@@ -149,7 +149,7 @@ void TrafficGraphWidget::updateRates()
     update();
 }
 
-void TrafficGraphWidget::setGraphRangeMins(int mins)
+void TrafficGraphWidget::setGraphRcoinnameeMins(int mins)
 {
     nMins = mins;
     int msecsPerSample = nMins * 60 * 1000 / DESIRED_SAMPLES;

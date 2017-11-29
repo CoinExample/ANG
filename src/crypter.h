@@ -94,16 +94,16 @@ public:
         // Try to keep the key data out of swap (and be a bit over-careful to keep the IV that we don't even use out of swap)
         // Note that this does nothing about suspend-to-disk (which will put all our key data on disk)
         // Note as well that at no point in this program is any attempt made to prevent stealing of keys by reading the memory of the running process.
-        LockedPageManager::Instance().LockRange(&chKey[0], sizeof chKey);
-        LockedPageManager::Instance().LockRange(&chIV[0], sizeof chIV);
+        LockedPageManager::Instance().LockRcoinnamee(&chKey[0], sizeof chKey);
+        LockedPageManager::Instance().LockRcoinnamee(&chIV[0], sizeof chIV);
     }
 
     ~CCrypter()
     {
         CleanKey();
 
-        LockedPageManager::Instance().UnlockRange(&chKey[0], sizeof chKey);
-        LockedPageManager::Instance().UnlockRange(&chIV[0], sizeof chIV);
+        LockedPageManager::Instance().UnlockRcoinnamee(&chKey[0], sizeof chKey);
+        LockedPageManager::Instance().UnlockRcoinnamee(&chIV[0], sizeof chIV);
     }
 };
 
@@ -194,10 +194,10 @@ public:
     }
 
     /**
-     * Wallet status (encrypted, locked) changed.
+     * Wallet status (encrypted, locked) chcoinnameed.
      * Note: Called without locks held.
      */
-    boost::signals2::signal<void (CCryptoKeyStore* wallet)> NotifyStatusChanged;
+    boost::signals2::signal<void (CCryptoKeyStore* wallet)> NotifyStatusChcoinnameed;
 };
 
 #endif // BITCOIN_CRYPTER_H

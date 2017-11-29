@@ -11,7 +11,7 @@ Release Process
 	contrib/verifysfbinaries/verify.sh
 	doc/README*
 	share/setup.nsi
-	src/clientversion.h (change CLIENT_VERSION_IS_RELEASE to true)
+	src/clientversion.h (chcoinnamee CLIENT_VERSION_IS_RELEASE to true)
 
 ###tag version in git
 
@@ -33,12 +33,12 @@ Release Process
 
 	export SIGNER=(your gitian key, ie bluematt, sipa, etc)
 	export VERSION=(new version, e.g. 0.8.0)
-	pushd ./ang
+	pushd ./coinname
 	git checkout v${VERSION}
 	popd
 	pushd ./gitian-builder
 
-###fetch and build inputs: (first time, or when dependency versions change)
+###fetch and build inputs: (first time, or when dependency versions chcoinnamee)
  
 	mkdir -p inputs
 
@@ -54,29 +54,29 @@ Release Process
 
   By default, gitian will fetch source files as needed. For offline builds, they can be fetched ahead of time:
 
-	make -C ../ang/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../coinname/depends download SOURCES_PATH=`pwd`/cache/common
 
   Only missing files will be fetched, so this is safe to re-run for each build.
 
-###Build Ang Core for Linux, Windows, and OS X:
+###Build Coinname Core for Linux, Windows, and OS X:
 
-	./bin/gbuild --commit ang=v${VERSION} ../ang/contrib/gitian-descriptors/gitian-linux.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../ang/contrib/gitian-descriptors/gitian-linux.yml
-	mv build/out/ang-*.tar.gz build/out/src/ang-*.tar.gz ../
-	./bin/gbuild --commit ang=v${VERSION} ../ang/contrib/gitian-descriptors/gitian-win.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-win --destination ../gitian.sigs/ ../ang/contrib/gitian-descriptors/gitian-win.yml
-	mv build/out/ang-*.zip build/out/ang-*.exe ../
-	./bin/gbuild --commit bitcoin=v${VERSION} ../ang/contrib/gitian-descriptors/gitian-osx.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../ang/contrib/gitian-descriptors/gitian-osx.yml
-	mv build/out/ang-*-unsigned.tar.gz inputs/ang-osx-unsigned.tar.gz
-	mv build/out/ang-*.tar.gz build/out/ang-*.dmg ../
+	./bin/gbuild --commit coinname=v${VERSION} ../coinname/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../coinname/contrib/gitian-descriptors/gitian-linux.yml
+	mv build/out/coinname-*.tar.gz build/out/src/coinname-*.tar.gz ../
+	./bin/gbuild --commit coinname=v${VERSION} ../coinname/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-win --destination ../gitian.sigs/ ../coinname/contrib/gitian-descriptors/gitian-win.yml
+	mv build/out/coinname-*.zip build/out/coinname-*.exe ../
+	./bin/gbuild --commit bitcoin=v${VERSION} ../coinname/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../coinname/contrib/gitian-descriptors/gitian-osx.yml
+	mv build/out/coinname-*-unsigned.tar.gz inputs/coinname-osx-unsigned.tar.gz
+	mv build/out/coinname-*.tar.gz build/out/coinname-*.dmg ../
 	popd
   Build output expected:
 
-  1. source tarball (ang-${VERSION}.tar.gz)
-  2. linux 32-bit and 64-bit binaries dist tarballs (ang-${VERSION}-linux[32|64].tar.gz)
-  3. windows 32-bit and 64-bit installers and dist zips (ang-${VERSION}-win[32|64]-setup.exe, ang-${VERSION}-win[32|64].zip)
-  4. OSX unsigned installer (ang-${VERSION}-osx-unsigned.dmg)
+  1. source tarball (coinname-${VERSION}.tar.gz)
+  2. linux 32-bit and 64-bit binaries dist tarballs (coinname-${VERSION}-linux[32|64].tar.gz)
+  3. windows 32-bit and 64-bit installers and dist zips (coinname-${VERSION}-win[32|64]-setup.exe, coinname-${VERSION}-win[32|64].zip)
+  4. OSX unsigned installer (coinname-${VERSION}-osx-unsigned.dmg)
   5. Gitian signatures (in gitian.sigs/${VERSION}-<linux|win|osx-unsigned>/(your gitian key)/
 
 ###Next steps:
@@ -100,9 +100,9 @@ Commit your signature to gitian.sigs:
 	pushd ./gitian-builder
 	# Fetch the signature as instructed by Evan
 	cp signature.tar.gz inputs/
-	./bin/gbuild -i ../ang/contrib/gitian-descriptors/gitian-osx-signer.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../ang/contrib/gitian-descriptors/gitian-osx-signer.yml
-	mv build/out/ang-osx-signed.dmg ../ang-${VERSION}-osx.dmg
+	./bin/gbuild -i ../coinname/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../coinname/contrib/gitian-descriptors/gitian-osx-signer.yml
+	mv build/out/coinname-osx-signed.dmg ../coinname-${VERSION}-osx.dmg
 	popd
 
 Commit your signature for the signed OSX binary:
@@ -151,15 +151,15 @@ rm SHA256SUMS
 
 - Announce the release:
 
-  - Release sticky on angtalk: https://angtalk.org/index.php?board=1.0 ***TODO***
+  - Release sticky on coinnametalk: https://coinnametalk.org/index.php?board=1.0 ***TODO***
 
-  - Ang-development mailing list
+  - Coinname-development mailing list
 
   - Update title of #andrijKolomiets on Freenode IRC
 
-  - Optionally reddit /r/AndrijKolomiets, ... but this will usually sort out itself
+  - Optionally reddit /r/CoinExample, ... but this will usually sort out itself
 
-- Notify Flare (?) ***TODO*** so that he can start building [https://launchpad.net/~andrijKolomiets/+archive/ubuntu/ang](the PPAs) ***TODO***
+- Notify Flare (?) ***TODO*** so that he can start building [https://launchpad.net/~andrijKolomiets/+archive/ubuntu/coinname](the PPAs) ***TODO***
 
 - Add release notes for the new version to the directory `doc/release-notes` in git master
 

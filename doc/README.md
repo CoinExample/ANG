@@ -1,4 +1,4 @@
-Ang Core 0.12.0
+Coinname Core 0.12.0
 =====================
 
 Setup
@@ -7,46 +7,46 @@ Setup
 
 Running
 ---------------------
-The following are some helpful notes on how to run Ang on your native platform.
+The following are some helpful notes on how to run Coinname on your native platform.
 
 ### Unix
 
-You need the Qt4 run-time libraries to run Ang-Qt. On Debian or Ubuntu:
+You need the Qt4 run-time libraries to run Coinname-Qt. On Debian or Ubuntu:
 
 	sudo apt-get install libqtgui4
 
 Unpack the files into a directory and run:
 
-- bin/32/ang-qt (GUI, 32-bit) or bin/32/angd (headless, 32-bit)
-- bin/64/ang-qt (GUI, 64-bit) or bin/64/angd (headless, 64-bit)
+- bin/32/coinname-qt (GUI, 32-bit) or bin/32/coinnamed (headless, 32-bit)
+- bin/64/coinname-qt (GUI, 64-bit) or bin/64/coinnamed (headless, 64-bit)
 
 
 
 ### Windows
 
-Unpack the files into a directory, and then run ang-qt.exe.
+Unpack the files into a directory, and then run coinname-qt.exe.
 
 ### OSX
 
-Drag Ang-Qt to your applications folder, and then run Ang-Qt.
+Drag Coinname-Qt to your applications folder, and then run Coinname-Qt.
 
 ### Need Help?
 
-* See the documentation at the [Ang Wiki](https://en.bitcoin.it/wiki/Main_Page) ***TODO***
+* See the documentation at the [Coinname Wiki](https://en.bitcoin.it/wiki/Main_Page) ***TODO***
 for help and more information.
 * Ask for help on [#andrijKolomiets](http://webchat.freenode.net?channels=andrijKolomiets) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=andrijKolomiets).
-* Ask for help on the [AngTalk](https://angtalk.org/) forums.
+* Ask for help on the [CoinnameTalk](https://coinnametalk.org/) forums.
 
 Building
 ---------------------
-The following are developer notes on how to build Ang on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build Coinname on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [OSX Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
 
 Development
 ---------------------
-The Ang repo's [root README](https://github.com/CoinExample/CoinName/blob/master/README.md) contains relevant information on the development process and automated testing.
+The Coinname repo's [root README](https://github.com/CoinExample/CoinName/blob/master/README.md) contains relevant information on the development process and automated testing.
 
 - [Coding Guidelines](coding.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)
@@ -57,7 +57,7 @@ The Ang repo's [root README](https://github.com/CoinExample/CoinName/blob/master
 - [Unit Tests](unit-tests.md)
 
 ### Resources
-* Discuss on the [AngTalk](https://angtalk.org/) forums, in the Development & Technical Discussion board.
+* Discuss on the [CoinnameTalk](https://coinnametalk.org/) forums, in the Development & Technical Discussion board.
 * Discuss on [#andrijKolomiets](http://webchat.freenode.net/?channels=andrijKolomiets) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=andrijKolomiets).
 
 ### Miscellaneous

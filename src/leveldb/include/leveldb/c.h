@@ -14,7 +14,7 @@
   Some conventions:
 
   (1) We expose just opaque struct pointers and functions to clients.
-  This allows us to change internal representations without having to
+  This allows us to chcoinnamee internal representations without having to
   recompile clients.
 
   (2) For simplicity, there is no equivalent to the Slice type.  Instead,
@@ -28,7 +28,7 @@
      *errptr == NULL
      *errptr points to a malloc()ed null-terminated error message
        (On Windows, *errptr must have been malloc()-ed by this library.)
-  On success, a leveldb routine leaves *errptr unchanged.
+  On success, a leveldb routine leaves *errptr unchcoinnameed.
   On failure, leveldb frees the old value of *errptr and
   set *errptr to a malloc()ed error message.
 
@@ -123,12 +123,12 @@ extern char* leveldb_property_value(
 
 extern void leveldb_approximate_sizes(
     leveldb_t* db,
-    int num_ranges,
-    const char* const* range_start_key, const size_t* range_start_key_len,
-    const char* const* range_limit_key, const size_t* range_limit_key_len,
+    int num_rcoinnamees,
+    const char* const* rcoinnamee_start_key, const size_t* rcoinnamee_start_key_len,
+    const char* const* rcoinnamee_limit_key, const size_t* rcoinnamee_limit_key_len,
     uint64_t* sizes);
 
-extern void leveldb_compact_range(
+extern void leveldb_compact_rcoinnamee(
     leveldb_t* db,
     const char* start_key, size_t start_key_len,
     const char* limit_key, size_t limit_key_len);

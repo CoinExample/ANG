@@ -13,7 +13,7 @@ namespace Ui {
     class AskPassphraseDialog;
 }
 
-/** Multifunctional dialog to ask for passphrases. Used for encryption, unlocking, and changing the passphrase.
+/** Multifunctional dialog to ask for passphrases. Used for encryption, unlocking, and chcoinnameing the passphrase.
  */
 class AskPassphraseDialog : public QDialog
 {
@@ -24,7 +24,7 @@ public:
         Encrypt,    /**< Ask passphrase twice and encrypt */
         UnlockAnonymize,     /**< Ask passphrase and unlock only for anonymization */
         Unlock,     /**< Ask passphrase and unlock */
-        ChangePass, /**< Ask old passphrase + new passphrase twice */
+        ChcoinnameePass, /**< Ask old passphrase + new passphrase twice */
         Decrypt     /**< Ask passphrase and decrypt wallet */
     };
 
@@ -42,7 +42,7 @@ private:
     bool fCapsLock;
 
 private slots:
-    void textChanged();
+    void textChcoinnameed();
 
 protected:
     bool event(QEvent *event);

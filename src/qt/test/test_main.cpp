@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/ang-config.h"
+#include "config/coinname-config.h"
 #endif
 
 #include "util.h"
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     // Don't remove this, it's needed to access
     // QCoreApplication:: in the tests
     QCoreApplication app(argc, argv);
-    app.setApplicationName("Ang-Qt-test");
+    app.setApplicationName("Coinname-Qt-test");
 
     URITests test1;
     if (QTest::qExec(&test1) != 0)

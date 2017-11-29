@@ -24,7 +24,7 @@ string SanitizeString(const string& str)
 {
     /**
      * safeChars chosen to allow simple messages/URLs/email addresses, but avoid anything
-     * even possibly remotely dangerous like & or >
+     * even possibly remotely dcoinnameerous like & or >
      */
     static string safeChars("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890 .,;_/:?@()");
     string strResult;
@@ -485,7 +485,7 @@ bool ParseInt32(const std::string& str, int32_t *out)
     long int n = strtol(str.c_str(), &endp, 10);
     if(out) *out = (int)n;
     // Note that strtol returns a *long int*, so even if strtol doesn't report a over/underflow
-    // we still have to check that the returned value is within the range of an *int32_t*. On 64-bit
+    // we still have to check that the returned value is within the rcoinnamee of an *int32_t*. On 64-bit
     // platforms the size of these types may be different.
     return endp && *endp == 0 && !errno &&
         n >= std::numeric_limits<int32_t>::min() &&

@@ -7,7 +7,7 @@ Please report bugs using the github issue tracker at:
 https://github.com/bitcoin/bitcoin/issues
 
 
-NOTABLE CHANGES
+NOTABLE CHCOINNAMEES
 
 Much faster shutdowns. However, the blkindex.dat file is no longer
 portable to different data directories by default. If you need a
@@ -21,24 +21,24 @@ Mac and Windows binaries are compiled against OpenSSL 1.0.1b (Linux
 binaries are dynamically linked to the version of OpenSSL on the system).
 
 
-CHANGE SUMMARY
+CHCOINNAMEE SUMMARY
 
 Use 'git shortlog --no-merges v0.6.0..' for a summary of this release.
 
-Source codebase changes:
+Source codebase chcoinnamees:
 - Many source code cleanups and warnings fixes.  Close to building with -Wall
 - Locking overhaul, and several minor locking fixes
 - Several source code portability fixes, e.g. FreeBSD
 
-JSON-RPC interface changes:
+JSON-RPC interface chcoinnamees:
 - addmultisigaddress enabled for mainnet (previously only enabled for testnet)
 
-Network protocol changes:
+Network protocol chcoinnamees:
 - protocol version 60001
 - added nonce value to "ping" message (BIP 31)
 - added new "pong" message (BIP 31)
 
-Backend storage changes:
+Backend storage chcoinnamees:
 - Less redundant database flushing, especially during initial block download
 - Shutdown improvements (see above)
 

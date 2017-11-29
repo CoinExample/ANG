@@ -7,7 +7,7 @@
 ["nSequences are max."],
 
 ["", "DEPTH 0 EQUAL", "P2SH,STRICTENC", "Test the test: we should have an empty stack after scriptSig evaluation"],
-["  ", "DEPTH 0 EQUAL", "P2SH,STRICTENC", "and multiple spaces should not change that."],
+["  ", "DEPTH 0 EQUAL", "P2SH,STRICTENC", "and multiple spaces should not chcoinnamee that."],
 ["   ", "DEPTH 0 EQUAL", "P2SH,STRICTENC"],
 ["    ", "DEPTH 0 EQUAL", "P2SH,STRICTENC"],
 ["1 2", "2 EQUALVERIFY 1 EQUAL", "P2SH,STRICTENC", "Similarly whitespace around and between symbols"],

@@ -65,7 +65,7 @@ private slots:
     void on_showRequestButton_clicked();
     void on_removeRequestButton_clicked();
     void on_recentRequestsView_doubleClicked(const QModelIndex &index);
-    void recentRequestsView_selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+    void recentRequestsView_selectionChcoinnameed(const QItemSelection &selected, const QItemSelection &deselected);
     void updateDisplayUnit();
     void showMenu(const QPoint &point);
     void copyLabel();

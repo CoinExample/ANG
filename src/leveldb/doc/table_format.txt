@@ -60,12 +60,12 @@ block where "<N>" is the string returned by the filter policy's
 
 The filter block stores a sequence of filters, where filter i contains
 the output of FilterPolicy::CreateFilter() on all keys that are stored
-in a block whose file offset falls within the range
+in a block whose file offset falls within the rcoinnamee
 
     [ i*base ... (i+1)*base-1 ]
 
 Currently, "base" is 2KB.  So for example, if blocks X and Y start in
-the range [ 0KB .. 2KB-1 ], all of the keys in X and Y will be
+the rcoinnamee [ 0KB .. 2KB-1 ], all of the keys in X and Y will be
 converted to a filter by calling FilterPolicy::CreateFilter(), and the
 resulting filter will be stored as the first filter in the filter
 block.

@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -33,7 +33,7 @@ using namespace std;
 
 /**
  * Return average network hashes per second based on the last 'lookup' blocks,
- * or from the last difficulty change if 'lookup' is nonpositive.
+ * or from the last difficulty chcoinnamee if 'lookup' is nonpositive.
  * If 'height' is nonnegative, compute the estimate at the time when a given block was found.
  */
 Value GetNetworkHashPS(int lookup, int height) {
@@ -45,7 +45,7 @@ Value GetNetworkHashPS(int lookup, int height) {
     if (pb == NULL || !pb->nHeight)
         return 0;
 
-    // If lookup is -1, then use blocks since last difficulty change.
+    // If lookup is -1, then use blocks since last difficulty chcoinnamee.
     if (lookup <= 0)
         lookup = pb->nHeight % 2016 + 1;
 
@@ -79,10 +79,10 @@ Value getnetworkhashps(const Array& params, bool fHelp)
         throw runtime_error(
             "getnetworkhashps ( blocks height )\n"
             "\nReturns the estimated network hashes per second based on the last n blocks.\n"
-            "Pass in [blocks] to override # of blocks, -1 specifies since last difficulty change.\n"
+            "Pass in [blocks] to override # of blocks, -1 specifies since last difficulty chcoinnamee.\n"
             "Pass in [height] to estimate the network speed at the time when a certain block was found.\n"
             "\nArguments:\n"
-            "1. blocks     (numeric, optional, default=120) The number of blocks, or -1 for blocks since last difficulty change.\n"
+            "1. blocks     (numeric, optional, default=120) The number of blocks, or -1 for blocks since last difficulty chcoinnamee.\n"
             "2. height     (numeric, optional, default=-1) To estimate at the time of the given height.\n"
             "\nResult:\n"
             "x             (numeric) Hashes per second estimated\n"
@@ -101,7 +101,7 @@ Value getgenerate(const Array& params, bool fHelp)
         throw runtime_error(
             "getgenerate\n"
             "\nReturn if the server is set to generate coins or not. The default is false.\n"
-            "It is set with the command line argument -gen (or ang.conf setting gen)\n"
+            "It is set with the command line argument -gen (or coinname.conf setting gen)\n"
             "It can also be set with the setgenerate call.\n"
             "\nResult\n"
             "true|false      (boolean) If the server is set to generate coins or not\n"
@@ -364,11 +364,11 @@ Value getblocktemplate(const Array& params, bool fHelp)
             "  \"coinbasetxn\" : { ... },           (json object) information for coinbase transaction\n"
             "  \"target\" : \"xxxx\",               (string) The hash target\n"
             "  \"mintime\" : xxx,                   (numeric) The minimum timestamp appropriate for next block time in seconds since epoch (Jan 1 1970 GMT)\n"
-            "  \"mutable\" : [                      (array of string) list of ways the block template may be changed \n"
-            "     \"value\"                         (string) A way the block template may be changed, e.g. 'time', 'transactions', 'prevblock'\n"
+            "  \"mutable\" : [                      (array of string) list of ways the block template may be chcoinnameed \n"
+            "     \"value\"                         (string) A way the block template may be chcoinnameed, e.g. 'time', 'transactions', 'prevblock'\n"
             "     ,...\n"
             "  ],\n"
-            "  \"noncerange\" : \"00000000ffffffff\",   (string) A range of valid nonces\n"
+            "  \"noncercoinnamee\" : \"00000000ffffffff\",   (string) A rcoinnamee of valid nonces\n"
             "  \"sigoplimit\" : n,                 (numeric) limit of sigops in blocks\n"
             "  \"sizelimit\" : n,                  (numeric) limit of block size\n"
             "  \"curtime\" : ttt,                  (numeric) current timestamp in seconds since epoch (Jan 1 1970 GMT)\n"
@@ -440,16 +440,16 @@ Value getblocktemplate(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid mode");
 
     if (vNodes.empty())
-        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Ang is not connected!");
+        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Coinname is not connected!");
 
     if (IsInitialBlockDownload())
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Ang is downloading blocks...");
+        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Coinname is downloading blocks...");
 
     static unsigned int nTransactionsUpdatedLast;
 
     if (lpval.type() != null_type)
     {
-        // Wait to respond until either the best block changes, OR a minute has passed and there are more transactions
+        // Wait to respond until either the best block chcoinnamees, OR a minute has passed and there are more transactions
         uint256 hashWatchedChain;
         boost::system_time checktxtime;
         unsigned int nTransactionsUpdatedLastLP;
@@ -481,7 +481,7 @@ Value getblocktemplate(const Array& params, bool fHelp)
             boost::unique_lock<boost::mutex> lock(csBestBlock);
             while (chainActive.Tip()->GetBlockHash() == hashWatchedChain && IsRPCRunning())
             {
-                if (!cvBlockChange.timed_wait(lock, checktxtime))
+                if (!cvBlockChcoinnamee.timed_wait(lock, checktxtime))
                 {
                     // Timeout: Check transactions for update
                     if (mempool.GetTransactionsUpdated() != nTransactionsUpdatedLastLP)
@@ -596,7 +596,7 @@ Value getblocktemplate(const Array& params, bool fHelp)
     result.push_back(Pair("target", hashTarget.GetHex()));
     result.push_back(Pair("mintime", (int64_t)pindexPrev->GetMedianTimePast()+1));
     result.push_back(Pair("mutable", aMutable));
-    result.push_back(Pair("noncerange", "00000000ffffffff"));
+    result.push_back(Pair("noncercoinnamee", "00000000ffffffff"));
     result.push_back(Pair("sigoplimit", (int64_t)MAX_BLOCK_SIGOPS));
     result.push_back(Pair("sizelimit", (int64_t)MAX_BLOCK_SIZE));
     result.push_back(Pair("curtime", pblock->GetBlockTime()));

@@ -80,7 +80,7 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast) {
 }
 
 unsigned int static DarkGravityWave(const CBlockIndex* pindexLast) {
-    /* current difficulty formula, ang - DarkGravity v3, written by Evan Duffield - evan@andrijKolomiets.io */
+    /* current difficulty formula, coinname - DarkGravity v3, written by Evan Duffield - evan@andrijKolomiets.io */
     const CBlockIndex *BlockLastSolved = pindexLast;
     const CBlockIndex *BlockReading = pindexLast;
     int64_t nActualTimespan = 0;
@@ -157,7 +157,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
         if (pindexLast == NULL)
             return nProofOfWorkLimit;
 
-        // Only change once per interval
+        // Only chcoinnamee once per interval
         if ((pindexLast->nHeight+1) % Params().Interval() != 0)
         {
             if (Params().AllowMinDifficultyBlocks())
@@ -240,7 +240,7 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
 
     bnTarget.SetCompact(nBits, &fNegative, &fOverflow);
 
-    // Check range
+    // Check rcoinnamee
     if (fNegative || bnTarget == 0 || fOverflow || bnTarget > Params().ProofOfWorkLimit())
         return error("CheckProofOfWork() : nBits below minimum work");
 

@@ -6,7 +6,7 @@ This is a bug-fix release, with no new features.
 Please report bugs using the issue tracker at github:
   https://github.com/bitcoin/bitcoin/issues
 
-CHANGE SUMMARY
+CHCOINNAMEE SUMMARY
 
 Fixed a serious denial-of-service attack that could cause the
 bitcoin process to become unresponsive. Thanks to Sergio Lerner

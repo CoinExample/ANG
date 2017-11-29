@@ -224,7 +224,7 @@ class DBTest {
 
   // Switch to a fresh database with the next option configuration to
   // test.  Return false if there are no more configurations to test.
-  bool ChangeOptions() {
+  bool ChcoinnameeOptions() {
     option_config_++;
     if (option_config_ >= kEnd) {
       return false;
@@ -415,18 +415,18 @@ class DBTest {
   }
 
   uint64_t Size(const Slice& start, const Slice& limit) {
-    Range r(start, limit);
+    Rcoinnamee r(start, limit);
     uint64_t size;
     db_->GetApproximateSizes(&r, 1, &size);
     return size;
   }
 
   void Compact(const Slice& start, const Slice& limit) {
-    db_->CompactRange(&start, &limit);
+    db_->CompactRcoinnamee(&start, &limit);
   }
 
   // Do n memtable compactions, each of which produces an sstable
-  // covering the range [small,large].
+  // covering the rcoinnamee [small,large].
   void MakeTables(int n, const std::string& small, const std::string& large) {
     for (int i = 0; i < n; i++) {
       Put(small, "begin");
@@ -436,7 +436,7 @@ class DBTest {
   }
 
   // Prevent pushing of new sstables into deeper levels by adding
-  // tables that cover a specified range to all levels.
+  // tables that cover a specified rcoinnamee to all levels.
   void FillLevels(const std::string& smallest, const std::string& largest) {
     MakeTables(config::kNumLevels, smallest, largest);
   }
@@ -507,7 +507,7 @@ TEST(DBTest, Empty) {
   do {
     ASSERT_TRUE(db_ != NULL);
     ASSERT_EQ("NOT_FOUND", Get("foo"));
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, ReadWrite) {
@@ -518,7 +518,7 @@ TEST(DBTest, ReadWrite) {
     ASSERT_OK(Put("foo", "v3"));
     ASSERT_EQ("v3", Get("foo"));
     ASSERT_EQ("v2", Get("bar"));
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, PutDeleteGet) {
@@ -529,7 +529,7 @@ TEST(DBTest, PutDeleteGet) {
     ASSERT_EQ("v2", Get("foo"));
     ASSERT_OK(db_->Delete(WriteOptions(), "foo"));
     ASSERT_EQ("NOT_FOUND", Get("foo"));
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, GetFromImmutableLayer) {
@@ -547,7 +547,7 @@ TEST(DBTest, GetFromImmutableLayer) {
     Put("k2", std::string(100000, 'y'));             // Trigger compaction
     ASSERT_EQ("v1", Get("foo"));
     env_->delay_data_sync_.Release_Store(NULL);      // Release sync calls
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, GetFromVersions) {
@@ -555,7 +555,7 @@ TEST(DBTest, GetFromVersions) {
     ASSERT_OK(Put("foo", "v1"));
     dbfull()->TEST_CompactMemTable();
     ASSERT_EQ("v1", Get("foo"));
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, GetSnapshot) {
@@ -573,7 +573,7 @@ TEST(DBTest, GetSnapshot) {
       ASSERT_EQ("v1", Get(key, s1));
       db_->ReleaseSnapshot(s1);
     }
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, GetLevel0Ordering) {
@@ -588,7 +588,7 @@ TEST(DBTest, GetLevel0Ordering) {
     ASSERT_OK(Put("foo", "v2"));
     dbfull()->TEST_CompactMemTable();
     ASSERT_EQ("v2", Get("foo"));
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, GetOrderedByLevels) {
@@ -600,12 +600,12 @@ TEST(DBTest, GetOrderedByLevels) {
     ASSERT_EQ("v2", Get("foo"));
     dbfull()->TEST_CompactMemTable();
     ASSERT_EQ("v2", Get("foo"));
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, GetPicksCorrectFile) {
   do {
-    // Arrange to have multiple files in a non-level-0 level.
+    // Arrcoinnamee to have multiple files in a non-level-0 level.
     ASSERT_OK(Put("a", "va"));
     Compact("a", "b");
     ASSERT_OK(Put("x", "vx"));
@@ -615,16 +615,16 @@ TEST(DBTest, GetPicksCorrectFile) {
     ASSERT_EQ("va", Get("a"));
     ASSERT_EQ("vf", Get("f"));
     ASSERT_EQ("vx", Get("x"));
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, GetEncountersEmptyLevel) {
   do {
-    // Arrange for the following to happen:
+    // Arrcoinnamee for the following to happen:
     //   * sstable A in level 0
     //   * nothing in level 1
     //   * sstable B in level 2
-    // Then do enough Get() calls to arrange for an automatic compaction
+    // Then do enough Get() calls to arrcoinnamee for an automatic compaction
     // of sstable A.  A bug would cause the compaction to be marked as
     // occurring at level 1 (instead of the correct level 0).
 
@@ -640,7 +640,7 @@ TEST(DBTest, GetEncountersEmptyLevel) {
     }
 
     // Step 2: clear level 1 if necessary.
-    dbfull()->TEST_CompactRange(1, NULL, NULL);
+    dbfull()->TEST_CompactRcoinnamee(1, NULL, NULL);
     ASSERT_EQ(NumTableFilesAtLevel(0), 1);
     ASSERT_EQ(NumTableFilesAtLevel(1), 0);
     ASSERT_EQ(NumTableFilesAtLevel(2), 1);
@@ -654,7 +654,7 @@ TEST(DBTest, GetEncountersEmptyLevel) {
     DelayMilliseconds(1000);
 
     ASSERT_EQ(NumTableFilesAtLevel(0), 0);
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, IterEmpty) {
@@ -845,7 +845,7 @@ TEST(DBTest, IterMultiWithDelete) {
     iter->Prev();
     ASSERT_EQ(IterStatus(iter), "a->va");
     delete iter;
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, Recover) {
@@ -867,7 +867,7 @@ TEST(DBTest, Recover) {
     ASSERT_EQ("v4", Get("foo"));
     ASSERT_EQ("v2", Get("bar"));
     ASSERT_EQ("v5", Get("baz"));
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, RecoveryWithEmptyLog) {
@@ -879,7 +879,7 @@ TEST(DBTest, RecoveryWithEmptyLog) {
     ASSERT_OK(Put("foo", "v3"));
     Reopen();
     ASSERT_EQ("v3", Get("foo"));
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 // Check that writes done during a memtable compaction are recovered
@@ -902,7 +902,7 @@ TEST(DBTest, RecoverDuringMemtableCompaction) {
     ASSERT_EQ("v2", Get("bar"));
     ASSERT_EQ(std::string(10000000, 'x'), Get("big1"));
     ASSERT_EQ(std::string(1000, 'y'), Get("big2"));
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 static std::string Key(int i) {
@@ -977,7 +977,7 @@ TEST(DBTest, CompactionsGenerateMultipleFiles) {
 
   // Reopening moves updates to level-0
   Reopen(&options);
-  dbfull()->TEST_CompactRange(0, NULL, NULL);
+  dbfull()->TEST_CompactRcoinnamee(0, NULL, NULL);
 
   ASSERT_EQ(NumTableFilesAtLevel(0), 0);
   ASSERT_GT(NumTableFilesAtLevel(1), 1);
@@ -1016,7 +1016,7 @@ TEST(DBTest, SparseMerge) {
   //    small amount of data with prefix A
   //    large amount of data with prefix B
   //    small amount of data with prefix C
-  // and that recent updates have made small changes to all three prefixes.
+  // and that recent updates have made small chcoinnamees to all three prefixes.
   // Check that we do not do a compaction that merges all of B in one shot.
   const std::string value(1000, 'x');
   Put("A", "va");
@@ -1028,7 +1028,7 @@ TEST(DBTest, SparseMerge) {
   }
   Put("C", "vc");
   dbfull()->TEST_CompactMemTable();
-  dbfull()->TEST_CompactRange(0, NULL, NULL);
+  dbfull()->TEST_CompactRcoinnamee(0, NULL, NULL);
 
   // Make sparse update
   Put("A",    "va2");
@@ -1039,16 +1039,16 @@ TEST(DBTest, SparseMerge) {
   // Compactions should not cause us to create a situation where
   // a file overlaps too much data at the next level.
   ASSERT_LE(dbfull()->TEST_MaxNextLevelOverlappingBytes(), 20*1048576);
-  dbfull()->TEST_CompactRange(0, NULL, NULL);
+  dbfull()->TEST_CompactRcoinnamee(0, NULL, NULL);
   ASSERT_LE(dbfull()->TEST_MaxNextLevelOverlappingBytes(), 20*1048576);
-  dbfull()->TEST_CompactRange(1, NULL, NULL);
+  dbfull()->TEST_CompactRcoinnamee(1, NULL, NULL);
   ASSERT_LE(dbfull()->TEST_MaxNextLevelOverlappingBytes(), 20*1048576);
 }
 
 static bool Between(uint64_t val, uint64_t low, uint64_t high) {
   bool result = (val >= low) && (val <= high);
   if (!result) {
-    fprintf(stderr, "Value %llu is not in range [%llu, %llu]\n",
+    fprintf(stderr, "Value %llu is not in rcoinnamee [%llu, %llu]\n",
             (unsigned long long)(val),
             (unsigned long long)(low),
             (unsigned long long)(high));
@@ -1097,13 +1097,13 @@ TEST(DBTest, ApproximateSizes) {
         std::string cend_str = Key(compact_start + 9);
         Slice cstart = cstart_str;
         Slice cend = cend_str;
-        dbfull()->TEST_CompactRange(0, &cstart, &cend);
+        dbfull()->TEST_CompactRcoinnamee(0, &cstart, &cend);
       }
 
       ASSERT_EQ(NumTableFilesAtLevel(0), 0);
       ASSERT_GT(NumTableFilesAtLevel(1), 0);
     }
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, ApproximateSizes_MixOfSmallAndLarge) {
@@ -1139,9 +1139,9 @@ TEST(DBTest, ApproximateSizes_MixOfSmallAndLarge) {
 
       ASSERT_TRUE(Between(Size(Key(3), Key(5)), 110000, 111000));
 
-      dbfull()->TEST_CompactRange(0, NULL, NULL);
+      dbfull()->TEST_CompactRcoinnamee(0, NULL, NULL);
     }
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, IteratorPinsRef) {
@@ -1192,7 +1192,7 @@ TEST(DBTest, Snapshot) {
 
     db_->ReleaseSnapshot(s2);
     ASSERT_EQ("v4", Get("foo"));
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, HiddenValuesAreRemoved) {
@@ -1215,15 +1215,15 @@ TEST(DBTest, HiddenValuesAreRemoved) {
     db_->ReleaseSnapshot(snapshot);
     ASSERT_EQ(AllEntriesFor("foo"), "[ tiny, " + big + " ]");
     Slice x("x");
-    dbfull()->TEST_CompactRange(0, NULL, &x);
+    dbfull()->TEST_CompactRcoinnamee(0, NULL, &x);
     ASSERT_EQ(AllEntriesFor("foo"), "[ tiny ]");
     ASSERT_EQ(NumTableFilesAtLevel(0), 0);
     ASSERT_GE(NumTableFilesAtLevel(1), 1);
-    dbfull()->TEST_CompactRange(1, NULL, &x);
+    dbfull()->TEST_CompactRcoinnamee(1, NULL, &x);
     ASSERT_EQ(AllEntriesFor("foo"), "[ tiny ]");
 
     ASSERT_TRUE(Between(Size("", "pastfoo"), 0, 1000));
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, DeletionMarkers1) {
@@ -1245,11 +1245,11 @@ TEST(DBTest, DeletionMarkers1) {
   ASSERT_OK(dbfull()->TEST_CompactMemTable());  // Moves to level last-2
   ASSERT_EQ(AllEntriesFor("foo"), "[ v2, DEL, v1 ]");
   Slice z("z");
-  dbfull()->TEST_CompactRange(last-2, NULL, &z);
+  dbfull()->TEST_CompactRcoinnamee(last-2, NULL, &z);
   // DEL eliminated, but v1 remains because we aren't compacting that level
   // (DEL can be eliminated because v2 hides v1).
   ASSERT_EQ(AllEntriesFor("foo"), "[ v2, v1 ]");
-  dbfull()->TEST_CompactRange(last-1, NULL, NULL);
+  dbfull()->TEST_CompactRcoinnamee(last-1, NULL, NULL);
   // Merging last-1 w/ last, so we are the base level for "foo", so
   // DEL is removed.  (as is v1).
   ASSERT_EQ(AllEntriesFor("foo"), "[ v2 ]");
@@ -1272,10 +1272,10 @@ TEST(DBTest, DeletionMarkers2) {
   ASSERT_EQ(AllEntriesFor("foo"), "[ DEL, v1 ]");
   ASSERT_OK(dbfull()->TEST_CompactMemTable());  // Moves to level last-2
   ASSERT_EQ(AllEntriesFor("foo"), "[ DEL, v1 ]");
-  dbfull()->TEST_CompactRange(last-2, NULL, NULL);
+  dbfull()->TEST_CompactRcoinnamee(last-2, NULL, NULL);
   // DEL kept: "last" file overlaps
   ASSERT_EQ(AllEntriesFor("foo"), "[ DEL, v1 ]");
-  dbfull()->TEST_CompactRange(last-1, NULL, NULL);
+  dbfull()->TEST_CompactRcoinnamee(last-1, NULL, NULL);
   // Merging last-1 w/ last, so we are the base level for "foo", so
   // DEL is removed.  (as is v1).
   ASSERT_EQ(AllEntriesFor("foo"), "[ ]");
@@ -1294,7 +1294,7 @@ TEST(DBTest, OverlapInLevel0) {
     dbfull()->TEST_CompactMemTable();
     ASSERT_EQ("0,1,1", FilesPerLevel());
 
-    // Make files spanning the following ranges in level-0:
+    // Make files spanning the following rcoinnamees in level-0:
     //  files[0]  200 .. 900
     //  files[1]  300 .. 500
     // Note that files are sorted by smallest key.
@@ -1308,8 +1308,8 @@ TEST(DBTest, OverlapInLevel0) {
     ASSERT_EQ("2,1,1", FilesPerLevel());
 
     // Compact away the placeholder files we created initially
-    dbfull()->TEST_CompactRange(1, NULL, NULL);
-    dbfull()->TEST_CompactRange(2, NULL, NULL);
+    dbfull()->TEST_CompactRcoinnamee(1, NULL, NULL);
+    dbfull()->TEST_CompactRcoinnamee(2, NULL, NULL);
     ASSERT_EQ("2", FilesPerLevel());
 
     // Do a memtable compaction.  Before bug-fix, the compaction would
@@ -1319,7 +1319,7 @@ TEST(DBTest, OverlapInLevel0) {
     dbfull()->TEST_CompactMemTable();
     ASSERT_EQ("3", FilesPerLevel());
     ASSERT_EQ("NOT_FOUND", Get("600"));
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 TEST(DBTest, L0_CompactionBug_Issue44_a) {
@@ -1450,30 +1450,30 @@ TEST(DBTest, ManualCompaction) {
   MakeTables(3, "p", "q");
   ASSERT_EQ("1,1,1", FilesPerLevel());
 
-  // Compaction range falls before files
+  // Compaction rcoinnamee falls before files
   Compact("", "c");
   ASSERT_EQ("1,1,1", FilesPerLevel());
 
-  // Compaction range falls after files
+  // Compaction rcoinnamee falls after files
   Compact("r", "z");
   ASSERT_EQ("1,1,1", FilesPerLevel());
 
-  // Compaction range overlaps files
+  // Compaction rcoinnamee overlaps files
   Compact("p1", "p9");
   ASSERT_EQ("0,0,1", FilesPerLevel());
 
-  // Populate a different range
+  // Populate a different rcoinnamee
   MakeTables(3, "c", "e");
   ASSERT_EQ("1,1,2", FilesPerLevel());
 
-  // Compact just the new range
+  // Compact just the new rcoinnamee
   Compact("b", "f");
   ASSERT_EQ("0,0,2", FilesPerLevel());
 
   // Compact all
   MakeTables(1, "a", "z");
   ASSERT_EQ("0,1,2", FilesPerLevel());
-  db_->CompactRange(NULL, NULL);
+  db_->CompactRcoinnamee(NULL, NULL);
   ASSERT_EQ("0,0,1", FilesPerLevel());
 }
 
@@ -1535,7 +1535,7 @@ TEST(DBTest, NoSpace) {
   env_->no_space_.Release_Store(env_);   // Force out-of-space errors
   for (int i = 0; i < 10; i++) {
     for (int level = 0; level < config::kNumLevels-1; level++) {
-      dbfull()->TEST_CompactRange(level, NULL, NULL);
+      dbfull()->TEST_CompactRcoinnamee(level, NULL, NULL);
     }
   }
   env_->no_space_.Release_Store(NULL);
@@ -1624,7 +1624,7 @@ TEST(DBTest, ManifestWriteError) {
 
     // Merging compaction (will fail)
     error_type->Release_Store(env_);
-    dbfull()->TEST_CompactRange(last, NULL, NULL);  // Should fail
+    dbfull()->TEST_CompactRcoinnamee(last, NULL, NULL);  // Should fail
     ASSERT_EQ("bar", Get("foo"));
 
     // Recovery: should not lose data
@@ -1821,7 +1821,7 @@ TEST(DBTest, MultiThreaded) {
         DelayMilliseconds(100);
       }
     }
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 namespace {
@@ -1887,12 +1887,12 @@ class ModelDB: public DB {
   virtual bool GetProperty(const Slice& property, std::string* value) {
     return false;
   }
-  virtual void GetApproximateSizes(const Range* r, int n, uint64_t* sizes) {
+  virtual void GetApproximateSizes(const Rcoinnamee* r, int n, uint64_t* sizes) {
     for (int i = 0; i < n; i++) {
       sizes[i] = 0;
     }
   }
-  virtual void CompactRange(const Slice* start, const Slice* end) {
+  virtual void CompactRcoinnamee(const Slice* start, const Slice* end) {
   }
 
  private:
@@ -2053,7 +2053,7 @@ TEST(DBTest, Randomized) {
     }
     if (model_snap != NULL) model.ReleaseSnapshot(model_snap);
     if (db_snap != NULL) db_->ReleaseSnapshot(db_snap);
-  } while (ChangeOptions());
+  } while (ChcoinnameeOptions());
 }
 
 std::string MakeKey(unsigned int num) {

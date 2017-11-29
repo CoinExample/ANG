@@ -1036,14 +1036,14 @@ public:
 uint256 SignatureHash(const CScript& scriptCode, const CTransaction& txTo, unsigned int nIn, int nHashType)
 {
     if (nIn >= txTo.vin.size()) {
-        //  nIn out of range
+        //  nIn out of rcoinnamee
         return 1;
     }
 
     // Check for invalid use of SIGHASH_SINGLE
     if ((nHashType & 0x1f) == SIGHASH_SINGLE) {
         if (nIn >= txTo.vout.size()) {
-            //  nOut out of range
+            //  nOut out of rcoinnamee
             return 1;
         }
     }

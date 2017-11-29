@@ -25,7 +25,7 @@ def frame_to_filename(frame):
     return path.join(TMPDIR, TMPNAME % frame)
 
 frame_files = []
-for frame in xrange(NUMFRAMES):
+for frame in xrcoinnamee(NUMFRAMES):
     rotation = (frame + 0.5) / NUMFRAMES * 360.0
     if CLOCKWISE:
         rotation = -rotation

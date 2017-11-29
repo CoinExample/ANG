@@ -60,15 +60,15 @@ bin_PROGRAMS =
 TESTS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += angd
+  bin_PROGRAMS += coinnamed
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += ang-cli ang-tx
+  bin_PROGRAMS += coinname-cli coinname-tx
 endif
 
 .PHONY: FORCE
-# ang core #
+# coinname core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   addrman.h \
@@ -170,7 +170,7 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between angd and ang-qt
+# server: shared between coinnamed and coinname-qt
 libbitcoin_server_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS)
 libbitcoin_server_a_SOURCES = \
   addrman.cpp \
@@ -202,7 +202,7 @@ libbitcoin_server_a_SOURCES = \
   $(JSON_H) \
   $(BITCOIN_CORE_H)
 
-# wallet: shared between angd and ang-qt, but only linked
+# wallet: shared between coinnamed and coinname-qt, but only linked
 # when wallet enabled
 libbitcoin_wallet_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_SOURCES = \
@@ -278,7 +278,7 @@ univalue_libbitcoin_univalue_a_SOURCES = \
   univalue/univalue_escapes.h \
   univalue/univalue.h
 
-# common: shared between angd, and ang-qt and non-server tools
+# common: shared between coinnamed, and coinname-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_common_a_SOURCES = \
   allocators.cpp \
@@ -333,7 +333,7 @@ libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 libbitcoin_util_a_SOURCES += compat/glibcxx_compat.cpp
 endif
 
-# cli: shared between ang-cli and ang-qt
+# cli: shared between coinname-cli and coinname-qt
 libbitcoin_cli_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_SOURCES = \
   rpcclient.cpp \
@@ -343,7 +343,7 @@ nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # bitcoind binary #
-angd_LDADD = \
+coinnamed_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UNIVALUE) \
@@ -354,35 +354,35 @@ angd_LDADD = \
   $(LIBSECP256K1)
 
 if ENABLE_WALLET
-angd_LDADD += libbitcoin_wallet.a
+coinnamed_LDADD += libbitcoin_wallet.a
 endif
-angd_SOURCES = angd.cpp
+coinnamed_SOURCES = coinnamed.cpp
 #
 
 if TARGET_WINDOWS
-angd_SOURCES += angd-res.rc
+coinnamed_SOURCES += coinnamed-res.rc
 endif
 
-angd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
-angd_CPPFLAGS = $(BITCOIN_INCLUDES)
-angd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+coinnamed_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
+coinnamed_CPPFLAGS = $(BITCOIN_INCLUDES)
+coinnamed_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
-# ang-cli binary #
-ang_cli_LDADD = \
+# coinname-cli binary #
+coinname_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBBITCOIN_UTIL) \
   $(BOOST_LIBS) \
   $(SSL_LIBS) \
   $(CRYPTO_LIBS)
 
-ang_cli_SOURCES = \
-  ang-cli.cpp
+coinname_cli_SOURCES = \
+  coinname-cli.cpp
 
-ang_cli_CPPFLAGS = $(BITCOIN_INCLUDES)
+coinname_cli_CPPFLAGS = $(BITCOIN_INCLUDES)
 #
 
-# ang-tx binary #
-ang_tx_LDADD = \
+# coinname-tx binary #
+coinname_tx_LDADD = \
   $(LIBBITCOIN_UNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -391,15 +391,15 @@ ang_tx_LDADD = \
   $(BOOST_LIBS) \
   $(CRYPTO_LIBS)
 
-ang_tx_SOURCES = ang-tx.cpp
-ang_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
+coinname_tx_SOURCES = coinname-tx.cpp
+coinname_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
 #
-ang_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+coinname_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-ang_cli_SOURCES += ang-cli-res.rc
+coinname_cli_SOURCES += coinname-cli-res.rc
 endif
-ang_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+coinname_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if BUILD_BITCOIN_LIBS
 include_HEADERS = script/bitcoinconsensus.h

@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -64,15 +64,15 @@ AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget *parent) :
             ui->passEdit3->hide();
             setWindowTitle(tr("Decrypt wallet"));
             break;
-        case ChangePass: // Ask old passphrase + new passphrase x2
-            setWindowTitle(tr("Change passphrase"));
+        case ChcoinnameePass: // Ask old passphrase + new passphrase x2
+            setWindowTitle(tr("Chcoinnamee passphrase"));
             ui->warningLabel->setText(tr("Enter the old and new passphrase to the wallet."));
             break;
     }
-    textChanged();
-    connect(ui->passEdit1, SIGNAL(textChanged(QString)), this, SLOT(textChanged()));
-    connect(ui->passEdit2, SIGNAL(textChanged(QString)), this, SLOT(textChanged()));
-    connect(ui->passEdit3, SIGNAL(textChanged(QString)), this, SLOT(textChanged()));
+    textChcoinnameed();
+    connect(ui->passEdit1, SIGNAL(textChcoinnameed(QString)), this, SLOT(textChcoinnameed()));
+    connect(ui->passEdit2, SIGNAL(textChcoinnameed(QString)), this, SLOT(textChcoinnameed()));
+    connect(ui->passEdit3, SIGNAL(textChcoinnameed(QString)), this, SLOT(textChcoinnameed()));
 }
 
 AskPassphraseDialog::~AskPassphraseDialog()
@@ -113,7 +113,7 @@ void AskPassphraseDialog::accept()
             break;
         }
         QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm wallet encryption"),
-                 tr("Warning: If you encrypt your wallet and lose your passphrase, you will <b>LOSE ALL OF YOUR ANG</b>!") + "<br><br>" + tr("Are you sure you wish to encrypt your wallet?"),
+                 tr("Warning: If you encrypt your wallet and lose your passphrase, you will <b>LOSE ALL OF YOUR COINNAME</b>!") + "<br><br>" + tr("Are you sure you wish to encrypt your wallet?"),
                  QMessageBox::Yes|QMessageBox::Cancel,
                  QMessageBox::Cancel);
         if(retval == QMessageBox::Yes)
@@ -124,9 +124,9 @@ void AskPassphraseDialog::accept()
                 {
                     QMessageBox::warning(this, tr("Wallet encrypted"),
                                          "<qt>" +
-                                         tr("Ang will close now to finish the encryption process. "
+                                         tr("Coinname will close now to finish the encryption process. "
                                          "Remember that encrypting your wallet cannot fully protect "
-                                         "your angs from being stolen by malware infecting your computer.") +
+                                         "your coinnames from being stolen by malware infecting your computer.") +
                                          "<br><br><b>" +
                                          tr("IMPORTANT: Any previous backups you have made of your wallet file "
                                          "should be replaced with the newly generated, encrypted wallet file. "
@@ -176,13 +176,13 @@ void AskPassphraseDialog::accept()
             QDialog::accept(); // Success
         }
         break;
-    case ChangePass:
+    case ChcoinnameePass:
         if(newpass1 == newpass2)
         {
-            if(model->changePassphrase(oldpass, newpass1))
+            if(model->chcoinnameePassphrase(oldpass, newpass1))
             {
                 QMessageBox::information(this, tr("Wallet encrypted"),
-                                     tr("Wallet passphrase was successfully changed."));
+                                     tr("Wallet passphrase was successfully chcoinnameed."));
                 QDialog::accept(); // Success
             }
             else
@@ -200,7 +200,7 @@ void AskPassphraseDialog::accept()
     }
 }
 
-void AskPassphraseDialog::textChanged()
+void AskPassphraseDialog::textChcoinnameed()
 {
     // Validate input, set Ok button to enabled when acceptable
     bool acceptable = false;
@@ -214,7 +214,7 @@ void AskPassphraseDialog::textChanged()
     case Decrypt:
         acceptable = !ui->passEdit1->text().isEmpty();
         break;
-    case ChangePass: // Old passphrase x1, new passphrase x2
+    case ChcoinnameePass: // Old passphrase x1, new passphrase x2
         acceptable = !ui->passEdit1->text().isEmpty() && !ui->passEdit2->text().isEmpty() && !ui->passEdit3->text().isEmpty();
         break;
     }

@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -19,9 +19,9 @@ BitcoinUnits::BitcoinUnits(QObject *parent):
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(ANG);
-    unitlist.append(mANG);
-    unitlist.append(uANG);
+    unitlist.append(COINNAME);
+    unitlist.append(mCOINNAME);
+    unitlist.append(uCOINNAME);
     unitlist.append(duffs);
     return unitlist;
 }
@@ -30,9 +30,9 @@ bool BitcoinUnits::valid(int unit)
 {
     switch(unit)
     {
-    case ANG:
-    case mANG:
-    case uANG:
+    case COINNAME:
+    case mCOINNAME:
+    case uCOINNAME:
     case duffs:
         return true;
     default:
@@ -44,9 +44,9 @@ QString BitcoinUnits::id(int unit)
 {
     switch(unit)
     {
-        case ANG: return QString("ang");
-        case mANG: return QString("mang");
-        case uANG: return QString::fromUtf8("uang");
+        case COINNAME: return QString("coinname");
+        case mCOINNAME: return QString("mcoinname");
+        case uCOINNAME: return QString::fromUtf8("ucoinname");
         case duffs: return QString("duffs");
         default: return QString("???");
     }
@@ -58,9 +58,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case ANG: return QString("ANG");
-            case mANG: return QString("mANG");
-            case uANG: return QString::fromUtf8("μANG");
+            case COINNAME: return QString("COINNAME");
+            case mCOINNAME: return QString("mCOINNAME");
+            case uCOINNAME: return QString::fromUtf8("μCOINNAME");
             case duffs: return QString("duffs");
             default: return QString("???");
         }
@@ -69,9 +69,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case ANG: return QString("tANG");
-            case mANG: return QString("mtANG");
-            case uANG: return QString::fromUtf8("μtANG");
+            case COINNAME: return QString("tCOINNAME");
+            case mCOINNAME: return QString("mtCOINNAME");
+            case uCOINNAME: return QString::fromUtf8("μtCOINNAME");
             case duffs: return QString("tduffs");
             default: return QString("???");
         }
@@ -84,10 +84,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case ANG: return QString("Ang");
-            case mANG: return QString("Milli-Ang (1 / 1" THIN_SP_UTF8 "000)");
-            case uANG: return QString("Micro-Ang (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-Ang (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case COINNAME: return QString("Coinname");
+            case mCOINNAME: return QString("Milli-Coinname (1 / 1" THIN_SP_UTF8 "000)");
+            case uCOINNAME: return QString("Micro-Coinname (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case duffs: return QString("Ten Nano-Coinname (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -95,10 +95,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case ANG: return QString("TestAngs");
-            case mANG: return QString("Milli-TestAng (1 / 1" THIN_SP_UTF8 "000)");
-            case uANG: return QString("Micro-TestAng (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-TestAng (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case COINNAME: return QString("TestCoinnames");
+            case mCOINNAME: return QString("Milli-TestCoinname (1 / 1" THIN_SP_UTF8 "000)");
+            case uCOINNAME: return QString("Micro-TestCoinname (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case duffs: return QString("Ten Nano-TestCoinname (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -108,9 +108,9 @@ qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
-    case ANG:  return 100000000;
-    case mANG: return 100000;
-    case uANG: return 100;
+    case COINNAME:  return 100000000;
+    case mCOINNAME: return 100000;
+    case uCOINNAME: return 100;
     case duffs: return 1;
     default:   return 100000000;
     }
@@ -120,9 +120,9 @@ int BitcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case ANG: return 8;
-    case mANG: return 5;
-    case uANG: return 2;
+    case COINNAME: return 8;
+    case mCOINNAME: return 5;
+    case uCOINNAME: return 2;
     case duffs: return 0;
     default: return 0;
     }

@@ -45,7 +45,7 @@ even in case of power failure or other sudden shutdown. The
 format of the ".dat" files is portable between different
 versions of Berkeley DB, but the "log" files are not-- even minor
 version differences may have incompatible "log" files. The
--detachdb option moves any pending changes from the "log" files
+-detachdb option moves any pending chcoinnamees from the "log" files
 to the "blkindex.dat" file for maximum compatibility, but makes
 shutdown much slower. Note that the "wallet.dat" file is always
 detached, and versions prior to 0.6.0 detached all databases
@@ -65,7 +65,7 @@ New features
 
 * Import $DataDir/bootstrap.dat automatically, if it exists.
 
-Dependency changes
+Dependency chcoinnamees
 ------------------
 
 * Qt 4.8.2 for Windows builds
@@ -97,7 +97,7 @@ Thanks to everybody who contributed to this release:
 
 Gavin Andresen
 Jeff Garzik
-Luke Angjr
+Luke Coinnamejr
 Mark Friedenbach
 Matt Corallo
 Philip Kaufmann

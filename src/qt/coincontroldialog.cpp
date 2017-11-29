@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -80,7 +80,7 @@ CoinControlDialog::CoinControlDialog(QWidget *parent) :
     QAction *clipboardBytesAction = new QAction(tr("Copy bytes"), this);
     QAction *clipboardPriorityAction = new QAction(tr("Copy priority"), this);
     QAction *clipboardLowOutputAction = new QAction(tr("Copy dust"), this);
-    QAction *clipboardChangeAction = new QAction(tr("Copy change"), this);
+    QAction *clipboardChcoinnameeAction = new QAction(tr("Copy chcoinnamee"), this);
 
     connect(clipboardQuantityAction, SIGNAL(triggered()), this, SLOT(clipboardQuantity()));
     connect(clipboardAmountAction, SIGNAL(triggered()), this, SLOT(clipboardAmount()));
@@ -89,7 +89,7 @@ CoinControlDialog::CoinControlDialog(QWidget *parent) :
     connect(clipboardBytesAction, SIGNAL(triggered()), this, SLOT(clipboardBytes()));
     connect(clipboardPriorityAction, SIGNAL(triggered()), this, SLOT(clipboardPriority()));
     connect(clipboardLowOutputAction, SIGNAL(triggered()), this, SLOT(clipboardLowOutput()));
-    connect(clipboardChangeAction, SIGNAL(triggered()), this, SLOT(clipboardChange()));
+    connect(clipboardChcoinnameeAction, SIGNAL(triggered()), this, SLOT(clipboardChcoinnamee()));
 
     ui->labelCoinControlQuantity->addAction(clipboardQuantityAction);
     ui->labelCoinControlAmount->addAction(clipboardAmountAction);
@@ -98,14 +98,14 @@ CoinControlDialog::CoinControlDialog(QWidget *parent) :
     ui->labelCoinControlBytes->addAction(clipboardBytesAction);
     ui->labelCoinControlPriority->addAction(clipboardPriorityAction);
     ui->labelCoinControlLowOutput->addAction(clipboardLowOutputAction);
-    ui->labelCoinControlChange->addAction(clipboardChangeAction);
+    ui->labelCoinControlChcoinnamee->addAction(clipboardChcoinnameeAction);
 
     // toggle tree/list mode
     connect(ui->radioTreeMode, SIGNAL(toggled(bool)), this, SLOT(radioTreeMode(bool)));
     connect(ui->radioListMode, SIGNAL(toggled(bool)), this, SLOT(radioListMode(bool)));
 
     // click on checkbox
-    connect(ui->treeWidget, SIGNAL(itemChanged(QTreeWidgetItem*, int)), this, SLOT(viewItemChanged(QTreeWidgetItem*, int)));
+    connect(ui->treeWidget, SIGNAL(itemChcoinnameed(QTreeWidgetItem*, int)), this, SLOT(viewItemChcoinnameed(QTreeWidgetItem*, int)));
 
     // click on header
 #if QT_VERSION < 0x050000
@@ -124,7 +124,7 @@ CoinControlDialog::CoinControlDialog(QWidget *parent) :
     // Toggle lock state
     connect(ui->pushButtonToggleLock, SIGNAL(clicked()), this, SLOT(buttonToggleLockClicked()));
 
-    // change coin control first column label due Qt4 bug. 
+    // chcoinnamee coin control first column label due Qt4 bug. 
     // see https://github.com/bitcoin/bitcoin/issues/5716
     ui->treeWidget->headerItem()->setText(COLUMN_CHECKBOX, QString());
 
@@ -377,10 +377,10 @@ void CoinControlDialog::clipboardLowOutput()
     GUIUtil::setClipboard(ui->labelCoinControlLowOutput->text());
 }
 
-// copy label "Change" to clipboard
-void CoinControlDialog::clipboardChange()
+// copy label "Chcoinnamee" to clipboard
+void CoinControlDialog::clipboardChcoinnamee()
 {
-    GUIUtil::setClipboard(ui->labelCoinControlChange->text().left(ui->labelCoinControlChange->text().indexOf(" ")).replace("~", ""));
+    GUIUtil::setClipboard(ui->labelCoinControlChcoinnamee->text().left(ui->labelCoinControlChcoinnamee->text().indexOf(" ")).replace("~", ""));
 }
 
 // treeview: sort
@@ -430,7 +430,7 @@ void CoinControlDialog::radioListMode(bool checked)
 }
 
 // checkbox clicked by user
-void CoinControlDialog::viewItemChanged(QTreeWidgetItem* item, int column)
+void CoinControlDialog::viewItemChcoinnameed(QTreeWidgetItem* item, int column)
 {
     if (column == COLUMN_CHECKBOX && item->text(COLUMN_TXHASH).length() == 64) // transaction hash is 64 characters (this means its a child node, so its not a parent node in tree mode)
     {
@@ -452,7 +452,7 @@ void CoinControlDialog::viewItemChanged(QTreeWidgetItem* item, int column)
             }
         }
 
-        // selection changed -> update labels
+        // selection chcoinnameed -> update labels
         if (ui->treeWidget->isEnabled()) // do not update on every click for (un)select all
             CoinControlDialog::updateLabels(model, this);
     }
@@ -528,7 +528,7 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     CAmount nAmount             = 0;
     CAmount nPayFee             = 0;
     CAmount nAfterFee           = 0;
-    CAmount nChange             = 0;
+    CAmount nChcoinnamee             = 0;
     unsigned int nBytes         = 0;
     unsigned int nBytesInputs   = 0;
     double dPriority            = 0;
@@ -585,7 +585,7 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     if (nQuantity > 0)
     {
         // Bytes
-        nBytes = nBytesInputs + ((CoinControlDialog::payAmounts.size() > 0 ? CoinControlDialog::payAmounts.size() + 1 : 2) * 34) + 10; // always assume +1 output for change here
+        nBytes = nBytesInputs + ((CoinControlDialog::payAmounts.size() > 0 ? CoinControlDialog::payAmounts.size() + 1 : 2) * 34) + 10; // always assume +1 output for chcoinnamee here
 
         // Priority
         double mempoolEstimatePriority = mempool.estimatePriority(nTxConfirmTarget);
@@ -609,26 +609,26 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
 
         if (nPayAmount > 0)
         {
-            nChange = nAmount - nPayFee - nPayAmount;
+            nChcoinnamee = nAmount - nPayFee - nPayAmount;
 
             // DS Fee = overpay
-            if(coinControl->useDarkSend && nChange > 0)
+            if(coinControl->useDarkSend && nChcoinnamee > 0)
             {
-                nPayFee += nChange;
-                nChange = 0;
+                nPayFee += nChcoinnamee;
+                nChcoinnamee = 0;
             }
             // Never create dust outputs; if we would, just add the dust to the fee.
-            if (nChange > 0 && nChange < CENT)
+            if (nChcoinnamee > 0 && nChcoinnamee < CENT)
             {
-                CTxOut txout(nChange, (CScript)vector<unsigned char>(24, 0));
+                CTxOut txout(nChcoinnamee, (CScript)vector<unsigned char>(24, 0));
                 if (txout.IsDust(::minRelayTxFee))
                 {
-                    nPayFee += nChange;
-                    nChange = 0;
+                    nPayFee += nChcoinnamee;
+                    nChcoinnamee = 0;
                 }
             }
 
-            if (nChange == 0)
+            if (nChcoinnamee == 0)
                 nBytes -= 34;
         }
 
@@ -639,7 +639,7 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     }
 
     // actually update labels
-    int nDisplayUnit = BitcoinUnits::ANG;
+    int nDisplayUnit = BitcoinUnits::COINNAME;
     if (model && model->getOptionsModel())
         nDisplayUnit = model->getOptionsModel()->getDisplayUnit();
 
@@ -650,13 +650,13 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     QLabel *l5 = dialog->findChild<QLabel *>("labelCoinControlBytes");
     QLabel *l6 = dialog->findChild<QLabel *>("labelCoinControlPriority");
     QLabel *l7 = dialog->findChild<QLabel *>("labelCoinControlLowOutput");
-    QLabel *l8 = dialog->findChild<QLabel *>("labelCoinControlChange");
+    QLabel *l8 = dialog->findChild<QLabel *>("labelCoinControlChcoinnamee");
 
-    // enable/disable "dust" and "change"
+    // enable/disable "dust" and "chcoinnamee"
     dialog->findChild<QLabel *>("labelCoinControlLowOutputText")->setEnabled(nPayAmount > 0);
     dialog->findChild<QLabel *>("labelCoinControlLowOutput")    ->setEnabled(nPayAmount > 0);
-    dialog->findChild<QLabel *>("labelCoinControlChangeText")   ->setEnabled(nPayAmount > 0);
-    dialog->findChild<QLabel *>("labelCoinControlChange")       ->setEnabled(nPayAmount > 0);
+    dialog->findChild<QLabel *>("labelCoinControlChcoinnameeText")   ->setEnabled(nPayAmount > 0);
+    dialog->findChild<QLabel *>("labelCoinControlChcoinnamee")       ->setEnabled(nPayAmount > 0);
 
     // stats
     l1->setText(QString::number(nQuantity));                                 // Quantity
@@ -666,12 +666,12 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     l5->setText(((nBytes > 0) ? "~" : "") + QString::number(nBytes));        // Bytes
     l6->setText(sPriorityLabel);                                             // Priority
     l7->setText(fDust ? tr("yes") : tr("no"));                               // Dust
-    l8->setText(BitcoinUnits::formatWithUnit(nDisplayUnit, nChange));        // Change
+    l8->setText(BitcoinUnits::formatWithUnit(nDisplayUnit, nChcoinnamee));        // Chcoinnamee
     if (nPayFee > 0 && !(payTxFee.GetFeePerK() > 0 && fPayAtLeastCustomFee && nBytes < 1000))
     {
         l3->setText("~" + l3->text());
         l4->setText("~" + l4->text());
-        if (nChange > 0)
+        if (nChcoinnamee > 0)
             l8->setText("~" + l8->text());
     }
 
@@ -710,12 +710,12 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     dialog->findChild<QLabel *>("labelCoinControlBytesText")    ->setToolTip(l5->toolTip());
     dialog->findChild<QLabel *>("labelCoinControlPriorityText") ->setToolTip(l6->toolTip());
     dialog->findChild<QLabel *>("labelCoinControlLowOutputText")->setToolTip(l7->toolTip());
-    dialog->findChild<QLabel *>("labelCoinControlChangeText")   ->setToolTip(l8->toolTip());
+    dialog->findChild<QLabel *>("labelCoinControlChcoinnameeText")   ->setToolTip(l8->toolTip());
 
     // Insufficient funds
     QLabel *label = dialog->findChild<QLabel *>("labelCoinControlInsuffFunds");
     if (label)
-        label->setVisible(nChange < 0);
+        label->setVisible(nChcoinnamee < 0);
 }
 
 void CoinControlDialog::updateView()
@@ -786,7 +786,7 @@ void CoinControlDialog::updateView()
             {
                 sAddress = QString::fromStdString(CBitcoinAddress(outputAddress).ToString());
 
-                // if listMode or change => show ang address. In tree mode, address is not shown again for direct wallet address outputs
+                // if listMode or chcoinnamee => show coinname address. In tree mode, address is not shown again for direct wallet address outputs
                 if (!treeMode || (!(sAddress == sWalletAddress)))
                     itemOutput->setText(COLUMN_ADDRESS, sAddress);
 
@@ -799,11 +799,11 @@ void CoinControlDialog::updateView()
             }
 
             // label
-            if (!(sAddress == sWalletAddress)) // change
+            if (!(sAddress == sWalletAddress)) // chcoinnamee
             {
-                // tooltip from where the change comes from
-                itemOutput->setToolTip(COLUMN_LABEL, tr("change from %1 (%2)").arg(sWalletLabel).arg(sWalletAddress));
-                itemOutput->setText(COLUMN_LABEL, tr("(change)"));
+                // tooltip from where the chcoinnamee comes from
+                itemOutput->setToolTip(COLUMN_LABEL, tr("chcoinnamee from %1 (%2)").arg(sWalletLabel).arg(sWalletAddress));
+                itemOutput->setText(COLUMN_LABEL, tr("(chcoinnamee)"));
             }
             else if (!treeMode)
             {

@@ -12,7 +12,7 @@
 
 namespace leveldb {
 
-// Update Makefile if you change these
+// Update Makefile if you chcoinnamee these
 static const int kMajorVersion = 1;
 static const int kMinorVersion = 18;
 
@@ -29,13 +29,13 @@ class Snapshot {
   virtual ~Snapshot();
 };
 
-// A range of keys
-struct Range {
-  Slice start;          // Included in the range
-  Slice limit;          // Not included in the range
+// A rcoinnamee of keys
+struct Rcoinnamee {
+  Slice start;          // Included in the rcoinnamee
+  Slice limit;          // Not included in the rcoinnamee
 
-  Range() { }
-  Range(const Slice& s, const Slice& l) : start(s), limit(l) { }
+  Rcoinnamee() { }
+  Rcoinnamee(const Slice& s, const Slice& l) : start(s), limit(l) { }
 };
 
 // A DB is a persistent ordered map from keys to values.
@@ -76,7 +76,7 @@ class DB {
   // If the database contains an entry for "key" store the
   // corresponding value in *value and return OK.
   //
-  // If there is no entry for "key" leave *value unchanged and return
+  // If there is no entry for "key" leave *value unchcoinnameed and return
   // a status for which Status::IsNotFound() returns true.
   //
   // May return some other Status on an error.
@@ -118,27 +118,27 @@ class DB {
   virtual bool GetProperty(const Slice& property, std::string* value) = 0;
 
   // For each i in [0,n-1], store in "sizes[i]", the approximate
-  // file system space used by keys in "[range[i].start .. range[i].limit)".
+  // file system space used by keys in "[rcoinnamee[i].start .. rcoinnamee[i].limit)".
   //
   // Note that the returned sizes measure file system space usage, so
   // if the user data compresses by a factor of ten, the returned
   // sizes will be one-tenth the size of the corresponding user data size.
   //
   // The results may not include the sizes of recently written data.
-  virtual void GetApproximateSizes(const Range* range, int n,
+  virtual void GetApproximateSizes(const Rcoinnamee* rcoinnamee, int n,
                                    uint64_t* sizes) = 0;
 
-  // Compact the underlying storage for the key range [*begin,*end].
+  // Compact the underlying storage for the key rcoinnamee [*begin,*end].
   // In particular, deleted and overwritten versions are discarded,
-  // and the data is rearranged to reduce the cost of operations
+  // and the data is rearrcoinnameed to reduce the cost of operations
   // needed to access the data.  This operation should typically only
   // be invoked by users who understand the underlying implementation.
   //
   // begin==NULL is treated as a key before all keys in the database.
   // end==NULL is treated as a key after all keys in the database.
   // Therefore the following call will compact the entire database:
-  //    db->CompactRange(NULL, NULL);
-  virtual void CompactRange(const Slice* begin, const Slice* end) = 0;
+  //    db->CompactRcoinnamee(NULL, NULL);
+  virtual void CompactRcoinnamee(const Slice* begin, const Slice* end) = 0;
 
  private:
   // No copying allowed

@@ -183,7 +183,7 @@ BOOST_AUTO_TEST_CASE(coin_selection_tests)
         BOOST_CHECK_EQUAL(nValueRet, 2 * COIN);  // we should get 2 BTC in 1 coin
         BOOST_CHECK_EQUAL(setCoinsRet.size(), 1U);
 
-        // empty the wallet and start again, now with fractions of a cent, to test sub-cent change avoidance
+        // empty the wallet and start again, now with fractions of a cent, to test sub-cent chcoinnamee avoidance
         empty_wallet();
         add_coin(0.1*CENT);
         add_coin(0.2*CENT);
@@ -192,11 +192,11 @@ BOOST_AUTO_TEST_CASE(coin_selection_tests)
         add_coin(0.5*CENT);
 
         // try making 1 cent from 0.1 + 0.2 + 0.3 + 0.4 + 0.5 = 1.5 cents
-        // we'll get sub-cent change whatever happens, so can expect 1.0 exactly
+        // we'll get sub-cent chcoinnamee whatever happens, so can expect 1.0 exactly
         BOOST_CHECK( wallet.SelectCoinsMinConf(1 * CENT, 1, 1, vCoins, setCoinsRet, nValueRet));
         BOOST_CHECK_EQUAL(nValueRet, 1 * CENT);
 
-        // but if we add a bigger coin, making it possible to avoid sub-cent change, things change:
+        // but if we add a bigger coin, making it possible to avoid sub-cent chcoinnamee, things chcoinnamee:
         add_coin(1111*CENT);
 
         // try making 1 cent from 0.1 + 0.2 + 0.3 + 0.4 + 0.5 + 1111 = 1112.5 cents
@@ -212,7 +212,7 @@ BOOST_AUTO_TEST_CASE(coin_selection_tests)
         BOOST_CHECK_EQUAL(nValueRet, 1 * CENT); // we should get the exact amount
 
         // run the 'mtgox' test (see http://blockexplorer.com/tx/29a3efd3ef04f9153d47a990bd7b048a4b2d213daaa5fb8ed670fb85f13bdbcf)
-        // they tried to consolidate 10 50k coins into one 500k coin, and ended up with 50k in change
+        // they tried to consolidate 10 50k coins into one 500k coin, and ended up with 50k in chcoinnamee
         empty_wallet();
         for (int i = 0; i < 20; i++)
             add_coin(50000 * COIN);
@@ -221,7 +221,7 @@ BOOST_AUTO_TEST_CASE(coin_selection_tests)
         BOOST_CHECK_EQUAL(nValueRet, 500000 * COIN); // we should get the exact amount
         BOOST_CHECK_EQUAL(setCoinsRet.size(), 10U); // in ten coins
 
-        // if there's not enough in the smaller coins to make at least 1 cent change (0.5+0.6+0.7 < 1.0+1.0),
+        // if there's not enough in the smaller coins to make at least 1 cent chcoinnamee (0.5+0.6+0.7 < 1.0+1.0),
         // we need to try finding an exact subset anyway
 
         // sometimes it will fail, and so we use the next biggest coin:
@@ -244,7 +244,7 @@ BOOST_AUTO_TEST_CASE(coin_selection_tests)
         BOOST_CHECK_EQUAL(nValueRet, 1 * CENT);   // we should get the exact amount
         BOOST_CHECK_EQUAL(setCoinsRet.size(), 2U); // in two coins 0.4+0.6
 
-        // test avoiding sub-cent change
+        // test avoiding sub-cent chcoinnamee
         empty_wallet();
         add_coin(0.0005 * COIN);
         add_coin(0.01 * COIN);
@@ -255,7 +255,7 @@ BOOST_AUTO_TEST_CASE(coin_selection_tests)
         BOOST_CHECK_EQUAL(nValueRet, 1.0105 * COIN);   // we should get all coins
         BOOST_CHECK_EQUAL(setCoinsRet.size(), 3U);
 
-        // but if we try to make 0.999, we should take the bigger of the two small coins to avoid sub-cent change
+        // but if we try to make 0.999, we should take the bigger of the two small coins to avoid sub-cent chcoinnamee
         BOOST_CHECK( wallet.SelectCoinsMinConf(0.999 * COIN, 1, 1, vCoins, setCoinsRet, nValueRet));
         BOOST_CHECK_EQUAL(nValueRet, 1.01 * COIN);   // we should get 1 + 0.01
         BOOST_CHECK_EQUAL(setCoinsRet.size(), 2U);
@@ -284,7 +284,7 @@ BOOST_AUTO_TEST_CASE(coin_selection_tests)
             }
             BOOST_CHECK_NE(fails, RANDOM_REPEATS);
 
-            // add 75 cents in small change.  not enough to make 90 cents,
+            // add 75 cents in small chcoinnamee.  not enough to make 90 cents,
             // then try making 90 cents.  there are multiple competing "smallest bigger" coins,
             // one of which should be picked at random
             add_coin( 5*CENT); add_coin(10*CENT); add_coin(15*CENT); add_coin(20*CENT); add_coin(25*CENT);

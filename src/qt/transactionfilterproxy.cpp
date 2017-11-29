@@ -59,7 +59,7 @@ bool TransactionFilterProxy::filterAcceptsRow(int sourceRow, const QModelIndex &
     return true;
 }
 
-void TransactionFilterProxy::setDateRange(const QDateTime &from, const QDateTime &to)
+void TransactionFilterProxy::setDateRcoinnamee(const QDateTime &from, const QDateTime &to)
 {
     this->dateFrom = from;
     this->dateTo = to;

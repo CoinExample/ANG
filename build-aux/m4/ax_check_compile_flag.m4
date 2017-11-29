@@ -8,13 +8,13 @@
 #
 # DESCRIPTION
 #
-#   Check whether the given FLAG works with the current language's compiler
+#   Check whether the given FLAG works with the current lcoinnameuage's compiler
 #   or gives an error.  (Warnings, however, are ignored)
 #
 #   ACTION-SUCCESS/ACTION-FAILURE are shell commands to execute on
 #   success/failure.
 #
-#   If EXTRA-FLAGS is defined, it is added to the current language's default
+#   If EXTRA-FLAGS is defined, it is added to the current lcoinnameuage's default
 #   flags (e.g. CFLAGS) when the check is done.  The check is thus made with
 #   the flags: "CFLAGS EXTRA-FLAGS FLAG".  This can for example be used to
 #   force the compiler to issue an error when a bad flag is given.
@@ -56,15 +56,15 @@
 #serial 2
 
 AC_DEFUN([AX_CHECK_COMPILE_FLAG],
-[AC_PREREQ(2.59)dnl for _AC_LANG_PREFIX
-AS_VAR_PUSHDEF([CACHEVAR],[ax_cv_check_[]_AC_LANG_ABBREV[]flags_$4_$1])dnl
-AC_CACHE_CHECK([whether _AC_LANG compiler accepts $1], CACHEVAR, [
-  ax_check_save_flags=$[]_AC_LANG_PREFIX[]FLAGS
-  _AC_LANG_PREFIX[]FLAGS="$[]_AC_LANG_PREFIX[]FLAGS $4 $1"
-  AC_COMPILE_IFELSE([AC_LANG_PROGRAM()],
+[AC_PREREQ(2.59)dnl for _AC_LCOINNAME_PREFIX
+AS_VAR_PUSHDEF([CACHEVAR],[ax_cv_check_[]_AC_LCOINNAME_ABBREV[]flags_$4_$1])dnl
+AC_CACHE_CHECK([whether _AC_LCOINNAME compiler accepts $1], CACHEVAR, [
+  ax_check_save_flags=$[]_AC_LCOINNAME_PREFIX[]FLAGS
+  _AC_LCOINNAME_PREFIX[]FLAGS="$[]_AC_LCOINNAME_PREFIX[]FLAGS $4 $1"
+  AC_COMPILE_IFELSE([AC_LCOINNAME_PROGRAM()],
     [AS_VAR_SET(CACHEVAR,[yes])],
     [AS_VAR_SET(CACHEVAR,[no])])
-  _AC_LANG_PREFIX[]FLAGS=$ax_check_save_flags])
+  _AC_LCOINNAME_PREFIX[]FLAGS=$ax_check_save_flags])
 AS_IF([test x"AS_VAR_GET(CACHEVAR)" = xyes],
   [m4_default([$2], :)],
   [m4_default([$3], :)])

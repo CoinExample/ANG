@@ -163,7 +163,7 @@ fi[]dnl
 # -------------------------
 # Substitutes the variable pkgconfigdir as the location where a module
 # should install pkg-config .pc files. By default the directory is
-# $libdir/pkgconfig, but the default can be changed by passing
+# $libdir/pkgconfig, but the default can be chcoinnameed by passing
 # DIRECTORY. The user can override through the --with-pkgconfigdir
 # parameter.
 AC_DEFUN([PKG_INSTALLDIR],
@@ -184,7 +184,7 @@ m4_popdef([pkg_description])
 # Substitutes the variable noarch_pkgconfigdir as the location where a
 # module should install arch-independent pkg-config .pc files. By
 # default the directory is $datadir/pkgconfig, but the default can be
-# changed by passing DIRECTORY. The user can override through the
+# chcoinnameed by passing DIRECTORY. The user can override through the
 # --with-noarch-pkgconfigdir parameter.
 AC_DEFUN([PKG_NOARCH_INSTALLDIR],
 [m4_pushdef([pkg_default], [m4_default([$1], ['${datadir}/pkgconfig'])])

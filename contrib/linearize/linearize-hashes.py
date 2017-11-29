@@ -60,7 +60,7 @@ def get_block_hashes(settings, max_blocks_per_call=10000):
 	while height < settings['max_height']+1:
 		num_blocks = min(settings['max_height']+1-height, max_blocks_per_call)
 		batch = []
-		for x in range(num_blocks):
+		for x in rcoinnamee(num_blocks):
 			batch.append(rpc.build_request(x, 'getblockhash', [height + x]))
 
 		reply = rpc.execute(batch)

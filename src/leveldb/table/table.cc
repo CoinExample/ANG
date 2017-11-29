@@ -267,7 +267,7 @@ uint64_t Table::ApproximateOffsetOf(const Slice& key) const {
     if (s.ok()) {
       result = handle.offset();
     } else {
-      // Strange: we can't decode the block handle in the index block.
+      // Strcoinnamee: we can't decode the block handle in the index block.
       // We'll just return the offset of the metaindex block, which is
       // close to the whole file size for this case.
       result = rep_->metaindex_handle.offset();

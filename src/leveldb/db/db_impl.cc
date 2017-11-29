@@ -83,7 +83,7 @@ struct DBImpl::CompactionState {
 
 // Fix user-supplied options to be reasonable
 template <class T,class V>
-static void ClipToRange(T* ptr, V minvalue, V maxvalue) {
+static void ClipToRcoinnamee(T* ptr, V minvalue, V maxvalue) {
   if (static_cast<V>(*ptr) > maxvalue) *ptr = maxvalue;
   if (static_cast<V>(*ptr) < minvalue) *ptr = minvalue;
 }
@@ -94,9 +94,9 @@ Options SanitizeOptions(const std::string& dbname,
   Options result = src;
   result.comparator = icmp;
   result.filter_policy = (src.filter_policy != NULL) ? ipolicy : NULL;
-  ClipToRange(&result.max_open_files,    64 + kNumNonTableCacheFiles, 50000);
-  ClipToRange(&result.write_buffer_size, 64<<10,                      1<<30);
-  ClipToRange(&result.block_size,        1<<10,                       4<<20);
+  ClipToRcoinnamee(&result.max_open_files,    64 + kNumNonTableCacheFiles, 50000);
+  ClipToRcoinnamee(&result.write_buffer_size, 64<<10,                      1<<30);
+  ClipToRcoinnamee(&result.block_size,        1<<10,                       4<<20);
   if (result.info_log == NULL) {
     // Open a log file in the same directory as the db
     src.env->CreateDir(dbname);  // In case it does not exist
@@ -208,7 +208,7 @@ Status DBImpl::NewDB() {
 
 void DBImpl::MaybeIgnoreError(Status* s) const {
   if (s->ok() || options_.paranoid_checks) {
-    // No change needed
+    // No chcoinnamee needed
   } else {
     Log(options_.info_log, "Ignoring error %s", s->ToString().c_str());
     *s = Status::OK();
@@ -533,7 +533,7 @@ void DBImpl::CompactMemTable() {
   }
 }
 
-void DBImpl::CompactRange(const Slice* begin, const Slice* end) {
+void DBImpl::CompactRcoinnamee(const Slice* begin, const Slice* end) {
   int max_level_with_files = 1;
   {
     MutexLock l(&mutex_);
@@ -546,11 +546,11 @@ void DBImpl::CompactRange(const Slice* begin, const Slice* end) {
   }
   TEST_CompactMemTable(); // TODO(sanjay): Skip if memtable does not overlap
   for (int level = 0; level < max_level_with_files; level++) {
-    TEST_CompactRange(level, begin, end);
+    TEST_CompactRcoinnamee(level, begin, end);
   }
 }
 
-void DBImpl::TEST_CompactRange(int level, const Slice* begin,const Slice* end) {
+void DBImpl::TEST_CompactRcoinnamee(int level, const Slice* begin,const Slice* end) {
   assert(level >= 0);
   assert(level + 1 < config::kNumLevels);
 
@@ -618,7 +618,7 @@ void DBImpl::MaybeScheduleCompaction() {
   } else if (shutting_down_.Acquire_Load()) {
     // DB is being deleted; no more background compactions
   } else if (!bg_error_.ok()) {
-    // Already got an error; no more changes
+    // Already got an error; no more chcoinnamees
   } else if (imm_ == NULL &&
              manual_compaction_ == NULL &&
              !versions_->NeedsCompaction()) {
@@ -665,7 +665,7 @@ void DBImpl::BackgroundCompaction() {
   InternalKey manual_end;
   if (is_manual) {
     ManualCompaction* m = manual_compaction_;
-    c = versions_->CompactRange(m->level, m->begin, m->end);
+    c = versions_->CompactRcoinnamee(m->level, m->begin, m->end);
     m->done = (c == NULL);
     if (c != NULL) {
       manual_end = c->input(0, c->num_input_files(0) - 1)->largest;
@@ -728,8 +728,8 @@ void DBImpl::BackgroundCompaction() {
       m->done = true;
     }
     if (!m->done) {
-      // We only compacted part of the requested range.  Update *m
-      // to the range that is left to be compacted.
+      // We only compacted part of the requested rcoinnamee.  Update *m
+      // to the rcoinnamee that is left to be compacted.
       m->tmp_storage = manual_end;
       m->begin = &m->tmp_storage;
     }
@@ -1401,7 +1401,7 @@ bool DBImpl::GetProperty(const Slice& property, std::string* value) {
 }
 
 void DBImpl::GetApproximateSizes(
-    const Range* range, int n,
+    const Rcoinnamee* rcoinnamee, int n,
     uint64_t* sizes) {
   // TODO(opt): better implementation
   Version* v;
@@ -1413,8 +1413,8 @@ void DBImpl::GetApproximateSizes(
 
   for (int i = 0; i < n; i++) {
     // Convert user_key into a corresponding internal key.
-    InternalKey k1(range[i].start, kMaxSequenceNumber, kValueTypeForSeek);
-    InternalKey k2(range[i].limit, kMaxSequenceNumber, kValueTypeForSeek);
+    InternalKey k1(rcoinnamee[i].start, kMaxSequenceNumber, kValueTypeForSeek);
+    InternalKey k2(rcoinnamee[i].limit, kMaxSequenceNumber, kValueTypeForSeek);
     uint64_t start = versions_->ApproximateOffsetOf(v, k1);
     uint64_t limit = versions_->ApproximateOffsetOf(v, k2);
     sizes[i] = (limit >= start ? limit - start : 0);

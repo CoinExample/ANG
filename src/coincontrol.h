@@ -11,7 +11,7 @@
 class CCoinControl
 {
 public:
-    CTxDestination destChange;
+    CTxDestination destChcoinnamee;
     bool useDarkSend;
     bool useInstantX;
 
@@ -22,7 +22,7 @@ public:
 
     void SetNull()
     {
-        destChange = CNoDestination();
+        destChcoinnamee = CNoDestination();
         setSelected.clear();
         useInstantX = false;
         useDarkSend = true;

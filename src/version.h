@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Ang developers
+// Copyright (c) 2014-2015 The Coinname developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -40,7 +40,7 @@ static const int MIN_MASTERNODE_PAYMENT_PROTO_VERSION_2 = 70103;
 //! if possible, avoid requesting addresses nodes older than this
 static const int CADDR_TIME_VERSION = 31402;
 
-//! only request blocks from nodes outside this range of versions
+//! only request blocks from nodes outside this rcoinnamee of versions
 static const int NOBLKS_VERSION_START = 32000;
 static const int NOBLKS_VERSION_END = 32400;
 

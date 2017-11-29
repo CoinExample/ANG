@@ -79,7 +79,7 @@ AC_DEFUN([AX_GCC_FUNC_ATTRIBUTE], [
     AS_VAR_PUSHDEF([ac_var], [ax_cv_have_func_attribute_$1])
 
     AC_CACHE_CHECK([for __attribute__(($1))], [ac_var], [
-        AC_LINK_IFELSE([AC_LANG_PROGRAM([
+        AC_LINK_IFELSE([AC_LCOINNAME_PROGRAM([
             m4_case([$1],
                 [alias], [
                     int foo( void ) { return 0; }

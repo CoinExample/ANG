@@ -64,14 +64,14 @@ AC_DEFUN([AX_BOOST_CHRONO],
 
         AC_CACHE_CHECK(whether the Boost::Chrono library is available,
 					   ax_cv_boost_chrono,
-        [AC_LANG_PUSH([C++])
+        [AC_LCOINNAME_PUSH([C++])
 			 CXXFLAGS_SAVE=$CXXFLAGS
 
-			 AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[@%:@include <boost/chrono.hpp>]],
+			 AC_COMPILE_IFELSE([AC_LCOINNAME_PROGRAM([[@%:@include <boost/chrono.hpp>]],
                                    [[boost::chrono::system_clock::time_point time;]])],
                    ax_cv_boost_chrono=yes, ax_cv_boost_chrono=no)
 			 CXXFLAGS=$CXXFLAGS_SAVE
-             AC_LANG_POP([C++])
+             AC_LCOINNAME_POP([C++])
 		])
 		if test "x$ax_cv_boost_chrono" = "xyes"; then
 			AC_SUBST(BOOST_CPPFLAGS)

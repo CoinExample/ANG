@@ -1,6 +1,6 @@
 Mac OS X Build Instructions and Notes
 ====================================
-This guide will show you how to build angd (headless client) for OSX.
+This guide will show you how to build coinnamed (headless client) for OSX.
 
 Notes
 -----
@@ -58,19 +58,19 @@ The rest of these commands are run inside brew interactive mode:
 /private/tmp/berkeley-db4-UGpd0O $ exit
 ```
 
-After exiting, you'll get a warning that the install is keg-only, which means it wasn't symlinked to `/usr/local`.  You don't need it to link it to build ang, but if you want to, here's how:
+After exiting, you'll get a warning that the install is keg-only, which means it wasn't symlinked to `/usr/local`.  You don't need it to link it to build coinname, but if you want to, here's how:
 
     $ brew link --force berkeley-db4
 
 
-### Building `angd`
+### Building `coinnamed`
 
 1. Clone the github tree to get the source code and go into the directory.
 
         git clone https://github.com/CoinExample/CoinName.git
-        cd ang
+        cd coinname
 
-2.  Build angd:
+2.  Build coinnamed:
 
         ./autogen.sh
         ./configure
@@ -80,7 +80,7 @@ After exiting, you'll get a warning that the install is keg-only, which means it
 
         make check
 
-4.  (Optional) You can also install angd to your path:
+4.  (Optional) You can also install coinnamed to your path:
 
         make install
 
@@ -92,21 +92,21 @@ Download Qt Creator from http://www.qt.io/download/. Download the "community edi
 1. Make sure you installed everything through homebrew mentioned above 
 2. Do a proper ./configure --with-gui=qt5 --enable-debug
 3. In Qt Creator do "New Project" -> Import Project -> Import Existing Project
-4. Enter "ang-qt" as project name, enter src/qt as location
+4. Enter "coinname-qt" as project name, enter src/qt as location
 5. Leave the file selection as it is
 6. Confirm the "summary page"
 7. In the "Projects" tab select "Manage Kits..."
-8. Select the default "Desktop" kit and select "Clang (x86 64bit in /usr/bin)" as compiler
+8. Select the default "Desktop" kit and select "Clcoinname (x86 64bit in /usr/bin)" as compiler
 9. Select LLDB as debugger (you might need to set the path to your installtion)
 10. Start debugging with Qt Creator
 
 Creating a release build
 ------------------------
-You can ignore this section if you are building `angd` for your own use.
+You can ignore this section if you are building `coinnamed` for your own use.
 
-angd/ang-cli binaries are not included in the Ang-Qt.app bundle.
+coinnamed/coinname-cli binaries are not included in the Coinname-Qt.app bundle.
 
-If you are building `angd` or `Ang-Qt` for others, your build machine should be set up
+If you are building `coinnamed` or `Coinname-Qt` for others, your build machine should be set up
 as follows for maximum compatibility:
 
 All dependencies should be compiled with these flags:
@@ -115,30 +115,30 @@ All dependencies should be compiled with these flags:
  -arch x86_64
  -isysroot $(xcode-select --print-path)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk
 
-Once dependencies are compiled, see release-process.md for how the Ang-Qt.app
+Once dependencies are compiled, see release-process.md for how the Coinname-Qt.app
 bundle is packaged and signed to create the .dmg disk image that is distributed.
 
 Running
 -------
 
-It's now available at `./angd`, provided that you are still in the `src`
+It's now available at `./coinnamed`, provided that you are still in the `src`
 directory. We have to first create the RPC configuration file, though.
 
-Run `./angd` to get the filename where it should be put, or just try these
+Run `./coinnamed` to get the filename where it should be put, or just try these
 commands:
 
-    echo -e "rpcuser=angrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Ang/ang.conf"
-    chmod 600 "/Users/${USER}/Library/Application Support/Ang/ang.conf"
+    echo -e "rpcuser=coinnamerpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Coinname/coinname.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/Coinname/coinname.conf"
 
 The next time you run it, it will start downloading the blockchain, but it won't
 output anything while it's doing this. This process may take several hours;
 you can monitor its process by looking at the debug.log file, like this:
 
-    tail -f $HOME/Library/Application\ Support/Ang/debug.log
+    tail -f $HOME/Library/Application\ Support/Coinname/debug.log
 
 Other commands:
 -------
 
-    ./angd -daemon # to start the ang daemon.
-    ./ang-cli --help  # for a list of command-line options.
-    ./ang-cli help    # When the daemon is running, to get a list of RPC commands
+    ./coinnamed -daemon # to start the coinname daemon.
+    ./coinname-cli --help  # for a list of command-line options.
+    ./coinname-cli help    # When the daemon is running, to get a list of RPC commands

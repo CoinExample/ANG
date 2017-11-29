@@ -51,7 +51,7 @@ public slots:
     void setStatus(int status, const QString &message, quint64 bytesAvailable);
 
 private slots:
-    void on_dataDirectory_textChanged(const QString &arg1);
+    void on_dataDirectory_textChcoinnameed(const QString &arg1);
     void on_ellipsisButton_clicked();
     void on_dataDirDefault_clicked();
     void on_dataDirCustom_clicked();

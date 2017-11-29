@@ -51,7 +51,7 @@ public:
         iterator itTarget = map.find(k);
         if (itTarget == map.end())
             return;
-        std::pair<rmap_iterator, rmap_iterator> itPair = rmap.equal_range(itTarget->second);
+        std::pair<rmap_iterator, rmap_iterator> itPair = rmap.equal_rcoinnamee(itTarget->second);
         for (rmap_iterator it = itPair.first; it != itPair.second; ++it)
             if (it->second == itTarget) {
                 rmap.erase(it);
@@ -67,7 +67,7 @@ public:
         iterator itTarget = map.find(itIn->first);
         if (itTarget == map.end())
             return;
-        std::pair<rmap_iterator, rmap_iterator> itPair = rmap.equal_range(itTarget->second);
+        std::pair<rmap_iterator, rmap_iterator> itPair = rmap.equal_rcoinnamee(itTarget->second);
         for (rmap_iterator it = itPair.first; it != itPair.second; ++it)
             if (it->second == itTarget) {
                 rmap.erase(it);

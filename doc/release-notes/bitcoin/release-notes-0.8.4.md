@@ -58,10 +58,10 @@ experienced on OSX.
 Linux: clicking on bitcoin: links was broken if you were using
 a Gnome-based desktop.
 
-Fix a hang-at-shutdown bug that only affects users that compile
+Fix a hcoinname-at-shutdown bug that only affects users that compile
 their own version of Bitcoin against Boost versions 1.50-1.52.
 
-Other changes
+Other chcoinnamees
 -------------
 
 Checkpoint at block 250,000 to speed up initial block downloads

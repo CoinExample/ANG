@@ -69,13 +69,13 @@ AC_DEFUN([AX_BOOST_FILESYSTEM],
 
         AC_CACHE_CHECK(whether the Boost::Filesystem library is available,
 					   ax_cv_boost_filesystem,
-        [AC_LANG_PUSH([C++])
-         AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[@%:@include <boost/filesystem/path.hpp>]],
+        [AC_LCOINNAME_PUSH([C++])
+         AC_COMPILE_IFELSE([AC_LCOINNAME_PROGRAM([[@%:@include <boost/filesystem/path.hpp>]],
                                    [[using namespace boost::filesystem;
                                    path my_path( "foo/bar/data.txt" );
                                    return 0;]])],
 					       ax_cv_boost_filesystem=yes, ax_cv_boost_filesystem=no)
-         AC_LANG_POP([C++])
+         AC_LCOINNAME_POP([C++])
 		])
 		if test "x$ax_cv_boost_filesystem" = "xyes"; then
 			AC_DEFINE(HAVE_BOOST_FILESYSTEM,,[define if the Boost::Filesystem library is available])

@@ -125,9 +125,9 @@ BOOST_AUTO_TEST_CASE(rpc_wallet)
     BOOST_CHECK_THROW(CallRPC("listreceivedbyaccount 0 true extra"), runtime_error);
 
     /*********************************
-     * 		getrawchangeaddress
+     * 		getrawchcoinnameeaddress
      *********************************/
-    BOOST_CHECK_NO_THROW(CallRPC("getrawchangeaddress"));
+    BOOST_CHECK_NO_THROW(CallRPC("getrawchcoinnameeaddress"));
 
     /*********************************
      * 		getnewaddress

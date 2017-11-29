@@ -86,7 +86,7 @@ static const s32 alpha_tab[] = {
 };
 
 /*
- * Ranges:
+ * Rcoinnamees:
  *   REDS1: from -32768..98302 to -383..383
  *   REDS2: from -2^31..2^31-1 to -32768..98302
  */
@@ -94,10 +94,10 @@ static const s32 alpha_tab[] = {
 #define REDS2(x)    (((x) & 0xFFFF) + ((x) >> 16))
 
 /*
- * If, upon entry, the values of q[] are all in the -N..N range (where
- * N >= 98302) then the new values of q[] are in the -2N..2N range.
+ * If, upon entry, the values of q[] are all in the -N..N rcoinnamee (where
+ * N >= 98302) then the new values of q[] are in the -2N..2N rcoinnamee.
  *
- * Since alpha_tab[v] <= 256, maximum allowed range is for N = 8388608.
+ * Since alpha_tab[v] <= 256, maximum allowed rcoinnamee is for N = 8388608.
  */
 #define FFT_LOOP(rb, hk, as, id)   do { \
 		size_t u, v; \
@@ -134,7 +134,7 @@ static const s32 alpha_tab[] = {
 	} while (0)
 
 /*
- * Output ranges:
+ * Output rcoinnamees:
  *   d0:   min=    0   max= 1020
  *   d1:   min=  -67   max= 4587
  *   d2:   min=-4335   max= 4335
@@ -197,7 +197,7 @@ static const s32 alpha_tab[] = {
 	} while (0)
 
 /*
- * Output range: |q| <= 1183446
+ * Output rcoinnamee: |q| <= 1183446
  */
 #define FFT32(xb, xs, rb, id)   do { \
 		FFT16(xb, (xs) << 1, rb); \
@@ -206,7 +206,7 @@ static const s32 alpha_tab[] = {
 	} while (0)
 
 /*
- * Output range: |q| <= 2366892
+ * Output rcoinnamee: |q| <= 2366892
  */
 #define FFT64(xb, xs, rb, id)   do { \
 		FFT32(xb, (xs) << 1, rb, XCAT(id, a)); \
@@ -240,7 +240,7 @@ fft32(unsigned char *x, size_t xs, s32 *q)
 #else
 
 /*
- * Output range: |q| <= 4733784
+ * Output rcoinnamee: |q| <= 4733784
  */
 #define FFT128(xb, xs, rb, id)   do { \
 		FFT64(xb, (xs) << 1, rb, XCAT(id, a)); \
@@ -268,7 +268,7 @@ fft64(unsigned char *x, size_t xs, s32 *q)
 }
 
 /*
- * Output range: |q| <= 9467568
+ * Output rcoinnamee: |q| <= 9467568
  */
 #define FFT256(xb, xs, rb, id)   do { \
 		fft64(x + (xb) + ((xs) * 0), (xs) << 2, &q[(rb) +   0]); \
