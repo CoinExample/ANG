@@ -8,7 +8,7 @@ Ang Core version 0.12.0 is now available from:
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/AndrijKolomiets/ang/issues
+  https://github.com/CoinExample/CoinName/issues
 
 
 How to Upgrade

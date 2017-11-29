@@ -67,7 +67,7 @@ After exiting, you'll get a warning that the install is keg-only, which means it
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone https://github.com/AndrijKolomiets/ang.git
+        git clone https://github.com/CoinExample/CoinName.git
         cd ang
 
 2.  Build angd:

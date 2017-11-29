@@ -20,7 +20,7 @@ packages:
 - "libbz2-dev"
 reference_datetime: "2013-06-01 00:00:00"
 remotes:
-- "url": "https://github.com/AndrijKolomiets/ang.git"
+- "url": "https://github.com/CoinExample/CoinName.git"
   "dir": "ang"
 files:
 - "MacOSX10.7.sdk.tar.gz"

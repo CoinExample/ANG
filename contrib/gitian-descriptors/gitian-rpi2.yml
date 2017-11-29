@@ -17,7 +17,7 @@ packages:
 - "binutils-gold"
 reference_datetime: "2014-01-10 00:00:00"
 remotes:
-- "url": "https://github.com/AndrijKolomiets/ang.git"
+- "url": "https://github.com/CoinExample/CoinName.git"
   "dir": "ang"
 files:
 - "raspberrypi-tools.tar.gz"

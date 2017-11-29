@@ -46,7 +46,7 @@ The following are developer notes on how to build Ang on your native platform. T
 
 Development
 ---------------------
-The Ang repo's [root README](https://github.com/AndrijKolomiets/ang/blob/master/README.md) contains relevant information on the development process and automated testing.
+The Ang repo's [root README](https://github.com/CoinExample/CoinName/blob/master/README.md) contains relevant information on the development process and automated testing.
 
 - [Coding Guidelines](coding.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)
